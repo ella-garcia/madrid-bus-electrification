@@ -5,3 +5,4 @@ data_derived/
 .ipynb_checkpoints/
 __pycache__/
 .DS_Store
+.venv/

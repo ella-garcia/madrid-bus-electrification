@@ -17,6 +17,42 @@ How to join the repo, work on your section and open a pull request. The rules fo
 | PR body | **What** · **Checks** · **Heads-up for other sections** · **Not done** | see [PR #1](https://github.com/ella-garcia/madrid-bus-electrification/pull/1) |
 | Review | at least one teammate; never merge your own PR, no auto-merge | |
 
+## Run the notebooks locally
+
+Colab needs no setup. To run on your own machine you need **Python 3.10+** and an internet connection for the first run.
+
+**1. Create an environment and install the packages** (once, from the repo folder):
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Windows (PowerShell):
+
+```powershell
+py -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+**2. Get the shared GTFS snapshot.** EMT's GTFS link serves a new file every day, so each person downloading it gets different line km. Put the team's copy at `data_raw/emt_gtfs.zip` **before** the first run; `fetch()` never overwrites a file that is already there. After a run, the data register must show checksum `62453fb95492` for `emt_gtfs.zip`. The other sources download automatically.
+
+**3. Open the notebooks** with the environment active:
+
+```bash
+jupyter lab notebooks/
+```
+
+In VS Code, open a notebook and pick the `.venv` interpreter as the kernel. Either way the notebook must run from the `notebooks/` folder (the default), because it finds `data_raw/`, `data_derived/` and `outputs/` one level up.
+
+**4. Run all cells** (Run → Run All Cells). Every `CHECK` line should say `PASS`. Downloads go to `data_raw/` and cleaned tables to `data_derived/`; both are git-ignored. The first run of notebook 03 takes under a minute.
+
+Before committing, re-run the notebook top to bottom so the saved outputs match the code. The final submission run is still done in Colab (see the README workflow).
+
 ## Setup prompt for Claude Code
 
 Fill in the two placeholders at the top, then paste the whole block into Claude Code in an empty folder.
@@ -35,7 +71,8 @@ Please set me up and help me contribute while following the team's conventions. 
 
 2. Clone and look around
    - Clone the repo here, then read README.md and CONTRIBUTING.md fully. README has the rules: one parameter cell `P`, `assume()` labels, `fetch()` for sources, `check()` after every step, and zero-emission means only battery-electric and hydrogen buses.
-   - Check that `.gitignore` excludes `data_raw/` and `data_derived/`. Never commit downloaded data.
+   - Check that `.gitignore` excludes `data_raw/`, `data_derived/` and `.venv/`. Never commit downloaded data.
+   - If I want to run the notebooks on my machine, follow "Run the notebooks locally" in CONTRIBUTING.md: create `.venv`, install `requirements.txt`, and ask me for the team's GTFS snapshot before the first run.
 
 3. Branch
    - Run `git fetch origin && git switch main && git pull`, then create a branch from the latest main.
