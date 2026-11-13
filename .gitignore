@@ -1,0 +1,7 @@
+# Downloads and intermediates are re-fetched by the notebooks (see README)
+data_raw/
+data_derived/
+
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
