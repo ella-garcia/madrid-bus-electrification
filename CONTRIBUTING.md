@@ -39,7 +39,7 @@ py -m venv .venv
 pip install -r requirements.txt
 ```
 
-**2. Get the shared GTFS snapshot.** EMT's GTFS link serves a new file every day, so each person downloading it gets different line km. Put the team's copy at `data_raw/emt_gtfs.zip` **before** the first run; `fetch()` never overwrites a file that is already there. After a run, the data register must show checksum `62453fb95492` for `emt_gtfs.zip`. The other sources download automatically.
+**2. Get the shared GTFS snapshot.** EMT's GTFS link serves a new file every day, so each person downloading it gets different line km. Download the team's copy from the [shared Drive folder](https://drive.google.com/drive/folders/18E-C6Zx7Kij4J3WnIfDKsCHC2hTds4Rm) and save it as `data_raw/emt_gtfs.zip` **before** the first run (create `data_raw/` if it doesn't exist); `fetch()` never overwrites a file that is already there. After a run, the data register must show checksum `62453fb95492` for `emt_gtfs.zip`; if it doesn't, you have a different file. Colab users: upload the same file to `/content/datathon/data_raw/` before running. The other sources download automatically.
 
 **3. Open the notebooks** with the environment active:
 
@@ -72,7 +72,7 @@ Please set me up and help me contribute while following the team's conventions. 
 2. Clone and look around
    - Clone the repo here, then read README.md and CONTRIBUTING.md fully. README has the rules: one parameter cell `P`, `assume()` labels, `fetch()` for sources, `check()` after every step, and zero-emission means only battery-electric and hydrogen buses.
    - Check that `.gitignore` excludes `data_raw/`, `data_derived/` and `.venv/`. Never commit downloaded data.
-   - If I want to run the notebooks on my machine, follow "Run the notebooks locally" in CONTRIBUTING.md: create `.venv`, install `requirements.txt`, and ask me for the team's GTFS snapshot before the first run.
+   - If I want to run the notebooks on my machine, follow "Run the notebooks locally" in CONTRIBUTING.md: create `.venv`, install `requirements.txt`, and before the first run tell me to download the team's GTFS snapshot from https://drive.google.com/drive/folders/18E-C6Zx7Kij4J3WnIfDKsCHC2hTds4Rm and save it as `data_raw/emt_gtfs.zip` (don't download the GTFS from EMT).
 
 3. Branch
    - Run `git fetch origin && git switch main && git pull`, then create a branch from the latest main.
