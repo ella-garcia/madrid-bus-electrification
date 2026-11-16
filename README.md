@@ -72,3 +72,4 @@ Sections 0, 4 (formulas), 6 (`depot_table`) and 12 are already implemented from 
 - [ ] Bus type per line (only line 34 known) — proxy needed
 - [ ] Depot connection MW: Sanchinarro evidenced (8 MW + 5 MW backup); others by proxy
 - [ ] Benchmark fleet, targets and charging models at 31 Dec 2025; grid CO₂ factors for Germany, Finland, Belgium
+- [ ] Grid CO₂ factor for Denmark, if the Copenhagen supplementary comparison (notebook 01, §9b) is ever folded into a CO₂ calculation
