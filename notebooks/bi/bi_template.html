@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madrid Bus Electrification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* Palette taken from emtmadrid.es (blue #2C7ABF, sky #128EE1, charcoal #414042, Noto Sans).
+   Readiness colours are fixed by the brief (5.3): Green = Ready, Amber = Upgrade, Red = Critical. */
+:root {
+  --blue: #2c7abf; --blue-dark: #1d5a91; --sky: #128ee1; --ink: #414042; --muted: #6d6d6d;
+  --rule: #dcddde; --panel: #ffffff; --bg: #f1f2f2; --tint: #e8f1fa;
+  --ready: #2e7d32; --upgrade: #e0a100; --critical: #c62828;
+  --depot: #2c7abf; --opportunity: #8e44ad; --notfeasible: #414042;
+  --radius: 6px; --shadow: 0 1px 3px rgba(0,0,0,.12);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { font-family: "Noto Sans", Arial, sans-serif; color: var(--ink); background: var(--bg); font-size: 14px; line-height: 1.45; }
+a { color: var(--blue); }
+header.top { background: var(--blue); color: #fff; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+header.top h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: .2px; }
+header.top .sub { font-size: 13px; opacity: .9; }
+header.top .chips { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.45); white-space: nowrap; }
+.chip.final::before { content: "● "; color: #9be29e; }
+.chip.provisional::before { content: "◐ "; color: #ffd75e; }
+.chip.pending::before { content: "○ "; color: #fff; }
+nav.tabs { background: #fff; border-bottom: 1px solid var(--rule); display: flex; padding: 0 16px; overflow-x: auto; }
+nav.tabs button { font: inherit; font-weight: 600; color: var(--muted); background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 16px; cursor: pointer; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--blue); border-bottom-color: var(--blue); }
+nav.tabs button:focus-visible { outline: 2px solid var(--sky); outline-offset: -2px; }
+.sample { background: #fff4cc; color: #5c4400; border-bottom: 1px solid #f0d77a; padding: 8px 24px; font-weight: 700; font-size: 13px; }
+main section[role="tabpanel"] { display: none; }
+main section.active { display: block; }
+.wrap { padding: 16px 24px 24px; }
+h2 { font-size: 18px; margin: 0 0 4px; color: var(--ink); }
+.lede { color: var(--muted); margin: 0 0 16px; max-width: 960px; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
+.card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); margin: 0 0 10px; }
+.grid-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: var(--radius); padding: 10px 14px; }
+.kpi .v { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 12px; color: var(--muted); }
+.pending-box { border: 2px dashed var(--rule); border-radius: var(--radius); padding: 28px; text-align: center; color: var(--muted); background: #fafafa; }
+.pending-box b { color: var(--ink); display: block; font-size: 15px; margin-bottom: 4px; }
+
+/* Map view */
+.mapview { display: grid; grid-template-columns: minmax(0, 1fr) 380px; height: calc(100vh - 112px); min-height: 560px; }
+#map { height: 100%; background: #e9eef3; }
+.basemap { filter: grayscale(1) contrast(.85) brightness(1.08); }   /* muted base so route colours carry the meaning */
+aside.side { background: #fff; border-left: 1px solid var(--rule); overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.seg { display: inline-flex; border: 1px solid var(--blue); border-radius: var(--radius); overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; font-weight: 600; border: 0; background: #fff; color: var(--blue); padding: 6px 12px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.toggles label { display: flex; align-items: center; gap: 8px; margin: 4px 0; cursor: pointer; }
+.legend { display: grid; gap: 6px; }
+.legend .row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.sw-line { width: 28px; height: 0; border-top: 4px solid; flex: none; }
+.sw-line.dash { border-top-style: dashed; }
+.sw-dot { width: 16px; height: 16px; border-radius: 50%; flex: none; border: 2px solid #1f1f1f; }
+.sw-dot.est { border-style: dashed; }
+.legend .note { font-size: 12px; color: var(--muted); }
+.details dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 13px; }
+.details dt { color: var(--muted); }
+.details dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: #fff; }
+.badge.Ready { background: var(--ready); } .badge.Upgrade { background: var(--upgrade); color: #2b2100; } .badge.Critical { background: var(--critical); }
+.badge.Evidenced { background: var(--ink); } .badge.Estimated { background: #fff; color: var(--ink); border: 1.5px dashed var(--ink); }
+table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.data th { text-align: left; font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--rule); padding: 6px 8px; white-space: nowrap; }
+table.data td { border-bottom: 1px solid #eee; padding: 6px 8px; font-variant-numeric: tabular-nums; }
+table.data td.num, table.data th.num { text-align: right; }
+table.data tr.me td { background: var(--tint); font-weight: 600; }
+table.data tr.click { cursor: pointer; }
+table.data tr.click:hover td { background: #f6f9fc; }
+.leaflet-tooltip.tt { font-family: "Noto Sans", Arial, sans-serif; font-size: 12px; border-radius: 4px; }
+.tt b { color: var(--blue); }
+.tt .prov { color: var(--muted); font-size: 11px; max-width: 260px; white-space: normal; }
+
+/* Charts */
+.charts { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; }
+.chartbox { position: relative; height: 380px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+select { font: inherit; padding: 6px 10px; border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; color: var(--ink); }
+.small { font-size: 12px; color: var(--muted); }
+.scroll { overflow-x: auto; }
+.notes li { margin-bottom: 6px; }
+footer { color: var(--muted); font-size: 12px; padding: 12px 24px 24px; }
+@media (max-width: 900px) {
+  .mapview { grid-template-columns: 1fr; height: auto; }
+  #map { height: 60vh; }
+  aside.side { border-left: 0; border-top: 1px solid var(--rule); }
+  .charts { grid-template-columns: 1fr; }
+  header.top .chips { margin-left: 0; }
+  .wrap { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Madrid Bus Electrification</h1>
+    <div class="sub" id="subtitle"></div>
+  </div>
+  <div class="chips" id="chips" aria-label="Data status of Files 1 to 4"></div>
+</header>
+<div class="sample" id="sampleBanner" hidden>SAMPLE VALUES FOR LAYOUT REVIEW: these numbers are placeholders, not model results.</div>
+<nav class="tabs" role="tablist">
+  <button role="tab" id="t-map" aria-controls="p-map" aria-selected="true">Network map</button>
+  <button role="tab" id="t-bench" aria-controls="p-bench" aria-selected="false">European benchmark</button>
+  <button role="tab" id="t-scen" aria-controls="p-scen" aria-selected="false">Scenarios 2026–2035</button>
+  <button role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false">Notes and sources</button>
+</nav>
+<main>
+<section role="tabpanel" id="p-map" aria-labelledby="t-map" class="active">
+  <div class="mapview">
+    <div id="map" role="region" aria-label="Map of EMT routes and depots"></div>
+    <aside class="side">
+      <div class="grid-kpi" id="kpis" style="margin:0"></div>
+      <div>
+        <div class="small" style="margin-bottom:6px">Colour routes by</div>
+        <div class="seg" role="group" aria-label="Colour routes by">
+          <button id="byStrategy" aria-pressed="true">Charging strategy</button>
+          <button id="byYear" aria-pressed="false">Electrification year</button>
+        </div>
+      </div>
+      <div class="toggles">
+        <label><input type="checkbox" id="showRoutes" checked> Routes (File 2)</label>
+        <label><input type="checkbox" id="showDepots" checked> Depots (File 3)</label>
+      </div>
+      <div class="card legend" id="legend"></div>
+      <div class="card details" id="details"><h3>Details</h3><div class="small">Click a route or a depot.</div></div>
+      <div class="card"><h3>Depots</h3><div class="scroll" id="depotTable"></div></div>
+    </aside>
+  </div>
+</section>
+
+<section role="tabpanel" id="p-bench" aria-labelledby="t-bench">
+  <div class="wrap">
+    <h2>Madrid against European capitals</h2>
+    <p class="lede">Each city on the brief's network perimeter (section 4.4). Madrid is highlighted. Values are File 1 as submitted.</p>
+    <div id="benchBody"></div>
+  </div>
+</section>
+
+<section role="tabpanel" id="p-scen" aria-labelledby="t-scen">
+  <div class="wrap">
+    <h2>S0 plan-based pace against S1 100% by 2030</h2>
+    <p class="lede">Year-end fleet and full-year energy, emissions and capex (constant 2025 €, excluding VAT). Values are File 4 as submitted.</p>
+    <div id="scenBody"></div>
+  </div>
+</section>
+
+<section role="tabpanel" id="p-notes" aria-labelledby="t-notes">
+  <div class="wrap">
+    <h2>How to read this file</h2>
+    <div class="card"><ul class="notes" id="notesList"></ul></div>
+  </div>
+</section>
+</main>
+<footer id="foot"></footer>
+
+<script>
+const DATA = /*__DATA__*/null;
+const F = DATA.files, ST = DATA.status, META = DATA.meta || {};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d = 0) => v == null || Number.isNaN(+v) ? "–" : (+v).toLocaleString("en-GB", {minimumFractionDigits: d, maximumFractionDigits: d});
+const STRAT = {Depot: css("--depot"), Opportunity: css("--opportunity"), Not_feasible: css("--notfeasible")};
+const READY = {Ready: css("--ready"), Upgrade: css("--upgrade"), Critical: css("--critical")};
+const YEARS = [2025, 2026, 2027, 2028, 2029, 2030];
+const YEAR_COL = {2025: "#0b2e52", 2026: "#154d80", 2027: "#2c7abf", 2028: "#4f9ad6", 2029: "#6aa9de", 2030: "#93c2ea"};
+const PENDING = (file, what) => `<div class="pending-box"><b>${esc(file)} not produced yet</b>${esc(what)}</div>`;
+
+/* Header */
+document.getElementById("subtitle").textContent =
+  [META.subtitle, META.reference_date && `Reference day ${META.reference_date}`].filter(Boolean).join(" · ");
+document.getElementById("chips").innerHTML = Object.entries(ST)
+  .map(([f, s]) => `<span class="chip ${s}" title="${esc(f)}: ${esc(s)}">${esc(f.replace(".csv", "").replace("_", " "))} · ${esc(s)}</span>`).join("");
+document.getElementById("sampleBanner").hidden = !META.sample;
+document.getElementById("foot").innerHTML = esc(META.footer || "");
+
+/* Tabs */
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+let chartsDrawn = {};
+function select(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active", on);
+  });
+  if (tab.id === "t-map") map.invalidateSize();
+  if (tab.id === "t-bench" && !chartsDrawn.bench) { drawBench(); chartsDrawn.bench = true; }
+  if (tab.id === "t-scen" && !chartsDrawn.scen) { drawScen(); chartsDrawn.scen = true; }
+  try { localStorage.setItem("bi-tab", tab.id); } catch (e) {}
+}
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => select(t));
+  t.addEventListener("keydown", e => {
+    const k = {ArrowRight: 1, ArrowLeft: -1}[e.key];
+    if (k) { const n = tabs[(i + k + tabs.length) % tabs.length]; n.focus(); select(n); }
+  });
+});
+
+/* ---------- Views (i) and (ii): map ---------- */
+const lines = F["File_2.csv"] || [];
+const depots = F["File_3.csv"] || [];
+
+const map = L.map("map", {zoomControl: true, preferCanvas: true}).setView([40.42, -3.69], 11);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 18, className: "basemap",
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+let colourBy = "strategy", focusDepot = null;
+const routeLayer = L.layerGroup().addTo(map), depotLayer = L.layerGroup().addTo(map);
+const polyByLine = {};
+
+function routeStyle(l) {
+  const col = colourBy === "strategy" ? (STRAT[l.charging_strategy] || "#9aa0a6")
+                                      : (YEAR_COL[l.electrification_year] || "#9aa0a6");
+  const dim = focusDepot && l.depot_name !== focusDepot;
+  return {color: col, weight: dim ? 1.5 : 3, opacity: dim ? 0.15 : 0.85,
+          dashArray: colourBy === "strategy" && l.charging_strategy === "Not_feasible" ? "6 5" : null};
+}
+function lineTip(l) {
+  return `<b>Line ${esc(l.line_id)}</b><br>${esc(l.charging_strategy || "–")} · ${esc(l.bus_type || "–")}<br>` +
+    `${fmt(l.km_per_bus_day)} km per bus-day · ${fmt(l.peak_buses)} peak buses` +
+    (l.electrification_year ? `<br>Electrified ${esc(l.electrification_year)}` : "");
+}
+function drawRoutes() {
+  routeLayer.clearLayers();
+  const geo = DATA.routes || {};
+  lines.forEach(l => {
+    const parts = geo[l.line_id];   // geometry is keyed by File 2 line_id in build_bi.py
+    if (!parts) return;
+    const pl = L.polyline(parts, routeStyle(l)).bindTooltip(lineTip(l), {sticky: true, className: "tt"});
+    pl.on("click", () => showLine(l));
+    pl.addTo(routeLayer);
+    polyByLine[l.line_id] = pl;
+  });
+}
+function restyleRoutes() { lines.forEach(l => polyByLine[l.line_id] && polyByLine[l.line_id].setStyle(routeStyle(l))); }
+
+const provNote = d => d.connection_evidence === "Evidenced"
+  ? "Connection from documented public evidence."
+  : "Connection is a team proxy or scenario, not a confirmed grid capacity.";
+function drawDepots() {
+  depotLayer.clearLayers();
+  const maxB = Math.max(1, ...depots.map(d => +d.buses_assigned || 0));
+  depots.forEach(d => {
+    if (d.latitude == null || d.longitude == null) return;
+    const m = L.circleMarker([d.latitude, d.longitude], {
+      radius: 9 + 13 * Math.sqrt((+d.buses_assigned || 0) / maxB),
+      color: "#1f1f1f", weight: 2.5, dashArray: d.connection_evidence === "Estimated" ? "4 3" : null,
+      fillColor: READY[d.readiness_status] || "#9aa0a6", fillOpacity: 0.92
+    }).bindTooltip(`<b>${esc(d.depot_name)}</b><br>${esc(d.readiness_status)} (indicative)<br>` +
+      `${fmt(d.peak_mw_managed, 1)} MW managed vs ${fmt(d.connection_mw_estimate, 1)} MW connection<br>` +
+      `<span class="prov">${esc(d.connection_evidence)}: ${esc(provNote(d))}</span>`, {className: "tt"});
+    m.on("click", () => showDepot(d));
+    m.addTo(depotLayer);
+  });
+}
+function showLine(l) {
+  const dl = [["Strategy", l.charging_strategy], ["Bus type", l.bus_type], ["Daily km", fmt(l.daily_km)],
+    ["Peak buses", fmt(l.peak_buses)], ["Km per bus-day", fmt(l.km_per_bus_day, 1)],
+    ["Energy per bus-day", `${fmt(l.energy_kwh_bus_day)} kWh`], ["Depot", l.depot_name],
+    ["Priority rank", l.priority_rank], ["Electrification year", l.electrification_year],
+    ["CO₂ avoided", `${fmt(l.co2_avoided_t_year)} t/yr`]];
+  document.getElementById("details").innerHTML = `<h3>Line ${esc(l.line_id)}</h3><dl>` +
+    dl.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v ?? "–")}</dd>`).join("") + "</dl>";
+}
+function showDepot(d) {
+  focusDepot = focusDepot === d.depot_name ? null : d.depot_name;
+  restyleRoutes();
+  const dl = [["Lines assigned", fmt(d.n_lines_assigned)], ["Buses assigned", fmt(d.buses_assigned)],
+    ["Night energy", `${fmt(d.night_energy_mwh, 1)} MWh`], ["Unmanaged peak", `${fmt(d.peak_mw_unmanaged, 1)} MW`],
+    ["Managed peak", `${fmt(d.peak_mw_managed, 1)} MW`], ["Connection", `${fmt(d.connection_mw_estimate, 1)} MW`],
+    ["Conversion year", d.conversion_year]];
+  document.getElementById("details").innerHTML =
+    `<h3>${esc(d.depot_name)}</h3><p style="margin:0 0 8px"><span class="badge ${esc(d.readiness_status)}">${esc(d.readiness_status)}</span> ` +
+    `<span class="badge ${esc(d.connection_evidence)}">${esc(d.connection_evidence)}</span></p><dl>` +
+    dl.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v ?? "–")}</dd>`).join("") +
+    `</dl><p class="small" style="margin:8px 0 0">${esc(provNote(d))} Readiness is indicative (brief Rule 4), not a utility approval.` +
+    (focusDepot ? " Its assigned lines are highlighted; click again to clear." : "") + "</p>";
+}
+function drawLegend() {
+  const routes = colourBy === "strategy"
+    ? Object.entries(STRAT).map(([k, c]) => `<div class="row"><span class="sw-line ${k === "Not_feasible" ? "dash" : ""}" style="border-color:${c}"></span>${esc(k.replace("_", " "))}</div>`).join("")
+    : YEARS.map(y => `<div class="row"><span class="sw-line" style="border-color:${YEAR_COL[y]}"></span>${y === 2025 ? "Already zero-emission (2025)" : y}</div>`).join("");
+  document.getElementById("legend").innerHTML = `<h3>Routes · ${colourBy === "strategy" ? "charging strategy" : "electrification year"}</h3>${routes}
+    <h3 style="margin-top:10px">Depots · indicative readiness</h3>
+    ${Object.entries(READY).map(([k, c]) => `<div class="row"><span class="sw-dot" style="background:${c}"></span>${k}</div>`).join("")}
+    <div class="row"><span class="sw-dot" style="background:#fff"></span>Solid ring: connection Evidenced</div>
+    <div class="row"><span class="sw-dot est" style="background:#fff"></span>Dashed ring: connection Estimated (proxy)</div>
+    <div class="note">Circle size: buses assigned. Readiness compares managed MW with the connection estimate (Rule 4).</div>`;
+}
+function drawDepotTable() {
+  const el = document.getElementById("depotTable");
+  if (!depots.length) { el.innerHTML = PENDING("File 3", "Depot locations, assigned lines, managed MW, connection estimate and readiness appear here (sections 5–6)."); return; }
+  el.innerHTML = `<table class="data"><thead><tr><th>Depot</th><th class="num">Buses</th><th class="num">MW mgd</th><th class="num">Conn.</th><th>Status</th></tr></thead><tbody>` +
+    depots.map((d, i) => `<tr class="click" data-i="${i}" tabindex="0"><td>${esc(d.depot_name)}</td><td class="num">${fmt(d.buses_assigned)}</td>` +
+      `<td class="num">${fmt(d.peak_mw_managed, 1)}</td><td class="num">${fmt(d.connection_mw_estimate, 1)}${d.connection_evidence === "Estimated" ? "*" : ""}</td>` +
+      `<td><span class="badge ${esc(d.readiness_status)}">${esc(d.readiness_status)}</span></td></tr>`).join("") +
+    `</tbody></table><p class="small" style="margin:6px 0 0">* Estimated connection (proxy or scenario).</p>`;
+  el.querySelectorAll("tr.click").forEach(tr => {
+    const go = () => { const d = depots[+tr.dataset.i]; showDepot(d); map.panTo([d.latitude, d.longitude]); };
+    tr.addEventListener("click", go);
+    tr.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+  });
+}
+function drawKpis() {
+  const sum = k => lines.reduce((a, l) => a + (+l[k] || 0), 0);
+  const n = s => lines.filter(l => l.charging_strategy === s).length;
+  const k = lines.length ? [
+    [fmt(lines.length), "lines (File 2)"], [fmt(sum("daily_km")), "daily km"], [fmt(sum("peak_buses")), "peak buses"],
+    [`${n("Depot")} / ${n("Opportunity")} / ${n("Not_feasible")}`, "Depot / Opportunity / Not feasible"]
+  ] : [["–", "File 2 pending"]];
+  document.getElementById("kpis").innerHTML = k.map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("");
+}
+document.getElementById("byStrategy").onclick = () => setColour("strategy");
+document.getElementById("byYear").onclick = () => setColour("year");
+function setColour(c) {
+  colourBy = c;
+  document.getElementById("byStrategy").setAttribute("aria-pressed", c === "strategy");
+  document.getElementById("byYear").setAttribute("aria-pressed", c === "year");
+  restyleRoutes(); drawLegend();
+}
+document.getElementById("showRoutes").onchange = e => e.target.checked ? routeLayer.addTo(map) : map.removeLayer(routeLayer);
+document.getElementById("showDepots").onchange = e => e.target.checked ? depotLayer.addTo(map) : map.removeLayer(depotLayer);
+if (!lines.some(l => l.electrification_year)) {
+  const b = document.getElementById("byYear"); b.disabled = true; b.title = "Electrification year arrives with section 7 (File 2)";
+  b.style.opacity = .5;
+}
+drawRoutes(); drawDepots(); drawLegend(); drawDepotTable(); drawKpis();
+{ const b = L.featureGroup([...routeLayer.getLayers(), ...depotLayer.getLayers()]).getBounds(); if (b.isValid()) map.fitBounds(b, {padding: [16, 16]}); }
+
+/* ---------- View (iii): benchmark ---------- */
+Chart.defaults.font.family = '"Noto Sans", Arial, sans-serif';
+Chart.defaults.color = css("--ink");
+const BENCH_METRICS = {
+  ze_share_pct: ["Zero-emission share of fleet (%)", 1], daily_bus_km: ["Daily bus km", 0], n_bus_lines: ["Bus lines", 0],
+  fleet_total: ["Fleet total", 0], energy_full_bev_mwh_day: ["Energy if fully battery-electric (MWh/day)", 0],
+  ze_target_year: ["Zero-emission target year", 0], grid_co2_g_kwh: ["Grid CO₂ (g/kWh)", 0]
+};
+function drawBench() {
+  const rows = F["File_1.csv"], el = document.getElementById("benchBody");
+  if (!rows) { el.innerHTML = PENDING("File 1", "Madrid plus at least three capitals from notebook 02 and section 9."); return; }
+  el.innerHTML = `<div class="controls"><label for="bm">Metric</label><select id="bm">${Object.entries(BENCH_METRICS)
+    .map(([k, [l]]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></div>
+    <div class="charts"><div class="card"><div class="chartbox"><canvas id="benchChart" role="img" aria-label="Benchmark bar chart"></canvas></div></div>
+    <div class="card" id="benchCards"></div></div>
+    <div class="card scroll" style="margin-top:16px"><h3>File 1</h3><div id="benchTable"></div></div>`;
+  let chart;
+  const draw = k => {
+    const [label, d] = BENCH_METRICS[k];
+    const sorted = [...rows].sort((a, b) => (+b[k] || 0) - (+a[k] || 0));
+    const data = {labels: sorted.map(r => r.city), datasets: [{label, data: sorted.map(r => r[k]),
+      backgroundColor: sorted.map(r => r.city === "Madrid" ? css("--blue") : "#a9c4de"), borderRadius: 4}]};
+    if (chart) { chart.data = data; chart.update(); return; }
+    chart = new Chart(document.getElementById("benchChart"), {type: "bar", data, options: {indexAxis: "y", maintainAspectRatio: false,
+      plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => `${fmt(c.raw, BENCH_METRICS[document.getElementById("bm").value][1])}`}}},
+      scales: {x: {grid: {color: "#eee"}, beginAtZero: k !== "ze_target_year"}, y: {grid: {display: false}}}}});
+  };
+  const mad = rows.find(r => r.city === "Madrid") || {};
+  document.getElementById("benchCards").innerHTML = `<h3>Madrid</h3><div class="grid-kpi" style="grid-template-columns:1fr 1fr">
+    ${[[fmt(mad.ze_share_pct, 1) + "%", "zero-emission share"], [fmt(mad.fleet_total), "buses"], [mad.ze_target_year ?? "–", "target year"],
+       [mad.charging_model ?? "–", "charging model"]].map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("")}</div>
+    <p class="small">Perimeters differ by city; see the reference dates and sources in the table.</p>`;
+  const cols = Object.keys(rows[0]).filter(c => c !== "source_urls");
+  document.getElementById("benchTable").innerHTML = `<table class="data"><thead><tr>${cols.map(c => `<th>${esc(c)}</th>`).join("")}<th>sources</th></tr></thead><tbody>` +
+    rows.map(r => `<tr class="${r.city === "Madrid" ? "me" : ""}">${cols.map(c => `<td class="${typeof r[c] === "number" ? "num" : ""}">${esc(typeof r[c] === "number" ? fmt(r[c], c === "ze_share_pct" ? 1 : 0).replace(/,/g, c.endsWith("year") ? "" : ",") : r[c])}</td>`).join("")}` +
+      `<td>${String(r.source_urls || "").split(/[;\s]+/).filter(Boolean).map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">[${i + 1}]</a>`).join(" ")}</td></tr>`).join("") + "</tbody></table>";
+  document.getElementById("bm").onchange = e => draw(e.target.value);
+  draw("ze_share_pct");
+}
+
+/* ---------- View (iv): scenarios ---------- */
+const SCEN_METRICS = {
+  ze_share_pct: ["Zero-emission share (%)", 1], co2_t: ["CO₂ emitted (t)", 0], co2_avoided_t: ["CO₂ avoided vs no change (t)", 0],
+  capex_meur: ["Capex (M€, 2025 prices)", 1], electricity_mwh: ["Grid electricity (MWh)", 0], cng_t: ["CNG consumed (t)", 0],
+  fleet_total: ["Fleet total", 0]
+};
+const SCEN_STYLE = {0: {label: "S0 · plan-based pace", color: "#6d6d6d", dash: [6, 4]}, 1: {label: "S1 · 100% by 2030", color: "#2c7abf", dash: []}};
+function drawScen() {
+  const rows = F["File_4.csv"], el = document.getElementById("scenBody");
+  if (!rows) { el.innerHTML = PENDING("File 4", "Twenty rows, 2026–2035 for S0 and S1 (section 8)."); return; }
+  const by = s => rows.filter(r => +r.scenario === s).sort((a, b) => a.year - b.year);
+  const s0 = by(0), s1 = by(1), years = s0.map(r => r.year);
+  const total = (rs, k) => rs.reduce((a, r) => a + (+r[k] || 0), 0);
+  const full = rs => (rs.find(r => +r.ze_share_pct >= 100) || {}).year;
+  el.innerHTML = `<div class="grid-kpi">
+    ${[[full(s0) ?? "after 2035", "S0: 100% zero-emission"], [full(s1) ?? "after 2035", "S1: 100% zero-emission"],
+       [fmt(total(s1, "capex_meur") - total(s0, "capex_meur"), 0) + " M€", "extra capex in S1, 2026–35"],
+       [fmt((total(s1, "co2_avoided_t") - total(s0, "co2_avoided_t")) / 1000, 0) + " kt", "extra CO₂ avoided in S1, 2026–35"]]
+      .map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("")}</div>
+    <div class="controls"><label for="sm">Metric</label><select id="sm">${Object.entries(SCEN_METRICS)
+      .map(([k, [l]]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></div>
+    <div class="charts"><div class="card"><div class="chartbox"><canvas id="scenChart" role="img" aria-label="S0 versus S1 by year"></canvas></div></div>
+    <div class="card"><h3>Fleet mix at year-end</h3><p class="small" style="margin:-4px 0 8px">Each year: left bar S0, right bar S1.</p><div class="chartbox" style="height:320px"><canvas id="mixChart" role="img" aria-label="Fleet mix by technology"></canvas></div></div></div>
+    <div class="card scroll" style="margin-top:16px"><h3>File 4</h3><div id="scenTable"></div></div>`;
+  let chart;
+  const draw = k => {
+    const data = {labels: years, datasets: [0, 1].map(s => ({label: SCEN_STYLE[s].label, data: by(s).map(r => r[k]),
+      borderColor: SCEN_STYLE[s].color, backgroundColor: SCEN_STYLE[s].color, borderDash: SCEN_STYLE[s].dash, borderWidth: 3, pointRadius: 3, tension: .15}))};
+    if (chart) { chart.data = data; chart.update(); return; }
+    chart = new Chart(document.getElementById("scenChart"), {type: "line", data, options: {maintainAspectRatio: false,
+      interaction: {mode: "index", intersect: false},
+      plugins: {legend: {position: "bottom"}, tooltip: {callbacks: {label: c => `${c.dataset.label}: ${fmt(c.raw, SCEN_METRICS[document.getElementById("sm").value][1])}`}}},
+      scales: {y: {grid: {color: "#eee"}, beginAtZero: true}, x: {grid: {display: false}}}}});
+  };
+  // One stacked bar per scenario and year: left bar S0, right bar S1 (hatched-free, told apart by the tooltip and caption).
+  const TECH = [["n_bev", "Battery-electric", "#2c7abf"], ["n_h2", "Hydrogen", "#86bce6"], ["n_cng", "CNG", "#9a9b9d"]];
+  new Chart(document.getElementById("mixChart"), {type: "bar",
+    data: {labels: years, datasets: [0, 1].flatMap(s => TECH.map(([k, l, c]) => ({label: l, stack: `S${s}`, data: by(s).map(r => r[k]),
+      backgroundColor: c, borderColor: "#fff", borderWidth: s ? 0 : 1})))},
+    options: {maintainAspectRatio: false,
+      plugins: {legend: {position: "bottom", labels: {filter: (it, d) => d.datasets[it.datasetIndex].stack === "S0"}},
+                tooltip: {callbacks: {label: c => `${c.dataset.stack} · ${c.dataset.label}: ${fmt(c.raw)}`}}},
+      scales: {x: {stacked: true, grid: {display: false}}, y: {stacked: true, grid: {color: "#eee"}}}}});
+  const cols = Object.keys(rows[0]);
+  document.getElementById("scenTable").innerHTML = `<table class="data"><thead><tr>${cols.map(c => `<th class="${c === "scenario" || c === "year" ? "" : "num"}">${esc(c)}</th>`).join("")}</tr></thead><tbody>` +
+    [...rows].sort((a, b) => a.scenario - b.scenario || a.year - b.year).map(r => `<tr>${cols.map(c => `<td class="${c === "scenario" || c === "year" ? "" : "num"}">${esc(c === "year" || c === "scenario" ? r[c] : fmt(r[c], ["ze_share_pct", "capex_meur"].includes(c) ? 1 : 0))}</td>`).join("")}</tr>`).join("") + "</tbody></table>";
+  document.getElementById("sm").onchange = e => draw(e.target.value);
+  draw("ze_share_pct");
+}
+
+/* Notes */
+document.getElementById("notesList").innerHTML = (META.notes || []).map(n => `<li>${esc(n)}</li>`).join("");
+
+let saved = null;
+try { saved = localStorage.getItem("bi-tab"); } catch (e) {}
+const start = tabs.find(t => t.id === saved);
+if (start) select(start);
+</script>
+</body>
+</html>
