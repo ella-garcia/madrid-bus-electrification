@@ -93,7 +93,30 @@ select { font: inherit; padding: 6px 10px; border: 1px solid var(--rule); border
 .scroll { overflow-x: auto; }
 .notes li { margin-bottom: 6px; }
 footer { color: var(--muted); font-size: 12px; padding: 12px 24px 24px; }
+/* Roadmap */
+.roadhead { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; }
+.kpi.alert { border-left-color: var(--critical); }
+.kpi.good { border-left-color: var(--ready); }
+.decisions { margin: 0; padding-left: 20px; }
+.decisions li { margin: 6px 0; }
+.decisions .when { display: inline-block; min-width: 44px; font-weight: 700; color: var(--blue); }
+table.plan th:first-child, table.plan td:first-child { position: sticky; left: 0; background: #fff; z-index: 1; min-width: 210px; }
+table.plan td.over { background: #fdecea; color: var(--critical); font-weight: 700; }
+table.plan td.warn { background: #fff6dc; color: #6b4e00; font-weight: 700; }
+table.plan td .names { display: block; font-size: 11px; color: var(--muted); font-weight: 400; white-space: normal; min-width: 90px; }
+.cons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cons .chartbox { height: 240px; }
+.cons h4 { font-size: 14px; margin: 0 0 2px; }
+.cons .verdict { font-size: 13px; margin: 0 0 8px; font-weight: 600; }
+.cons .verdict.bad { color: var(--critical); } .cons .verdict.ok { color: var(--ready); }
+.tl { display: grid; gap: 4px; font-size: 13px; }
+.tl .cell { height: 30px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 12px; }
+.tl .cell.none { background: #f1f2f2; color: var(--muted); font-weight: 400; }
+.tl .cell.est { outline: 2px dashed #1f1f1f; outline-offset: -3px; }
+.tl .hd { font-weight: 600; color: var(--muted); text-align: center; }
+.tl .nm { font-weight: 600; display: flex; align-items: center; gap: 6px; }
 @media (max-width: 900px) {
+  .cons { grid-template-columns: 1fr; }
   .mapview { grid-template-columns: 1fr; height: auto; }
   #map { height: 60vh; }
   aside.side { border-left: 0; border-top: 1px solid var(--rule); }
@@ -113,13 +136,36 @@ footer { color: var(--muted); font-size: 12px; padding: 12px 24px 24px; }
 </header>
 <div class="sample" id="sampleBanner" hidden>SAMPLE VALUES FOR LAYOUT REVIEW: these numbers are placeholders, not model results.</div>
 <nav class="tabs" role="tablist">
-  <button role="tab" id="t-map" aria-controls="p-map" aria-selected="true">Network map</button>
+  <button role="tab" id="t-road" aria-controls="p-road" aria-selected="true">Implementation roadmap</button>
+  <button role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">Network map</button>
   <button role="tab" id="t-bench" aria-controls="p-bench" aria-selected="false">European benchmark</button>
   <button role="tab" id="t-scen" aria-controls="p-scen" aria-selected="false">Scenarios 2026–2035</button>
   <button role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false">Notes and sources</button>
 </nav>
 <main>
-<section role="tabpanel" id="p-map" aria-labelledby="t-map" class="active">
+<section role="tabpanel" id="p-road" aria-labelledby="t-road" class="active">
+  <div class="wrap">
+    <div class="roadhead">
+      <div>
+        <h2>Implementation roadmap 2026–2035</h2>
+        <p class="lede" style="margin-bottom:0">What has to happen each year, what it costs, and the first year a constraint binds. Line, depot and grid rows follow the line plan in File 2 (the 100%-by-2030 path); fleet, cost and CO₂ rows follow the scenario selected.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Scenario">
+        <button id="rS1" aria-pressed="true">S1 · 100% by 2030</button>
+        <button id="rS0" aria-pressed="false">S0 · plan-based pace</button>
+      </div>
+    </div>
+    <div class="grid-kpi" id="roadKpis" style="margin-top:16px"></div>
+    <div class="card" style="margin-bottom:16px"><h3>Decisions needed now</h3><ol class="decisions" id="roadDecisions"></ol></div>
+    <div class="card scroll" style="margin-bottom:16px"><h3>Year-by-year plan</h3><div id="roadPlan"></div></div>
+    <div class="card" style="margin-bottom:16px"><h3>Constraint check · first year a limit is crossed</h3>
+      <div class="cons" id="roadCons"></div></div>
+    <div class="card scroll"><h3>Depot readiness as lines convert</h3><div id="roadDepots"></div>
+      <p class="small" style="margin:8px 0 0">Each cell compares the depot's managed MW for the lines converted by that year with its connection estimate (Rule 4): green within it, amber up to 1.5 times, red beyond. ◆ marks the depot's conversion year. Dashed outline: connection Estimated (proxy), indicative only.</p></div>
+  </div>
+</section>
+
+<section role="tabpanel" id="p-map" aria-labelledby="t-map">
   <div class="mapview">
     <div id="map" role="region" aria-label="Map of EMT routes and depots"></div>
     <aside class="side">
@@ -197,7 +243,8 @@ function select(tab) {
     t.tabIndex = on ? 0 : -1;
     document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active", on);
   });
-  if (tab.id === "t-map") map.invalidateSize();
+  if (tab.id === "t-map") { map.invalidateSize(); if (!chartsDrawn.map) { fitMap(); chartsDrawn.map = true; } }
+  if (tab.id === "t-road" && !chartsDrawn.road) { drawRoad(); chartsDrawn.road = true; }
   if (tab.id === "t-bench" && !chartsDrawn.bench) { drawBench(); chartsDrawn.bench = true; }
   if (tab.id === "t-scen" && !chartsDrawn.scen) { drawScen(); chartsDrawn.scen = true; }
   try { localStorage.setItem("bi-tab", tab.id); } catch (e) {}
@@ -341,7 +388,7 @@ if (!lines.some(l => l.electrification_year)) {
   b.style.opacity = .5;
 }
 drawRoutes(); drawDepots(); drawLegend(); drawDepotTable(); drawKpis();
-{ const b = L.featureGroup([...routeLayer.getLayers(), ...depotLayer.getLayers()]).getBounds(); if (b.isValid()) map.fitBounds(b, {padding: [16, 16]}); }
+function fitMap() { const b = L.featureGroup([...routeLayer.getLayers(), ...depotLayer.getLayers()]).getBounds(); if (b.isValid()) map.fitBounds(b, {padding: [16, 16]}); }
 
 /* ---------- View (iii): benchmark ---------- */
 Chart.defaults.font.family = '"Noto Sans", Arial, sans-serif';
@@ -433,13 +480,164 @@ function drawScen() {
   draw("ze_share_pct");
 }
 
+/* ---------- Implementation roadmap ---------- */
+const PLAN_YEARS = [2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035];
+const WINDOW_H = 7, CHARGE_EFF = 0.9;
+const PACE_TOL = 1.05;                          // purchases count as above today's pace only beyond +5% (rounding noise)          // brief 4.5: overnight window and charging efficiency (same as File 3)
+let roadScen = 1;
+const roadCharts = [];
+const lineMW = l => (+l.peak_buses || 0) * (+l.energy_kwh_bus_day || 0) / 1000 / (WINDOW_H * CHARGE_EFF);
+const hasYears = lines.some(l => l.electrification_year);
+const f4 = F["File_4.csv"];
+const f1Madrid = (F["File_1.csv"] || []).find(r => r.city === "Madrid");
+const status = r => r <= 1 ? "Ready" : r <= 1.5 ? "Upgrade" : "Critical";
+
+function depotMWby(year) {             // managed MW of lines converted by `year`, per depot
+  const out = {};
+  lines.forEach(l => { if (l.electrification_year && +l.electrification_year <= year && l.depot_name)
+    out[l.depot_name] = (out[l.depot_name] || 0) + lineMW(l); });
+  return out;
+}
+function scenRows(s) { return f4 ? f4.filter(r => +r.scenario === s).sort((a, b) => a.year - b.year) : []; }
+function ze(r) { return (+r.n_bev || 0) + (+r.n_h2 || 0); }
+
+function yearModel(s) {
+  const rows = scenRows(s), byYear = Object.fromEntries(rows.map(r => [r.year, r]));
+  const ze0 = META.baseline_ze ?? (f1Madrid ? +f1Madrid.ze_fleet : null);
+  const connTotal = depots.reduce((a, d) => a + (+d.connection_mw_estimate || 0), 0);
+  return PLAN_YEARS.map((y, i) => {
+    const conv = lines.filter(l => +l.electrification_year === y);
+    const mw = depotMWby(y);
+    const over = depots.filter(d => (mw[d.depot_name] || 0) > (+d.connection_mw_estimate || Infinity));
+    const r = byYear[y], prev = i ? byYear[PLAN_YEARS[i - 1]] : null;
+    const added = r ? ze(r) - (prev ? ze(prev) : ze0 ?? NaN) : null;
+    return {year: y, conv, convBuses: conv.reduce((a, l) => a + (+l.peak_buses || 0), 0),
+            names: [...conv].sort((a, b) => b.daily_km - a.daily_km).slice(0, 3).map(l => l.line_id),
+            added: Number.isFinite(added) ? added : null, share: r ? +r.ze_share_pct : null,
+            capex: r ? +r.capex_meur : null, co2: r ? +r.co2_avoided_t / 1000 : null,
+            mwCity: Object.values(mw).reduce((a, b) => a + b, 0), connTotal, over};
+  });
+}
+
+function drawRoad() {
+  const pace = META.pace_ref, capexRef = META.capex_ref, paceLim = pace ? pace * PACE_TOL : null;
+  const yrs = yearModel(roadScen);
+  const rows = scenRows(roadScen), other = scenRows(1 - roadScen);
+  const full = rs => (rs.find(r => +r.ze_share_pct >= 100) || {}).year;
+  const sum = (rs, k) => rs.reduce((a, r) => a + (+r[k] || 0), 0);
+  const kmTot = lines.reduce((a, l) => a + (+l.daily_km || 0), 0);
+  const km30 = lines.filter(l => l.electrification_year && +l.electrification_year <= 2030).reduce((a, l) => a + (+l.daily_km || 0), 0);
+  const sLab = s => s ? "S1" : "S0";
+
+  // Headline cards
+  const fy = full(rows);
+  document.getElementById("roadKpis").innerHTML = [
+    [f4 ? (fy ?? "after 2035") : "–", `${sLab(roadScen)}: fleet 100% zero-emission` + (f4 ? ` (${sLab(1 - roadScen)}: ${full(other) ?? "after 2035"})` : ""), f4 ? (fy && fy <= 2030 ? "good" : "alert") : ""],
+    [f4 ? fmt(sum(rows, "capex_meur"), 0) + " M€" : "–", `${sLab(roadScen)}: capex 2026–2035 (2025 €, excl. VAT)`, ""],
+    [f4 ? fmt(sum(rows, "co2_avoided_t") / 1000, 0) + " kt" : "–", `${sLab(roadScen)}: CO₂ avoided 2026–2035`, ""],
+    [hasYears ? `${fmt(km30 / kmTot * 100, 0)}%` : "–", hasYears ? `of daily km on zero-emission lines by 2030 (${fmt(km30)} km)` : "daily km on zero-emission lines by 2030 (needs File 2 years)", ""],
+  ].map(([v, l, c]) => `<div class="kpi ${c}"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("");
+
+  // Year-by-year plan
+  const cell = (v, cls = "") => `<td class="num ${cls}">${v}</td>`;
+  const planRows = [
+    ["Lines converted (line plan)", y => hasYears ? `${y.conv.length}${y.names.length ? `<span class="names">${esc(y.names.join(", "))}${y.conv.length > 3 ? "…" : ""}</span>` : ""}` : "–"],
+    ["Peak buses on those lines", y => hasYears ? fmt(y.convBuses) : "–"],
+    [`Net zero-emission buses added (${sLab(roadScen)})`, y => y.added == null ? "–" : fmt(y.added), y => paceLim && y.added > paceLim ? "over" : ""],
+    [`Zero-emission share at year-end (${sLab(roadScen)})`, y => y.share == null ? "–" : fmt(y.share, 1) + "%"],
+    ["Managed MW needed, lines converted to date", y => hasYears && depots.length ? `${fmt(y.mwCity, 1)} / ${fmt(y.connTotal, 1)}` : "–",
+      y => !depots.length ? "" : y.mwCity > y.connTotal ? "over" : y.over.length ? "warn" : ""],
+    ["Depots over their connection", y => hasYears && depots.length ? (y.over.length ? `<span title="${esc(y.over.map(d => d.depot_name).join(", "))}">${y.over.length} of ${depots.length}</span>` : "0") : "–",
+      y => y.over.length ? "warn" : ""],
+    [`Capex, M€ (${sLab(roadScen)})`, y => y.capex == null ? "–" : fmt(y.capex, 1), y => capexRef && y.capex > capexRef ? "over" : ""],
+    [`CO₂ avoided, kt (${sLab(roadScen)})`, y => y.co2 == null ? "–" : fmt(y.co2, 1)],
+  ];
+  document.getElementById("roadPlan").innerHTML = (!hasYears && !f4) ? PENDING("Files 2–4", "The plan fills in once File 2 has electrification years and File 4 is written (sections 7–8).") :
+    `<table class="data plan"><thead><tr><th></th>${PLAN_YEARS.map(y => `<th class="num">${y}</th>`).join("")}</tr></thead><tbody>` +
+    planRows.map(([lab, val, cls]) => `<tr><td>${esc(lab)}</td>${yrs.map(y => cell(val(y), cls ? cls(y) : "")).join("")}</tr>`).join("") +
+    `</tbody></table><p class="small" style="margin:8px 0 0">Red: above the reference (purchases more than 5% above ${pace ? `today's pace of ${fmt(pace, 0)} a year` : "the reference pace"}${capexRef ? `, capex above ${fmt(capexRef, 0)} M€ a year` : ""}, or city MW above total connections). Amber: at least one depot above its connection. MW shown as needed / total connection estimate.</p>`;
+
+  // Constraint charts
+  roadCharts.splice(0).forEach(c => c.destroy());
+  const firstOver = (vals, ref) => { const i = vals.findIndex(v => v != null && ref != null && v > ref); return i < 0 ? null : PLAN_YEARS[i]; };
+  const cons = [
+    {id: "cPurch", title: "Bus purchases vs today's pace", vals: yrs.map(y => y.added), ref: pace, lim: paceLim, unit: "buses", refLab: "2021–25 pace"},
+    {id: "cGrid", title: "Managed MW vs connection estimates", vals: yrs.map(y => hasYears && depots.length ? y.mwCity : null), ref: depots.length ? yrs[0].connTotal : null, unit: "MW", refLab: "sum of connections"},
+    {id: "cCapex", title: "Capex per year", vals: yrs.map(y => y.capex), ref: capexRef, unit: "M€", refLab: "budget reference"},
+  ];
+  document.getElementById("roadCons").innerHTML = cons.map(c => {
+    const has = c.vals.some(v => v != null), fo = firstOver(c.vals, c.lim ?? c.ref);
+    const verdict = !has ? `<p class="verdict">No data yet</p>` : c.ref == null ? `<p class="verdict">No reference set</p>` :
+      fo ? `<p class="verdict bad">Binds in ${fo}</p>` : `<p class="verdict ok">Within the reference to 2035</p>`;
+    return `<div><h4>${esc(c.title)}</h4>${verdict}<div class="chartbox"><canvas id="${c.id}" role="img" aria-label="${esc(c.title)}"></canvas></div></div>`;
+  }).join("");
+  cons.forEach(c => {
+    if (!c.vals.some(v => v != null)) return;
+    const ds = [{type: "bar", label: c.unit, data: c.vals, borderRadius: 3,
+      backgroundColor: c.vals.map(v => c.ref != null && v > (c.lim ?? c.ref) ? css("--critical") : css("--blue"))}];
+    if (c.ref != null) ds.push({type: "line", label: c.refLab, data: PLAN_YEARS.map(() => c.ref), borderColor: css("--ink"),
+      borderDash: [5, 4], borderWidth: 2, pointRadius: 0});
+    roadCharts.push(new Chart(document.getElementById(c.id), {data: {labels: PLAN_YEARS, datasets: ds},
+      options: {maintainAspectRatio: false, plugins: {legend: {display: c.ref != null, position: "bottom", labels: {boxWidth: 14}}},
+        scales: {y: {beginAtZero: true, grid: {color: "#eee"}}, x: {grid: {display: false}}}}}));
+  });
+
+  // Depot timeline (line plan; independent of the scenario toggle)
+  const tl = document.getElementById("roadDepots");
+  if (!depots.length || !hasYears) { tl.innerHTML = PENDING(!depots.length ? "File 3" : "File 2 years", "Depot readiness over time needs depots (File 3) and electrification years (File 2)."); }
+  else {
+    const mwBy = Object.fromEntries(PLAN_YEARS.map(y => [y, depotMWby(y)]));
+    tl.innerHTML = `<div class="tl" style="grid-template-columns: 200px repeat(${PLAN_YEARS.length}, minmax(56px, 1fr))">` +
+      `<div></div>${PLAN_YEARS.map(y => `<div class="hd">${y}</div>`).join("")}` +
+      depots.map(d => `<div class="nm">${esc(d.depot_name)} <span class="badge ${esc(d.connection_evidence)}">${d.connection_evidence === "Evidenced" ? "Ev." : "Est."}</span></div>` +
+        PLAN_YEARS.map(y => {
+          const mw = mwBy[y][d.depot_name] || 0, conn = +d.connection_mw_estimate;
+          if (!mw) return `<div class="cell none" title="${esc(d.depot_name)} ${y}: no lines converted yet">·</div>`;
+          const st = status(mw / conn);
+          return `<div class="cell ${d.connection_evidence === "Estimated" ? "est" : ""}" style="background:${READY[st]};${st === "Upgrade" ? "color:#2b2100" : ""}" ` +
+            `title="${esc(d.depot_name)} ${y}: ${fmt(mw, 1)} MW managed vs ${fmt(conn, 1)} MW connection (${esc(d.connection_evidence)}) → ${st}">${+d.conversion_year === y ? "◆" : ""}</div>`;
+        }).join("")).join("") + "</div>";
+  }
+
+  // Decisions needed now (generated from the same numbers)
+  const dec = [];
+  const fp = firstOver(yrs.map(y => y.added), paceLim);
+  if (fp) {
+    const peak = Math.max(...yrs.map(y => y.added || 0)), py = yrs.find(y => y.added === peak).year;
+    dec.push([fp - 1 <= 2026 ? "Now" : fp - 1, `Contract zero-emission buses above today's pace from ${fp}: up to ${fmt(peak)} in ${py}, against ${fmt(pace, 0)} a year in 2021–25 (${sLab(roadScen)}).`]);
+  }
+  if (hasYears && depots.length) {
+    depots.map(d => {
+      const y = PLAN_YEARS.find(y => (depotMWby(y)[d.depot_name] || 0) > +d.connection_mw_estimate);
+      return y && {d, y, mw: depotMWby(2035)[d.depot_name] || 0};
+    }).filter(Boolean).sort((a, b) => a.y - b.y).slice(0, 3).forEach(({d, y, mw}) =>
+      dec.push([y - 2 <= 2026 ? "Now" : y - 2, `Start grid reinforcement at ${d.depot_name}: lines converting in ${y} take it past its ${fmt(+d.connection_mw_estimate, 1)} MW connection (${d.connection_evidence.toLowerCase()}); ${fmt(mw, 1)} MW managed at full conversion.`]));
+    const est = depots.filter(d => d.connection_evidence === "Estimated");
+    if (est.length) dec.push(["Now", `Confirm grid capacity with the distributor at ${est.length} depot${est.length > 1 ? "s" : ""} whose connection is estimated (${est.map(d => d.depot_name).join(", ")}); readiness there is indicative.`]);
+  }
+  if (f4 && rows.length) {
+    const pk = rows.reduce((a, r) => (+r.capex_meur > +a.capex_meur ? r : a), rows[0]);
+    dec.push([pk.year - 1 <= 2026 ? "Now" : pk.year - 1, `Secure funding for the peak year ${pk.year}: ${fmt(+pk.capex_meur, 0)} M€, within ${fmt(sum(rows, "capex_meur"), 0)} M€ over 2026–2035 (${sLab(roadScen)}).`]);
+  }
+  document.getElementById("roadDecisions").innerHTML = dec.length
+    ? dec.sort((a, b) => (a[0] === "Now" ? 0 : a[0]) - (b[0] === "Now" ? 0 : b[0])).map(([w, t]) => `<li><span class="when">${esc(w)}</span> ${esc(t)}</li>`).join("")
+    : `<li class="small">Decisions are generated from Files 2–4 once they are written.</li>`;
+}
+function setRoad(s) {
+  roadScen = s;
+  document.getElementById("rS1").setAttribute("aria-pressed", s === 1);
+  document.getElementById("rS0").setAttribute("aria-pressed", s === 0);
+  drawRoad();
+}
+document.getElementById("rS1").onclick = () => setRoad(1);
+document.getElementById("rS0").onclick = () => setRoad(0);
+
 /* Notes */
 document.getElementById("notesList").innerHTML = (META.notes || []).map(n => `<li>${esc(n)}</li>`).join("");
 
 let saved = null;
 try { saved = localStorage.getItem("bi-tab"); } catch (e) {}
-const start = tabs.find(t => t.id === saved);
-if (start) select(start);
+select(tabs.find(t => t.id === saved) || tabs[0]);
 </script>
 </body>
 </html>
