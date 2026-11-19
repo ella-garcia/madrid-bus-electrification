@@ -24,6 +24,7 @@ notebooks/
   01_Madrid_Electrification_Main.ipynb   # writes File_1-4, the HTML and all checks
   02_Benchmark_GTFS.ipynb                # benchmark GTFS metrics: >= 3 of London, Paris, Berlin, Brussels, Helsinki, Copenhagen
   03_Exploratory_Questions.ipynb         # whiteboard questions Q1-Q6; feeds the main notebook, writes no File_1-4
+  04_Scenario_Lab.ipynb                  # supplementary: retrofit and transition scenarios; writes no File_1-4
 data_raw/        # downloads (git-ignored; re-fetched by the notebooks, logged in the data register)
 data_derived/    # intermediates, e.g. benchmark_gtfs_intermediate.csv (git-ignored)
 outputs/         # File_1-4.csv, HTML, PNG captures (tracked)
