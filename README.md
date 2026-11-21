@@ -22,11 +22,12 @@ The jury reads saved outputs only and never re-runs code. Every step must leave 
 ```
 notebooks/
   01_Madrid_Electrification_Main.ipynb   # writes File_1-4, the HTML and all checks
-  02_Benchmark_GTFS.ipynb                # Helsinki, Berlin, Paris, Brussels GTFS metrics
+  02_Benchmark_GTFS.ipynb                # benchmark GTFS metrics: >= 3 of London, Paris, Berlin, Brussels, Helsinki, Copenhagen
   03_Exploratory_Questions.ipynb         # whiteboard questions Q1-Q6; feeds the main notebook, writes no File_1-4
 data_raw/        # downloads (git-ignored; re-fetched by the notebooks, logged in the data register)
 data_derived/    # intermediates, e.g. benchmark_gtfs_intermediate.csv (git-ignored)
 outputs/         # File_1-4.csv, HTML, PNG captures (tracked)
+requirements.txt # packages for running the notebooks locally
 ```
 
 ## Main notebook sections (dependency order)
@@ -55,19 +56,20 @@ Sections 0, 4 (formulas), 6 (`depot_table`) and 12 are already implemented from 
 - **Label every value** with `assume(variable, value, label, evidence)`: **V** verified · **D** derived · **P** proxy · **A** assumption. It feeds the assumptions register.
 - **Log every source** with `fetch(url, filename, note)`; files obtained by registration go in `data_raw/` and are logged with `manual=True`. No API keys or passwords in notebooks.
 - **Visible checks.** Use `check(name, condition)` after each step.
+- **Alternate code and text cells** (brief §5.1, scored under T5). Every code cell is preceded by a short markdown cell saying what it does and why; never put two code cells in a row.
 - **Supplementary analyses** (alternative allocations, day mixes, sensitivities) are printed in the notebook, never written into `File_1-4.csv`.
 - **Zero-emission = battery-electric + hydrogen fuel-cell only.** CNG and biomethane never count.
 
 ## Workflow
 
-1. Open a notebook in Colab: **File → Open notebook → GitHub**, authorise private repos, pick this repo.
+1. Open a notebook in Colab: **File → Open notebook → GitHub**, authorise private repos, pick this repo. To run locally instead, see [Run the notebooks locally](CONTRIBUTING.md#run-the-notebooks-locally).
 2. Work on your section in a branch (`section-4-line-model`, …) or a scratch copy; keep cells short and call helpers.
 3. Save back with **File → Save a copy in GitHub**, commit message `§4: peak_buses from supply data`, open a pull request.
 4. Before submission: merge everything into `main`, **Runtime → Restart and run all** in a clean runtime, confirm the final compliance cell shows 0 FAIL, then **File → Download → .ipynb** and commit `outputs/`.
 
 ## Open items (from the dataset tracker)
 
-- [ ] Reference day: GTFS valid from 6 Nov 2026, supply data ends Sep 2026 — use the closest equivalent weekday for `peak_buses` and document it
+- [x] Reference day: Tue 17 Nov 2026 (GTFS); `peak_buses` from Tue 9 Jun 2026, the latest typical same-weekday day in the supply data (16 Jun kept as a sensitivity) — see §2
 - [ ] La Elipa depot status (closed Mar 2022 for rebuilding)
 - [ ] Bus type per line (only line 34 known) — proxy needed
 - [ ] Depot connection MW: Sanchinarro evidenced (8 MW + 5 MW backup); others by proxy
