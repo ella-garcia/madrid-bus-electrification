@@ -11,6 +11,15 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
   - **Assumption**: team assumption with no direct source. Challenge these first.
   - **Brief**: fixed parameter set by the datathon brief.
 
+**Files in the repo**
+
+| Path | What it is |
+|---|---|
+| `notes/financial-model.md` | This document |
+| `data/financial_model/roadmap_charging_by_depot.csv` | Year-by-year e-buses, purchases and charging capacity per depot (target 2033) |
+| `scripts/plot_roadmap_charging.py` | Redraws the roadmap chart from the CSV (`python scripts/plot_roadmap_charging.py`, needs pandas and matplotlib) |
+| `figures/roadmap_charging_by_depot.png` | The roadmap chart (output of the script) |
+
 ---
 
 ## 1. How the model fits together
@@ -280,7 +289,25 @@ External funders: CRTM/Comunidad subsidy (€441.5M in 2026); City subsidy (~€
 
 ---
 
-## 7. Feasibility and delay stress test (target 2033)
+## 7. Phase plan: buses bought and where they charge
+
+![EMT roadmap: charging capacity by depot vs e-buses in fleet](../figures/roadmap_charging_by_depot.png)
+
+Data: `data/financial_model/roadmap_charging_by_depot.csv`. Regenerate with `python scripts/plot_roadmap_charging.py`.
+
+| Phase | Years | E-buses bought | Charging capacity added | Capacity at end of phase | E-buses at end of phase |
+|---|---|---|---|---|---|
+| Baseline | 2025 | n/a | 456 (existing chargers) | 456 | 456 |
+| 1. Committed | 2026-27 | 135 | Carabanchel +27 (2026), Sanchinarro +114 (2027) | 597 | 591 |
+| 2. Scale-up | 2028-30 | 819 | Entrevías +465 (2028), La Elipa +318 (2029), Carabanchel + Sanchinarro rest +199 (2030) | 1,579 | 1,410 |
+| 3. Close-out | 2031-33 | 1,016 (819 growth + 197 renewals) | Las Tablas +650 (2031) | 2,229 | 2,229 |
+| 4. Renewals | 2034-35 | 132 | none | 2,229 | 2,229 |
+
+Where the 2,229 e-buses charge in 2033: existing chargers 456 (Carabanchel, Fuencarral, Sanchinarro; EMT doesn't publish the split), Las Tablas 650 (replaces Fuencarral), Entrevías 465, La Elipa 318, new chargers at Carabanchel + Sanchinarro 340. Only La Elipa (contracted) and Las Tablas (City plan) are official; the rest of the split is the team's proposal.
+
+Spare capacity is thin in 2027 (6) and 2030 (169), and negative in 2026 (−43, a delivery-timing effect), so any delay in 2027-2030 leaves buses without a charger.
+
+## 8. Feasibility and delay stress test (target 2033)
 
 **Bus purchases.** 273 e-buses/yr matches EMT's own track record: it bought 1,349 buses in 2016-2020 (230/yr in 2019-20). It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
 
@@ -296,7 +323,7 @@ External funders: CRTM/Comunidad subsidy (€441.5M in 2026); City subsidy (~€
 
 The 2033 target survives each single delay but has no buffer: the realistic risk is a 1-2 year slip to 2034-35 unless grid applications, the Entrevías design and Las Tablas start in 2026-27. Mitigations: CNMC flexible access permits (Aug 2026, type 0 = hourly consumption patterns, suited to overnight charging), smart charging, temporary plug-in chargers, and matching bus delivery dates to depot readiness.
 
-## 8. Known gaps and caveats
+## 9. Known gaps and caveats
 
 1. Line-by-line audited accounts for 2023-25 weren't used. Budget-book estimates can be far off (2024 result: €25.2M estimated vs €1.2M audited).
 2. Energy isn't split (CNG vs electricity) in EMT's accounts. `cng_cost_per_km` is our estimate.
@@ -309,7 +336,7 @@ The 2033 target survives each single delay but has no buffer: the realistic risk
 
 ---
 
-## 9. Sources
+## 10. Sources
 
 | Source | Used for | Link |
 |---|---|---|
