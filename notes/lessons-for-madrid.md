@@ -1,6 +1,6 @@
 # Lessons for Madrid: implementation levers
 
-Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Hard depots + Las Tablas 2029–32 · **3** Last mile + resilience 2032–35. Figures: notebook 01 §5–§6, notebook 04 §8. Sources: `notes/lessons_matrix_implementation_factors.csv`.
+Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Hard depots + Las Tablas 2029–32 · **3** Last mile + resilience 2032–35. Figures: notebook 01 §5–§6, notebook 04 §9. Sources: `notes/lessons_matrix_implementation_factors.csv`.
 
 **Thesis:** grid power at depots, not bus supply, sets the pace. Base case: about 72 MW needed overnight against about 53 MW of connections; Fuencarral, Entrevías and Sanchinarro are Critical.
 
