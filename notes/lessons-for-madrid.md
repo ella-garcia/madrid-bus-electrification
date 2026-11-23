@@ -29,8 +29,9 @@ Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Har
   - Paris grounded about 232 Bluebus buses after fires, and the maker later left the market ([electrive](https://www.electrive.com/2026/09/09/end-after-700-e-buses-bollore-pulls-the-plug-on-bluebus/)).
   - London has a 14-year battery-performance service ([Zenobe](https://www.zenobe.com/?p=16910)).
   - Helsinki scores operators on consumption and noise ([HSL](https://www.hsl.fi/en/hsl/electric-buses/environmental-performance-in-figures)).
-- **Madrid:** two suppliers per batch, battery performance contracted for the bus's life, tenders scored on more than price.
-- **Our result:** not quantified.
+  - Singapore split 660 e-buses into six contracts across four tenderers in Dec 2025 ([LTA](https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/12/news-releases/more-electric-buses-to-be-deployed-from-end-2026.html); not a File 1 city).
+- **Madrid:** two suppliers per batch, battery performance contracted for the bus's life, tenders scored on more than price. Watch the EU's Sept 2026 procurement proposal: buyers could exclude bidders by company or product origin, with a draft 50% European-content test ([electrive](https://www.electrive.com/2026/09/11/eu-commission-proposes-new-procurement-rules-more-europe-less-china/)).
+- **Our result:** not quantified; the 2031–33 pace (339 buses a year) exceeds Irizar's 211 e-bus registrations in Europe in 2025 (`notes/financial-model.md`).
 
 ## Gas-bus blackout reserve · Phase 3
 - **Precedent:** Berlin used buses as heated shelters during its January 2026 blackout ([BVG](https://www.bvg.de/de/unternehmen/medienportal/pressemitteilungen/2026-01-06-bvg-stellt-beheizte-pausenbusse)). Madrid's gas buses kept running in the April 2025 blackout.
@@ -43,6 +44,6 @@ Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Har
 - **Our result:** holding back 53 buses (the size of SE6) cuts the reserve from 8.0% to 5.6% at every depot.
 
 ## Third-party financing · Phase 0
-- **Precedent:** Zenobe finances buses and depot charging for London operators, for example 169 buses for Transport UK ([Sustainable Bus](https://www.sustainable-bus.com/news/zenobe-partnership-transport-uk-bus-169-electric-buses-london/)).
+- **Precedent:** Zenobe finances buses and depot charging for London operators, for example 169 buses for Transport UK ([Sustainable Bus](https://www.sustainable-bus.com/news/zenobe-partnership-transport-uk-bus-169-electric-buses-london/)), and signed a €120 M operating-lease and charging-as-a-service framework with Vectalia in Alicante ([electrive](https://www.electrive.com/2026/06/04/zenobe-and-vectalia-sign-e120-million-framework-agreement-for-electric-buses/)). Shenzhen's bus groups leased e-buses over about 8 years from bank leasing arms, with battery costs on suppliers and chargers opened to taxis ([WRI](https://www.wri.org/insights/how-did-shenzhen-China-build-worlds-largest-electric-bus-fleet); not a File 1 city).
 - **Madrid:** test whether a service contract can take charging and battery capex off EMT's balance sheet (part of what S1 would need).
-- **Our result:** not quantified.
+- **Our result:** leasing half the buses and the depots moves the realistic year from 2038 to 2037, and to 2034 with 340 buses a year; payments reach €118–146 M a year by 2035 (notebook 04 §10.4).
