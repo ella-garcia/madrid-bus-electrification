@@ -23,7 +23,7 @@ The jury reads saved outputs only and never re-runs code. Every step must leave 
 notebooks/
   01_Madrid_Electrification_Main.ipynb   # writes File_1-4, the HTML and all checks
   02_Benchmark_GTFS.ipynb                # benchmark GTFS metrics: >= 3 of London, Paris, Berlin, Brussels, Helsinki, Copenhagen
-  03_Exploratory_Questions.ipynb         # whiteboard questions Q1-Q6; feeds the main notebook, writes no File_1-4
+  03_Exploratory_Questions.ipynb         # whiteboard questions Q1-Q6, answered or dropped with pointers; writes no File_1-4
   04_Scenario_Lab.ipynb                  # supplementary: retrofit and transition scenarios; writes no File_1-4
 data_raw/        # downloads (git-ignored; re-fetched by the notebooks, logged in the data register)
 data_derived/    # intermediates, e.g. benchmark_gtfs_intermediate.csv (git-ignored)
@@ -33,23 +33,23 @@ requirements.txt # packages for running the notebooks locally
 
 ## Main notebook sections (dependency order)
 
-| § | Section | Output | Owner |
+| § | Section | Output | Status (23 Nov 2026) |
 |---|---|---|---|
-| 0 | Setup and fixed parameters | parameter table | [owner] |
-| 1 | Data acquisition | data register | [owner] |
-| 2 | Reference day | chosen dates and gap workaround | [owner] |
-| 3 | Fleet baseline 31 Dec 2025 | baseline, S0 pace, age profile | [owner] |
-| 4 | Line model | File 2 metrics, per-bus sensitivity | [owner] |
-| 5 | Depot allocation | rule, alternative, 2021 check, reserve reconciliation | [owner] |
-| 6 | Depot power and readiness | File 3 | [owner] |
-| 7 | Prioritisation | completes File 2 | [owner] |
-| 8 | Scenarios S0 / S1 | File 4, earliest credible year, sensitivities | [owner] |
-| 9 | Benchmark | File 1 | [owner] |
-| 10 | Visualisation | HTML + static views | [owner] |
-| 11 | Assumptions register | register | [owner] |
-| 12 | Final compliance cell | read-back of all four CSVs + cross-file checks | already written |
+| 0 | Setup and fixed parameters | parameter table; CO₂ factors with evidence (grid factor labelled P) | Done |
+| 1 | Data acquisition | data register | Done |
+| 2 | Reference day | Tue 17 Nov 2026 (kept and documented, D7); supply day 9 Jun 2026 | Done |
+| 3 | Fleet baseline 31 Dec 2025 | 2,210 (D1), S0 pace, age profile | Done |
+| 4 | Line model | File 2 metrics, per-bus and university sensitivities | Done |
+| 5 | Depot allocation | rule, alternatives, 2021 check, reserve reconciliation, deadheading | Done |
+| 6 | Depot power and readiness | File 3; needed MW under low / base / high; hot-day and N-line sensitivities; interim La Elipa-closed network | Done |
+| 7 | Prioritisation | completes File 2; cumulative bus cap per year (B5) | Done |
+| 8 | Scenarios S0 / S1 | File 4 (D2–D5); earliest credible year (2030 / 2033 / 2037–2040); gas and carbon exposure | Done |
+| 9 | Benchmark | File 1 (Helsinki, Paris, London); grid-factor basis table | Done |
+| 10 | Visualisation | HTML + static PNGs of views (i)–(iv) in `outputs/` | Done |
+| 11 | Decision log and assumptions register | every row Done or Dropped; D1–D7 | Done |
+| 12 | Final compliance cell | read-back of all four CSVs + cross-file checks | 46 PASS / 0 FAIL |
 
-Sections 0, 4 (formulas), 6 (`depot_table`) and 12 are already implemented from the brief's fixed formulas; the rest are `TODO(owner: …)` cells.
+All four notebooks are executed with saved outputs. Notebook 04 reads notebook 01's exports and File 4 parameters (`data_derived/nb01_params.json`), so both run on the same inputs.
 
 ## Rules we work by
 
@@ -68,11 +68,16 @@ Sections 0, 4 (formulas), 6 (`depot_table`) and 12 are already implemented from 
 3. Save back with **File → Save a copy in GitHub**, commit message `§4: peak_buses from supply data`, open a pull request.
 4. Before submission: merge everything into `main`, **Runtime → Restart and run all** in a clean runtime, confirm the final compliance cell shows 0 FAIL, then **File → Download → .ipynb** and commit `outputs/`.
 
-## Open items (from the dataset tracker)
+## Open items
 
-- [x] Reference day: Tue 17 Nov 2026 (GTFS); `peak_buses` from Tue 9 Jun 2026, the latest typical same-weekday day in the supply data (16 Jun kept as a sensitivity) — see §2
-- [ ] La Elipa depot status (closed Mar 2022 for rebuilding)
-- [ ] Bus type per line (only line 34 known) — proxy needed
-- [ ] Depot connection MW: Sanchinarro evidenced (8 MW + 5 MW backup); others by proxy
-- [ ] Benchmark fleet, targets and charging models at 31 Dec 2025; grid CO₂ factors for Germany, Finland, Belgium
-- [ ] Grid CO₂ factor for Denmark, if the Copenhagen benchmark row (notebook 01 §9b, notebook 02) is ever folded into a CO₂ calculation
+Closed:
+- [x] Reference day: Tue 17 Nov 2026 (GTFS), kept despite the A-5 / M-30 works (D7); `peak_buses` from Tue 9 Jun 2026 (16 Jun as a sensitivity) — §2
+- [x] La Elipa: closed since 2022; works awarded (EUR 112.1M, up to 32 months), modelled from 2030 with alternative C as the interim network — §5–§7
+- [x] Bus type per line: evidence first (line 34) + proxy, with a low / high bracket — §4
+- [x] Depot connection MW: Sanchinarro and La Elipa evidenced (planned), the other three estimated, with low / high hypotheses — §6
+- [x] Benchmark fleet, targets, charging models and grid factors for Helsinki, Paris and London — §9 (Berlin and Brussels not covered)
+
+Still open (stated in the report, not blocking):
+- [ ] Spain's 2025 grid factor (108.4 g/kWh) is not printed in REE's 2025 press note, so it is labelled P
+- [ ] Denmark's grid CO₂ factor: Copenhagen stays out of File 1 until one is sourced
+- [ ] No sourced unit price for terminus chargers or for grid reinforcement at Critical depots: listed as capex exclusions in §8

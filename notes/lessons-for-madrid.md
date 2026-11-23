@@ -1,6 +1,6 @@
 # Lessons for Madrid: implementation levers
 
-Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Hard depots + Las Tablas 2029–32 · **3** Last mile + resilience 2032–35. Figures: notebook 01 §5–§6, notebook 04 §9. Sources: `notes/lessons_matrix_implementation_factors.csv`.
+Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Hard depots + Las Tablas 2029–34 · **3** Last mile + resilience 2032–35. Figures: notebook 01 §5–§6, notebook 04 §9. Sources: `notes/lessons_matrix_implementation_factors.csv`.
 
 **Thesis:** grid power at depots, not bus supply, sets the pace. Base case: about 72 MW needed overnight against about 53 MW of connections; Fuencarral, Entrevías and Sanchinarro are Critical.
 
@@ -22,7 +22,7 @@ Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Har
 ## Las Tablas as temporary parking · Phase 2
 - **Precedent:** Brussels parked buses at a temporary site while it electrified Petite-Île, which runs on STIB's own 11 kV network ([TED](https://ted.europa.eu/en/notice/311610-2026/pdf)).
 - **Madrid:** open Las Tablas (about 620 places) first; move one hard depot's fleet there at a time during its works.
-- **Our result (stub):** with 12-month in-place works, the three hard depots finish in 2030 only if Las Tablas opens in 2027. Each year it opens late adds a year. With 32-month full rebuilds, the works run past 2035.
+- **Our result:** Las Tablas is a team proposal with works from 2028, so it can serve as temporary parking from **2031 at the earliest** (financial model, section 3.1). With 12-month in-place works done one depot at a time, the three hard depots then finish in 2032, 2033 and 2034; each year Las Tablas slips adds a year. Fuencarral's 518 peak buses depend on Las Tablas, because Fuencarral closes when it opens (notebook 01 §6–§7). With 32-month full rebuilds, the works run past 2035.
 
 ## Multi-supplier procurement and battery guarantees · Phases 0–1
 - **Precedent:**
