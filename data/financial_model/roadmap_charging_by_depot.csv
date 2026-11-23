@@ -1,0 +1,12 @@
+year,phase,existing_chargers,carabanchel_27,sanchinarro_114,entrevias_465,la_elipa_318,carab_sanch_rest_199,las_tablas_650,total_charging_capacity,ebuses_in_fleet,ebuses_purchased,spare_capacity
+2025,Baseline,456,0,0,0,0,0,0,456,456,0,0
+2026,Phase 1 (committed),456,27,0,0,0,0,0,483,526,70,-43
+2027,Phase 1 (committed),456,27,114,0,0,0,0,597,591,65,6
+2028,Phase 2 (scale-up),456,27,114,465,0,0,0,1062,864,273,198
+2029,Phase 2 (scale-up),456,27,114,465,318,0,0,1380,1137,273,243
+2030,Phase 2 (scale-up),456,27,114,465,318,199,0,1579,1410,273,169
+2031,Phase 3 (close-out),456,27,114,465,318,199,650,2229,1683,338.8,546
+2032,Phase 3 (close-out),456,27,114,465,318,199,650,2229,1956,338.8,273
+2033,Phase 3 (close-out),456,27,114,465,318,199,650,2229,2229,338.8,0
+2034,Phase 4 (renewals),456,27,114,465,318,199,650,2229,2229,65.8,0
+2035,Phase 4 (renewals),456,27,114,465,318,199,650,2229,2229,65.8,0
