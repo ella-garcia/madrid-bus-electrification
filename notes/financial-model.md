@@ -3,7 +3,7 @@
 Documentation of the financial model built for the IEU Sustainability Datathon (EMT Madrid bus electrification challenge, proposed by Kearney). It describes every sheet, every input variable, how the outputs are calculated, and where each number comes from.
 
 - **Source workbook:** Claude Sheet "EMT Madrid – Financial Baseline 2023–2027" (https://claude.ai/artifact/Pr5MWpCHY2Naa2MXHhuZRk). It's private until shared with the team.
-- **Snapshot:** workbook revision 12, 23 November 2026.
+- **Snapshot:** workbook revision 13, 23 November 2026.
 - **Units:** € millions (€M), excluding VAT, unless a row says otherwise. Bus prices are in € thousands (€k).
 - **Data types used below:**
   - **Official**: taken directly from an EMT, City of Madrid, Comunidad de Madrid, EIB or tender document.
@@ -87,10 +87,10 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 
 | Bought in | CNG buses | Natural retirement (12 yrs) | Unit cost (€k) | Type |
 |---|---|---|---|---|
-| 2016 or earlier | =1773 − others (719) | 2027 | 300 | Calculated (remainder); €300k = 2016 tender max price |
-| 2017-18 | 74 | 2030 | 291 | Official (tender quantity) |
-| 2019-20 | 460 | 2032 | 291 | Official (tender quantity) |
-| 2021-23 | 520 | 2034 | 291 | Official (award) |
+| 2015 or earlier | =1773 − others (217) | 2027 | 300 | Calculated (remainder) |
+| 2016-18 | 576 | 2029 | 300 | Calculated: 82 CNG (2016) + 420 CNG (2017 tender) + 74 CNG (2017-18 tender) |
+| 2019-20 | 460 | 2032 | 300 | Official: 460 CNG buses for €138M (€300k each) |
+| 2021-23 | 520 | 2034 | 291 | Official (award, €151.5M) |
 | **Total** | 1,773 | | | |
 
 Outputs:
@@ -175,7 +175,7 @@ Headline figures:
 
 | Target year | E-buses/yr from 2028 | Charging capacity at target year | E-buses without charging capacity | Young CNG retired early | CNG book value written off (€M) |
 |---|---|---|---|---|---|
-| 2030 (brief S1) | 546 | 1,579 | **650** | 980 | 72.8 |
+| 2030 (brief S1) | 546 | 1,579 | **650** | 980 | 73.4 |
 | 2033 (City/EMT goal) | 273 | 2,229 | 0 | 520 | 12.6 |
 | 2035 | 205 | 2,229 | 0 | 0 | 0 |
 
@@ -280,7 +280,23 @@ External funders: CRTM/Comunidad subsidy (€441.5M in 2026); City subsidy (~€
 
 ---
 
-## 7. Known gaps and caveats
+## 7. Feasibility and delay stress test (target 2033)
+
+**Bus purchases.** 273 e-buses/yr matches EMT's own track record: it bought 1,349 buses in 2016-2020 (230/yr in 2019-20). It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
+
+**Depots and grid.** Charging capacity depends on depot projects finishing on time. Results of shifting project end dates (Python reference model):
+
+| Case | Worst year without charging capacity | Years with a gap (besides 2026) | 100% chargeable from |
+|---|---|---|---|
+| Base plan | 43 (2026, timing) | none | 2031 |
+| Entrevías +1 yr | 267 | 2028 | 2031 |
+| Las Tablas +2 yrs (ready 2033) | 377 | 2031-32 | 2033 |
+| Retrofits +2 yrs (grid delay) | 267 | 2028-30 | 2032 |
+| La Elipa +1, Las Tablas +2, retrofits +2 | 540 | 2028-32 | 2033 |
+
+The 2033 target survives each single delay but has no buffer: the realistic risk is a 1-2 year slip to 2034-35 unless grid applications, the Entrevías design and Las Tablas start in 2026-27. Mitigations: CNMC flexible access permits (Aug 2026, type 0 = hourly consumption patterns, suited to overnight charging), smart charging, temporary plug-in chargers, and matching bus delivery dates to depot readiness.
+
+## 8. Known gaps and caveats
 
 1. Line-by-line audited accounts for 2023-25 weren't used. Budget-book estimates can be far off (2024 result: €25.2M estimated vs €1.2M audited).
 2. Energy isn't split (CNG vs electricity) in EMT's accounts. `cng_cost_per_km` is our estimate.
@@ -293,10 +309,14 @@ External funders: CRTM/Comunidad subsidy (€441.5M in 2026); City subsidy (~€
 
 ---
 
-## 8. Sources
+## 9. Sources
 
 | Source | Used for | Link |
 |---|---|---|
+| EMT: 460 CNG buses for €138M; 1,349 buses 2016-2020 | Purchase track record, CNG age | https://diario.madrid.es/?p=35217 |
+| Sustainable Bus: European e-bus market 2025 / H1 2026 | Market size, makers | https://www.sustainable-bus.com/news/electric-bus-market-europe-first-half-2026/ |
+| CNMC flexible access permits (Aug 2026) | Grid mitigation | https://www.cnmc.es/prensa/permisos-acceso-flexibles-20260811 |
+| Las Tablas design contract (12 months incl. licence) | Depot timing | https://diario.madrid.es/?p=179041 |
 | City of Madrid 2026 budget, Tomo 4 (EMT) | 2025 est. / 2026 budget P&L, cash flow, PAIF, balance sheet | https://www.madrid.es/UnidadesDescentralizadas/Presupuestos/PresupuestosAnuales/Ppto2026/PptoDefinitivo_2026/FicherosPpto2026/Tomo_4_2026_Definitivo.pdf |
 | City of Madrid draft 2025 budget, Tomo 4 | 2024 est. / 2025 budget | https://madrid.es/UnidadesDescentralizadas/Presupuestos/PresupuestosAnuales/Ppto2025/Proyecto2025/FicherosProyecto2025/Tomo4_proy_2025.pdf |
 | City of Madrid draft 2024 budget, Tomo 4 | 2023 est. / 2024 budget | https://transparencia.madrid.es/UnidadesDescentralizadas/Presupuestos/PresupuestosAnuales/Ppto2024/Proyecto2024/FicherosProyecto2024/Tomo4_proy_2024-Final.pdf |
