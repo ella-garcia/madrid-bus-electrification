@@ -4,6 +4,7 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
 
 - **Source workbook:** Claude Sheet "EMT Madrid – Financial Baseline 2023–2027" (https://claude.ai/artifact/Pr5MWpCHY2Naa2MXHhuZRk). It's private until shared with the team.
 - **Snapshot:** workbook revision 13, 23 November 2026.
+- **Aligned values:** the notebooks run this model with the team decisions of 23 Nov 2026 (D1–D4, constant prices, no grants in the base). Section 0 lists every change and its effect; the workbook itself is still revision 13.
 - **Units:** € millions (€M), excluding VAT, unless a row says otherwise. Bus prices are in € thousands (€k).
 - **Data types used below:**
   - **Official**: taken directly from an EMT, City of Madrid, Comunidad de Madrid, EIB or tender document.
@@ -19,6 +20,32 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
 | `data/financial_model/roadmap_charging_by_depot.csv` | Year-by-year e-buses, purchases and charging capacity per depot (target 2033) |
 | `scripts/plot_roadmap_charging.py` | Redraws the roadmap chart from the CSV (`python scripts/plot_roadmap_charging.py`, needs pandas and matplotlib) |
 | `figures/roadmap_charging_by_depot.png` | The roadmap chart (output of the script) |
+
+---
+
+## 0. Alignment with the notebooks (team decisions, 23 Nov 2026)
+
+Notebook 04 §10 ports revision 13 exactly (check: EUR 1,943.5M and 100 % in 2033), then runs every case on these aligned values, read from notebook 01's `nb01_params.json` so the two notebooks cannot drift apart.
+
+| Input | Revision 13 | Aligned (notebooks) | Why |
+|---|---|---|---|
+| `fleet_total` / `ebuses_2025` | 2,239 / 456 | **2,210 / 452** (2,239 kept as a scenario) | D1: fleet register = City of Madrid's official total |
+| `ebus_life_years` | 12 | **13** | D2: EMT's amortisation period |
+| `ebuses_to_renew_2031_35` | 329 | **174** | D2: register e-buses aged 3–8 at end 2025, which reach 13 years in 2031–35 |
+| `ebuses_added_2026` / `2027` | 70 / 65 | 70 / 65 (unchanged; 50 in 2027 as a sensitivity) | D3: EMT budgets |
+| `charge_cost_retrofit_base_keur` | 110 | 110 (unchanged; 57 and 203 as sensitivities) | D4: Sanchinarro award incl. grid works |
+| `price_escalation` | 2 %/yr | **0** (constant 2025 EUR) | Matches File 4, which is in constant 2025 EUR |
+| `eu_grant_share_depot` | 20 % | **0 in the base**, 20 % as a sensitivity | No grant is awarded for 2027+ |
+| `eib_rate` / `green_bond_coupon` | 3.0 % / 3.6 % | unchanged; **+1 pt** as a sensitivity | Rate risk for the report |
+
+**Effect (notebook 04 §10):**
+
+| Case | Revision 13 | Aligned |
+|---|---|---|
+| Model as built (2033 target, no limits): programme capex 2026–35 | EUR 1,943.5M | EUR 1,696.6M |
+| Most realistic case (230 buses/yr, EUR 150M/yr borrowing, 1-year depot slips): 100 % year | 2038 | **2037** on both baselines |
+| Interest in 2035, most realistic case | — | EUR 36.9M; **EUR 48.1M at +1 pt** (+EUR 11.2M) |
+| EU grants at 20 % instead of 0, most realistic case | — | Same 100 % year (2037); interest EUR 35.5M; borrowing still at the EUR 150M/yr cap |
 
 ---
 
@@ -57,7 +84,7 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | Variable | Cell | Value | Unit | Type | Source / basis |
 |---|---|---|---|---|---|
 | `target_year` | B2 | 2033 | year | Scenario | 2030 = brief S1; 2033 = City/EMT goal; 2035 = slow case |
-| `fleet_total` | B3 | 2,239 | buses | Official | EMT 2025 accounts: 456 electric + 10 hydrogen + 1,773 CNG. CRTM quotes 2,215; pick one in the report |
+| `fleet_total` | B3 | 2,239 | buses | Official | EMT 2025 accounts: 456 electric + 10 hydrogen + 1,773 CNG. CRTM quotes 2,215. **Notebooks: 2,210 (D1, section 0)** |
 | `h2_buses` | B4 | 10 | buses | Official | EMT 2025 accounts |
 | `ebuses_2025` | B5 | 456 | buses | Official | EMT 2025 accounts |
 | `ebuses_added_2026` | B6 | 70 | buses | Official | EMT 2026 budget (€47.7M) |
@@ -65,10 +92,10 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | `price_ebus_12m_keur` | B8 | 615 | €k | Official | Max price per bus, 2026-27 tender (Irizar €30.75M/50; Mercedes €24.6M/40) |
 | `price_ebus_18m_keur` | B9 | 800 | €k | Official | Solaris articulated, 2026-27 tender (€24M/30). Max price |
 | `artic_share` | B10 | 8% | % | Assumption | Share of articulated buses in purchases |
-| `price_escalation` | B11 | 2% | %/yr | Assumption | Nominal bus price growth |
+| `price_escalation` | B11 | 2% | %/yr | Assumption | Nominal bus price growth. **Notebooks: 0 (constant 2025 EUR)** |
 | `price_cng_bus_keur` | B12 | 291 | €k | Calculated | €151.5M ÷ 520 CNG buses (2021-23 award). Comparison only |
-| `ebus_life_years` | B13 | 12 | years | Assumption | Life before renewal |
-| `ebuses_to_renew_2031_35` | B14 | 329 | buses | Official (plan) | EMT plan of 329 e-buses by end-2023 (2022 article); spread evenly 2031-35 |
+| `ebus_life_years` | B13 | 12 | years | Assumption | Life before renewal. **Notebooks: 13 (D2)** |
+| `ebuses_to_renew_2031_35` | B14 | 329 | buses | Official (plan) | EMT plan of 329 e-buses by end-2023 (2022 article); spread evenly 2031-35. **Notebooks: 174 (register, 13-year life)** |
 | `charging_capacity_2025` | B15 | =B5 (456) | buses | Calculated | EMT runs 456 e-buses on 313 charging points (some points serve >1 bus overnight) |
 | `charge_cost_retrofit_base_keur` | B16 | 110 | €k/position | Calculated | Sanchinarro: €12.58M ÷ 114 positions, incl. grid connection works and canopy |
 | `charge_cost_low_keur` | B17 | 57 | €k/position | Calculated | Carabanchel: €6.7M ÷ 118 positions (existing grid capacity) |
@@ -78,7 +105,7 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | `km_per_bus_year` | B21 | =101,903,622 / B3 (≈45,513) | km | Calculated | 101.9M bus-km in 2025 (Carta de Servicios 2026) ÷ fleet |
 | `electricity_price` | B22 | 0.15 | €/kWh | Assumption | Replace with EMT's tariff if available |
 | `cng_cost_per_km` | B23 | 0.37 | €/km | Calculated | €28.8M CNG cost 2024 (official) ÷ ~77M CNG-km (our estimate). Was ~€0.58/km in 2023 |
-| `eu_grant_share_depot` | B24 | 20% | % | Assumption | Only data point: CEF-AFIF covered 37% at Sanchinarro (€4.69M) |
+| `eu_grant_share_depot` | B24 | 20% | % | Assumption | Only data point: CEF-AFIF covered 37% at Sanchinarro (€4.69M). **Notebooks: 0 in the base, 20 % sensitivity** |
 | `self_financing_meur` | B25 | 35 | €M/yr | Official | 2026 budget (PAIF) self-financing €35.3M |
 | `eib_share` | B26 | 50% | % | Assumption | Share of borrowing from the EIB. 2024 EIB loan covered 31% of a €161M project |
 | `eib_rate` | B27 | 3.0% | % | Assumption | |

@@ -298,7 +298,7 @@ function drawRoutes() {
 function restyleRoutes() { lines.forEach(l => polyByLine[l.line_id] && polyByLine[l.line_id].setStyle(routeStyle(l))); }
 
 const provNote = d => d.connection_evidence === "Evidenced"
-  ? "Connection from documented public evidence."
+  ? "Planned connection from documented public evidence (not yet built)."
   : "Connection is a team proxy or scenario, not a confirmed grid capacity.";
 function drawDepots() {
   depotLayer.clearLayers();
