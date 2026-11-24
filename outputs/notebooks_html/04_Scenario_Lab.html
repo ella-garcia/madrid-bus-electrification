@@ -14239,7 +14239,7 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="10-%C2%B7-Stress-test-of-the-team-financial-model:-which-levers-put-2033-at-risk">10 · Stress test of the team financial model: which levers put 2033 at risk<a class="anchor-link" href="#10-%C2%B7-Stress-test-of-the-team-financial-model:-which-levers-put-2033-at-risk">¶</a></h2><p>The team financial model (rev. 13, documented in <code>notes/financial-model.md</code>, PR #20) reaches 100 % in <strong>2033</strong> with programme capex of <strong>EUR 1,943.5 m</strong>. As built it draws a straight line to the target year and assumes every bus it needs is delivered and paid for. Here it is ported unchanged (the reproduction check below), then <strong>aligned with notebook 01</strong> for every run after it: fleet 2,210 (D1), e-bus renewals at a 13-year life (D2), EUR 110k per charging position (D4), constant 2025 prices and no EU grants in the base. Each year's additions are then capped by three real limits:</p>
+<h2 id="10-%C2%B7-Stress-test-of-the-team-financial-model:-which-levers-put-2033-at-risk">10 · Stress test of the team financial model: which levers put 2033 at risk<a class="anchor-link" href="#10-%C2%B7-Stress-test-of-the-team-financial-model:-which-levers-put-2033-at-risk">¶</a></h2><p>The team financial model (rev. 13, documented in <code>notes/financial-model.md</code>, PR #20) reaches 100 % in <strong>2033</strong> with programme capex of <strong>EUR 1,943.5 m</strong>. As built it draws a straight line to the target year and assumes every bus it needs is delivered and paid for. Here it is ported unchanged (the reproduction check below) and <strong>every run in this section uses rev. 13 as documented</strong> (D9, 24 Nov 2026): the pitch and the report quote it. File 4's conventions are run beside it as a comparison only (10.3): fleet 2,210 (D1), e-bus renewals at a 13-year life (D2), constant 2025 prices and no EU grants. File 4 cannot take rev. 13's values, because the brief fixes File 4's capex in constant 2025 euros (so no 2 %/yr price growth) and takes the fleet from the register (2,210, not 2,239); rev. 13 is the financial plan built on top of it. Each year's additions are capped by three real limits:</p>
 <ol>
 <li><strong>Deliveries:</strong> buses EMT can take delivery of in a year, renewals included.</li>
 <li><strong>Chargers:</strong> a bus is only added if a charging position is in place (the model only flags the gap).</li>
@@ -14269,12 +14269,12 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <span class="n">FM_REV13</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">FM</span><span class="p">)</span>                    <span class="c1"># as documented, for the reproduction check only</span>
 <span class="n">_bev</span> <span class="o">=</span> <span class="n">fleet25</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fleet25</span><span class="o">.</span><span class="n">fuelType</span> <span class="o">==</span> <span class="s2">"EL"</span><span class="p">,</span> <span class="s2">"age_years"</span><span class="p">]</span>
 <span class="n">RENEW_LIFE</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(((</span><span class="n">_bev</span> <span class="o">&gt;</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"bus_life"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">_bev</span> <span class="o">&lt;=</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"bus_life"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="n">FM</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">assume</span><span class="p">(</span><span class="s2">"Financial model aligned with notebook 01 (fix list, 23 Nov 2026)"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">fleet_total</span><span class="o">=</span><span class="n">NB01</span><span class="p">[</span><span class="s2">"fleet"</span><span class="p">],</span> <span class="n">ebuses_2025</span><span class="o">=</span><span class="n">B25</span><span class="p">[</span><span class="s2">"n_bev"</span><span class="p">],</span> <span class="n">escalation</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">eu_grant_share</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">renew_2031_35</span><span class="o">=</span><span class="n">RENEW_LIFE</span><span class="p">),</span> <span class="s2">"D"</span><span class="p">,</span>
+<span class="n">FM_ALIGNED</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Financial model on File 4's conventions (comparison only, D9)"</span><span class="p">,</span> <span class="p">{</span><span class="o">**</span><span class="n">FM</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">fleet_total</span><span class="o">=</span><span class="n">NB01</span><span class="p">[</span><span class="s2">"fleet"</span><span class="p">],</span> <span class="n">ebuses_2025</span><span class="o">=</span><span class="n">B25</span><span class="p">[</span><span class="s2">"n_bev"</span><span class="p">],</span> <span class="n">escalation</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">eu_grant_share</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">renew_2031_35</span><span class="o">=</span><span class="n">RENEW_LIFE</span><span class="p">)},</span> <span class="s2">"D"</span><span class="p">,</span>
     <span class="sa">f</span><span class="s2">"D1 fleet </span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'fleet'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">; D2 </span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="si">}</span><span class="s2">-year life, so e-buses renewed in 2031-35 = register e-buses aged "</span>
     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="si">}</span><span class="s2"> at end 2025 (</span><span class="si">{</span><span class="n">RENEW_LIFE</span><span class="si">}</span><span class="s2">; rev. 13 used EMT's 329 at 12 years); D4 EUR 110k per "</span>
     <span class="s2">"position (unchanged); constant 2025 prices (no 2 %/yr growth); EU grants 0 in the base (none awarded for 2027+)"</span><span class="p">,</span>
-    <span class="s2">"section 10"</span><span class="p">,</span> <span class="s2">"2,239 baseline (10.3); grants 20 </span><span class="si">% a</span><span class="s2">nd +1 pt rates (10.3b)"</span><span class="p">))</span>
+    <span class="s2">"section 10.3 comparison only; FM stays rev. 13"</span><span class="p">,</span> <span class="s2">"rev. 13 is the base of every other run in section 10"</span><span class="p">)</span>
 <span class="n">FM_CNG</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2027</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="p">(</span><span class="mi">576</span><span class="p">,</span> <span class="mi">2029</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="p">(</span><span class="mi">460</span><span class="p">,</span> <span class="mi">2032</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="p">(</span><span class="mi">520</span><span class="p">,</span> <span class="mi">2034</span><span class="p">,</span> <span class="mi">291</span><span class="p">)]</span>   <span class="c1"># cohorts: buses, natural retirement, EUR k;</span>
 <span class="c1"># the oldest cohort is the remainder of the baseline's CNG fleet (217 at 2,239; 192 at 2,210)</span>
 <span class="n">FM_YEARS</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">2041</span><span class="p">)</span>          <span class="c1"># to 2040, so a slip past 2035 shows as a year</span>
@@ -14330,10 +14330,14 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
         <span class="n">lease_pay</span> <span class="o">+=</span> <span class="n">leased</span> <span class="o">*</span> <span class="n">annuity</span>                                            <span class="c1"># each year's new leases add a level payment</span>
         <span class="n">capex</span> <span class="o">=</span> <span class="n">bus_value</span> <span class="o">+</span> <span class="n">depot</span>                                                <span class="c1"># programme value, owned or leased</span>
         <span class="n">own_capex</span> <span class="o">=</span> <span class="n">capex</span> <span class="o">-</span> <span class="n">leased</span>
-        <span class="n">need</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">own_capex</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">own_capex</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="s2">"self_fin"</span><span class="p">])</span> <span class="o">-</span> <span class="n">depot_own</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eu_grant_share"</span><span class="p">])</span>
+        <span class="n">self_used</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">own_capex</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="s2">"self_fin"</span><span class="p">])</span>
+        <span class="n">grant_used</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">own_capex</span> <span class="o">-</span> <span class="n">self_used</span><span class="p">,</span> <span class="n">depot_own</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eu_grant_share"</span><span class="p">])</span>
+        <span class="n">need</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">own_capex</span> <span class="o">-</span> <span class="n">self_used</span> <span class="o">-</span> <span class="n">depot_own</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eu_grant_share"</span><span class="p">])</span>
         <span class="n">eib</span> <span class="o">+=</span> <span class="n">need</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eib_share"</span><span class="p">];</span> <span class="n">gb</span> <span class="o">+=</span> <span class="n">need</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eib_share"</span><span class="p">])</span>
         <span class="n">binding</span> <span class="o">=</span> <span class="s2">""</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">2027</span> <span class="ow">or</span> <span class="n">stock</span> <span class="o">&gt;=</span> <span class="n">ze_max</span> <span class="ow">or</span> <span class="n">add</span> <span class="o">&gt;=</span> <span class="n">plan</span> <span class="o">-</span> <span class="n">stock_prev</span><span class="p">)</span> <span class="k">else</span> <span class="nb">min</span><span class="p">(</span><span class="n">limits</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">limits</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
-        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">plan</span><span class="o">=</span><span class="n">plan</span><span class="p">,</span> <span class="n">ebuses</span><span class="o">=</span><span class="n">stock</span><span class="p">,</span> <span class="n">added</span><span class="o">=</span><span class="n">add</span><span class="p">,</span> <span class="n">renewals</span><span class="o">=</span><span class="n">renew</span><span class="p">,</span> <span class="n">charging_capacity</span><span class="o">=</span><span class="n">cap</span><span class="p">,</span> <span class="n">capex_meur</span><span class="o">=</span><span class="n">capex</span><span class="p">,</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">plan</span><span class="o">=</span><span class="n">plan</span><span class="p">,</span> <span class="n">ebuses</span><span class="o">=</span><span class="n">stock</span><span class="p">,</span> <span class="n">added</span><span class="o">=</span><span class="n">add</span><span class="p">,</span> <span class="n">renewals</span><span class="o">=</span><span class="n">renew</span><span class="p">,</span> <span class="n">bought</span><span class="o">=</span><span class="n">add</span> <span class="o">+</span> <span class="n">renew</span><span class="p">,</span> <span class="n">self_fin_meur</span><span class="o">=</span><span class="n">self_used</span><span class="p">,</span>
+                         <span class="n">grants_meur</span><span class="o">=</span><span class="n">grant_used</span><span class="p">,</span> <span class="n">eib_meur</span><span class="o">=</span><span class="n">need</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eib_share"</span><span class="p">],</span> <span class="n">bonds_meur</span><span class="o">=</span><span class="n">need</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eib_share"</span><span class="p">]),</span>
+                         <span class="n">charging_capacity</span><span class="o">=</span><span class="n">cap</span><span class="p">,</span> <span class="n">capex_meur</span><span class="o">=</span><span class="n">capex</span><span class="p">,</span>
                          <span class="n">borrowing_meur</span><span class="o">=</span><span class="n">need</span><span class="p">,</span> <span class="n">interest_meur</span><span class="o">=</span><span class="n">eib</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"eib_rate"</span><span class="p">]</span> <span class="o">+</span> <span class="n">gb</span> <span class="o">*</span> <span class="n">A</span><span class="p">[</span><span class="s2">"gb_coupon"</span><span class="p">],</span> <span class="n">leased_meur</span><span class="o">=</span><span class="n">leased</span><span class="p">,</span>
                          <span class="n">lease_payments_meur</span><span class="o">=</span><span class="n">lease_pay</span><span class="p">,</span> <span class="n">binding</span><span class="o">=</span><span class="n">binding</span><span class="p">))</span>
         <span class="n">stock_prev</span> <span class="o">=</span> <span class="n">stock</span>
@@ -14346,18 +14350,26 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
                 <span class="n">capex_2026_35</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">capex_meur</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">peak_capex</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">capex_meur</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span>
                 <span class="n">max_borrowing_yr</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">borrowing_meur</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">interest_2035</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">interest_meur</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span>
                 <span class="n">cng_writeoff_meur</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">y100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">/</span> <span class="mi">1000</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">fm_cng</span><span class="p">(</span><span class="n">A</span><span class="p">)),</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="n">cng_retired_early</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">fm_cng</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">y100</span><span class="p">)),</span> <span class="n">peak_added</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">added</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+                <span class="n">peak_bought</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">bought</span><span class="o">.</span><span class="n">max</span><span class="p">())),</span>
+                <span class="n">peak_bought_year</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">bought</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s2">"year"</span><span class="p">]),</span>
+                <span class="n">funding_2026_35</span><span class="o">=</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">"self-financing"</span><span class="p">,</span> <span class="s2">"self_fin_meur"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"EU grants"</span><span class="p">,</span> <span class="s2">"grants_meur"</span><span class="p">),</span>
+                                                                       <span class="p">(</span><span class="s2">"EIB"</span><span class="p">,</span> <span class="s2">"eib_meur"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"green bonds"</span><span class="p">,</span> <span class="s2">"bonds_meur"</span><span class="p">))},</span>
                 <span class="n">leased_2026_35</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">leased_meur</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">lease_payments_2035</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">lease_payments_meur</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span>
                 <span class="n">first_binding</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"none"</span><span class="p">),</span> <span class="n">df</span>
 
-<span class="n">fm_base</span><span class="p">,</span> <span class="n">fm_base_df</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">()</span>
+<span class="n">fm_base</span><span class="p">,</span> <span class="n">fm_base_df</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">()</span>                 <span class="c1"># rev. 13, the base of section 10 (D9)</span>
 <span class="n">fm_rev13</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">FM_REV13</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"rev. 13 as documented"</span><span class="p">:</span> <span class="n">fm_rev13</span><span class="p">,</span> <span class="s2">"aligned with notebook 01 (2033 target, no limits)"</span><span class="p">:</span> <span class="n">fm_base</span><span class="p">}))</span>
+<span class="n">fm_aligned</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">FM_ALIGNED</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"rev. 13 (base)"</span><span class="p">:</span> <span class="n">fm_base</span><span class="p">,</span> <span class="s2">"File 4 conventions (comparison)"</span><span class="p">:</span> <span class="n">fm_aligned</span><span class="p">}))</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">fm_base_df</span><span class="p">[</span><span class="n">fm_base_df</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2035</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"What the 2033 plan asks for each year:"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">bought</span><span class="o">=</span><span class="n">w</span><span class="o">.</span><span class="n">added</span> <span class="o">+</span> <span class="n">w</span><span class="o">.</span><span class="n">renewals</span><span class="p">)[[</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"added"</span><span class="p">,</span> <span class="s2">"renewals"</span><span class="p">,</span> <span class="s2">"bought"</span><span class="p">,</span> <span class="s2">"capex_meur"</span><span class="p">,</span> <span class="s2">"borrowing_meur"</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"year"</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">check</span><span class="p">(</span><span class="s2">"Port reproduces the financial model rev. 13: EUR 1,943.5 m and 100 </span><span class="si">% i</span><span class="s2">n 2033"</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">fm_rev13</span><span class="p">[</span><span class="s2">"capex_2026_35"</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1943.5</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="n">fm_rev13</span><span class="p">[</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2033</span><span class="p">,</span>
       <span class="sa">f</span><span class="s2">"EUR </span><span class="si">{</span><span class="n">fm_rev13</span><span class="p">[</span><span class="s1">'capex_2026_35'</span><span class="p">]</span><span class="si">}</span><span class="s2"> m, </span><span class="si">{</span><span class="n">fm_rev13</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Aligned base (D1-D4, constant prices, no grants): EUR </span><span class="si">{</span><span class="n">fm_base</span><span class="p">[</span><span class="s1">'capex_2026_35'</span><span class="p">]</span><span class="si">}</span><span class="s2"> m, 100 % in </span><span class="si">{</span><span class="n">fm_base</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"D9: section 10 runs on rev. 13 (the base equals the documented model)"</span><span class="p">,</span> <span class="n">fm_base</span> <span class="o">==</span> <span class="n">fm_rev13</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Comparison on File 4's conventions (2,210 buses, 13-year life, constant prices, no grants): EUR </span><span class="si">{</span><span class="n">fm_aligned</span><span class="p">[</span><span class="s1">'capex_2026_35'</span><span class="p">]</span><span class="si">}</span><span class="s2"> m, "</span>
+      <span class="sa">f</span><span class="s2">"100 % in </span><span class="si">{</span><span class="n">fm_aligned</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14388,8 +14400,8 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>rev. 13 as documented</th>
-<th>aligned with notebook 01 (2033 target, no limits)</th>
+<th>rev. 13 (base)</th>
+<th>File 4 conventions (comparison)</th>
 </tr>
 </thead>
 <tbody>
@@ -14427,6 +14439,31 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <th>cng_writeoff_meur</th>
 <td>12.6</td>
 <td>12.6</td>
+</tr>
+<tr>
+<th>cng_retired_early</th>
+<td>520</td>
+<td>520</td>
+</tr>
+<tr>
+<th>peak_added</th>
+<td>273</td>
+<td>269</td>
+</tr>
+<tr>
+<th>peak_bought</th>
+<td>339</td>
+<td>304</td>
+</tr>
+<tr>
+<th>peak_bought_year</th>
+<td>2031</td>
+<td>2032</td>
+</tr>
+<tr>
+<th>funding_2026_35</th>
+<td>{'self-financing': 350.0, 'EU grants': 98.2, '...</td>
+<td>{'self-financing': 323.8, 'EU grants': 0.0, 'E...</td>
 </tr>
 <tr>
 <th>leased_2026_35</th>
@@ -14493,12 +14530,12 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <th>added</th>
 <td>70.0</td>
 <td>65.0</td>
-<td>269.0</td>
-<td>269.0</td>
-<td>269.0</td>
-<td>268.0</td>
-<td>269.0</td>
-<td>269.0</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>273.0</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -14509,50 +14546,50 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <td>0.0</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>34.8</td>
-<td>34.8</td>
-<td>34.8</td>
-<td>34.8</td>
-<td>34.8</td>
+<td>65.8</td>
+<td>65.8</td>
+<td>65.8</td>
+<td>65.8</td>
+<td>65.8</td>
 </tr>
 <tr>
 <th>bought</th>
 <td>70.0</td>
 <td>65.0</td>
-<td>269.0</td>
-<td>269.0</td>
-<td>269.0</td>
-<td>302.8</td>
-<td>303.8</td>
-<td>303.8</td>
-<td>34.8</td>
-<td>34.8</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>273.0</td>
+<td>338.8</td>
+<td>338.8</td>
+<td>338.8</td>
+<td>65.8</td>
+<td>65.8</td>
 </tr>
 <tr>
 <th>capex_meur</th>
 <td>80.6</td>
-<td>115.7</td>
-<td>301.6</td>
-<td>276.0</td>
-<td>248.0</td>
-<td>248.1</td>
-<td>191.3</td>
-<td>191.3</td>
-<td>21.9</td>
-<td>21.9</td>
+<td>117.1</td>
+<td>312.6</td>
+<td>290.6</td>
+<td>266.2</td>
+<td>292.9</td>
+<td>240.3</td>
+<td>245.1</td>
+<td>48.6</td>
+<td>49.5</td>
 </tr>
 <tr>
 <th>borrowing_meur</th>
-<td>45.6</td>
-<td>80.7</td>
-<td>266.6</td>
-<td>241.0</td>
-<td>213.0</td>
-<td>213.1</td>
-<td>156.3</td>
-<td>156.3</td>
-<td>0.0</td>
-<td>0.0</td>
+<td>38.3</td>
+<td>67.0</td>
+<td>250.8</td>
+<td>234.0</td>
+<td>215.2</td>
+<td>246.5</td>
+<td>205.3</td>
+<td>210.1</td>
+<td>13.6</td>
+<td>14.5</td>
 </tr>
 </tbody>
 </table>
@@ -14563,7 +14600,8 @@ CHECK PASS | Every terminus gets at least one point | 18 points at 14 termini
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Port reproduces the financial model rev. 13: EUR 1,943.5 m and 100 % in 2033 | EUR 1943.5 m, 2033
-Aligned base (D1-D4, constant prices, no grants): EUR 1696.6 m, 100 % in 2033
+CHECK PASS | D9: section 10 runs on rev. 13 (the base equals the documented model)
+Comparison on File 4's conventions (2,210 buses, 13-year life, constant prices, no grants): EUR 1696.6 m, 100 % in 2033
 </pre>
 </div>
 </div>
@@ -14656,37 +14694,37 @@ Aligned base (D1-D4, constant prices, no grants): EUR 1696.6 m, 100 % in 2033
 <tr>
 <th>0</th>
 <td>Borrowing per year</td>
-<td>2035</td>
-<td>2039</td>
-<td>4</td>
-<td>422.6</td>
+<td>2036</td>
+<td>2041</td>
+<td>5</td>
+<td>518.9</td>
 <td>money</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Buses delivered per year</td>
-<td>2036</td>
-<td>2039</td>
+<td>2037</td>
+<td>2040</td>
 <td>3</td>
-<td>370.3</td>
+<td>314.4</td>
 <td>money</td>
 </tr>
 <tr>
 <th>2</th>
 <td>Bus price</td>
-<td>2036</td>
+<td>2037</td>
 <td>2038</td>
-<td>2</td>
-<td>224.8</td>
+<td>1</td>
+<td>141.3</td>
 <td>money</td>
 </tr>
 <tr>
 <th>3</th>
 <td>Entrevias grid and works</td>
 <td>2037</td>
-<td>2037</td>
-<td>0</td>
-<td>73.7</td>
+<td>2038</td>
+<td>1</td>
+<td>94.5</td>
 <td>chargers</td>
 </tr>
 <tr>
@@ -14695,34 +14733,34 @@ Aligned base (D1-D4, constant prices, no grants): EUR 1696.6 m, 100 % in 2033
 <td>2037</td>
 <td>2037</td>
 <td>0</td>
-<td>33.5</td>
+<td>46.7</td>
 <td>money</td>
 </tr>
 <tr>
 <th>5</th>
-<td>La Elipa ready</td>
+<td>Las Tablas ready</td>
 <td>2037</td>
 <td>2037</td>
 <td>0</td>
-<td>10.7</td>
+<td>39.2</td>
 <td>money</td>
 </tr>
 <tr>
 <th>6</th>
-<td>Other depot retrofits (grid)</td>
+<td>La Elipa ready</td>
 <td>2037</td>
 <td>2037</td>
 <td>0</td>
-<td>9.5</td>
+<td>9.1</td>
 <td>money</td>
 </tr>
 <tr>
 <th>7</th>
-<td>Las Tablas ready</td>
+<td>Other depot retrofits (grid)</td>
 <td>2037</td>
-<td>2036</td>
-<td>-1</td>
-<td>75.6</td>
+<td>2037</td>
+<td>0</td>
+<td>6.9</td>
 <td>money</td>
 </tr>
 </tbody>
@@ -14735,7 +14773,6 @@ Aligned base (D1-D4, constant prices, no grants): EUR 1696.6 m, 100 % in 2033
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Depot levers alone (buses and money unlimited): {'Las Tablas +2': 2033, 'Las Tablas +3': 2034, 'Entrevias +2': 2033, 'all grid +2': 2033}
 CHECK PASS | Tornado: every lever tested in both directions
-Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With money binding, a later depot spreads its capex over more years and frees cash for buses in the meantime: a cash-timing effect, not a benefit.
 </pre>
 </div>
 </div>
@@ -14748,7 +14785,7 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="10.2-%C2%B7-Most-realistic-case,-and-what-2033-would-need">10.2 · Most realistic case, and what 2033 would need<a class="anchor-link" href="#10.2-%C2%B7-Most-realistic-case,-and-what-2033-would-need">¶</a></h3><p>Every lever at its likely value: 230 buses/yr (EMT's 2019–20 pace), EUR 150 m/yr borrowing (the pitch's condition 4), and one-year slips at Las Tablas, Entrevías and the remaining depot retrofits. The grid shows how far more borrowing and faster deliveries pull the year back. Notebook 01 §8 frames the same range: 2037–2040 if purchases stay at 165–200 a year (gas buses then run past 13 years), and 2036 if every bus is renewed at 13 years as in File 4's S0, with purchases peaking near 380 a year.</p>
+<h3 id="10.2-%C2%B7-Most-realistic-case,-and-what-2033-would-need">10.2 · Most realistic case, and what 2033 would need<a class="anchor-link" href="#10.2-%C2%B7-Most-realistic-case,-and-what-2033-would-need">¶</a></h3><p>Every lever at its likely value: 230 buses/yr (EMT's 2019–20 pace), EUR 150 m/yr borrowing (the pitch's condition 4), and one-year slips at Las Tablas, Entrevías and the remaining depot retrofits. The grid shows how far more borrowing and faster deliveries pull the year back. These runs use rev. 13 (2,239 buses, 12-year renewals, 2 %/yr price growth, 20 % EU grants on depot works). Notebook 01 §8 frames the same question on File 4's conventions: 2037–2040 if purchases stay at 165–200 a year (gas buses then run past 13 years), and 2036 if every bus is renewed at 13 years as in File 4's S0, with purchases peaking near 380 a year.</p>
 </div>
 </div>
 </div>
@@ -14812,37 +14849,62 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 <tr>
 <th>year_100</th>
 <td>2033</td>
-<td>2037</td>
+<td>2038</td>
 </tr>
 <tr>
 <th>ze_share_2030</th>
-<td>63.5</td>
-<td>41.6</td>
+<td>63.4</td>
+<td>42.4</td>
 </tr>
 <tr>
 <th>capex_2026_35</th>
-<td>1696.6</td>
-<td>1469.2</td>
+<td>1943.5</td>
+<td>1602.4</td>
 </tr>
 <tr>
 <th>peak_capex</th>
-<td>301.6</td>
-<td>184.9</td>
+<td>312.6</td>
+<td>206.4</td>
 </tr>
 <tr>
 <th>max_borrowing_yr</th>
-<td>266.6</td>
-<td>149.9</td>
+<td>250.8</td>
+<td>149.8</td>
 </tr>
 <tr>
 <th>interest_2035</th>
-<td>45.3</td>
-<td>36.9</td>
+<td>49.3</td>
+<td>38.1</td>
 </tr>
 <tr>
 <th>cng_writeoff_meur</th>
 <td>12.6</td>
 <td>0.0</td>
+</tr>
+<tr>
+<th>cng_retired_early</th>
+<td>520</td>
+<td>0</td>
+</tr>
+<tr>
+<th>peak_added</th>
+<td>273</td>
+<td>196</td>
+</tr>
+<tr>
+<th>peak_bought</th>
+<td>339</td>
+<td>230</td>
+</tr>
+<tr>
+<th>peak_bought_year</th>
+<td>2031</td>
+<td>2033</td>
+</tr>
+<tr>
+<th>funding_2026_35</th>
+<td>{'self-financing': 350.0, 'EU grants': 98.2, '...</td>
+<td>{'self-financing': 350.0, 'EU grants': 98.2, '...</td>
 </tr>
 <tr>
 <th>leased_2026_35</th>
@@ -14903,99 +14965,99 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 <tbody>
 <tr>
 <th>plan</th>
-<td>522</td>
-<td>587</td>
-<td>856</td>
-<td>1125</td>
-<td>1394</td>
-<td>1662</td>
-<td>1931</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
+<td>526</td>
+<td>591</td>
+<td>864</td>
+<td>1137</td>
+<td>1410</td>
+<td>1683</td>
+<td>1956</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
 </tr>
 <tr>
 <th>ebuses</th>
-<td>522</td>
-<td>587</td>
-<td>593</td>
-<td>715</td>
-<td>909</td>
-<td>1068</td>
-<td>1254</td>
-<td>1449</td>
-<td>1644</td>
-<td>1839</td>
-<td>2069</td>
-<td>2200</td>
-<td>2200</td>
+<td>526</td>
+<td>591</td>
+<td>597</td>
+<td>743</td>
+<td>939</td>
+<td>1065</td>
+<td>1208</td>
+<td>1372</td>
+<td>1536</td>
+<td>1700</td>
+<td>1930</td>
+<td>2160</td>
+<td>2229</td>
 </tr>
 <tr>
 <th>added</th>
 <td>70</td>
 <td>65</td>
 <td>6</td>
-<td>122</td>
-<td>194</td>
-<td>159</td>
-<td>186</td>
-<td>195</td>
-<td>195</td>
-<td>195</td>
+<td>146</td>
+<td>196</td>
+<td>126</td>
+<td>143</td>
+<td>164</td>
+<td>164</td>
+<td>164</td>
 <td>230</td>
-<td>131</td>
-<td>0</td>
+<td>230</td>
+<td>69</td>
 </tr>
 <tr>
 <th>charging_capacity</th>
-<td>479</td>
-<td>593</td>
-<td>593</td>
-<td>1376</td>
-<td>1376</td>
-<td>1550</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
-<td>2200</td>
+<td>483</td>
+<td>597</td>
+<td>597</td>
+<td>1380</td>
+<td>1380</td>
+<td>1579</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
+<td>2229</td>
 </tr>
 <tr>
 <th>capex_meur</th>
 <td>80.6</td>
-<td>104.2</td>
-<td>111.4</td>
-<td>184.5</td>
-<td>184.7</td>
-<td>184.6</td>
-<td>184.9</td>
-<td>144.7</td>
-<td>144.7</td>
-<td>144.7</td>
-<td>144.9</td>
-<td>82.5</td>
-<td>0.0</td>
+<td>105.5</td>
+<td>112.7</td>
+<td>206.4</td>
+<td>197.3</td>
+<td>197.1</td>
+<td>194.0</td>
+<td>166.2</td>
+<td>169.6</td>
+<td>173.0</td>
+<td>176.6</td>
+<td>180.1</td>
+<td>55.1</td>
 </tr>
 <tr>
 <th>borrowing_meur</th>
-<td>45.6</td>
-<td>69.2</td>
-<td>76.4</td>
-<td>149.5</td>
-<td>149.7</td>
+<td>38.3</td>
+<td>57.7</td>
+<td>56.0</td>
 <td>149.6</td>
-<td>149.9</td>
-<td>109.7</td>
-<td>109.7</td>
-<td>109.7</td>
-<td>109.9</td>
-<td>47.5</td>
-<td>0.0</td>
+<td>149.6</td>
+<td>149.3</td>
+<td>149.8</td>
+<td>131.2</td>
+<td>134.6</td>
+<td>138.0</td>
+<td>141.6</td>
+<td>145.1</td>
+<td>20.1</td>
 </tr>
 <tr>
 <th>binding</th>
@@ -15010,7 +15072,7 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 <td>deliveries</td>
 <td>deliveries</td>
 <td>deliveries</td>
-<td></td>
+<td>deliveries</td>
 <td></td>
 </tr>
 </tbody>
@@ -15062,30 +15124,30 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 <tbody>
 <tr>
 <th>150</th>
+<td>2038</td>
 <td>2037</td>
-<td>2036</td>
-<td>2036</td>
-<td>2036</td>
+<td>2037</td>
+<td>2037</td>
 </tr>
 <tr>
 <th>200</th>
+<td>2037</td>
 <td>2036</td>
-<td>2035</td>
-<td>2035</td>
+<td>2036</td>
 <td>2035</td>
 </tr>
 <tr>
 <th>250</th>
+<td>2037</td>
 <td>2036</td>
 <td>2035</td>
-<td>2034</td>
 <td>2034</td>
 </tr>
 <tr>
 <th>300</th>
+<td>2037</td>
 <td>2036</td>
 <td>2035</td>
-<td>2034</td>
 <td>2034</td>
 </tr>
 </tbody>
@@ -15097,7 +15159,7 @@ Reversal: 'Las Tablas ready' pessimistic finishes earlier (2036 vs 2037). With m
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>To keep 2033 with no delays: about 340 buses/yr in 2031-33 and EUR 250 m/yr of borrowing -&gt; 2033
-CHECK PASS | Most realistic case is later than the plan | 2037 vs 2033
+CHECK PASS | Most realistic case is later than the plan | 2038 vs 2033
 CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 </pre>
 </div>
@@ -15111,13 +15173,277 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9deb33af">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="10.2b-%C2%B7-Figures-the-deck-quotes">10.2b · Figures the deck quotes<a class="anchor-link" href="#10.2b-%C2%B7-Figures-the-deck-quotes">¶</a></h3><p>Every figure the pitch deck takes from this model, printed on rev. 13 so the slides can cite a cell: the 2030 target with no limits (charging positions still count), the 2033 plan and the 2033 stretch (340 buses and EUR 250 m a year), likely capacity with no delays (230 buses and EUR 150 m a year), and the funding split of the 2033 plan.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b9522383">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-python"><pre><span></span><span class="c1"># R4: the deck's figures, all on rev. 13 (D9). Printed only.</span>
+<span class="n">t2030</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="n">target_year</span><span class="o">=</span><span class="mi">2030</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">stretch</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="n">delivery_cap</span><span class="o">=</span><span class="mi">340</span><span class="p">,</span> <span class="n">borrow_cap</span><span class="o">=</span><span class="mi">250</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">likely_cap</span><span class="p">,</span> <span class="n">likely_cap_df</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">REALISTIC_CAPACITY</span><span class="p">)</span>
+<span class="n">DECK</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"2030 target, no limits"</span><span class="p">:</span> <span class="n">t2030</span><span class="p">,</span> <span class="s2">"2033 plan (model as built)"</span><span class="p">:</span> <span class="n">fm_base</span><span class="p">,</span> <span class="s2">"2033 stretch (340/yr, EUR 250 m/yr)"</span><span class="p">:</span> <span class="n">stretch</span><span class="p">,</span>
+    <span class="s2">"likely capacity, no delays (230/yr, EUR 150 m/yr)"</span><span class="p">:</span> <span class="n">likely_cap</span><span class="p">,</span> <span class="s2">"most realistic (likely + 1-year slips)"</span><span class="p">:</span> <span class="n">fm_likely</span><span class="p">,</span>
+<span class="p">})</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">"year_100"</span><span class="p">,</span> <span class="s2">"ze_share_2030"</span><span class="p">,</span> <span class="s2">"peak_added"</span><span class="p">,</span> <span class="s2">"peak_bought"</span><span class="p">,</span> <span class="s2">"peak_bought_year"</span><span class="p">,</span> <span class="s2">"max_borrowing_yr"</span><span class="p">,</span> <span class="s2">"cng_retired_early"</span><span class="p">,</span> <span class="s2">"cng_writeoff_meur"</span><span class="p">,</span>
+        <span class="s2">"capex_2026_35"</span><span class="p">,</span> <span class="s2">"peak_capex"</span><span class="p">,</span> <span class="s2">"interest_2035"</span><span class="p">]]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"peak_added is fleet growth only; peak_bought adds e-bus renewals (rev. 13: 329 over 2031-35)."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"2030 target: gas write-off EUR </span><span class="si">{</span><span class="n">t2030</span><span class="p">[</span><span class="s1">'cng_writeoff_meur'</span><span class="p">]</span><span class="si">}</span><span class="s2"> m at the 100 % year the run reaches (</span><span class="si">{</span><span class="n">t2030</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">); "</span>
+      <span class="sa">f</span><span class="s2">"EUR </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2030</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">fm_cng</span><span class="p">(</span><span class="n">FM</span><span class="p">))</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m if 100 % were reached in 2030 "</span>
+      <span class="s2">"(cohort prices EUR 300k for the 2019-20 buses, EUR 291k for 2021-23)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Likely capacity, no delays, 2026-2037 (roadmap slide): e-buses at year end and capex (EUR m)"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">likely_cap_df</span><span class="p">[</span><span class="n">likely_cap_df</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2037</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"year"</span><span class="p">)[[</span><span class="s2">"ebuses"</span><span class="p">,</span> <span class="s2">"capex_meur"</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Funding of the 2033 plan, 2026-2035 (EUR m):"</span><span class="p">,</span> <span class="n">fm_base</span><span class="p">[</span><span class="s2">"funding_2026_35"</span><span class="p">],</span> <span class="sa">f</span><span class="s2">"| interest in 2035: EUR </span><span class="si">{</span><span class="n">fm_base</span><span class="p">[</span><span class="s1">'interest_2035'</span><span class="p">]</span><span class="si">}</span><span class="s2"> m"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"R4: the 2030 target is not reached in 2030 once charging positions count"</span><span class="p">,</span> <span class="n">t2030</span><span class="p">[</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2030</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"100 % in </span><span class="si">{</span><span class="n">t2030</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>2030 target, no limits</th>
+<th>2033 plan (model as built)</th>
+<th>2033 stretch (340/yr, EUR 250 m/yr)</th>
+<th>likely capacity, no delays (230/yr, EUR 150 m/yr)</th>
+<th>most realistic (likely + 1-year slips)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>year_100</th>
+<td>2031</td>
+<td>2033</td>
+<td>2033</td>
+<td>2037</td>
+<td>2038</td>
+</tr>
+<tr>
+<th>ze_share_2030</th>
+<td>71.0</td>
+<td>63.4</td>
+<td>63.4</td>
+<td>46.6</td>
+<td>42.4</td>
+</tr>
+<tr>
+<th>peak_added</th>
+<td>650</td>
+<td>273</td>
+<td>275</td>
+<td>177</td>
+<td>196</td>
+</tr>
+<tr>
+<th>peak_bought</th>
+<td>716</td>
+<td>339</td>
+<td>339</td>
+<td>230</td>
+<td>230</td>
+</tr>
+<tr>
+<th>peak_bought_year</th>
+<td>2031</td>
+<td>2031</td>
+<td>2031</td>
+<td>2032</td>
+<td>2033</td>
+</tr>
+<tr>
+<th>max_borrowing_yr</th>
+<td>508.6</td>
+<td>250.8</td>
+<td>249.5</td>
+<td>149.9</td>
+<td>149.8</td>
+</tr>
+<tr>
+<th>cng_retired_early</th>
+<td>980</td>
+<td>520</td>
+<td>520</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>cng_writeoff_meur</th>
+<td>49.3</td>
+<td>12.6</td>
+<td>12.6</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>capex_2026_35</th>
+<td>1923.9</td>
+<td>1943.5</td>
+<td>1943.6</td>
+<td>1684.6</td>
+<td>1602.4</td>
+</tr>
+<tr>
+<th>peak_capex</th>
+<td>555.1</td>
+<td>312.6</td>
+<td>311.3</td>
+<td>211.7</td>
+<td>206.4</td>
+</tr>
+<tr>
+<th>interest_2035</th>
+<td>48.7</td>
+<td>49.3</td>
+<td>49.3</td>
+<td>40.8</td>
+<td>38.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>peak_added is fleet growth only; peak_bought adds e-bus renewals (rev. 13: 329 over 2031-35).
+2030 target: gas write-off EUR 49.3 m at the 100 % year the run reaches (2031); EUR 73.4 m if 100 % were reached in 2030 (cohort prices EUR 300k for the 2019-20 buses, EUR 291k for 2021-23)
+Likely capacity, no delays, 2026-2037 (roadmap slide): e-buses at year end and capex (EUR m)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>year</th>
+<th>2026</th>
+<th>2027</th>
+<th>2028</th>
+<th>2029</th>
+<th>2030</th>
+<th>2031</th>
+<th>2032</th>
+<th>2033</th>
+<th>2034</th>
+<th>2035</th>
+<th>2036</th>
+<th>2037</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>ebuses</th>
+<td>526</td>
+<td>591</td>
+<td>710</td>
+<td>857</td>
+<td>1034</td>
+<td>1168</td>
+<td>1332</td>
+<td>1496</td>
+<td>1660</td>
+<td>1824</td>
+<td>2054</td>
+<td>2229</td>
+</tr>
+<tr>
+<th>capex_meur</th>
+<td>81</td>
+<td>117</td>
+<td>212</td>
+<td>206</td>
+<td>201</td>
+<td>196</td>
+<td>163</td>
+<td>166</td>
+<td>170</td>
+<td>173</td>
+<td>177</td>
+<td>137</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Funding of the 2033 plan, 2026-2035 (EUR m): {'self-financing': np.float64(350.0), 'EU grants': np.float64(98.2), 'EIB': np.float64(747.7), 'green bonds': np.float64(747.7)} | interest in 2035: EUR 49.3 m
+CHECK PASS | R4: the 2030 target is not reached in 2030 once charging positions count | 100 % in 2031
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>True</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d457fb1c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="10.3-%C2%B7-Two-fleet-baselines:-2,239-and-2,210">10.3 · Two fleet baselines: 2,239 and 2,210<a class="anchor-link" href="#10.3-%C2%B7-Two-fleet-baselines:-2,239-and-2,210">¶</a></h3><p>Rev. 13 of the financial model used <strong>2,239</strong> buses (EMT's 2025 accounts: 456 battery, 10 hydrogen, 1,773 CNG). The aligned base and File 4 use <strong>2,210</strong> (D1) (the fleet register at 31 Dec 2025: 452 battery, 10 hydrogen, 1,748 CNG, matching the City of Madrid's official total). Both are kept as scenarios: every case above is re-run on each baseline. Depot projects are unchanged; the balancing retrofit item and the oldest CNG cohort absorb the difference.</p>
+<h3 id="10.3-%C2%B7-Two-models:-rev.-13-and-File-4's-conventions">10.3 · Two models: rev. 13 and File 4's conventions<a class="anchor-link" href="#10.3-%C2%B7-Two-models:-rev.-13-and-File-4's-conventions">¶</a></h3><p>Rev. 13 is the base of this section (D9). Beside it, the same four cases run on <strong>File 4's conventions</strong> (<code>FM_ALIGNED</code>): 2,210 buses from the fleet register (D1; rev. 13 uses EMT's 2025 accounts, 2,239), e-bus renewals at a 13-year life (D2; 174 renewals in 2031–35 instead of 329), constant 2025 prices (rev. 13: +2 %/yr) and no EU grants (rev. 13: 20 % of depot works). Depot projects are unchanged; the balancing retrofit item and the oldest CNG cohort absorb the fleet difference. The tornado is shown on both.</p>
 </div>
 </div>
 </div>
@@ -15126,29 +15452,23 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">BASELINES</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Fleet baselines kept as scenarios"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">"2,239 (EMT accounts, financial model)"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">fleet_total</span><span class="o">=</span><span class="mi">2239</span><span class="p">,</span> <span class="n">ebuses_2025</span><span class="o">=</span><span class="mi">456</span><span class="p">),</span>
-    <span class="s2">"2,210 (fleet register, File 4)"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">fleet_total</span><span class="o">=</span><span class="mi">2210</span><span class="p">,</span> <span class="n">ebuses_2025</span><span class="o">=</span><span class="mi">452</span><span class="p">)},</span> <span class="s2">"V"</span><span class="p">,</span>
-    <span class="s2">"EMT 2025 accounts press summary (456 / 10 / 1,773); notebook 01 §3 register rebuild, equal to the Carta de Servicios 2026 total"</span><span class="p">,</span>
-    <span class="s2">"section 10 results"</span><span class="p">)</span>
+<div class="highlight hl-python"><pre><span></span><span class="n">MODELS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"rev. 13 (base)"</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">"File 4 conventions (comparison)"</span><span class="p">:</span> <span class="n">FM_ALIGNED</span><span class="p">}</span>
 <span class="n">CASES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"model as built"</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">"likely capacity, no delays"</span><span class="p">:</span> <span class="n">REALISTIC_CAPACITY</span><span class="p">,</span> <span class="s2">"most realistic"</span><span class="p">:</span> <span class="n">LIKELY</span><span class="p">,</span>
          <span class="s2">"keep 2033 (340 buses/yr, EUR 250 m/yr)"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">delivery_cap</span><span class="o">=</span><span class="mi">340</span><span class="p">,</span> <span class="n">borrow_cap</span><span class="o">=</span><span class="mi">250</span><span class="p">)}</span>
-<span class="n">two</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="n">bn</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="n">cn</span><span class="p">,</span> <span class="o">**</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">bv</span><span class="p">,</span> <span class="o">**</span><span class="n">cv</span><span class="p">})[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">bn</span><span class="p">,</span> <span class="n">bv</span> <span class="ow">in</span> <span class="n">BASELINES</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">cn</span><span class="p">,</span> <span class="n">cv</span> <span class="ow">in</span> <span class="n">CASES</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-<span class="n">display</span><span class="p">(</span><span class="n">two</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"case"</span><span class="p">,</span> <span class="s2">"baseline"</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[[</span><span class="s2">"year_100"</span><span class="p">,</span> <span class="s2">"ze_share_2030"</span><span class="p">,</span> <span class="s2">"capex_2026_35"</span><span class="p">,</span> <span class="s2">"peak_capex"</span><span class="p">,</span>
-                                                          <span class="s2">"max_borrowing_yr"</span><span class="p">,</span> <span class="s2">"interest_2035"</span><span class="p">,</span> <span class="s2">"cng_writeoff_meur"</span><span class="p">,</span> <span class="s2">"first_binding"</span><span class="p">]])</span>
-<span class="n">tor2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">lever</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">bn</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">REALISTIC_CAPACITY</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">lo</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">REALISTIC_CAPACITY</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">hi</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
-                                      <span class="k">for</span> <span class="n">bn</span><span class="p">,</span> <span class="n">bv</span> <span class="ow">in</span> <span class="n">BASELINES</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="ow">in</span> <span class="n">LEVERS</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Tornado on both baselines (100 % year, optimistic -&gt; pessimistic):"</span><span class="p">)</span>
+<span class="n">two</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">mn</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="n">cn</span><span class="p">,</span> <span class="o">**</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">mv</span><span class="p">,</span> <span class="o">**</span><span class="n">cv</span><span class="p">})[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">cn</span><span class="p">,</span> <span class="n">cv</span> <span class="ow">in</span> <span class="n">CASES</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">two</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">"case"</span><span class="p">,</span> <span class="s2">"model"</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[[</span><span class="s2">"year_100"</span><span class="p">,</span> <span class="s2">"ze_share_2030"</span><span class="p">,</span> <span class="s2">"capex_2026_35"</span><span class="p">,</span> <span class="s2">"peak_capex"</span><span class="p">,</span>
+                                                       <span class="s2">"max_borrowing_yr"</span><span class="p">,</span> <span class="s2">"interest_2035"</span><span class="p">,</span> <span class="s2">"cng_retired_early"</span><span class="p">,</span> <span class="s2">"cng_writeoff_meur"</span><span class="p">,</span> <span class="s2">"first_binding"</span><span class="p">]])</span>
+<span class="n">tor2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">lever</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">mn</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">mv</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">REALISTIC_CAPACITY</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">lo</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">mv</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">REALISTIC_CAPACITY</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">hi</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+                                      <span class="k">for</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="ow">in</span> <span class="n">LEVERS</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Tornado on both models (100 % year, optimistic -&gt; pessimistic):"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">tor2</span><span class="p">)</span>
-<span class="n">b2210</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">BASELINES</span><span class="p">[</span><span class="s2">"2,210 (fleet register, File 4)"</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">b2239</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">BASELINES</span><span class="p">[</span><span class="s2">"2,239 (EMT accounts, financial model)"</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">check</span><span class="p">(</span><span class="s2">"Both baselines reach 100 </span><span class="si">% i</span><span class="s2">n 2033 when unconstrained"</span><span class="p">,</span> <span class="n">b2210</span><span class="p">[</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2033</span> <span class="ow">and</span> <span class="n">b2239</span><span class="p">[</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2033</span><span class="p">,</span>
-      <span class="sa">f</span><span class="s2">"2,239: </span><span class="si">{</span><span class="n">b2239</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">, 2,210: </span><span class="si">{</span><span class="n">b2210</span><span class="p">[</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">_lk</span> <span class="o">=</span> <span class="p">{</span><span class="n">bn</span><span class="p">:</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">bv</span><span class="p">,</span> <span class="o">**</span><span class="n">LIKELY</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="k">for</span> <span class="n">bn</span><span class="p">,</span> <span class="n">bv</span> <span class="ow">in</span> <span class="n">BASELINES</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="n">check</span><span class="p">(</span><span class="s2">"Most realistic year differs by at most one year between baselines"</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">_lk</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">_lk</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_lk</span><span class="p">))</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Both models reach 100 </span><span class="si">% i</span><span class="s2">n 2033 when unconstrained"</span><span class="p">,</span> <span class="nb">all</span><span class="p">(</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">mv</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2033</span> <span class="k">for</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+      <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mn</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="n">mv</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'year_100'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="n">_lk</span> <span class="o">=</span> <span class="p">{</span><span class="n">mn</span><span class="p">:</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">mv</span><span class="p">,</span> <span class="o">**</span><span class="n">LIKELY</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"year_100"</span><span class="p">]</span> <span class="k">for</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mv</span> <span class="ow">in</span> <span class="n">MODELS</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Most realistic year differs by at most two years between the models"</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">_lk</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">_lk</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">_lk</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -15186,12 +15506,14 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <th>peak_capex</th>
 <th>max_borrowing_yr</th>
 <th>interest_2035</th>
+<th>cng_retired_early</th>
 <th>cng_writeoff_meur</th>
 <th>first_binding</th>
 </tr>
 <tr>
 <th>case</th>
-<th>baseline</th>
+<th>model</th>
+<th></th>
 <th></th>
 <th></th>
 <th></th>
@@ -15205,93 +15527,101 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <tbody>
 <tr>
 <th rowspan="2" valign="top">keep 2033 (340 buses/yr, EUR 250 m/yr)</th>
-<th>2,210 (fleet register, File 4)</th>
+<th>File 4 conventions (comparison)</th>
 <td>2033</td>
 <td>63.5</td>
 <td>1696.6</td>
 <td>284.9</td>
 <td>249.9</td>
 <td>45.3</td>
+<td>520</td>
 <td>12.6</td>
 <td>money</td>
 </tr>
 <tr>
-<th>2,239 (EMT accounts, financial model)</th>
+<th>rev. 13 (base)</th>
 <td>2033</td>
 <td>63.4</td>
-<td>1717.4</td>
-<td>284.9</td>
-<td>249.9</td>
-<td>46.0</td>
+<td>1943.6</td>
+<td>311.3</td>
+<td>249.5</td>
+<td>49.3</td>
+<td>520</td>
 <td>12.6</td>
 <td>money</td>
 </tr>
 <tr>
 <th rowspan="2" valign="top">likely capacity, no delays</th>
-<th>2,210 (fleet register, File 4)</th>
+<th>File 4 conventions (comparison)</th>
 <td>2037</td>
 <td>44.0</td>
 <td>1513.3</td>
 <td>184.7</td>
 <td>149.7</td>
 <td>38.4</td>
+<td>0</td>
 <td>0.0</td>
 <td>money</td>
 </tr>
 <tr>
-<th>2,239 (EMT accounts, financial model)</th>
+<th>rev. 13 (base)</th>
 <td>2037</td>
-<td>43.3</td>
-<td>1514.6</td>
-<td>185.0</td>
-<td>150.0</td>
-<td>38.4</td>
+<td>46.6</td>
+<td>1684.6</td>
+<td>211.7</td>
+<td>149.9</td>
+<td>40.8</td>
+<td>0</td>
 <td>0.0</td>
 <td>money</td>
 </tr>
 <tr>
 <th rowspan="2" valign="top">model as built</th>
-<th>2,210 (fleet register, File 4)</th>
+<th>File 4 conventions (comparison)</th>
 <td>2033</td>
 <td>63.5</td>
 <td>1696.6</td>
 <td>301.6</td>
 <td>266.6</td>
 <td>45.3</td>
+<td>520</td>
 <td>12.6</td>
 <td>none</td>
 </tr>
 <tr>
-<th>2,239 (EMT accounts, financial model)</th>
+<th>rev. 13 (base)</th>
 <td>2033</td>
 <td>63.4</td>
-<td>1717.4</td>
-<td>305.6</td>
-<td>270.6</td>
-<td>46.0</td>
+<td>1943.5</td>
+<td>312.6</td>
+<td>250.8</td>
+<td>49.3</td>
+<td>520</td>
 <td>12.6</td>
 <td>none</td>
 </tr>
 <tr>
 <th rowspan="2" valign="top">most realistic</th>
-<th>2,210 (fleet register, File 4)</th>
+<th>File 4 conventions (comparison)</th>
 <td>2037</td>
 <td>41.6</td>
 <td>1469.2</td>
 <td>184.9</td>
 <td>149.9</td>
 <td>36.9</td>
+<td>0</td>
 <td>0.0</td>
 <td>chargers</td>
 </tr>
 <tr>
-<th>2,239 (EMT accounts, financial model)</th>
-<td>2037</td>
-<td>41.1</td>
-<td>1471.2</td>
-<td>185.0</td>
-<td>150.0</td>
-<td>37.0</td>
+<th>rev. 13 (base)</th>
+<td>2038</td>
+<td>42.4</td>
+<td>1602.4</td>
+<td>206.4</td>
+<td>149.8</td>
+<td>38.1</td>
+<td>0</td>
 <td>0.0</td>
 <td>chargers</td>
 </tr>
@@ -15303,7 +15633,7 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Tornado on both baselines (100 % year, optimistic -&gt; pessimistic):
+<pre>Tornado on both models (100 % year, optimistic -&gt; pessimistic):
 </pre>
 </div>
 </div>
@@ -15329,21 +15659,21 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <tr style="text-align: right;">
 <th></th>
 <th>lever</th>
-<th>2,239 (EMT accounts, financial model)</th>
-<th>2,210 (fleet register, File 4)</th>
+<th>rev. 13 (base)</th>
+<th>File 4 conventions (comparison)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
 <td>Borrowing per year</td>
-<td>2035 -&gt; 2039</td>
+<td>2036 -&gt; 2041</td>
 <td>2035 -&gt; 2039</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Buses delivered per year</td>
-<td>2036 -&gt; 2040</td>
+<td>2037 -&gt; 2040</td>
 <td>2036 -&gt; 2039</td>
 </tr>
 <tr>
@@ -15355,13 +15685,13 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <tr>
 <th>3</th>
 <td>Entrevias grid and works</td>
-<td>2037 -&gt; 2037</td>
+<td>2037 -&gt; 2038</td>
 <td>2037 -&gt; 2037</td>
 </tr>
 <tr>
 <th>4</th>
 <td>Las Tablas ready</td>
-<td>2037 -&gt; 2036</td>
+<td>2037 -&gt; 2037</td>
 <td>2037 -&gt; 2036</td>
 </tr>
 <tr>
@@ -15390,13 +15720,13 @@ CHECK PASS | Stress test never writes to File_1-4 (supplementary) | printed only
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Both baselines reach 100 % in 2033 when unconstrained | 2,239: 2033, 2,210: 2033
-CHECK PASS | Most realistic year differs by at most one year between baselines | {'2,239 (EMT accounts, financial model)': 2037, '2,210 (fleet register, File 4)': 2037}
+<pre>CHECK PASS | Both models reach 100 % in 2033 when unconstrained | rev. 13 (base): 2033, File 4 conventions (comparison): 2033
+CHECK PASS | Most realistic year differs by at most two years between the models | {'rev. 13 (base)': 2038, 'File 4 conventions (comparison)': 2037}
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>True</pre>
 </div>
@@ -15410,7 +15740,7 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="10.3b-%C2%B7-Financing-exposure-and-one-table-of-inputs-(B6)">10.3b · Financing exposure and one table of inputs (B6)<a class="anchor-link" href="#10.3b-%C2%B7-Financing-exposure-and-one-table-of-inputs-(B6)">¶</a></h3><p>The report's financing numbers, on the most realistic case: interest at current rates (EIB 3.0 %, green bond 3.6 %) and with both 1 point higher, and peak borrowing with EU grants at zero (the base) against the 20 % the financial model assumed. Then the inputs each model uses, side by side, so a difference between notebook 01, this notebook and <code>notes/financial-model.md</code> is visible rather than hidden.</p>
+<h3 id="10.3b-%C2%B7-Financing-exposure-and-one-table-of-inputs-(B6)">10.3b · Financing exposure and one table of inputs (B6)<a class="anchor-link" href="#10.3b-%C2%B7-Financing-exposure-and-one-table-of-inputs-(B6)">¶</a></h3><p>The report's financing numbers, on the most realistic case with rev. 13 as documented (EU grants 20 % of depot works, EIB 3.0 %, green bond 3.6 %) as the base row; then EU grants at zero and both rates 1 point higher. Then the inputs each model uses, side by side, so a difference between notebook 01, this notebook and <code>notes/financial-model.md</code> is visible rather than hidden.</p>
 </div>
 </div>
 </div>
@@ -15419,12 +15749,12 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-python"><pre><span></span><span class="n">fin</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"current rates, no grants (base)"</span><span class="p">,</span> <span class="p">{}),</span> <span class="p">(</span><span class="s2">"rates +1 pt"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eib_rate</span><span class="o">=</span><span class="n">FM</span><span class="p">[</span><span class="s2">"eib_rate"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">gb_coupon</span><span class="o">=</span><span class="n">FM</span><span class="p">[</span><span class="s2">"gb_coupon"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">)),</span>
-                  <span class="p">(</span><span class="s2">"EU grants 20 % (rev. 13)"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eu_grant_share</span><span class="o">=</span><span class="mf">0.20</span><span class="p">))]:</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"rev. 13: 20 </span><span class="si">% g</span><span class="s2">rants, current rates (base)"</span><span class="p">,</span> <span class="p">{}),</span> <span class="p">(</span><span class="s2">"EU grants 0"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eu_grant_share</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)),</span>
+                  <span class="p">(</span><span class="s2">"rates +1 pt"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eib_rate</span><span class="o">=</span><span class="n">FM</span><span class="p">[</span><span class="s2">"eib_rate"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">gb_coupon</span><span class="o">=</span><span class="n">FM</span><span class="p">[</span><span class="s2">"gb_coupon"</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">))]:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">fm_run</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">LIKELY</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">fin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">case</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">year_100</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">"year_100"</span><span class="p">],</span> <span class="n">max_borrowing_yr</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">"max_borrowing_yr"</span><span class="p">],</span> <span class="n">interest_2035</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">"interest_2035"</span><span class="p">],</span>
                     <span class="n">capex_2026_35</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">"capex_2026_35"</span><span class="p">]))</span>
@@ -15433,17 +15763,19 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"+1 pt on rates adds EUR </span><span class="si">{</span><span class="n">FIN</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'rates +1 pt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'interest_2035'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">FIN</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">interest_2035</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m of interest in 2035"</span><span class="p">)</span>
 
 <span class="n">ALIGN</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">(</span><span class="s2">"Fleet baseline"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'fleet'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'fleet_total'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> (2,239 as a scenario)"</span><span class="p">,</span> <span class="s2">"2,239 in rev. 13; 2,210 per D1"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Bus life (years)"</span><span class="p">,</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"bus_life"</span><span class="p">],</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BUS_LIFE</span><span class="si">}</span><span class="s2"> (retrofit model); </span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="si">}</span><span class="s2"> in the aligned port"</span><span class="p">,</span> <span class="s2">"12 in rev. 13; 13 per D2"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Fleet baseline"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'fleet'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'fleet_total'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'fleet_total'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'fleet_total'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"E-bus life / renewals 2031-35"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="si">}</span><span class="s2"> years"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"12 years / </span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'renew_2031_35'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'bus_life'</span><span class="p">]</span><span class="si">}</span><span class="s2"> years / </span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'renew_2031_35'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"12 years / </span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'renew_2031_35'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">"E-buses 2026 / 2027"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'s0_deliveries'</span><span class="p">][</span><span class="s1">'2026'</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">NB01</span><span class="p">[</span><span class="s1">'s0_deliveries'</span><span class="p">][</span><span class="s1">'2027'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BEV_DELIVERY_REF</span><span class="p">[</span><span class="mi">2026</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">BEV_DELIVERY_REF</span><span class="p">[</span><span class="mi">2027</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'ebuses_added_2026'</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'ebuses_added_2027'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Charger per point (EUR k)"</span><span class="p">,</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"charger_eur"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">CHARGER_CAPEX</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">FM</span><span class="p">[</span><span class="s2">"retrofit_keur"</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">"CNG bus price (EUR k)"</span><span class="p">,</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"cng_price_eur"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">CNG_BUS_PRICE</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">"300 (cohorts)"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Price growth"</span><span class="p">,</span> <span class="s2">"none (constant 2025 EUR)"</span><span class="p">,</span> <span class="s2">"none"</span><span class="p">,</span> <span class="s2">"2 %/yr in rev. 13; none per fix list"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"EU grants"</span><span class="p">,</span> <span class="s2">"not modelled"</span><span class="p">,</span> <span class="s2">"0 in base, 20 </span><span class="si">% s</span><span class="s2">ensitivity"</span><span class="p">,</span> <span class="s2">"20 </span><span class="si">% i</span><span class="s2">n rev. 13; 0 per fix list"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Peak buses (File 2)"</span><span class="p">,</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"peak_buses"</span><span class="p">],</span> <span class="n">PEAK_TOTAL</span><span class="p">,</span> <span class="s2">"not used"</span><span class="p">),</span>
-<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"notebook 01 (File 4)"</span><span class="p">,</span> <span class="s2">"notebook 04"</span><span class="p">,</span> <span class="s2">"financial model"</span><span class="p">])</span>
+     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'ebuses_added_2026'</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'ebuses_added_2027'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'ebuses_added_2026'</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'ebuses_added_2027'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'ebuses_added_2026'</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'ebuses_added_2027'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Charger per point (EUR k)"</span><span class="p">,</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"charger_eur"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">FM</span><span class="p">[</span><span class="s2">"retrofit_keur"</span><span class="p">],</span> <span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s2">"retrofit_keur"</span><span class="p">],</span> <span class="n">FM_REV13</span><span class="p">[</span><span class="s2">"retrofit_keur"</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">"Price growth"</span><span class="p">,</span> <span class="s2">"none (constant 2025 EUR)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'escalation'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">/yr"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'escalation'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">/yr"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'escalation'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">/yr"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"EU grants on depot works"</span><span class="p">,</span> <span class="s2">"not modelled"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM</span><span class="p">[</span><span class="s1">'eu_grant_share'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_ALIGNED</span><span class="p">[</span><span class="s1">'eu_grant_share'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">FM_REV13</span><span class="p">[</span><span class="s1">'eu_grant_share'</span><span class="p">]</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Retrofit model (sections 1-9)"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"charger EUR </span><span class="si">{</span><span class="n">CHARGER_CAPEX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">k, </span><span class="si">{</span><span class="n">BUS_LIFE</span><span class="si">}</span><span class="s2">-year CNG life, peak buses </span><span class="si">{</span><span class="n">PEAK_TOTAL</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"notebook 01 (File 4)"</span><span class="p">,</span> <span class="s2">"notebook 04 §10 (rev. 13, base)"</span><span class="p">,</span> <span class="s2">"notebook 04 §10.3 (File 4 conventions)"</span><span class="p">,</span> <span class="s2">"notes/financial-model.md"</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">ALIGN</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"R5: section 10's base inputs equal rev. 13 as documented"</span><span class="p">,</span> <span class="n">FM</span> <span class="o">==</span> <span class="n">FM_REV13</span><span class="p">)</span>
 <span class="n">check</span><span class="p">(</span><span class="s2">"B6: notebooks 01 and 04 use the same charger cost, deliveries and peak buses"</span><span class="p">,</span>
       <span class="n">CHARGER_CAPEX</span> <span class="o">==</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"charger_eur"</span><span class="p">]</span> <span class="ow">and</span> <span class="n">BEV_DELIVERY_REF</span><span class="p">[</span><span class="mi">2026</span><span class="p">]</span> <span class="o">==</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"s0_deliveries"</span><span class="p">][</span><span class="s2">"2026"</span><span class="p">]</span> <span class="ow">and</span> <span class="n">PEAK_TOTAL</span> <span class="o">==</span> <span class="n">NB01</span><span class="p">[</span><span class="s2">"peak_buses"</span><span class="p">])</span>
 </pre></div>
@@ -15491,25 +15823,25 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 </thead>
 <tbody>
 <tr>
-<th>current rates, no grants (base)</th>
-<td>2037</td>
-<td>149.9</td>
-<td>36.9</td>
-<td>1469.2</td>
+<th>rev. 13: 20 % grants, current rates (base)</th>
+<td>2038</td>
+<td>149.8</td>
+<td>38.1</td>
+<td>1602.4</td>
+</tr>
+<tr>
+<th>EU grants 0</th>
+<td>2038</td>
+<td>150.0</td>
+<td>39.5</td>
+<td>1546.3</td>
 </tr>
 <tr>
 <th>rates +1 pt</th>
-<td>2037</td>
-<td>149.9</td>
-<td>48.1</td>
-<td>1469.2</td>
-</tr>
-<tr>
-<th>EU grants 20 % (rev. 13)</th>
-<td>2037</td>
-<td>150.0</td>
-<td>35.5</td>
-<td>1522.1</td>
+<td>2038</td>
+<td>149.8</td>
+<td>49.6</td>
+<td>1602.4</td>
 </tr>
 </tbody>
 </table>
@@ -15519,7 +15851,7 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+1 pt on rates adds EUR 11.2 m of interest in 2035
+<pre>+1 pt on rates adds EUR 11.5 m of interest in 2035
 </pre>
 </div>
 </div>
@@ -15546,8 +15878,9 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <th></th>
 <th>input</th>
 <th>notebook 01 (File 4)</th>
-<th>notebook 04</th>
-<th>financial model</th>
+<th>notebook 04 §10 (rev. 13, base)</th>
+<th>notebook 04 §10.3 (File 4 conventions)</th>
+<th>notes/financial-model.md</th>
 </tr>
 </thead>
 <tbody>
@@ -15555,19 +15888,22 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <th>0</th>
 <td>Fleet baseline</td>
 <td>2,210</td>
-<td>2,210 (2,239 as a scenario)</td>
-<td>2,239 in rev. 13; 2,210 per D1</td>
+<td>2,239</td>
+<td>2,210</td>
+<td>2,239</td>
 </tr>
 <tr>
 <th>1</th>
-<td>Bus life (years)</td>
-<td>13</td>
-<td>13 (retrofit model); 13 in the aligned port</td>
-<td>12 in rev. 13; 13 per D2</td>
+<td>E-bus life / renewals 2031-35</td>
+<td>13 years</td>
+<td>12 years / 329</td>
+<td>13 years / 174</td>
+<td>12 years / 329</td>
 </tr>
 <tr>
 <th>2</th>
 <td>E-buses 2026 / 2027</td>
+<td>70 / 65</td>
 <td>70 / 65</td>
 <td>70 / 65</td>
 <td>70 / 65</td>
@@ -15576,36 +15912,33 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <th>3</th>
 <td>Charger per point (EUR k)</td>
 <td>110.0</td>
-<td>110.0</td>
+<td>110</td>
+<td>110</td>
 <td>110</td>
 </tr>
 <tr>
 <th>4</th>
-<td>CNG bus price (EUR k)</td>
-<td>310.0</td>
-<td>310.0</td>
-<td>300 (cohorts)</td>
+<td>Price growth</td>
+<td>none (constant 2025 EUR)</td>
+<td>2%/yr</td>
+<td>0%/yr</td>
+<td>2%/yr</td>
 </tr>
 <tr>
 <th>5</th>
-<td>Price growth</td>
-<td>none (constant 2025 EUR)</td>
-<td>none</td>
-<td>2 %/yr in rev. 13; none per fix list</td>
+<td>EU grants on depot works</td>
+<td>not modelled</td>
+<td>20%</td>
+<td>0%</td>
+<td>20%</td>
 </tr>
 <tr>
 <th>6</th>
-<td>EU grants</td>
-<td>not modelled</td>
-<td>0 in base, 20 % sensitivity</td>
-<td>20 % in rev. 13; 0 per fix list</td>
-</tr>
-<tr>
-<th>7</th>
-<td>Peak buses (File 2)</td>
-<td>2034</td>
-<td>2034</td>
-<td>not used</td>
+<td>Retrofit model (sections 1-9)</td>
+<td>-</td>
+<td>charger EUR 110k, 13-year CNG life, peak buses...</td>
+<td>-</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
@@ -15615,12 +15948,13 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | B6: notebooks 01 and 04 use the same charger cost, deliveries and peak buses
+<pre>CHECK PASS | R5: section 10's base inputs equal rev. 13 as documented
+CHECK PASS | B6: notebooks 01 and 04 use the same charger cost, deliveries and peak buses
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>True</pre>
 </div>
@@ -15650,7 +15984,7 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-python"><pre><span></span><span class="n">LEASE_RATE</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Lessor financing rate (annual)"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"low"</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s2">"base"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">},</span> <span class="s2">"A"</span><span class="p">,</span>
@@ -15744,183 +16078,183 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <tr>
 <th>most realistic, all owned</th>
 <th>base</th>
-<td>2037</td>
-<td>41.6</td>
-<td>149.9</td>
+<td>2038</td>
+<td>42.4</td>
+<td>149.8</td>
 <td>0.0</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>36.9</td>
+<td>38.1</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th rowspan="3" valign="top">25 % of buses leased</th>
 <th>low</th>
 <td>2037</td>
-<td>45.1</td>
-<td>149.6</td>
-<td>265.0</td>
-<td>28.2</td>
-<td>6.4</td>
-<td>30.7</td>
+<td>46.1</td>
+<td>149.8</td>
+<td>302.1</td>
+<td>32.2</td>
+<td>7.3</td>
+<td>31.3</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>base</th>
 <td>2037</td>
-<td>45.1</td>
-<td>149.6</td>
-<td>265.0</td>
-<td>29.9</td>
-<td>6.8</td>
-<td>30.7</td>
+<td>46.1</td>
+<td>149.8</td>
+<td>302.1</td>
+<td>34.1</td>
+<td>7.7</td>
+<td>31.3</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>high</th>
 <td>2037</td>
-<td>45.1</td>
-<td>149.6</td>
-<td>265.0</td>
-<td>31.6</td>
-<td>7.2</td>
-<td>30.7</td>
+<td>46.1</td>
+<td>149.8</td>
+<td>302.1</td>
+<td>36.0</td>
+<td>8.2</td>
+<td>31.3</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th rowspan="3" valign="top">50 % of buses leased</th>
 <th>low</th>
-<td>2036</td>
-<td>48.1</td>
-<td>145.1</td>
-<td>551.1</td>
-<td>58.7</td>
-<td>13.3</td>
-<td>22.7</td>
+<td>2037</td>
+<td>47.7</td>
+<td>128.9</td>
+<td>615.9</td>
+<td>65.6</td>
+<td>14.9</td>
+<td>21.7</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>base</th>
-<td>2036</td>
-<td>48.1</td>
-<td>145.1</td>
-<td>551.1</td>
-<td>62.2</td>
-<td>14.1</td>
-<td>22.7</td>
+<td>2037</td>
+<td>47.7</td>
+<td>128.9</td>
+<td>615.9</td>
+<td>69.5</td>
+<td>15.7</td>
+<td>21.7</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>high</th>
-<td>2036</td>
-<td>48.1</td>
-<td>145.1</td>
-<td>551.1</td>
-<td>65.7</td>
-<td>14.9</td>
-<td>22.7</td>
+<td>2037</td>
+<td>47.7</td>
+<td>128.9</td>
+<td>615.9</td>
+<td>73.5</td>
+<td>16.6</td>
+<td>21.7</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th rowspan="3" valign="top">depots as a service (100 %)</th>
 <th>low</th>
-<td>2036</td>
-<td>48.1</td>
-<td>109.9</td>
-<td>486.1</td>
-<td>51.8</td>
-<td>11.7</td>
-<td>25.9</td>
+<td>2037</td>
+<td>47.7</td>
+<td>138.0</td>
+<td>491.2</td>
+<td>52.3</td>
+<td>11.8</td>
+<td>30.1</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>base</th>
-<td>2036</td>
-<td>48.1</td>
-<td>109.9</td>
-<td>486.1</td>
-<td>54.8</td>
-<td>12.4</td>
-<td>25.9</td>
+<td>2037</td>
+<td>47.7</td>
+<td>138.0</td>
+<td>491.2</td>
+<td>55.4</td>
+<td>12.5</td>
+<td>30.1</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>high</th>
-<td>2036</td>
-<td>48.1</td>
-<td>109.9</td>
-<td>486.1</td>
-<td>58.0</td>
-<td>13.1</td>
-<td>25.9</td>
+<td>2037</td>
+<td>47.7</td>
+<td>138.0</td>
+<td>491.2</td>
+<td>58.6</td>
+<td>13.3</td>
+<td>30.1</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th rowspan="3" valign="top">50 % buses leased + depots as a service</th>
 <th>low</th>
-<td>2036</td>
-<td>48.1</td>
-<td>37.4</td>
-<td>1037.2</td>
-<td>110.5</td>
-<td>25.0</td>
-<td>8.6</td>
+<td>2037</td>
+<td>47.7</td>
+<td>51.5</td>
+<td>1107.1</td>
+<td>118.0</td>
+<td>26.7</td>
+<td>10.8</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>base</th>
-<td>2036</td>
-<td>48.1</td>
-<td>37.4</td>
-<td>1037.2</td>
-<td>117.0</td>
-<td>26.5</td>
-<td>8.6</td>
+<td>2037</td>
+<td>47.7</td>
+<td>51.5</td>
+<td>1107.1</td>
+<td>124.9</td>
+<td>28.3</td>
+<td>10.8</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>high</th>
-<td>2036</td>
-<td>48.1</td>
-<td>37.4</td>
-<td>1037.2</td>
-<td>123.7</td>
-<td>28.0</td>
-<td>8.6</td>
+<td>2037</td>
+<td>47.7</td>
+<td>51.5</td>
+<td>1107.1</td>
+<td>132.1</td>
+<td>29.9</td>
+<td>10.8</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th rowspan="3" valign="top">50 % leased + depots as a service, 340 buses/yr</th>
 <th>low</th>
 <td>2034</td>
-<td>58.1</td>
-<td>72.1</td>
-<td>1091.3</td>
-<td>116.3</td>
-<td>26.3</td>
-<td>11.6</td>
+<td>57.5</td>
+<td>87.9</td>
+<td>1224.1</td>
+<td>130.4</td>
+<td>29.5</td>
+<td>15.0</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>base</th>
 <td>2034</td>
-<td>58.1</td>
-<td>72.1</td>
-<td>1091.3</td>
-<td>123.1</td>
-<td>27.9</td>
-<td>11.6</td>
+<td>57.5</td>
+<td>87.9</td>
+<td>1224.1</td>
+<td>138.1</td>
+<td>31.3</td>
+<td>15.0</td>
 <td>chargers</td>
 </tr>
 <tr>
 <th>high</th>
 <td>2034</td>
-<td>58.1</td>
-<td>72.1</td>
-<td>1091.3</td>
-<td>130.2</td>
-<td>29.5</td>
-<td>11.6</td>
+<td>57.5</td>
+<td>87.9</td>
+<td>1224.1</td>
+<td>146.0</td>
+<td>33.1</td>
+<td>15.0</td>
 <td>chargers</td>
 </tr>
 </tbody>
@@ -15932,12 +16266,12 @@ CHECK PASS | Most realistic year differs by at most one year between baselines |
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Lease levers at zero reproduce the most realistic case
-CHECK PASS | Leasing pulls the 100 % year earlier than owning everything | best 2034 vs 2037 owned
+CHECK PASS | Leasing pulls the 100 % year earlier than owning everything | best 2034 vs 2038 owned
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>True</pre>
 </div>
@@ -15960,7 +16294,7 @@ CHECK PASS | Leasing pulls the 100 % year earlier than owning everything | best 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-python"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ASSUMPTIONS</span><span class="p">)[[</span><span class="s2">"variable"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">,</span> <span class="s2">"evidence"</span><span class="p">]])</span>
@@ -16304,14 +16638,14 @@ CHECK PASS | Leasing pulls the 100 % year earlier than owning everything | best 
 <tr>
 <th>38</th>
 <td>Financial model rev. 13 inputs</td>
-<td>{'target_year': 2033, 'fleet_total': 2210, 'h2...</td>
+<td>{'target_year': 2033, 'fleet_total': 2239, 'h2...</td>
 <td>D</td>
 <td>notes/financial-model.md (PR #20), sheet Assum...</td>
 </tr>
 <tr>
 <th>39</th>
-<td>Financial model aligned with notebook 01 (fix ...</td>
-<td>{'fleet_total': 2210, 'ebuses_2025': 452, 'esc...</td>
+<td>Financial model on File 4's conventions (compa...</td>
+<td>{'target_year': 2033, 'fleet_total': 2210, 'h2...</td>
 <td>D</td>
 <td>D1 fleet 2,210; D2 13-year life, so e-buses re...</td>
 </tr>
@@ -16324,27 +16658,20 @@ CHECK PASS | Leasing pulls the 100 % year earlier than owning everything | best 
 </tr>
 <tr>
 <th>41</th>
-<td>Fleet baselines kept as scenarios</td>
-<td>{'2,239 (EMT accounts, financial model)': {'fl...</td>
-<td>V</td>
-<td>EMT 2025 accounts press summary (456 / 10 / 1,...</td>
-</tr>
-<tr>
-<th>42</th>
 <td>Lessor financing rate (annual)</td>
 <td>{'low': 0.04, 'base': 0.05, 'high': 0.06}</td>
 <td>A</td>
 <td>No published lessor rate: EMT's 2011/2012 leas...</td>
 </tr>
 <tr>
-<th>43</th>
+<th>42</th>
 <td>Lease and charging-as-a-service term (years)</td>
 <td>12</td>
 <td>V</td>
 <td>EMT's own lease tenders: 'La duración del cont...</td>
 </tr>
 <tr>
-<th>44</th>
+<th>43</th>
 <td>Regional subsidy to EMT, 2026 (EUR m)</td>
 <td>441.5</td>
 <td>V</td>
@@ -16679,51 +17006,69 @@ Not modelled here:
 </tr>
 <tr>
 <th>46</th>
-<td>Tornado: every lever tested in both directions</td>
+<td>D9: section 10 runs on rev. 13 (the base equal...</td>
 <td>PASS</td>
 <td></td>
 </tr>
 <tr>
 <th>47</th>
-<td>Most realistic case is later than the plan</td>
+<td>Tornado: every lever tested in both directions</td>
 <td>PASS</td>
-<td>2037 vs 2033</td>
+<td></td>
 </tr>
 <tr>
 <th>48</th>
+<td>Most realistic case is later than the plan</td>
+<td>PASS</td>
+<td>2038 vs 2033</td>
+</tr>
+<tr>
+<th>49</th>
 <td>Stress test never writes to File_1-4 (suppleme...</td>
 <td>PASS</td>
 <td>printed only</td>
 </tr>
 <tr>
-<th>49</th>
-<td>Both baselines reach 100 % in 2033 when uncons...</td>
-<td>PASS</td>
-<td>2,239: 2033, 2,210: 2033</td>
-</tr>
-<tr>
 <th>50</th>
-<td>Most realistic year differs by at most one yea...</td>
+<td>R4: the 2030 target is not reached in 2030 onc...</td>
 <td>PASS</td>
-<td>{'2,239 (EMT accounts, financial model)': 2037...</td>
+<td>100 % in 2031</td>
 </tr>
 <tr>
 <th>51</th>
+<td>Both models reach 100 % in 2033 when unconstra...</td>
+<td>PASS</td>
+<td>rev. 13 (base): 2033, File 4 conventions (comp...</td>
+</tr>
+<tr>
+<th>52</th>
+<td>Most realistic year differs by at most two yea...</td>
+<td>PASS</td>
+<td>{'rev. 13 (base)': 2038, 'File 4 conventions (...</td>
+</tr>
+<tr>
+<th>53</th>
+<td>R5: section 10's base inputs equal rev. 13 as ...</td>
+<td>PASS</td>
+<td></td>
+</tr>
+<tr>
+<th>54</th>
 <td>B6: notebooks 01 and 04 use the same charger c...</td>
 <td>PASS</td>
 <td></td>
 </tr>
 <tr>
-<th>52</th>
+<th>55</th>
 <td>Lease levers at zero reproduce the most realis...</td>
 <td>PASS</td>
 <td></td>
 </tr>
 <tr>
-<th>53</th>
+<th>56</th>
 <td>Leasing pulls the 100 % year earlier than owni...</td>
 <td>PASS</td>
-<td>best 2034 vs 2037 owned</td>
+<td>best 2034 vs 2038 owned</td>
 </tr>
 </tbody>
 </table>
@@ -16734,7 +17079,7 @@ Not modelled here:
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-54 PASS / 0 FAIL
+57 PASS / 0 FAIL
 
 Deliverable CSVs in outputs/ (this notebook writes none): ['File_1.csv', 'File_2.csv', 'File_3.csv', 'File_4.csv']
 </pre>
