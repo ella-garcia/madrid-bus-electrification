@@ -76,8 +76,10 @@ Closed:
 - [x] Bus type per line: evidence first (line 34) + proxy, with a low / high bracket — §4
 - [x] Depot connection MW: Sanchinarro and La Elipa evidenced (planned), the other three estimated, with low / high hypotheses — §6
 - [x] Benchmark fleet, targets, charging models and grid factors for Helsinki, Paris and London — §9 (Berlin and Brussels not covered)
+- [x] Spain's 2025 grid factor: 108.4 g/kWh verified against Red Eléctrica's REData (national 2025, 0.1084 t/MWh) — §0
+- [x] Notebook 04 research questions (checked 23 Nov 2026): no CNG-to-battery kit exists for EMT's city buses; grid sensitivity 37.1 g/kWh by 2035 (PNIEC 2030, national basis); no EMT tender after 2027 yet; conversions charge at most 150 kW by plug; storage EUR 300/kWh installed, 85 % round trip; reserve buses 130 km/yr (proxy); lease term 12 years (EMT's own tenders)
 
 Still open (stated in the report, not blocking):
-- [ ] Spain's 2025 grid factor (108.4 g/kWh) is not printed in REE's 2025 press note, so it is labelled P
+- [ ] Lessor rate for leases: none published, so notebook 04 sets it above Spain's 10-year yield (3.802 %) and sweeps 4–6 %
 - [ ] Denmark's grid CO₂ factor: Copenhagen stays out of File 1 until one is sourced
-- [ ] No sourced unit price for terminus chargers or for grid reinforcement at Critical depots: listed as capex exclusions in §8
+- [ ] No sourced price for grid reinforcement at Critical depots: listed as a capex exclusion in §8 (terminus chargers are now priced in notebook 04 §9.2: 18 points, about EUR 9.5 M, outside File 4)
