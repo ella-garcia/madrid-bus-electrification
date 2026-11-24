@@ -4,7 +4,7 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
 
 - **Source workbook:** Claude Sheet "EMT Madrid – Financial Baseline 2023–2027" (https://claude.ai/artifact/Pr5MWpCHY2Naa2MXHhuZRk). It's private until shared with the team.
 - **Snapshot:** workbook revision 13, 23 November 2026.
-- **Aligned values:** the notebooks run this model with the team decisions of 23 Nov 2026 (D1–D4, constant prices, no grants in the base). Section 0 lists every change and its effect; the workbook itself is still revision 13.
+- **Which values the notebooks use (D9, 24 Nov 2026):** notebook 04 §10 runs this model at revision 13 exactly as documented here; the pitch and the report quote it. File 4 (notebook 01) keeps its own conventions, listed in section 0.
 - **Units:** € millions (€M), excluding VAT, unless a row says otherwise. Bus prices are in € thousands (€k).
 - **Data types used below:**
   - **Official**: taken directly from an EMT, City of Madrid, Comunidad de Madrid, EIB or tender document.
@@ -23,36 +23,35 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
 
 ---
 
-## 0. Alignment with the notebooks (team decisions, 23 Nov 2026)
+## 0. Revision 13 and File 4 (D9, 24 Nov 2026)
 
-Notebook 04 §10 ports revision 13 exactly (check: EUR 1,943.5M and 100 % in 2033), then runs every case on these aligned values, read from notebook 01's `nb01_params.json` so the two notebooks cannot drift apart.
+Notebook 04 §10 runs this model at revision 13 as documented (check: EUR 1,943.5M and 100 % in 2033), and every stress test, leasing case and deck figure there uses it. File 4 cannot take revision 13's values: the brief fixes File 4's capex in constant 2025 euros, so the 2 %/yr price growth cannot enter it, and takes the fleet from the register, which gives 2,210 buses. File 4's conventions (D1–D4) are therefore run in notebook 04 §10.3 as a comparison only.
 
-| Input | Revision 13 | Aligned (notebooks) | Why |
-|---|---|---|---|
-| `fleet_total` / `ebuses_2025` | 2,239 / 456 | **2,210 / 452** (2,239 kept as a scenario) | D1: fleet register = City of Madrid's official total |
-| `ebus_life_years` | 12 | **13** | D2: EMT's amortisation period |
-| `ebuses_to_renew_2031_35` | 329 | **174** | D2: register e-buses aged 3–8 at end 2025, which reach 13 years in 2031–35 |
-| `ebuses_added_2026` / `2027` | 70 / 65 | 70 / 65 (unchanged; 50 in 2027 as a sensitivity) | D3: EMT budgets |
-| `charge_cost_retrofit_base_keur` | 110 | 110 (unchanged; 57 and 203 as sensitivities) | D4: Sanchinarro award incl. grid works |
-| `price_escalation` | 2 %/yr | **0** (constant 2025 EUR) | Matches File 4, which is in constant 2025 EUR |
-| `eu_grant_share_depot` | 20 % | **0 in the base**, 20 % as a sensitivity | No grant is awarded for 2027+ |
-| `eib_rate` / `green_bond_coupon` | 3.0 % / 3.6 % | unchanged; **+1 pt** as a sensitivity | Rate risk for the report |
-
-**Effect (notebook 04 §10):**
-
-| Case | Revision 13 | Aligned |
+| Input | Revision 13 (this note, notebook 04 §10) | File 4 (notebook 01) |
 |---|---|---|
-| Model as built (2033 target, no limits): programme capex 2026–35 | EUR 1,943.5M | EUR 1,696.6M |
-| Most realistic case (230 buses/yr, EUR 150M/yr borrowing, 1-year depot slips): 100 % year | 2038 | **2037** on both baselines |
-| Interest in 2035, most realistic case | — | EUR 36.9M; **EUR 48.1M at +1 pt** (+EUR 11.2M) |
-| EU grants at 20 % instead of 0, most realistic case | — | Same 100 % year (2037); interest EUR 35.5M; borrowing still at the EUR 150M/yr cap |
+| Fleet at end 2025 | 2,239 (EMT accounts: 456 / 10 / 1,773) | 2,210 (fleet register: 452 / 10 / 1,748) |
+| E-bus life / renewals 2031–35 | 12 years / 329 | 13 years / 174 |
+| Bus prices | +2 %/yr growth | constant 2025 EUR |
+| EU grants on depot works | 20 % | none |
+| E-buses added 2026 / 2027 | 70 / 65 | 70 / 65 |
+| Charger cost per position | EUR 110k | EUR 110k |
+
+**Same cases on both (notebook 04 §10.3):**
+
+| Case | Revision 13 | File 4 conventions |
+|---|---|---|
+| Model as built (2033 target, no limits): programme capex 2026–35 | EUR 1,943.5M, peak EUR 312.6M (2028) | EUR 1,696.6M |
+| Likely capacity, no delays (230 buses/yr, EUR 150M/yr borrowing): 100 % year | 2037 (EUR 1,684.6M to 2035) | 2037 |
+| Most realistic (likely capacity plus 1-year depot slips): 100 % year | **2038** | 2037 |
+| Interest in 2035, most realistic case | EUR 38.1M; EUR 49.6M at +1 pt | EUR 36.9M |
+| EU grants at 0 instead of 20 %, most realistic case | Same 100 % year (2038); interest EUR 39.5M | — |
 
 **File 4 and the three dates (notebook 01 §8, round 2, 24 Nov 2026).**
 
 - **D8, no gas purchases.** Neither File 4 scenario buys a gas bus: no gas-bus order for 2026 or later is evidenced, and EMT's 2026 and 2027 budgets buy e-buses only. A worn gas bus keeps running until an e-bus replaces it. S0 and S1 are now identical in 2026.
 - **Effect on File 4.** S0 capex 2026–35 is EUR 1,390.6M (was 1,367.8M) and S0 reaches 94.9 % in 2035 (was 92.4 %): without the 55 gas buses of 2026, older gas buses reach 13 years sooner and are replaced by e-buses from 2030. S1 is EUR 1,471.8M, unchanged. S1 minus S0: EUR 81.2M and 341.7 kt of CO₂ avoided, about EUR 238 per tonne (grid reinforcement excluded, nothing discounted).
 - **Three dates.** 2030 is not achievable (650 e-buses without a charging position). 2033 is the earliest credible year (about 285 e-buses a year from 2028, renewals included, and Las Tablas finished by 2031). If purchases stay at 165–200 a year, 100 % comes in 2037–2040 with gas buses running to about 17 years. On File 4's 13-year renewals, S0 reaches 100 % in 2036, with purchases peaking at 382 a year (2031).
-- **Notebook 04 §10** (this model, aligned): the most realistic case (230 buses a year, EUR 150M a year of borrowing, one-year slips) gives 2037, inside that range.
+- **Notebook 04 §10** (this model, revision 13): the most realistic case (230 buses a year, EUR 150M a year of borrowing, one-year slips) gives 2038, inside that range.
 
 ---
 
@@ -91,7 +90,7 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | Variable | Cell | Value | Unit | Type | Source / basis |
 |---|---|---|---|---|---|
 | `target_year` | B2 | 2033 | year | Scenario | 2030 = brief S1; 2033 = City/EMT goal; 2035 = slow case |
-| `fleet_total` | B3 | 2,239 | buses | Official | EMT 2025 accounts: 456 electric + 10 hydrogen + 1,773 CNG. CRTM quotes 2,215. **Notebooks: 2,210 (D1, section 0)** |
+| `fleet_total` | B3 | 2,239 | buses | Official | EMT 2025 accounts: 456 electric + 10 hydrogen + 1,773 CNG. CRTM quotes 2,215. **File 4: 2,210 (D1, section 0)** |
 | `h2_buses` | B4 | 10 | buses | Official | EMT 2025 accounts |
 | `ebuses_2025` | B5 | 456 | buses | Official | EMT 2025 accounts |
 | `ebuses_added_2026` | B6 | 70 | buses | Official | EMT 2026 budget (€47.7M) |
@@ -99,10 +98,10 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | `price_ebus_12m_keur` | B8 | 615 | €k | Official | Max price per bus, 2026-27 tender (Irizar €30.75M/50; Mercedes €24.6M/40) |
 | `price_ebus_18m_keur` | B9 | 800 | €k | Official | Solaris articulated, 2026-27 tender (€24M/30). Max price |
 | `artic_share` | B10 | 8% | % | Assumption | Share of articulated buses in purchases |
-| `price_escalation` | B11 | 2% | %/yr | Assumption | Nominal bus price growth. **Notebooks: 0 (constant 2025 EUR)** |
+| `price_escalation` | B11 | 2% | %/yr | Assumption | Nominal bus price growth. **File 4: 0 (constant 2025 EUR)** |
 | `price_cng_bus_keur` | B12 | 291 | €k | Calculated | €151.5M ÷ 520 CNG buses (2021-23 award). Comparison only |
-| `ebus_life_years` | B13 | 12 | years | Assumption | Life before renewal. **Notebooks: 13 (D2)** |
-| `ebuses_to_renew_2031_35` | B14 | 329 | buses | Official (plan) | EMT plan of 329 e-buses by end-2023 (2022 article); spread evenly 2031-35. **Notebooks: 174 (register, 13-year life)** |
+| `ebus_life_years` | B13 | 12 | years | Assumption | Life before renewal. **File 4: 13 (D2)** |
+| `ebuses_to_renew_2031_35` | B14 | 329 | buses | Official (plan) | EMT plan of 329 e-buses by end-2023 (2022 article); spread evenly 2031-35. **File 4 conventions: 174 (register, 13-year life)** |
 | `charging_capacity_2025` | B15 | =B5 (456) | buses | Calculated | EMT runs 456 e-buses on 313 charging points (some points serve >1 bus overnight) |
 | `charge_cost_retrofit_base_keur` | B16 | 110 | €k/position | Calculated | Sanchinarro: €12.58M ÷ 114 positions, incl. grid connection works and canopy |
 | `charge_cost_low_keur` | B17 | 57 | €k/position | Calculated | Carabanchel: €6.7M ÷ 118 positions (existing grid capacity) |
@@ -112,7 +111,7 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 | `km_per_bus_year` | B21 | =101,903,622 / B3 (≈45,513) | km | Calculated | 101.9M bus-km in 2025 (Carta de Servicios 2026) ÷ fleet |
 | `electricity_price` | B22 | 0.15 | €/kWh | Assumption | Replace with EMT's tariff if available |
 | `cng_cost_per_km` | B23 | 0.37 | €/km | Calculated | €28.8M CNG cost 2024 (official) ÷ ~77M CNG-km (our estimate). Was ~€0.58/km in 2023 |
-| `eu_grant_share_depot` | B24 | 20% | % | Assumption | Only data point: CEF-AFIF covered 37% at Sanchinarro (€4.69M). **Notebooks: 0 in the base, 20 % sensitivity** |
+| `eu_grant_share_depot` | B24 | 20% | % | Assumption | Only data point: CEF-AFIF covered 37% at Sanchinarro (€4.69M). **File 4 conventions: 0** |
 | `self_financing_meur` | B25 | 35 | €M/yr | Official | 2026 budget (PAIF) self-financing €35.3M |
 | `eib_share` | B26 | 50% | % | Assumption | Share of borrowing from the EIB. 2024 EIB loan covered 31% of a €161M project |
 | `eib_rate` | B27 | 3.0% | % | Assumption | |

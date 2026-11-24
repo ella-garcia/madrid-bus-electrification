@@ -46,7 +46,7 @@ requirements.txt # packages for running the notebooks locally
 | 8 | Scenarios S0 / S1 | File 4 (D2–D5, D8: no gas purchases); earliest credible year (2030 / 2033 / 2037–2040 at 165–200 buses a year; 2036 on 13-year renewals); gas and carbon exposure | Done |
 | 9 | Benchmark | File 1 (Helsinki, Paris, London); grid-factor basis table | Done |
 | 10 | Visualisation | HTML + static PNGs of views (i)–(iv) in `outputs/` | Done |
-| 11 | Decision log and assumptions register | every row Done or Dropped; D1–D8 | Done |
+| 11 | Decision log and assumptions register | every row Done or Dropped; D1–D9 | Done |
 | 12 | Final compliance cell | read-back of all four CSVs + cross-file checks | 46 PASS / 0 FAIL |
 
 All four notebooks are executed with saved outputs. Notebook 04 reads notebook 01's exports and File 4 parameters (`data_derived/nb01_params.json`), so both run on the same inputs.
