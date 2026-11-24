@@ -66,7 +66,59 @@ All four notebooks are executed with saved outputs. Notebook 04 reads notebook 0
 1. Open a notebook in Colab: **File → Open notebook → GitHub**, authorise private repos, pick this repo. To run locally instead, see [Run the notebooks locally](CONTRIBUTING.md#run-the-notebooks-locally).
 2. Work on your section in a branch (`section-4-line-model`, …) or a scratch copy; keep cells short and call helpers.
 3. Save back with **File → Save a copy in GitHub**, commit message `§4: peak_buses from supply data`, open a pull request.
-4. Before submission: merge everything into `main`, **Runtime → Restart and run all** in a clean runtime, confirm the final compliance cell shows 0 FAIL, then **File → Download → .ipynb** and commit `outputs/`.
+4. Before submission: merge everything into `main`, run all four notebooks in one runtime as described in [Run all four notebooks](#run-all-four-notebooks), confirm each notebook's final check cell shows 0 FAIL, then download the four `.ipynb` files and commit them with `outputs/`.
+
+## Run all four notebooks
+
+**Order matters.** Each notebook reads files written by an earlier one:
+
+| Order | Notebook | Reads | Writes |
+|---|---|---|---|
+| 1 | `02_Benchmark_GTFS` | peer-city GTFS feeds | `data_derived/benchmark_gtfs_intermediate.csv` |
+| 2 | `01_Madrid_Electrification_Main` | EMT data, notebook 02's benchmark file | `outputs/File_1-4.csv`, views, `data_derived/` tables incl. `nb01_params.json` |
+| 3 | `03_Exploratory_Questions` | EMT data, `outputs/File_1-4.csv` | printed answers; cleaned tables in `data_derived/` that no other notebook reads |
+| 4 | `04_Scenario_Lab` | notebook 01's `data_derived/` tables, `outputs/File_1-4.csv`, `notes/` | printed scenarios only; writes no files |
+
+Notebooks 02, 03 and 04 also read notebook 01's parameter cell straight from `notebooks/01_Madrid_Electrification_Main.ipynb`, so all four must run inside a full copy of the repo.
+
+**Locally.** Do the one-time setup in [Run the notebooks locally](CONTRIBUTING.md#run-the-notebooks-locally) (`.venv`, `requirements.txt`, the team's GTFS snapshot at `data_raw/emt_gtfs.zip`). Then either open `jupyter lab notebooks/` and use **Run → Run All Cells** on each notebook in the order above, or run them all from the repo folder:
+
+```bash
+cd notebooks && for nb in 02_Benchmark_GTFS 01_Madrid_Electrification_Main 03_Exploratory_Questions 04_Scenario_Lab; do jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 "$nb.ipynb" || break; done
+```
+
+**In Colab.** Opening each notebook from GitHub and pressing *Run all* does not work: every Colab notebook runs on its own machine, so the files one notebook writes never reach the next. Run all four inside **one** runtime instead:
+
+1. Open a new, blank Colab notebook.
+2. Add a GitHub token as a Colab secret named `GH_TOKEN` (key icon in the left sidebar) and give the notebook access to it. The repo is private; the secret keeps the token out of the notebook. Never paste a token into a cell.
+3. Clone the repo to the folder the notebooks expect, `/content/datathon`:
+
+   ```python
+   from google.colab import userdata
+   import subprocess
+   REPO = "github.com/ella-garcia/madrid-bus-electrification.git"
+   subprocess.run(["git", "clone", f"https://{userdata.get('GH_TOKEN')}@{REPO}", "/content/datathon"], check=True)
+   subprocess.run(["git", "-C", "/content/datathon", "remote", "set-url", "origin", f"https://{REPO}"], check=True)  # drop the token from .git/config
+   ```
+
+4. Upload the team's GTFS snapshot (from the [shared Drive folder](https://drive.google.com/drive/folders/18E-C6Zx7Kij4J3WnIfDKsCHC2hTds4Rm)):
+
+   ```python
+   import os, shutil
+   from google.colab import files
+   os.makedirs("/content/datathon/data_raw", exist_ok=True)
+   for name in files.upload():          # pick emt_gtfs.zip
+       shutil.move(name, "/content/datathon/data_raw/emt_gtfs.zip")
+   ```
+
+5. Run the four notebooks in order (this takes a while and stops at the first failure):
+
+   ```python
+   %cd /content/datathon/notebooks
+   !for nb in 02_Benchmark_GTFS 01_Madrid_Electrification_Main 03_Exploratory_Questions 04_Scenario_Lab; do jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 $nb.ipynb || break; done
+   ```
+
+6. Check that notebook 01's data register shows checksum `62453fb95492` for `emt_gtfs.zip` and that every notebook's last check cell says 0 FAIL. Then download the four `.ipynb` files from `/content/datathon/notebooks/` and the `outputs/` folder, and commit them from your machine.
 
 ## Open items
 
