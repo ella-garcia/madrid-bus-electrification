@@ -10,21 +10,21 @@ Every value below is also logged with `assume()` in the notebooks, so it appears
 | city | Helsinki | | |
 | operator | HSL (Helsinki Regional Transport Authority) | V | HSL is the authority for the whole area |
 | reference_date | 2026-11-24 | A | Common peer day: the rolling feeds downloaded on 23 Nov 2026 no longer all cover Madrid's 17 Nov, so every GTFS peer uses the first regular Tuesday inside every feed (brief 4.4 allows a local day); inside the HSL feed's validity (10 Nov 2026 – 8 Jan 2027) |
-| n_bus_lines | 390 | D | HSL GTFS, every bus route active on the reference day |
-| daily_bus_km | 289,802.2 | D | HSL GTFS, `shape_dist_traveled` per trip (km) |
+| n_bus_lines | 390–391 | D | HSL GTFS, every bus route active on the reference day. HSL republishes its feed daily, so the count depends on the download date: 390 with the 23 Nov copy, 391 with the 24 Nov copy. File 1 holds the value of the run that wrote it |
+| daily_bus_km | ≈ 289,800 | D | HSL GTFS, `shape_dist_traveled` per trip (km): 289,802.2 with the 23 Nov copy, 289,833.0 with the 24 Nov copy (+0.01 %). File 1 holds the value of the run that wrote it |
 | fleet_total | 1,154 | D | 600 ÷ 0.52. HSL publishes no total |
 | ze_fleet | 600 | V | HSL "Electric buses" page, table for 2025 |
 | ze_share_pct | 52.0 | D | Computed in File 1: 600 ÷ 1,154 |
 | fleet_data_year | 2025 | | |
 | ze_target_year | 2035 | V | HSL: public transport in the region emission-free by 2035 |
 | charging_model | Mixed | V | HSL: depots at night and in daytime breaks, quick charging at some terminals |
-| energy_full_bev_mwh_day | 376.7 | D | Computed in File 1: 289,802.2 × 1.30 ÷ 1000 (brief factor) |
+| energy_full_bev_mwh_day | ≈ 376.7 | D | Computed in File 1: daily_bus_km × 1.30 ÷ 1000 (brief factor); 376.7 or 376.8 depending on the feed copy |
 | grid_co2_g_kwh | 26 | V | Fingrid, 2025 average for electricity consumed in Finland |
 
 ## Decisions taken with the team (20 Nov 2026)
 
 1. **Perimeter = whole HSL area.** The brief (§4.4) defines Helsinki as "HSL (whole HSL area)". PR #9 had used Helsinki city only, copying the Paris method. That figure is now a printed sensitivity, never written to File 1.
-   - Whole HSL area: 390 lines, 289,802 km/day, 19,286 trips (Tue 24 Nov 2026).
+   - Whole HSL area: about 390 lines and 289,800 km/day on Tue 24 Nov 2026 (exact values in File 1; they move slightly with each daily feed).
    - Helsinki city only: 183 lines, 131,418 km/day (45 % of the area).
    - HSL's fleet figures cover the whole area, so the row is now consistent.
 2. **Zero-emission fleet = 600 and total = 1,154.** HSL's page disagrees with itself: the table says 600 electric buses (52 %), the text says "approximately 650", "around half". We use the table.

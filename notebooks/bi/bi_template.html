@@ -607,11 +607,20 @@ function drawRoad() {
     dec.push([fp - 1 <= 2026 ? "Now" : fp - 1, `Contract zero-emission buses above today's pace from ${fp}: up to ${fmt(peak)} in ${py}, against ${fmt(pace, 0)} a year in 2021–25 (${sLab(roadScen)}).`]);
   }
   if (hasYears && depots.length) {
+    const CLOSING = META.closing_depots || {};
     depots.map(d => {
-      const y = PLAN_YEARS.find(y => (depotMWby(y)[d.depot_name] || 0) > +d.connection_mw_estimate);
-      return y && {d, y, mw: depotMWby(2035)[d.depot_name] || 0};
-    }).filter(Boolean).sort((a, b) => a.y - b.y).slice(0, 3).forEach(({d, y, mw}) =>
-      dec.push([y - 2 <= 2026 ? "Now" : y - 2, `Start grid reinforcement at ${d.depot_name}: lines converting in ${y} take it past its ${fmt(+d.connection_mw_estimate, 1)} MW connection (${d.connection_evidence.toLowerCase()}); ${fmt(mw, 1)} MW managed at full conversion.`]));
+      const conn = +d.connection_mw_estimate, base = depotMWby(2025)[d.depot_name] || 0;
+      const y = PLAN_YEARS.find(y => (depotMWby(y)[d.depot_name] || 0) > conn);
+      return y && {d, y, conn, base, mw: depotMWby(2035)[d.depot_name] || 0};
+    }).filter(Boolean).sort((a, b) => a.y - b.y).slice(0, 3).forEach(({d, y, conn, base, mw}) => {
+      const when = y - 2 <= 2026 ? "Now" : y - 2, n = d.depot_name;
+      if (CLOSING[n])
+        dec.push([when, `Do not reinforce ${n}: ${CLOSING[n]} is planned to replace it. Have ${CLOSING[n]} ready before ${n}'s lines convert in ${d.conversion_year} (${fmt(mw, 1)} MW managed).`]);
+      else if (base > conn + 0.05)
+        dec.push(["Now", `Confirm the real connection at ${n}: the lines already electric in 2025 need ${fmt(base, 1)} MW managed, above its ${fmt(conn, 1)} MW estimate.`]);
+      else
+        dec.push([when, `Start grid reinforcement at ${n}: lines converting in ${y} take it past its ${fmt(conn, 1)} MW connection (${d.connection_evidence.toLowerCase()}); ${fmt(mw, 1)} MW managed at full conversion.`]);
+    });
     const est = depots.filter(d => d.connection_evidence === "Estimated");
     if (est.length) dec.push(["Now", `Confirm grid capacity with the distributor at ${est.length} depot${est.length > 1 ? "s" : ""} whose connection is estimated (${est.map(d => d.depot_name).join(", ")}); readiness there is indicative.`]);
   }
