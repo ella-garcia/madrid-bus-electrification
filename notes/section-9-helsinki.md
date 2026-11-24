@@ -84,8 +84,8 @@ Notebook 01 §9:
 - HSL GTFS snapshot `hsl_gtfs.zip`, valid 2026-11-10 to 2027-01-08, sha256 `54e907e2e93f…` (data register): https://infopalvelut.storage.hsldev.com/gtfs/hsl.zip
 - Statistics Finland emission coefficients, table 14qt (alternative factor): https://pxdata.stat.fi/PXWeb/pxweb/en/StatFin/StatFin__ehk/14qt.px
 
-## Still open
+## Status (24 Nov 2026)
 
-- Assembling File 1 itself (main notebook §9 TODO): merge `benchmark_gtfs_intermediate.csv` with `BENCH_CITED`, then compute `ze_share_pct` and `energy_full_bev_mwh_day`.
-- **Paris perimeter, for the Paris owner:** the brief says "former RATP bus network (Paris and inner ring)". The merged Paris row counts km inside the City of Paris only, so it may be too narrow.
-- Not yet run in Colab.
+- File 1 is assembled in the main notebook §9: the GTFS benchmark merged with the cited figures, with `ze_share_pct` and `energy_full_bev_mwh_day` computed.
+- Paris perimeter: File 1 uses every km of the lines serving the City of Paris (Paris and inner ring, as the brief says); km inside Paris only is printed as a sensitivity in notebook 02.
+- Run end to end locally; the final Colab "Restart and run all" pass is the last step before submission (README workflow).
