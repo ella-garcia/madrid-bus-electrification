@@ -33,20 +33,20 @@ requirements.txt # packages for running the notebooks locally
 
 ## Main notebook sections (dependency order)
 
-| § | Section | Output | Status (23 Nov 2026) |
+| § | Section | Output | Status (24 Nov 2026) |
 |---|---|---|---|
-| 0 | Setup and fixed parameters | parameter table; CO₂ factors with evidence (grid factor labelled P) | Done |
+| 0 | Setup and fixed parameters | parameter table; CO₂ factors with evidence (grid factor V, Red Eléctrica REData) | Done |
 | 1 | Data acquisition | data register | Done |
 | 2 | Reference day | Tue 17 Nov 2026 (kept and documented, D7); supply day 9 Jun 2026 | Done |
 | 3 | Fleet baseline 31 Dec 2025 | 2,210 (D1), S0 pace, age profile | Done |
 | 4 | Line model | File 2 metrics, per-bus and university sensitivities | Done |
 | 5 | Depot allocation | rule, alternatives, 2021 check, reserve reconciliation, deadheading | Done |
 | 6 | Depot power and readiness | File 3; needed MW under low / base / high; hot-day and N-line sensitivities; interim La Elipa-closed network | Done |
-| 7 | Prioritisation | completes File 2; cumulative bus cap per year (B5) | Done |
-| 8 | Scenarios S0 / S1 | File 4 (D2–D5); earliest credible year (2030 / 2033 / 2037–2040); gas and carbon exposure | Done |
+| 7 | Prioritisation | completes File 2; cumulative bus cap per year, 2027–29 evened around the La Elipa and Fuencarral floors | Done |
+| 8 | Scenarios S0 / S1 | File 4 (D2–D5, D8: no gas purchases); earliest credible year (2030 / 2033 / 2037–2040 at 165–200 buses a year; 2036 on 13-year renewals); gas and carbon exposure | Done |
 | 9 | Benchmark | File 1 (Helsinki, Paris, London); grid-factor basis table | Done |
 | 10 | Visualisation | HTML + static PNGs of views (i)–(iv) in `outputs/` | Done |
-| 11 | Decision log and assumptions register | every row Done or Dropped; D1–D7 | Done |
+| 11 | Decision log and assumptions register | every row Done or Dropped; D1–D8 | Done |
 | 12 | Final compliance cell | read-back of all four CSVs + cross-file checks | 46 PASS / 0 FAIL |
 
 All four notebooks are executed with saved outputs. Notebook 04 reads notebook 01's exports and File 4 parameters (`data_derived/nb01_params.json`), so both run on the same inputs.
@@ -101,14 +101,22 @@ cd notebooks && for nb in 02_Benchmark_GTFS 01_Madrid_Electrification_Main 03_Ex
    subprocess.run(["git", "-C", "/content/datathon", "remote", "set-url", "origin", f"https://{REPO}"], check=True)  # drop the token from .git/config
    ```
 
-4. Upload the team's GTFS snapshot (from the [shared Drive folder](https://drive.google.com/drive/folders/18E-C6Zx7Kij4J3WnIfDKsCHC2hTds4Rm)):
+4. Upload **only** the team's GTFS snapshot, `emt_gtfs.zip` (about 21 MB, from the [shared Drive folder](https://drive.google.com/drive/folders/18E-C6Zx7Kij4J3WnIfDKsCHC2hTds4Rm); if Drive shows a virus-scan page, click *Download anyway*). Do not upload the notebooks: the clone already has them. The cell refuses any other file:
 
    ```python
-   import os, shutil
+   import hashlib, os
    from google.colab import files
-   os.makedirs("/content/datathon/data_raw", exist_ok=True)
-   for name in files.upload():          # pick emt_gtfs.zip
-       shutil.move(name, "/content/datathon/data_raw/emt_gtfs.zip")
+   p = "/content/datathon/data_raw/emt_gtfs.zip"
+   os.makedirs(os.path.dirname(p), exist_ok=True)
+   up = files.upload()                  # pick emt_gtfs.zip only
+   name, data = next(iter(up.items()))
+   sha = hashlib.sha256(data).hexdigest()[:12]
+   assert sha == "62453fb95492", f"{name}: {len(data):,} bytes, checksum {sha} - not the team GTFS snapshot"
+   with open(p, "wb") as f:
+       f.write(data)
+   if os.path.exists(name):
+       os.remove(name)
+   print("OK:", len(data), "bytes, checksum", sha)
    ```
 
 5. Run the four notebooks in order (this takes a while and stops at the first failure):
@@ -118,7 +126,19 @@ cd notebooks && for nb in 02_Benchmark_GTFS 01_Madrid_Electrification_Main 03_Ex
    !for nb in 02_Benchmark_GTFS 01_Madrid_Electrification_Main 03_Exploratory_Questions 04_Scenario_Lab; do jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=1800 $nb.ipynb || break; done
    ```
 
-6. Check that notebook 01's data register shows checksum `62453fb95492` for `emt_gtfs.zip` and that every notebook's last check cell says 0 FAIL. Then download the four `.ipynb` files from `/content/datathon/notebooks/` and the `outputs/` folder, and commit them from your machine.
+6. Check that notebook 01's data register shows checksum `62453fb95492` for `emt_gtfs.zip` and that notebooks 01 and 04 end with 0 FAIL (no saved output should contain `CHECK FAIL`). Expect File 1's Helsinki and Paris km to differ slightly from `main`: both feeds are republished daily and downloaded fresh in Colab.
+7. Export read-only HTML copies (nothing is re-run) and download everything in one zip, then commit it from your machine:
+
+   ```python
+   %cd /content/datathon
+   !rm -f /content/colab_run.zip && mkdir -p outputs/notebooks_html
+   !jupyter nbconvert --to html --output-dir outputs/notebooks_html notebooks/0*.ipynb
+   !zip -qr /content/colab_run.zip notebooks/*.ipynb outputs
+   from google.colab import files
+   files.download("/content/colab_run.zip")
+   ```
+
+   The HTML files in `outputs/notebooks_html/` open in any browser with every output visible, so a reader does not need to run anything.
 
 ## Open items
 

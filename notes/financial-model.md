@@ -47,6 +47,13 @@ Notebook 04 §10 ports revision 13 exactly (check: EUR 1,943.5M and 100 % in 203
 | Interest in 2035, most realistic case | — | EUR 36.9M; **EUR 48.1M at +1 pt** (+EUR 11.2M) |
 | EU grants at 20 % instead of 0, most realistic case | — | Same 100 % year (2037); interest EUR 35.5M; borrowing still at the EUR 150M/yr cap |
 
+**File 4 and the three dates (notebook 01 §8, round 2, 24 Nov 2026).**
+
+- **D8, no gas purchases.** Neither File 4 scenario buys a gas bus: no gas-bus order for 2026 or later is evidenced, and EMT's 2026 and 2027 budgets buy e-buses only. A worn gas bus keeps running until an e-bus replaces it. S0 and S1 are now identical in 2026.
+- **Effect on File 4.** S0 capex 2026–35 is EUR 1,390.6M (was 1,367.8M) and S0 reaches 94.9 % in 2035 (was 92.4 %): without the 55 gas buses of 2026, older gas buses reach 13 years sooner and are replaced by e-buses from 2030. S1 is EUR 1,471.8M, unchanged. S1 minus S0: EUR 81.2M and 341.7 kt of CO₂ avoided, about EUR 238 per tonne (grid reinforcement excluded, nothing discounted).
+- **Three dates.** 2030 is not achievable (650 e-buses without a charging position). 2033 is the earliest credible year (about 285 e-buses a year from 2028, renewals included, and Las Tablas finished by 2031). If purchases stay at 165–200 a year, 100 % comes in 2037–2040 with gas buses running to about 17 years. On File 4's 13-year renewals, S0 reaches 100 % in 2036, with purchases peaking at 382 a year (2031).
+- **Notebook 04 §10** (this model, aligned): the most realistic case (230 buses a year, EUR 150M a year of borrowing, one-year slips) gives 2037, inside that range.
+
 ---
 
 ## 1. How the model fits together
