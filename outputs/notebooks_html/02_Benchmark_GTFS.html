@@ -7815,8 +7815,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Environment: runs as-is in Google Colab (Python 3.10+).</span>
-<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">pandas</span> <span class="n">numpy</span> <span class="n">pyproj</span> <span class="n">shapely</span> <span class="n">folium</span> <span class="n">plotly</span> <span class="n">kaleido</span> <span class="n">requests</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Environment: runs as-is in Google Colab (Python 3.10+).</span>
+<span class="o">%</span><span class="k">pip</span> install -q pandas numpy pyproj shapely folium plotly kaleido requests
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">zipfile</span><span class="o">,</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span><span class="o">,</span><span class="w"> </span><span class="nn">hashlib</span><span class="o">,</span><span class="w"> </span><span class="nn">textwrap</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">requests</span>
@@ -7845,15 +7845,8 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Note: you may need to restart the kernel to use updated packages.
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Run date 2026-11-24 | Python 3.13.1 | pandas 3.1.1 | numpy 2.5.5
-Folders: data_raw/, data_derived/, outputs/ under the repo root
+<pre>Run date 2026-11-24 | Python 3.13.18 | pandas 2.2.3 | numpy 2.4.6
+Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 </pre>
 </div>
 </div>
@@ -7878,7 +7871,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># ---- Data register: every downloaded or manually obtained source is logged here.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ---- Data register: every downloaded or manually obtained source is logged here.</span>
 <span class="n">DATA_REGISTER</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">note</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">manual</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -7953,7 +7946,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># The brief's fixed parameters are read out of notebook 01's own parameter cell, never copied here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The brief's fixed parameters are read out of notebook 01's own parameter cell, never copied here</span>
 <span class="c1"># (one source of truth for every number in brief section 4.5, including the CO2 factors and their evidence).</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">load_P_from_main_notebook</span><span class="p">():</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE</span><span class="p">,</span> <span class="s2">"notebooks"</span><span class="p">,</span> <span class="s2">"01_Madrid_Electrification_Main.ipynb"</span><span class="p">)</span>
@@ -7979,6 +7972,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8060,6 +8054,80 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -8083,7 +8151,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># ---- Generic GTFS helpers (shared logic with the benchmark notebook).</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ---- Generic GTFS helpers (shared logic with the benchmark notebook).</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">read_gtfs</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">tables</span><span class="o">=</span><span class="p">(</span><span class="s2">"agency"</span><span class="p">,</span><span class="s2">"routes"</span><span class="p">,</span><span class="s2">"trips"</span><span class="p">,</span><span class="s2">"stop_times"</span><span class="p">,</span><span class="s2">"calendar"</span><span class="p">,</span><span class="s2">"calendar_dates"</span><span class="p">,</span><span class="s2">"shapes"</span><span class="p">,</span><span class="s2">"feed_info"</span><span class="p">)):</span>
     <span class="n">feed</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
@@ -8177,7 +8245,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">CITIES</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">CITIES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1"># city: dict(feed landing page, operator perimeter, reference date, filter used); every eligible capital is listed</span>
     <span class="s2">"Helsinki"</span><span class="p">:</span>   <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://www.hsl.fi/en/hsl/open-data"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"HSL"</span><span class="p">,</span> <span class="n">ref_date</span><span class="o">=</span><span class="s2">"2026-11-24"</span><span class="p">,</span>
                        <span class="nb">filter</span><span class="o">=</span><span class="s2">"Every HSL bus route, extended route types 700-799 (HSL uses 701, 702, 704); whole HSL area"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
@@ -8206,6 +8274,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-aa662bfd-5593-4972-a976-ec2ab9ae8229">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8283,6 +8352,80 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-aa662bfd-5593-4972-a976-ec2ab9ae8229')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-aa662bfd-5593-4972-a976-ec2ab9ae8229 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-aa662bfd-5593-4972-a976-ec2ab9ae8229');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -8306,7 +8449,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">city_metrics</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">zip_path</span><span class="p">,</span> <span class="n">route_filter</span><span class="p">,</span> <span class="n">dist_unit_m</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">city_metrics</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">zip_path</span><span class="p">,</span> <span class="n">route_filter</span><span class="p">,</span> <span class="n">dist_unit_m</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""route_filter(feed) -&gt; set of route_ids in the perimeter. Returns n_bus_lines and daily_bus_km on the city's reference day."""</span>
     <span class="n">feed</span> <span class="o">=</span> <span class="n">read_gtfs</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span>
     <span class="n">ref</span> <span class="o">=</span> <span class="n">CITIES</span><span class="p">[</span><span class="n">city</span><span class="p">][</span><span class="s2">"ref_date"</span><span class="p">]</span>
@@ -8363,7 +8506,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Helsinki feed. HSL rebuilds it regularly, so fetch() pins the snapshot (date + sha256);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Helsinki feed. HSL rebuilds it regularly, so fetch() pins the snapshot (date + sha256);</span>
 <span class="c1"># the numbers below are reproducible only from that exact file.</span>
 <span class="n">HSL_GTFS</span> <span class="o">=</span> <span class="s2">"https://infopalvelut.storage.hsldev.com/gtfs/hsl.zip"</span>
 <span class="n">hel_zip</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="n">HSL_GTFS</span><span class="p">,</span> <span class="s2">"hsl_gtfs.zip"</span><span class="p">,</span>
@@ -8422,7 +8565,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">hel_feed</span> <span class="o">=</span> <span class="n">read_gtfs</span><span class="p">(</span><span class="n">hel_zip</span><span class="p">,</span> <span class="n">tables</span><span class="o">=</span><span class="p">(</span><span class="s2">"agency"</span><span class="p">,</span> <span class="s2">"routes"</span><span class="p">,</span> <span class="s2">"trips"</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">,</span> <span class="s2">"calendar_dates"</span><span class="p">,</span> <span class="s2">"stops"</span><span class="p">,</span> <span class="s2">"shapes"</span><span class="p">,</span> <span class="s2">"feed_info"</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">hel_feed</span> <span class="o">=</span> <span class="n">read_gtfs</span><span class="p">(</span><span class="n">hel_zip</span><span class="p">,</span> <span class="n">tables</span><span class="o">=</span><span class="p">(</span><span class="s2">"agency"</span><span class="p">,</span> <span class="s2">"routes"</span><span class="p">,</span> <span class="s2">"trips"</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">,</span> <span class="s2">"calendar_dates"</span><span class="p">,</span> <span class="s2">"stops"</span><span class="p">,</span> <span class="s2">"shapes"</span><span class="p">,</span> <span class="s2">"feed_info"</span><span class="p">))</span>
 <span class="n">_clean</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">hel_feed</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">obj</span> <span class="o">=</span> <span class="n">df</span>                                   <span class="c1"># read_gtfs reads every column as text</span>
@@ -8461,6 +8604,7 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8496,42 +8640,42 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 <tr>
 <th>1</th>
 <td>routes</td>
-<td>460</td>
+<td>457</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>trips</td>
-<td>444330</td>
+<td>459493</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>calendar</td>
-<td>8882</td>
+<td>9359</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>calendar_dates</td>
-<td>4158</td>
+<td>4261</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>5</th>
 <td>stops</td>
-<td>8413</td>
-<td>16333</td>
+<td>8406</td>
+<td>16319</td>
 <td>0</td>
 </tr>
 <tr>
 <th>6</th>
 <td>shapes</td>
-<td>497447</td>
+<td>494921</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -8545,16 +8689,90 @@ Folders: data_raw/, data_derived/, outputs/ under the repo root
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Helsinki: reference day inside the feed validity | feed valid 20261120 to 20270118
+<pre>CHECK PASS | Helsinki: reference day inside the feed validity | feed valid 20261123 to 20270121
 CHECK PASS | Helsinki: no exact duplicate trips
 CHECK PASS | Helsinki: every active bus trip has a shape
 CHECK PASS | Helsinki: feed has no frequencies.txt (trips are individual runs)
-19286 active bus trips | 390 bus routes | route types ['701', '702', '704'] | 2653 Helsinki city stops
+19292 active bus trips | 391 bus routes | route types ['701', '702', '704'] | 2646 Helsinki city stops
 </pre>
 </div>
 </div>
@@ -8579,7 +8797,7 @@ CHECK PASS | Helsinki: feed has no frequencies.txt (trips are individual runs)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">_ids</span><span class="p">,</span> <span class="n">_parts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">trip_id</span><span class="p">),</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">_ids</span><span class="p">,</span> <span class="n">_parts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">trip_id</span><span class="p">),</span> <span class="p">[]</span>
 <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">hel_zip</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"stop_times.txt"</span><span class="p">),</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">3_000_000</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
                           <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">"trip_id"</span><span class="p">,</span> <span class="s2">"stop_id"</span><span class="p">,</span> <span class="s2">"stop_sequence"</span><span class="p">,</span> <span class="s2">"departure_time"</span><span class="p">,</span> <span class="s2">"shape_dist_traveled"</span><span class="p">]):</span>
@@ -8636,6 +8854,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8676,11 +8895,85 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 </tr>
 <tr>
 <th>704</th>
-<td>405</td>
-<td>4397.1</td>
+<td>411</td>
+<td>4427.9</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -8705,7 +8998,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ht</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ht</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">_opts</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Serves Helsinki, km inside Helsinki"</span><span class="p">:</span>          <span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">serves_helsinki</span><span class="p">,</span> <span class="n">ht</span><span class="o">.</span><span class="n">km_in_helsinki</span><span class="p">),</span>
     <span class="s2">"  + half of the boundary-crossing segments"</span><span class="p">:</span>   <span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">serves_helsinki</span><span class="p">,</span> <span class="n">ht</span><span class="o">.</span><span class="n">km_in_helsinki</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ht</span><span class="o">.</span><span class="n">km_crossing</span><span class="p">),</span>
@@ -8750,6 +9043,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8806,12 +9100,86 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <tr>
 <th>4</th>
 <td>Whole HSL region</td>
-<td>390</td>
-<td>289802.2</td>
-<td>19286</td>
+<td>391</td>
+<td>289833.0</td>
+<td>19292</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -8826,6 +9194,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-8279b98a-4242-4a75-8733-80c969f75287">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9039,6 +9408,80 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-8279b98a-4242-4a75-8733-80c969f75287')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-8279b98a-4242-4a75-8733-80c969f75287 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8279b98a-4242-4a75-8733-80c969f75287');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9046,7 +9489,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Helsinki: result matches the city_metrics() contract
 CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
-{'city': 'Helsinki', 'reference_date': '2026-11-24', 'n_bus_lines': 390, 'daily_bus_km': 289802.2, 'n_trips': 19286}
+{'city': 'Helsinki', 'reference_date': '2026-11-24', 'n_bus_lines': 391, 'daily_bus_km': 289833.0, 'n_trips': 19292}
 </pre>
 </div>
 </div>
@@ -9071,7 +9514,7 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 <span class="n">_on_road</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_grid</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">_s</span><span class="p">,</span> <span class="n">_e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">start_s</span><span class="p">,</span> <span class="n">ht</span><span class="o">.</span><span class="n">end_s</span><span class="p">):</span>
     <span class="n">_on_road</span><span class="p">[(</span><span class="n">_grid</span> <span class="o">&gt;=</span> <span class="n">_s</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">_grid</span> <span class="o">&lt;</span> <span class="n">_e</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -9098,6 +9541,7 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9143,9 +9587,9 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 <th>max trips running</th>
 <td>427</td>
 <td>703</td>
-<td>917</td>
+<td>918</td>
 <td>934</td>
-<td>812</td>
+<td>813</td>
 <td>662</td>
 <td>629</td>
 <td>683</td>
@@ -9164,6 +9608,80 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9196,7 +9714,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">berlin</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">berlin</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Berlin: not covered (File 1 has three peers: Helsinki, Paris, London)"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -9240,7 +9758,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Paris feed. Rolling 30-day window rebuilt daily, so fetch() pins the snapshot (date + sha256);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Paris feed. Rolling 30-day window rebuilt daily, so fetch() pins the snapshot (date + sha256);</span>
 <span class="c1"># the numbers below are reproducible only from that exact file.</span>
 <span class="n">PARIS_GTFS</span> <span class="o">=</span> <span class="s2">"https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM-gtfs.zip"</span>
 <span class="n">paris_zip</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="n">PARIS_GTFS</span><span class="p">,</span> <span class="s2">"idfm_gtfs.zip"</span><span class="p">,</span>
@@ -9294,7 +9812,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">paris_shape_km</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">shape_ids</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">chunk</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">paris_shape_km</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">shape_ids</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">chunk</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Per shape: total km, km inside `box`, and whether it enters the box at all.</span>
 <span class="sd">    shapes.txt is 127 MB in this feed, so it is streamed rather than loaded whole."""</span>
     <span class="n">lat0</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon0</span><span class="p">,</span> <span class="n">lon1</span> <span class="o">=</span> <span class="n">box</span>
@@ -9356,7 +9874,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Active bus trips on the reference day. stop_times is not in the table list: it is 644 MB and</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Active bus trips on the reference day. stop_times is not in the table list: it is 644 MB and</span>
 <span class="c1"># unnecessary here, since this feed has no shape_dist_traveled.</span>
 <span class="n">paris_feed</span> <span class="o">=</span> <span class="n">read_gtfs</span><span class="p">(</span><span class="n">paris_zip</span><span class="p">,</span> <span class="n">tables</span><span class="o">=</span><span class="p">(</span><span class="s2">"agency"</span><span class="p">,</span> <span class="s2">"routes"</span><span class="p">,</span> <span class="s2">"trips"</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">,</span> <span class="s2">"calendar_dates"</span><span class="p">))</span>
 <span class="n">paris_services</span> <span class="o">=</span> <span class="n">active_service_ids</span><span class="p">(</span><span class="n">paris_feed</span><span class="p">,</span> <span class="n">PARIS_REF</span><span class="p">)</span>
@@ -9393,7 +9911,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Paris: reference day inside the feed validity | feed valid 20261120 to 20261222
+<pre>CHECK PASS | Paris: reference day inside the feed validity | feed valid 20261121 to 20261223
 CHECK PASS | Paris: every active bus trip has a shape length | 0 of 118258 trips without a shape
 CHECK PASS | Paris: km inside the box never exceed the trip's total km
 118258 active bus trips | 1854 lines | 63 networks in the region
@@ -9421,7 +9939,7 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Supplementary (printed only, never written to File_1): what each candidate perimeter would give.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Supplementary (printed only, never written to File_1): what each candidate perimeter would give.</span>
 <span class="n">_opts</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"Serves Paris, km inside Paris"</span><span class="p">:</span>       <span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">serves_paris</span><span class="p">,</span> <span class="s2">"km_in_paris"</span><span class="p">),</span>
     <span class="s2">"Serves Paris, all km of those lines"</span><span class="p">:</span> <span class="p">(</span><span class="n">pt</span><span class="o">.</span><span class="n">serves_paris</span><span class="p">,</span> <span class="s2">"km"</span><span class="p">),</span>
@@ -9467,6 +9985,7 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9496,32 +10015,106 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <th>0</th>
 <td>Serves Paris, km inside Paris</td>
 <td>286</td>
-<td>212137.8</td>
+<td>212185.0</td>
 <td>38778</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Serves Paris, all km of those lines</td>
 <td>286</td>
-<td>421322.4</td>
+<td>421375.3</td>
 <td>38778</td>
 </tr>
 <tr>
 <th>2</th>
 <td>Rive Droite + Rive Gauche only</td>
 <td>66</td>
-<td>116076.2</td>
+<td>116102.4</td>
 <td>12575</td>
 </tr>
 <tr>
 <th>3</th>
 <td>Whole Ile-de-France region</td>
 <td>1854</td>
-<td>1354325.5</td>
+<td>1354504.6</td>
 <td>118258</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9530,8 +10123,8 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Paris: result matches the city_metrics() contract
 CHECK PASS | Paris: line count and daily km are positive
-File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 286 lines; sensitivity: km inside the City of Paris only = 212,137.8 km/day
-{'city': 'Paris', 'reference_date': '2026-11-24', 'n_bus_lines': 286, 'daily_bus_km': 421322.4, 'n_trips': 38778}
+File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 286 lines; sensitivity: km inside the City of Paris only = 212,185.0 km/day
+{'city': 'Paris', 'reference_date': '2026-11-24', 'n_bus_lines': 286, 'daily_bus_km': 421375.3, 'n_trips': 38778}
 </pre>
 </div>
 </div>
@@ -9556,7 +10149,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">brussels</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">brussels</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Brussels: not covered (March 2026 archive feed not processed; File 1 has three peers)"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -9601,7 +10194,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Rejseplanen's national feed. Movia is agency_id 221 inside it; the feed itself has no</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Rejseplanen's national feed. Movia is agency_id 221 inside it; the feed itself has no</span>
 <span class="c1"># shape_dist_traveled, so km comes from shape geometry only (same fallback trip_km() uses).</span>
 <span class="n">REJSEPLANEN_GTFS</span> <span class="o">=</span> <span class="s2">"https://www.rejseplanen.info/labs/GTFS.zip"</span>
 <span class="n">cph_zip</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="n">REJSEPLANEN_GTFS</span><span class="p">,</span> <span class="s2">"rejseplanen_gtfs.zip"</span><span class="p">,</span>
@@ -9655,7 +10248,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Copenhagen + Frederiksberg, approximated as a bounding box (brief §4.4 names the two</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Copenhagen + Frederiksberg, approximated as a bounding box (brief §4.4 names the two</span>
 <span class="c1"># municipalities; the feed has no polygon or zone field to filter on directly).</span>
 <span class="n">CPH_BOX</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Copenhagen+Frederiksberg box"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">lat_min</span><span class="o">=</span><span class="mf">55.61</span><span class="p">,</span> <span class="n">lat_max</span><span class="o">=</span><span class="mf">55.73</span><span class="p">,</span> <span class="n">lon_min</span><span class="o">=</span><span class="mf">12.44</span><span class="p">,</span> <span class="n">lon_max</span><span class="o">=</span><span class="mf">12.65</span><span class="p">),</span> <span class="s2">"P"</span><span class="p">,</span>
                   <span class="s2">"Approximate bounding box around the two municipalities (no authoritative polygon in this feed); "</span>
@@ -9723,7 +10316,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Per-shape length, split into "inside the box" vs "crossing" segments (both-ends-inside rule,</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Per-shape length, split into "inside the box" vs "crossing" segments (both-ends-inside rule,</span>
 <span class="c1"># same as Helsinki/Paris); this feed has no shape_dist_traveled, so geometry is the only method.</span>
 <span class="n">cph_shapes</span> <span class="o">=</span> <span class="n">cph_feed</span><span class="p">[</span><span class="s2">"shapes"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"shape_pt_lat"</span><span class="p">,</span> <span class="s2">"shape_pt_lon"</span><span class="p">):</span>
@@ -9771,7 +10364,16 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>/tmp/ipykernel_1119/2867666657.py:11: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  both_in = cph_shapes["inbox"] &amp; g["inbox"].shift().fillna(False)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-6812c287-3e60-4f3f-b725-1b8716542995">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9821,6 +10423,80 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-6812c287-3e60-4f3f-b725-1b8716542995')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-6812c287-3e60-4f3f-b725-1b8716542995 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-6812c287-3e60-4f3f-b725-1b8716542995');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9844,7 +10520,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">cph_lines</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"route_short_name"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">trips</span><span class="o">=</span><span class="p">(</span><span class="s2">"trip_id"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">),</span> <span class="n">km_in</span><span class="o">=</span><span class="p">(</span><span class="s2">"km_in"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">),</span> <span class="n">km_total</span><span class="o">=</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cph_lines</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"route_short_name"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">trips</span><span class="o">=</span><span class="p">(</span><span class="s2">"trip_id"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">),</span> <span class="n">km_in</span><span class="o">=</span><span class="p">(</span><span class="s2">"km_in"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">),</span> <span class="n">km_total</span><span class="o">=</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">_q1</span><span class="p">,</span> <span class="n">_q3</span> <span class="o">=</span> <span class="n">cph_lines</span><span class="o">.</span><span class="n">km_in</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
 <span class="n">cph_lines</span><span class="p">[</span><span class="s2">"iqr_outlier"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cph_lines</span><span class="o">.</span><span class="n">km_in</span> <span class="o">&gt;</span> <span class="n">_q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">_q3</span> <span class="o">-</span> <span class="n">_q1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">cph_lines</span><span class="o">.</span><span class="n">iqr_outlier</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> high-km lines flagged (kept, real trunk routes):"</span><span class="p">)</span>
@@ -9881,6 +10557,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-1ab4354b-77d8-4516-abc5-8994f6e961d7">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9930,6 +10607,80 @@ File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 28
 </tbody>
 </table>
 </div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-1ab4354b-77d8-4516-abc5-8994f6e961d7')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-1ab4354b-77d8-4516-abc5-8994f6e961d7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1ab4354b-77d8-4516-abc5-8994f6e961d7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9963,7 +10714,7 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"helsinki"</span><span class="p">,</span> <span class="s2">"berlin"</span><span class="p">,</span> <span class="s2">"paris"</span><span class="p">,</span> <span class="s2">"brussels"</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"helsinki"</span><span class="p">,</span> <span class="s2">"berlin"</span><span class="p">,</span> <span class="s2">"paris"</span><span class="p">,</span> <span class="s2">"brussels"</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)]</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">out</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DERIVED</span><span class="p">,</span> <span class="s2">"benchmark_gtfs_intermediate.csv"</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
@@ -9982,6 +10733,7 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-1a71c209-1c44-4927-873d-03f36190f779">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10012,20 +10764,94 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <th>0</th>
 <td>Helsinki</td>
 <td>2026-11-24</td>
-<td>390</td>
-<td>289802.2</td>
-<td>19286</td>
+<td>391</td>
+<td>289833.0</td>
+<td>19292</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Paris</td>
 <td>2026-11-24</td>
 <td>286</td>
-<td>421322.4</td>
+<td>421375.3</td>
 <td>38778</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-1a71c209-1c44-4927-873d-03f36190f779')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-1a71c209-1c44-4927-873d-03f36190f779 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1a71c209-1c44-4927-873d-03f36190f779');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -10040,6 +10866,7 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div class="colab-df-container" id="df-a87c73a1-557f-4f62-9c5f-4f5782d6140b">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10073,8 +10900,8 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 <td>hsl_gtfs.zip</td>
 <td>https://infopalvelut.storage.hsldev.com/gtfs/h...</td>
 <td>2026-11-24</td>
-<td>91096014</td>
-<td>70f93697e54f</td>
+<td>93008836</td>
+<td>32c746525f3b</td>
 <td>script</td>
 <td>HSL GTFS, whole HSL region, snapshot valid 202...</td>
 </tr>
@@ -10083,8 +10910,8 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 <td>idfm_gtfs.zip</td>
 <td>https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM...</td>
 <td>2026-11-24</td>
-<td>127072175</td>
-<td>4ee32000da2a</td>
+<td>128416837</td>
+<td>9d3df2bf82fd</td>
 <td>script</td>
 <td>IDFM GTFS, all Ile-de-France operators, rollin...</td>
 </tr>
@@ -10100,6 +10927,80 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 </tr>
 </tbody>
 </table>
+</div>
+<div class="colab-df-buttons">
+<div class="colab-df-container">
+<button class="colab-df-convert" onclick="convertToInteractive('df-a87c73a1-557f-4f62-9c5f-4f5782d6140b')" style="display:none;" title="Convert this dataframe to an interactive table.">
+<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+</svg>
+</button>
+<style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+<script>
+      const buttonEl =
+        document.querySelector('#df-a87c73a1-557f-4f62-9c5f-4f5782d6140b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a87c73a1-557f-4f62-9c5f-4f5782d6140b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+</div>
+</div>
 </div>
 </div>
 </div>
