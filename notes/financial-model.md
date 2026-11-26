@@ -208,7 +208,7 @@ Headline figures:
 - Total programme CAPEX 2026-35: **€1,943.5M**, of which buses €1,452.4M and depots & grid €491.2M.
 - Peak annual CAPEX: **€312.6M (2028)**, against €135.3M in EMT's 2026 budget.
 - E-buses to buy: **2,102**, of which 1,773 replace CNG and 329 are renewals.
-- Required pace: **273 e-buses/yr 2028-2033**. EMT's record was 159 buses (all technologies) in 2024.
+- Required pace: **273 e-buses/yr 2028-2033**. EMT's peak intake was 382 buses in 2018; its e-bus peak is 116, in 2024 (fleet register `data_raw/emt_fleet_history.csv`, first entry into service).
 - Worst year without charging capacity: 43 buses (2026). This is a timing effect: Sanchinarro counts only when finished in 2027, while the 70 buses arrive Q4 2026 to Q1 2027.
 - CNG retired before 12 years: 520 buses, €12.6M of book value written off.
 - Energy saving vs CNG once fully electric: ~€14.1M/yr.
@@ -342,7 +342,7 @@ Spare capacity is thin in 2027 (6) and 2030 (169), and negative in 2026 (−43, 
 
 ## 8. Feasibility and delay stress test (target 2033)
 
-**Bus purchases.** 273 e-buses/yr matches EMT's own track record: it bought 1,349 buses in 2016-2020 (230/yr in 2019-20). It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
+**Bus purchases.** 273 e-buses/yr is within EMT's all-bus intake but more than twice its e-bus peak: it bought 1,203 buses in 2016-2020 (about 257 a year in 2019-20, almost all gas; 382 in 2018), while its e-bus peak is 116, in 2024. It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
 
 **Depots and grid.** Charging capacity depends on depot projects finishing on time. Results of shifting project end dates (Python reference model):
 
@@ -373,7 +373,7 @@ The 2033 target survives each single delay but has no buffer: the realistic risk
 
 | Source | Used for | Link |
 |---|---|---|
-| EMT: 460 CNG buses for €138M; 1,349 buses 2016-2020 | Purchase track record, CNG age | https://diario.madrid.es/?p=35217 |
+| EMT: 460 CNG buses for €138M; 2016-2020 purchase programme | Purchase track record, CNG age | https://diario.madrid.es/?p=35217 |
 | Sustainable Bus: European e-bus market 2025 / H1 2026 | Market size, makers | https://www.sustainable-bus.com/news/electric-bus-market-europe-first-half-2026/ |
 | CNMC flexible access permits (Aug 2026) | Grid mitigation | https://www.cnmc.es/prensa/permisos-acceso-flexibles-20260811 |
 | Las Tablas design contract (12 months incl. licence) | Depot timing | https://diario.madrid.es/?p=179041 |
