@@ -44,6 +44,11 @@ h2 { font-size: 18px; margin: 0 0 4px; color: var(--ink); }
 .lede { color: var(--muted); margin: 0 0 16px; max-width: 960px; }
 .card { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
 .card h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--blue); margin: 0 0 10px; }
+.card .q { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; margin: 0 0 3px; }
+.card .q + h3 { font-size: 11px; }
+aside.side .card .q { font-size: 14px; }
+details.fold > summary .q { flex: 1 1 80%; margin: 0; }
+details.fold > summary h3 { flex-basis: 100%; }
 .grid-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
 .kpi { background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: var(--radius); padding: 10px 14px; }
 .kpi .v { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
@@ -71,7 +76,7 @@ aside.side { background: #fff; border-left: 1px solid var(--rule); overflow-y: a
 .details dt { color: var(--muted); }
 .details dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
 .badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: #fff; }
-.badge.Ready { background: var(--ready); } .badge.Upgrade { background: var(--upgrade); color: #2b2100; } .badge.Critical { background: var(--critical); }
+.badge.None { background: #d9dadb; color: var(--ink); } .badge.Ready { background: var(--ready); } .badge.Upgrade { background: var(--upgrade); color: #2b2100; } .badge.Critical { background: var(--critical); }
 .badge.Evidenced { background: var(--ink); } .badge.Estimated { background: #fff; color: var(--ink); border: 1.5px dashed var(--ink); }
 table.data { width: 100%; border-collapse: collapse; font-size: 13px; }
 table.data th { text-align: left; font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--rule); padding: 6px 8px; white-space: nowrap; }
@@ -92,6 +97,16 @@ select { font: inherit; padding: 6px 10px; border: 1px solid var(--rule); border
 .small { font-size: 12px; color: var(--muted); }
 .scroll { overflow-x: auto; }
 .notes li { margin-bottom: 6px; }
+.ov { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.ov .linkbtn { font-size: inherit; font-weight: 600; }
+@media (max-width: 900px) { .ov { grid-template-columns: 1fr; } }
+/* Year slider, top right of the map */
+.yearctl { background: #fff; border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px 12px; font-family: "Noto Sans", Arial, sans-serif; width: 250px; }
+.yearctl .hd { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: var(--muted); }
+.yearctl .hd b { font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.yearctl input { width: 100%; margin: 4px 0 0; accent-color: var(--blue); }
+.yearctl .ticks { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.yearctl .sum { font-size: 12px; margin-top: 4px; }
 footer { color: var(--muted); font-size: 12px; padding: 12px 24px 24px; }
 /* Roadmap */
 .roadhead { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; }
@@ -115,6 +130,29 @@ table.plan td .names { display: block; font-size: 11px; color: var(--muted); fon
 .tl .cell.est { outline: 2px dashed #1f1f1f; outline-offset: -3px; }
 .tl .hd { font-weight: 600; color: var(--muted); text-align: center; }
 .tl .nm { font-weight: 600; display: flex; align-items: center; gap: 6px; }
+/* Supplementary sensitivity controls (not part of Files 1-4) */
+.stress { border-left: 4px solid var(--ink); }
+.stress.on { border-left-color: var(--opportunity); background: #faf6fc; }
+.stress .lab { font-size: 12px; color: var(--muted); margin: 8px 0 4px; }
+.stress .seg button { padding: 5px 9px; font-size: 12px; }
+.stress .out { font-size: 13px; margin: 10px 0 0; }
+.tag-supp { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); border-radius: 3px; padding: 0 4px; vertical-align: 1px; margin-left: 4px; }
+.linkbtn { font: inherit; font-size: 12px; color: var(--blue); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+table.hyp td, table.hyp th { padding: 5px 6px; }
+/* Collapsible side-panel cards: closed by default so the map page opens on the essentials */
+details.fold > summary { cursor: pointer; list-style: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::before { content: "▸"; color: var(--blue); font-size: 12px; }
+details.fold[open] > summary::before { content: "▾"; }
+details.fold > summary h3 { margin: 0; display: inline; }
+details.fold[open] > summary { margin-bottom: 10px; }
+details.fold > summary:focus-visible { outline: 2px solid var(--sky); outline-offset: 2px; }
+table.hyp .badge { min-width: 44px; text-align: center; }
+table.hyp th.sel { color: var(--ink); border-bottom-color: var(--ink); }
+[class^="lab-"] { display: inline-block; min-width: 20px; text-align: center; font-size: 11px; font-weight: 700; border-radius: 3px; padding: 0 5px; border: 1.5px solid var(--ink); color: var(--ink); background: #fff; }
+.lab-V { background: var(--ink); color: #fff; } .lab-D { background: #d9dadb; } .lab-P { border-style: dashed; } .lab-A { border-style: dotted; }
+table.reg td { vertical-align: top; font-size: 12px; min-width: 110px; word-break: break-word; font-variant-numeric: normal; }
+table.reg td:nth-child(4) { min-width: 320px; }
 @media (max-width: 900px) {
   .cons { grid-template-columns: 1fr; }
   .mapview { grid-template-columns: 1fr; height: auto; }
@@ -136,14 +174,29 @@ table.plan td .names { display: block; font-size: 11px; color: var(--muted); fon
 </header>
 <div class="sample" id="sampleBanner" hidden>SAMPLE VALUES FOR LAYOUT REVIEW: these numbers are placeholders, not model results.</div>
 <nav class="tabs" role="tablist">
-  <button role="tab" id="t-road" aria-controls="p-road" aria-selected="true">Implementation roadmap</button>
+  <button role="tab" id="t-notes" aria-controls="p-notes" aria-selected="true">Overview and how to read</button>
+  <button role="tab" id="t-road" aria-controls="p-road" aria-selected="false" tabindex="-1">Implementation roadmap</button>
   <button role="tab" id="t-map" aria-controls="p-map" aria-selected="false" tabindex="-1">Network map</button>
   <button role="tab" id="t-bench" aria-controls="p-bench" aria-selected="false">European benchmark</button>
   <button role="tab" id="t-scen" aria-controls="p-scen" aria-selected="false">Scenarios 2026–2035</button>
-  <button role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false">Notes and sources</button>
 </nav>
 <main>
-<section role="tabpanel" id="p-road" aria-labelledby="t-road" class="active">
+<section role="tabpanel" id="p-notes" aria-labelledby="t-notes" class="active">
+  <div class="wrap">
+    <h2>Electrifying Madrid's municipal bus fleet, 2026–2035</h2>
+    <p class="lede" id="ovLede"></p>
+    <div class="grid-kpi" id="ovKpis"></div>
+    <div class="ov">
+      <div class="card"><div class="q">Where do I find what?</div><h3>What each page shows</h3><ul class="notes" id="ovPages"></ul></div>
+      <div class="card"><div class="q">What do I need to know before reading the numbers?</div><h3>How to read this file</h3><ul class="notes" id="notesList"></ul></div>
+    </div>
+    <div class="card" id="regCard" style="margin-top:16px" hidden><div class="q">Which numbers are verified and which are assumed?</div><h3>Assumptions register <span class="tag-supp">from notebook 01</span></h3>
+      <p class="small" style="margin:-4px 0 10px">Provenance labels (brief 4.6): <span class="lab-V">V</span> verified from a cited source · <span class="lab-D">D</span> derived from source data · <span class="lab-P">P</span> proxy from indirect evidence · <span class="lab-A">A</span> assumption or judgement.</p>
+      <div class="controls"><div class="seg" role="group" aria-label="Filter by label" id="regSeg"></div><span class="small" id="regCount"></span></div>
+      <div class="scroll"><div id="regTable"></div></div></div>
+  </div>
+</section>
+<section role="tabpanel" id="p-road" aria-labelledby="t-road">
   <div class="wrap">
     <div class="roadhead">
       <div>
@@ -156,11 +209,11 @@ table.plan td .names { display: block; font-size: 11px; color: var(--muted); fon
       </div>
     </div>
     <div class="grid-kpi" id="roadKpis" style="margin-top:16px"></div>
-    <div class="card" style="margin-bottom:16px"><h3>Decisions needed now</h3><ol class="decisions" id="roadDecisions"></ol></div>
-    <div class="card scroll" style="margin-bottom:16px"><h3>Year-by-year plan</h3><div id="roadPlan"></div></div>
-    <div class="card" style="margin-bottom:16px"><h3>Constraint check · first year a limit is crossed</h3>
+    <div class="card" style="margin-bottom:16px"><div class="q">What has to be decided, and by when?</div><h3>Decisions needed now</h3><ol class="decisions" id="roadDecisions"></ol></div>
+    <div class="card scroll" style="margin-bottom:16px"><div class="q">What happens each year, and what does it cost?</div><h3>Year-by-year plan</h3><div id="roadPlan"></div></div>
+    <div class="card" style="margin-bottom:16px"><div class="q">What stops the plan first: buses, grid or budget?</div><h3>Constraint check · first year a limit is crossed</h3>
       <div class="cons" id="roadCons"></div></div>
-    <div class="card scroll"><h3>Depot readiness as lines convert</h3><div id="roadDepots"></div>
+    <div class="card scroll"><div class="q">When does each depot outgrow its grid connection?</div><h3>Depot readiness as lines convert</h3><div id="roadDepots"></div>
       <p class="small" style="margin:8px 0 0">Each cell compares the depot's managed MW for the lines converted by that year with its connection estimate (Rule 4): green within it, amber up to 1.5 times, red beyond. ◆ marks the depot's conversion year. Dashed outline: connection Estimated (proxy), indicative only.</p></div>
   </div>
 </section>
@@ -175,15 +228,29 @@ table.plan td .names { display: block; font-size: 11px; color: var(--muted); fon
         <div class="seg" role="group" aria-label="Colour routes by">
           <button id="byStrategy" aria-pressed="true">Charging strategy</button>
           <button id="byYear" aria-pressed="false">Electrification year</button>
+          <button id="byBlock" aria-pressed="false">Block range</button>
         </div>
       </div>
+      <details class="card stress fold" id="stress" hidden>
+        <summary><div class="q">What if buses use more energy, or the connection is smaller?</div><h3>Stress test <span class="tag-supp">supplementary</span></h3><span class="small" id="stressSum"></span></summary>
+        <div class="small">Sensitivity only: Files 2 and 3 keep the brief's fixed parameters. <button class="linkbtn" id="stressReset" hidden>Reset to File values</button></div>
+        <div class="lab">Energy use per km (heating, air conditioning)</div>
+        <div class="seg" role="group" aria-label="Energy use per km" id="segUplift"></div>
+        <div class="lab" id="labHyp">Depot connection hypothesis</div>
+        <div class="seg" role="group" aria-label="Depot connection hypothesis" id="segHyp"></div>
+        <p class="out" id="stressOut"></p>
+      </details>
       <div class="toggles">
         <label><input type="checkbox" id="showRoutes" checked> Routes (File 2)</label>
         <label><input type="checkbox" id="showDepots" checked> Depots (File 3)</label>
       </div>
       <div class="card legend" id="legend"></div>
-      <div class="card details" id="details"><h3>Details</h3><div class="small">Click a route or a depot.</div></div>
-      <div class="card"><h3>Depots</h3><div class="scroll" id="depotTable"></div></div>
+      <div class="card details" id="details"><div class="q">What does this line or depot need?</div><h3>Details</h3><div class="small">Click a route or a depot.</div></div>
+      <div class="card"><div class="q">How much power does each depot need against what it has?</div><h3>Depots</h3><div class="scroll" id="depotTable"></div></div>
+      <details class="card fold" id="powerCard"><summary><div class="q">How much does managed charging cut the peak?</div><h3>Depot power against connection</h3></summary>
+        <div class="chartbox" style="height:250px"><canvas id="powerChart" role="img" aria-label="Unmanaged and managed charging power against connection, by depot"></canvas></div>
+        <p class="small" style="margin:6px 0 0" id="powerNote"></p></details>
+      <details class="card fold" id="hypCard" hidden><summary><div class="q">Does readiness hold if the connection estimate is wrong?</div><h3>Readiness by connection hypothesis <span class="tag-supp">supplementary</span></h3></summary><div class="scroll" id="hypTable"></div></details>
     </aside>
   </div>
 </section>
@@ -204,12 +271,6 @@ table.plan td .names { display: block; font-size: 11px; color: var(--muted); fon
   </div>
 </section>
 
-<section role="tabpanel" id="p-notes" aria-labelledby="t-notes">
-  <div class="wrap">
-    <h2>How to read this file</h2>
-    <div class="card"><ul class="notes" id="notesList"></ul></div>
-  </div>
-</section>
 </main>
 <footer id="foot"></footer>
 
@@ -221,6 +282,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 const fmt = (v, d = 0) => v == null || Number.isNaN(+v) ? "–" : (+v).toLocaleString("en-GB", {minimumFractionDigits: d, maximumFractionDigits: d});
 const STRAT = {Depot: css("--depot"), Opportunity: css("--opportunity"), Not_feasible: css("--notfeasible")};
 const READY = {Ready: css("--ready"), Upgrade: css("--upgrade"), Critical: css("--critical")};
+const READY_ALL = {...READY, None: "#d9dadb"};      // None: no electric lines at the depot yet (year slider only)
 const YEARS = [2025, 2026, 2027, 2028, 2029, 2030];
 const YEAR_COL = {2025: "#0b2e52", 2026: "#154d80", 2027: "#2c7abf", 2028: "#4f9ad6", 2029: "#6aa9de", 2030: "#93c2ea"};
 const PENDING = (file, what) => `<div class="pending-box"><b>${esc(file)} not produced yet</b>${esc(what)}</div>`;
@@ -243,7 +305,7 @@ function select(tab) {
     t.tabIndex = on ? 0 : -1;
     document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active", on);
   });
-  if (tab.id === "t-map") { map.invalidateSize(); if (!chartsDrawn.map) { fitMap(); chartsDrawn.map = true; } }
+  if (tab.id === "t-map") { map.invalidateSize(); if (!chartsDrawn.map) { fitMap(); chartsDrawn.map = true; } drawPower(); }
   if (tab.id === "t-road" && !chartsDrawn.road) { drawRoad(); chartsDrawn.road = true; }
   if (tab.id === "t-bench" && !chartsDrawn.bench) { drawBench(); chartsDrawn.bench = true; }
   if (tab.id === "t-scen" && !chartsDrawn.scen) { drawScen(); chartsDrawn.scen = true; }
@@ -268,20 +330,60 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 let colourBy = "strategy", focusDepot = null;
+
+/* Supplementary sensitivity data from the notebook (meta.supp). Files 1-4 above are never altered by these controls. */
+const SUPP = META.supp || {};
+const BLOCKS = SUPP.blocks || null;                 // {line_id: [km of each vehicle block on the reference day]}
+const RANGE = SUPP.range_km || {Standard: 300, Articulated: 240};
+const UPLIFTS = SUPP.uplifts || [0];
+const CONN = SUPP.connections || null;              // {low: {depot: MW}, base: {...}, high: {...}}
+const HYP_LAB = SUPP.hyp_labels || {low: "Low", base: "Base", high: "High"};
+let uplift = 0, hyp = "base";
+const LINE_YEARS = [...new Set(lines.map(l => +l.electrification_year).filter(Boolean))].sort();
+const LAST_YEAR = LINE_YEARS.length ? LINE_YEARS[LINE_YEARS.length - 1] : null;
+let viewYear = LAST_YEAR;                           // year slider: the last year is the full plan, i.e. Files 2 and 3 as submitted
+const atEnd = () => viewYear == null || viewYear >= LAST_YEAR;
+const converted = l => atEnd() || (l.electrification_year && +l.electrification_year <= viewYear);
+const isBase = () => uplift === 0 && hyp === "base" && atEnd();
+const rule4 = r => r <= 1 ? "Ready" : r <= 1.5 ? "Upgrade" : "Critical";
+const BLOCK_COL = {ok: "#a9c4de", some: "#d6539a", avg: "#6a0f49", na: "#c9c9c9"};
+const BLOCK_LAB = {ok: "Every block within range", some: "Some blocks over range (line average within)", avg: "Line average over range", na: "No block data"};
+function blockStat(l) {                             // a higher consumption shortens the range by the same factor
+  const b = BLOCKS && BLOCKS[l.line_id], range = (RANGE[l.bus_type] || 300) / (1 + uplift);
+  const avgOver = +l.km_per_bus_day > range;
+  if (!b || !b.length) return {n: 0, over: 0, max: null, range, cls: avgOver ? "avg" : "na"};
+  const over = b.filter(k => k > range).length;
+  return {n: b.length, over, max: Math.max(...b), range, cls: avgOver ? "avg" : over ? "some" : "ok"};
+}
+function depotView(d, h = hyp, u = uplift) {        // readiness under a hypothesis and uplift; File 3 itself is base and 0
+  const conn = CONN && CONN[h] && CONN[h][d.depot_name] != null ? +CONN[h][d.depot_name] : +d.connection_mw_estimate;
+  const full = (+d.peak_mw_managed || 0);
+  const now = atEnd() ? full : lines.filter(l => l.depot_name === d.depot_name && converted(l))   // managed MW of the lines converted so far
+    .reduce((a, l) => a + (+l.peak_buses || 0) * (+l.energy_kwh_bus_day || 0) / 1000 / (7 * 0.9), 0);
+  const mw = now * (1 + u);
+  return {conn, mw, st: h === "base" && u === 0 && atEnd() ? d.readiness_status : mw === 0 ? "None" : rule4(mw / conn)};
+}
 const routeLayer = L.layerGroup().addTo(map), depotLayer = L.layerGroup().addTo(map);
 const polyByLine = {};
 
 function routeStyle(l) {
   const col = colourBy === "strategy" ? (STRAT[l.charging_strategy] || "#9aa0a6")
-                                      : (YEAR_COL[l.electrification_year] || "#9aa0a6");
+            : colourBy === "block" ? BLOCK_COL[blockStat(l).cls]
+            : (YEAR_COL[l.electrification_year] || "#9aa0a6");
   const dim = focusDepot && l.depot_name !== focusDepot;
+  if (!converted(l)) return {color: "#9aa0a6", weight: 1.5, opacity: dim ? 0.1 : 0.35, dashArray: null};
   return {color: col, weight: dim ? 1.5 : 3, opacity: dim ? 0.15 : 0.85,
           dashArray: colourBy === "strategy" && l.charging_strategy === "Not_feasible" ? "6 5" : null};
 }
 function lineTip(l) {
   return `<b>Line ${esc(l.line_id)}</b><br>${esc(l.charging_strategy || "–")} · ${esc(l.bus_type || "–")}<br>` +
     `${fmt(l.km_per_bus_day)} km per bus-day · ${fmt(l.peak_buses)} peak buses` +
-    (l.electrification_year ? `<br>Electrified ${esc(l.electrification_year)}` : "");
+    (l.electrification_year ? `<br>Electrified ${esc(l.electrification_year)}` : "") + blockTip(l);
+}
+function blockTip(l) {
+  if (!BLOCKS) return "";
+  const b = blockStat(l);
+  return b.n ? `<br><span class="prov">Blocks over ${fmt(b.range)} km: ${b.over} of ${b.n} · longest ${fmt(b.max)} km (supplementary)</span>` : "";
 }
 function drawRoutes() {
   routeLayer.clearLayers();
@@ -289,7 +391,7 @@ function drawRoutes() {
   lines.forEach(l => {
     const parts = geo[l.line_id];   // geometry is keyed by File 2 line_id in build_bi.py
     if (!parts) return;
-    const pl = L.polyline(parts, routeStyle(l)).bindTooltip(lineTip(l), {sticky: true, className: "tt"});
+    const pl = L.polyline(parts, routeStyle(l)).bindTooltip(() => lineTip(l), {sticky: true, className: "tt"});
     pl.on("click", () => showLine(l));
     pl.addTo(routeLayer);
     polyByLine[l.line_id] = pl;
@@ -308,10 +410,11 @@ function drawDepots() {
     const m = L.circleMarker([d.latitude, d.longitude], {
       radius: 9 + 13 * Math.sqrt((+d.buses_assigned || 0) / maxB),
       color: "#1f1f1f", weight: 2.5, dashArray: d.connection_evidence === "Estimated" ? "4 3" : null,
-      fillColor: READY[d.readiness_status] || "#9aa0a6", fillOpacity: 0.92
-    }).bindTooltip(`<b>${esc(d.depot_name)}</b><br>${esc(d.readiness_status)} (indicative)<br>` +
-      `${fmt(d.peak_mw_managed, 1)} MW managed vs ${fmt(d.connection_mw_estimate, 1)} MW connection<br>` +
-      `<span class="prov">${esc(d.connection_evidence)}: ${esc(provNote(d))}</span>`, {className: "tt"});
+      fillColor: READY_ALL[depotView(d).st] || "#9aa0a6", fillOpacity: 0.92
+    }).bindTooltip(() => { const v = depotView(d); return `<b>${esc(d.depot_name)}</b><br>${v.st === "None" ? "No electric lines yet" : esc(v.st) + " (indicative)"}<br>` +
+      `${fmt(v.mw, 1)} MW managed vs ${fmt(v.conn, 1)} MW connection<br>` +
+      (isBase() ? "" : `<span class="prov">Showing: ${esc(stressLabel())}. File 3: ${esc(d.readiness_status)}.</span><br>`) +
+      `<span class="prov">${esc(d.connection_evidence)}: ${esc(provNote(d))}</span>`; }, {className: "tt"});
     m.on("click", () => showDepot(d));
     m.addTo(depotLayer);
   });
@@ -322,8 +425,12 @@ function showLine(l) {
     ["Energy per bus-day", `${fmt(l.energy_kwh_bus_day)} kWh`], ["Depot", l.depot_name],
     ["Priority rank", l.priority_rank], ["Electrification year", l.electrification_year],
     ["CO₂ avoided", `${fmt(l.co2_avoided_t_year)} t/yr`]];
-  document.getElementById("details").innerHTML = `<h3>Line ${esc(l.line_id)}</h3><dl>` +
-    dl.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v ?? "–")}</dd>`).join("") + "</dl>";
+  const b = BLOCKS ? blockStat(l) : null;
+  if (b && b.n) dl.push([`Blocks over ${fmt(b.range)} km*`, `${b.over} of ${b.n}`], ["Longest block*", `${fmt(b.max)} km`]);
+  document.getElementById("details").innerHTML = `<div class="q">What does this line need?</div><h3>Line ${esc(l.line_id)}</h3><dl>` +
+    dl.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v ?? "–")}</dd>`).join("") + "</dl>" +
+    (l.charging_strategy === "Opportunity" && SUPP.opportunity_note ? `<p class="small" style="margin:8px 0 0"><b>Opportunity:</b> ${esc(SUPP.opportunity_note)}</p>` : "") +
+    (b && b.n ? `<p class="small" style="margin:8px 0 0">* Supplementary (Rule 2 sensitivity): in-service km of each vehicle block on the reference day, without deadheading${uplift ? `, range cut for +${Math.round(uplift * 100)}% energy use` : ""}. The File 2 strategy uses the line average.</p>` : "");
 }
 function showDepot(d) {
   focusDepot = focusDepot === d.depot_name ? null : d.depot_name;
@@ -332,32 +439,41 @@ function showDepot(d) {
     ["Night energy", `${fmt(d.night_energy_mwh, 1)} MWh`], ["Unmanaged peak", `${fmt(d.peak_mw_unmanaged, 1)} MW`],
     ["Managed peak", `${fmt(d.peak_mw_managed, 1)} MW`], ["Connection", `${fmt(d.connection_mw_estimate, 1)} MW`],
     ["Conversion year", d.conversion_year]];
+  const v = depotView(d), xc = (SUPP.crosschecks || {})[d.depot_name];
+  const extra = (isBase() ? "" : `<p class="small" style="margin:8px 0 0"><b>Showing</b> ${esc(stressLabel())}: ${fmt(v.mw, 1)} MW managed vs ${fmt(v.conn, 1)} MW → <span class="badge ${esc(v.st)}">${v.st === "None" ? "no electric lines yet" : esc(v.st)}</span></p>`) +
+    (xc ? `<p class="small" style="margin:8px 0 0"><b>Cross-check:</b> ${esc(xc)}</p>` : "");
   document.getElementById("details").innerHTML =
-    `<h3>${esc(d.depot_name)}</h3><p style="margin:0 0 8px"><span class="badge ${esc(d.readiness_status)}">${esc(d.readiness_status)}</span> ` +
+    `<div class="q">What does this depot need?</div><h3>${esc(d.depot_name)}</h3><p style="margin:0 0 8px"><span class="badge ${esc(d.readiness_status)}">${esc(d.readiness_status)}</span> ` +
     `<span class="badge ${esc(d.connection_evidence)}">${esc(d.connection_evidence)}</span></p><dl>` +
     dl.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v ?? "–")}</dd>`).join("") +
     `</dl><p class="small" style="margin:8px 0 0">${esc(provNote(d))} Readiness is indicative (brief Rule 4), not a utility approval.` +
-    (focusDepot ? " Its assigned lines are highlighted; click again to clear." : "") + "</p>";
+    (focusDepot ? " Its assigned lines are highlighted; click again to clear." : "") + "</p>" + extra;
 }
 function drawLegend() {
-  const routes = colourBy === "strategy"
+  const routes = colourBy === "block"
+    ? ["ok", "some", "avg"].map(k => `<div class="row"><span class="sw-line" style="border-color:${BLOCK_COL[k]}"></span>${BLOCK_LAB[k]}</div>`).join("") +
+      `<div class="note">Supplementary (Rule 2 sensitivity). A block is one bus's in-service km on the reference day, without deadheading.</div>`
+    : colourBy === "strategy"
     ? Object.entries(STRAT).map(([k, c]) => `<div class="row"><span class="sw-line ${k === "Not_feasible" ? "dash" : ""}" style="border-color:${c}"></span>${esc(k.replace("_", " "))}</div>`).join("")
     : YEARS.map(y => `<div class="row"><span class="sw-line" style="border-color:${YEAR_COL[y]}"></span>${y === 2025 ? "Already zero-emission (2025)" : y}</div>`).join("");
-  document.getElementById("legend").innerHTML = `<h3>Routes · ${colourBy === "strategy" ? "charging strategy" : "electrification year"}</h3>${routes}
-    <h3 style="margin-top:10px">Depots · indicative readiness</h3>
+  document.getElementById("legend").innerHTML = `<div class="q">${{strategy: "Which lines can charge overnight at the depot?", year: "When does each line convert?", block: "Which lines have buses that run past their range?"}[colourBy]}</div><h3>Routes · ${{strategy: "charging strategy", year: "electrification year", block: "vehicle-block range"}[colourBy]}</h3>${routes}
+${atEnd() ? "" : `<div class="row"><span class="sw-line" style="border-color:#9aa0a6;opacity:.5;border-top-width:2px"></span>Not converted by ${viewYear}</div>`}
+    <div class="q" style="margin-top:10px">Can each depot's connection carry its charging?</div><h3>Depots · indicative readiness</h3>
     ${Object.entries(READY).map(([k, c]) => `<div class="row"><span class="sw-dot" style="background:${c}"></span>${k}</div>`).join("")}
     <div class="row"><span class="sw-dot" style="background:#fff"></span>Solid ring: connection Evidenced</div>
     <div class="row"><span class="sw-dot est" style="background:#fff"></span>Dashed ring: connection Estimated (proxy)</div>
-    <div class="note">Circle size: buses assigned. Readiness compares managed MW with the connection estimate (Rule 4).</div>`;
+    <div class="note">Circle size: buses assigned. Readiness compares managed MW with the connection estimate (Rule 4).</div>` +
+    (colourBy === "strategy" && SUPP.opportunity_note ? `<div class="note" style="margin-top:6px"><b>Opportunity:</b> ${esc(SUPP.opportunity_note)}</div>` : "");
 }
 function drawDepotTable() {
   const el = document.getElementById("depotTable");
   if (!depots.length) { el.innerHTML = PENDING("File 3", "Depot locations, assigned lines, managed MW, connection estimate and readiness appear here (sections 5–6)."); return; }
   el.innerHTML = `<table class="data"><thead><tr><th>Depot</th><th class="num">Buses</th><th class="num">MW mgd</th><th class="num">Conn.</th><th>Status</th></tr></thead><tbody>` +
-    depots.map((d, i) => `<tr class="click" data-i="${i}" tabindex="0"><td>${esc(d.depot_name)}</td><td class="num">${fmt(d.buses_assigned)}</td>` +
-      `<td class="num">${fmt(d.peak_mw_managed, 1)}</td><td class="num">${fmt(d.connection_mw_estimate, 1)}${d.connection_evidence === "Estimated" ? "*" : ""}</td>` +
-      `<td><span class="badge ${esc(d.readiness_status)}">${esc(d.readiness_status)}</span></td></tr>`).join("") +
-    `</tbody></table><p class="small" style="margin:6px 0 0">* Estimated connection (proxy or scenario).</p>`;
+    depots.map((d, i) => { const v = depotView(d); return `<tr class="click" data-i="${i}" tabindex="0"><td>${esc(d.depot_name)}</td><td class="num">${fmt(d.buses_assigned)}</td>` +
+      `<td class="num">${fmt(v.mw, 1)}</td><td class="num">${fmt(v.conn, 1)}${d.connection_evidence === "Estimated" ? "*" : ""}</td>` +
+      `<td><span class="badge ${esc(v.st)}">${v.st === "None" ? "–" : esc(v.st)}</span></td></tr>`; }).join("") +
+    `</tbody></table><p class="small" style="margin:6px 0 0">* Estimated connection (proxy or scenario).` +
+    (isBase() ? " Values are File 3." : ` <b>Showing ${esc(stressLabel())}; File 3 holds the full-plan base values.</b>`) + `</p>`;
   el.querySelectorAll("tr.click").forEach(tr => {
     const go = () => { const d = depots[+tr.dataset.i]; showDepot(d); map.panTo([d.latitude, d.longitude]); };
     tr.addEventListener("click", go);
@@ -375,11 +491,113 @@ function drawKpis() {
 }
 document.getElementById("byStrategy").onclick = () => setColour("strategy");
 document.getElementById("byYear").onclick = () => setColour("year");
+document.getElementById("byBlock").onclick = () => setColour("block");
 function setColour(c) {
   colourBy = c;
   document.getElementById("byStrategy").setAttribute("aria-pressed", c === "strategy");
   document.getElementById("byYear").setAttribute("aria-pressed", c === "year");
+  document.getElementById("byBlock").setAttribute("aria-pressed", c === "block");
   restyleRoutes(); drawLegend();
+}
+if (!BLOCKS) document.getElementById("byBlock").hidden = true;
+
+/* Stress test: consumption uplift and connection hypothesis (supplementary) */
+const pct = u => u ? `+${Math.round(u * 100)}%` : "Base";
+function stressLabel() {
+  return [atEnd() ? null : `lines converted by ${viewYear}`, uplift ? `energy use ${pct(uplift)}` : null, hyp !== "base" ? `${HYP_LAB[hyp].toLowerCase()} connection` : null].filter(Boolean).join(", ");
+}
+function drawHyp() {
+  const card = document.getElementById("hypCard");
+  if (!CONN || !depots.length) { card.hidden = true; return; }
+  card.hidden = false;
+  const hs = ["low", "base", "high"].filter(h => CONN[h]);
+  const flips = depots.filter(d => new Set(hs.map(h => depotView(d, h).st)).size > 1).map(d => d.depot_name);
+  document.getElementById("hypTable").innerHTML = `<table class="data hyp"><thead><tr><th>Depot</th>` +
+    hs.map(h => `<th class="${h === hyp ? "sel" : ""}">${esc(HYP_LAB[h])}</th>`).join("") + `</tr></thead><tbody>` +
+    depots.map(d => `<tr><td>${esc(d.depot_name)}${d.connection_evidence === "Estimated" ? "*" : ""}</td>` +
+      hs.map(h => { const v = depotView(d, h); return `<td><span class="badge ${esc(v.st)}" title="${esc(d.depot_name)}, ${esc(HYP_LAB[h])}: ${fmt(v.mw, 1)} MW managed vs ${fmt(v.conn, 1)} MW → ${v.st === "None" ? "no electric lines yet" : esc(v.st)}">${fmt(v.conn, 1)}</span></td>`; }).join("") + `</tr>`).join("") +
+    `</tbody></table><p class="small" style="margin:6px 0 0">Cells show connection MW, coloured by Rule 4 against the managed MW in the table above${atEnd() ? "" : ` (lines converted by ${viewYear})`}${uplift ? ` at ${pct(uplift)} energy use` : ""}. ` +
+    (flips.length ? `Status depends on the hypothesis at ${esc(flips.join(", "))}.` : "No depot changes status across the three hypotheses.") +
+    ` ${esc(SUPP.hyp_note || "")}</p>`;
+}
+function drawStress() {
+  const card = document.getElementById("stress");
+  if (!BLOCKS && !CONN) { card.hidden = true; return; }
+  card.hidden = false;
+  card.classList.toggle("on", !isBase());
+  document.getElementById("stressReset").hidden = isBase();
+  const seg = (id, opts, cur, set) => {
+    const el = document.getElementById(id);
+    el.innerHTML = opts.map(([v, lab], i) => `<button data-i="${i}" aria-pressed="${v === cur}">${esc(lab)}</button>`).join("");
+    el.querySelectorAll("button").forEach(b => b.onclick = () => set(opts[+b.dataset.i][0]));
+  };
+  seg("segUplift", UPLIFTS.map(u => [u, pct(u)]), uplift, v => { uplift = v; applyStress(); });
+  const showHyp = !!CONN;
+  document.getElementById("labHyp").hidden = document.getElementById("segHyp").hidden = !showHyp;
+  if (showHyp) seg("segHyp", ["low", "base", "high"].filter(h => CONN[h]).map(h => [h, HYP_LAB[h]]), hyp, v => { hyp = v; applyStress(); });
+  const parts = [];
+  if (BLOCKS) {
+    const st = lines.map(blockStat), nb = st.reduce((a, s) => a + s.n, 0), ob = st.reduce((a, s) => a + s.over, 0);
+    parts.push(`<b>${fmt(ob)}</b> of ${fmt(nb)} vehicle blocks exceed the range, on <b>${st.filter(s => s.over).length}</b> lines; the line average flags <b>${st.filter(s => s.cls === "avg").length}</b> lines` +
+      (uplift ? ` (File 2: ${lines.filter(l => l.charging_strategy !== "Depot").length}).` : " (as File 2)."));
+  }
+  if (depots.length) {
+    const c = k => depots.filter(d => depotView(d).st === k).length;
+    parts.push(`Depots: ${c("Ready")} Ready, ${c("Upgrade")} Upgrade, ${c("Critical")} Critical${c("None") ? `, ${c("None")} with no electric lines yet` : ""}.`);
+  }
+  document.getElementById("stressOut").innerHTML = parts.join(" ");
+  document.getElementById("stressSum").textContent = uplift === 0 && hyp === "base" ? "energy use and connection at File values" : stressLabel().replace(/^lines converted by \d+,? ?/, "");
+}
+let powerChart = null;
+function drawPower() {                       // all three series are File 3 columns at base; the stress test rescales managed MW and connection
+  const card = document.getElementById("powerCard");
+  if (!depots.length) { card.hidden = true; return; }
+  const vs = depots.map(d => depotView(d));
+  const data = {labels: depots.map(d => d.depot_name + (d.connection_evidence === "Estimated" ? "*" : "")), datasets: [
+    {label: "All buses at once, 100 kW each", data: depots.map(d => +d.peak_mw_unmanaged * 1), backgroundColor: "#c9cbcd"},
+    {label: "Managed over 7 h", data: vs.map(v => +v.mw.toFixed(2)), backgroundColor: vs.map(v => READY_ALL[v.st])},
+    {label: "Connection", data: vs.map(v => v.conn), backgroundColor: "#414042"}]};
+  document.getElementById("powerNote").innerHTML = `Managed bar coloured by readiness (Rule 4). Managed charging cuts the peak to about ` +
+    `${fmt(100 * depots.reduce((a, d) => a + +d.peak_mw_managed, 0) / depots.reduce((a, d) => a + +d.peak_mw_unmanaged, 0), 0)}% of charging every bus at once. * Estimated connection.` +
+    (isBase() ? " Values are File 3." : ` <b>Showing ${esc(stressLabel())}.</b>`);
+  if (powerChart) { powerChart.data = data; powerChart.update(); return; }
+  powerChart = new Chart(document.getElementById("powerChart"), {type: "bar", data, options: {indexAxis: "y", maintainAspectRatio: false,
+    plugins: {legend: {position: "bottom", labels: {boxWidth: 12, generateLabels: ch => ch.data.datasets.map((d, i) => ({text: d.label, datasetIndex: i,
+      fillStyle: i === 1 ? "#fff" : d.backgroundColor, strokeStyle: i === 1 ? "#414042" : d.backgroundColor, lineWidth: 1}))}},
+      tooltip: {callbacks: {label: c => `${c.dataset.label}: ${fmt(c.raw, 1)} MW`}}},
+    scales: {x: {beginAtZero: true, grid: {color: "#eee"}, title: {display: true, text: "MW"}}, y: {grid: {display: false}}}}});
+}
+document.getElementById("powerCard").addEventListener("toggle", e => { if (e.target.open) { drawPower(); powerChart && powerChart.resize(); } });
+function applyStress() { restyleRoutes(); drawDepots(); drawDepotTable(); drawHyp(); drawStress(); drawLegend(); drawPower(); }
+document.getElementById("stressReset").onclick = () => { uplift = 0; hyp = "base"; setYear(LAST_YEAR); };
+
+/* Year slider, top right of the map */
+function yearSummary() {
+  const conv = lines.filter(converted), sum = (a, k) => a.reduce((t, l) => t + (+l[k] || 0), 0);
+  const r = (F["File_4.csv"] || []).find(r => +r.scenario === 1 && +r.year === viewYear);
+  return `<b>${conv.length}</b> of ${lines.length} lines · <b>${fmt(sum(conv, "peak_buses"))}</b> peak buses · <b>${fmt(100 * sum(conv, "daily_km") / (sum(lines, "daily_km") || 1), 0)}%</b> of daily km` +
+    (r ? `<br>S1 fleet at year-end: ${fmt(r.ze_share_pct, 1)}% zero-emission` : viewYear === 2025 ? "<br>Lines evidenced as fully zero-emission at the baseline" : "");
+}
+function setYear(y) {
+  viewYear = y;
+  const el = document.getElementById("yearRange");
+  if (el) { el.value = LINE_YEARS.indexOf(y); document.getElementById("yearNow").textContent = y;
+            document.getElementById("yearSum").innerHTML = yearSummary(); }
+  applyStress();
+}
+if (LINE_YEARS.length > 1) {
+  const ctl = L.control({position: "topright"});
+  ctl.onAdd = () => {
+    const div = L.DomUtil.create("div", "yearctl");
+    div.innerHTML = `<div class="hd"><span>Line plan by year-end (S1 path)</span><b id="yearNow">${LAST_YEAR}</b></div>` +
+      `<input type="range" id="yearRange" min="0" max="${LINE_YEARS.length - 1}" step="1" value="${LINE_YEARS.length - 1}" aria-label="Year of the line plan">` +
+      `<div class="ticks">${LINE_YEARS.map(y => `<span>${y}</span>`).join("")}</div><div class="sum" id="yearSum"></div>`;
+    L.DomEvent.disableClickPropagation(div); L.DomEvent.disableScrollPropagation(div);
+    return div;
+  };
+  ctl.addTo(map);
+  document.getElementById("yearRange").addEventListener("input", e => setYear(LINE_YEARS[+e.target.value]));
+  document.getElementById("yearSum").innerHTML = yearSummary();
 }
 document.getElementById("showRoutes").onchange = e => e.target.checked ? routeLayer.addTo(map) : map.removeLayer(routeLayer);
 document.getElementById("showDepots").onchange = e => e.target.checked ? depotLayer.addTo(map) : map.removeLayer(depotLayer);
@@ -387,7 +605,7 @@ if (!lines.some(l => l.electrification_year)) {
   const b = document.getElementById("byYear"); b.disabled = true; b.title = "Electrification year arrives with section 7 (File 2)";
   b.style.opacity = .5;
 }
-drawRoutes(); drawDepots(); drawLegend(); drawDepotTable(); drawKpis();
+drawRoutes(); drawDepots(); drawLegend(); drawDepotTable(); drawKpis(); drawHyp(); drawStress();
 function fitMap() { const b = L.featureGroup([...routeLayer.getLayers(), ...depotLayer.getLayers()]).getBounds(); if (b.isValid()) map.fitBounds(b, {padding: [16, 16]}); }
 
 /* ---------- View (iii): benchmark ---------- */
@@ -396,29 +614,51 @@ Chart.defaults.color = css("--ink");
 const BENCH_METRICS = {
   ze_share_pct: ["Zero-emission share of fleet (%)", 1], daily_bus_km: ["Daily bus km", 0], n_bus_lines: ["Bus lines", 0],
   fleet_total: ["Fleet total", 0], energy_full_bev_mwh_day: ["Energy if fully battery-electric (MWh/day)", 0],
-  ze_target_year: ["Zero-emission target year", 0], grid_co2_g_kwh: ["Grid CO₂ (g/kWh)", 0]
+  ze_target_year: ["Zero-emission target year", 0], grid_co2_g_kwh: ["Grid CO₂ (g/kWh)", 0],
+  ze_fleet: ["Zero-emission buses", 0],
+  _km_per_bus: ["Daily km per fleet bus · derived from File 1", 0],
+  _co2_full_bev: ["CO₂ per day if fully battery-electric (t) · derived from File 1", 1]
+};
+const BENCH_DERIVED = {                      // computed in the browser from File 1 columns only; the File 1 table below is unchanged
+  _km_per_bus: r => r.daily_bus_km != null && r.fleet_total ? r.daily_bus_km / r.fleet_total : null,
+  _co2_full_bev: r => r.energy_full_bev_mwh_day != null && r.grid_co2_g_kwh != null ? r.energy_full_bev_mwh_day * r.grid_co2_g_kwh / 1000 : null
+};
+const BENCH_NOTE = {
+  ze_target_year: "Target year of a commitment to a 100% zero-tailpipe-emission fleet. Clean-fleet targets that allow biomethane or CNG do not count (brief 4.4).",
+  _km_per_bus: "Daily bus km ÷ fleet total: how hard each bus works, which drives range and charging needs.",
+  _co2_full_bev: "Full-electrification energy (1.30 kWh/km, battery energy before charging losses) × national grid factor: what the same fleet would emit on each city's grid."
 };
 function drawBench() {
   const rows = F["File_1.csv"], el = document.getElementById("benchBody");
   if (!rows) { el.innerHTML = PENDING("File 1", "Madrid plus at least three capitals from notebook 02 and section 9."); return; }
   el.innerHTML = `<div class="controls"><label for="bm">Metric</label><select id="bm">${Object.entries(BENCH_METRICS)
     .map(([k, [l]]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></div>
-    <div class="charts"><div class="card"><div class="chartbox"><canvas id="benchChart" role="img" aria-label="Benchmark bar chart"></canvas></div></div>
+    <div class="charts"><div class="card"><div class="q">How does Madrid compare on this measure?</div><h3>Benchmark by metric</h3><div class="chartbox"><canvas id="benchChart" role="img" aria-label="Benchmark bar chart"></canvas></div>
+      <p class="small" style="margin:8px 0 0" id="benchNote"></p></div>
     <div class="card" id="benchCards"></div></div>
-    <div class="card scroll" style="margin-top:16px"><h3>File 1</h3><div id="benchTable"></div></div>`;
+    <div class="card scroll" style="margin-top:16px"><div class="q">What are the figures and sources for each city?</div><h3>File 1</h3><div id="benchTable"></div></div>`;
   let chart;
   const draw = k => {
     const [label, d] = BENCH_METRICS[k];
-    const sorted = [...rows].sort((a, b) => (+b[k] || 0) - (+a[k] || 0));
-    const data = {labels: sorted.map(r => r.city), datasets: [{label, data: sorted.map(r => r[k]),
+    const val = r => { const v = BENCH_DERIVED[k] ? BENCH_DERIVED[k](r) : r[k]; return v == null || v === "" || Number.isNaN(+v) ? null : +v; };
+    const isYear = k === "ze_target_year";
+    const have = rows.filter(r => val(r) != null).sort((a, b) => isYear ? val(a) - val(b) : val(b) - val(a));
+    const missing = rows.filter(r => val(r) == null);
+    const sorted = [...have, ...missing];
+    const data = {labels: sorted.map(r => `${r.city} · ${r.charging_model || "–"}`), datasets: [{label, data: sorted.map(val),
       backgroundColor: sorted.map(r => r.city === "Madrid" ? css("--blue") : "#a9c4de"), borderRadius: 4}]};
-    if (chart) { chart.data = data; chart.update(); return; }
-    chart = new Chart(document.getElementById("benchChart"), {type: "bar", data, options: {indexAxis: "y", maintainAspectRatio: false,
+    document.getElementById("benchNote").innerHTML = `Label: city · predominant charging model (File 1). ` + esc(BENCH_NOTE[k] || "") +
+      (missing.length ? ` <b>No value: ${esc(missing.map(r => r.city).join(", "))}</b>` + (isYear ? " (no zero-emission target evidenced; left empty, not zero)." : " (left empty in File 1).") : "");
+    const xMin = isYear && have.length ? Math.min(2025, ...have.map(val)) - 1 : undefined;
+    if (chart) chart.destroy();
+    if (isYear) Object.assign(data.datasets[0], {showLine: false, pointRadius: 9, pointHoverRadius: 11, pointBackgroundColor: data.datasets[0].backgroundColor, pointBorderColor: "#fff"});
+    chart = new Chart(document.getElementById("benchChart"), {type: isYear ? "line" : "bar", data, options: {indexAxis: "y", maintainAspectRatio: false,
       plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => `${fmt(c.raw, BENCH_METRICS[document.getElementById("bm").value][1])}`}}},
-      scales: {x: {grid: {color: "#eee"}, beginAtZero: k !== "ze_target_year"}, y: {grid: {display: false}}}}});
+      scales: {x: {grid: {color: "#eee"}, beginAtZero: !isYear, min: xMin, max: isYear ? Math.max(...have.map(val)) + 1 : undefined,
+        ticks: {stepSize: isYear ? 1 : undefined, callback: v => isYear ? String(v) : fmt(v, v % 1 ? 1 : 0)}}, y: {grid: {display: isYear, color: "#eee"}, offset: true}}}});
   };
   const mad = rows.find(r => r.city === "Madrid") || {};
-  document.getElementById("benchCards").innerHTML = `<h3>Madrid</h3><div class="grid-kpi" style="grid-template-columns:1fr 1fr">
+  document.getElementById("benchCards").innerHTML = `<div class="q">Where does Madrid stand today?</div><h3>Madrid</h3><div class="grid-kpi" style="grid-template-columns:1fr 1fr">
     ${[[fmt(mad.ze_share_pct, 1) + "%", "zero-emission share"], [fmt(mad.fleet_total), "buses"], [mad.ze_target_year ?? "–", "target year"],
        [mad.charging_model ?? "–", "charging model"]].map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("")}</div>
     <p class="small">Perimeters differ by city; see the reference dates and sources in the table.</p>`;
@@ -451,9 +691,16 @@ function drawScen() {
       .map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("")}</div>
     <div class="controls"><label for="sm">Metric</label><select id="sm">${Object.entries(SCEN_METRICS)
       .map(([k, [l]]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></div>
-    <div class="charts"><div class="card"><div class="chartbox"><canvas id="scenChart" role="img" aria-label="S0 versus S1 by year"></canvas></div></div>
-    <div class="card"><h3>Fleet mix at year-end</h3><p class="small" style="margin:-4px 0 8px">Each year: left bar S0, right bar S1.</p><div class="chartbox" style="height:320px"><canvas id="mixChart" role="img" aria-label="Fleet mix by technology"></canvas></div></div></div>
-    <div class="card scroll" style="margin-top:16px"><h3>File 4</h3><div id="scenTable"></div></div>`;
+    <div class="charts"><div class="card"><div class="q">How far apart are the two paths?</div><h3>S0 against S1 by metric</h3><div class="chartbox"><canvas id="scenChart" role="img" aria-label="S0 versus S1 by year"></canvas></div></div>
+    <div class="card"><div class="q">How fast does gas leave the fleet on each path?</div><h3>Fleet mix at year-end</h3><p class="small" style="margin:-4px 0 8px">Each year: left bar S0, right bar S1.</p><div class="chartbox" style="height:320px"><canvas id="mixChart" role="img" aria-label="Fleet mix by technology"></canvas></div></div></div>
+    ${SUPP.capex ? `<div class="card" style="margin-top:16px"><div class="q">What is the money spent on?</div><h3>Capex by component <span class="tag-supp">supplementary</span></h3>
+      <p class="small" style="margin:-4px 0 8px">Each year: left bar S0, right bar S1. The components add up to File 4's capex_meur. <span id="capexTotals"></span></p>
+      <div class="chartbox" style="height:300px"><canvas id="capexChart" role="img" aria-label="Capex by component, S0 and S1"></canvas></div>
+      <p class="small" style="margin:8px 0 0">${esc(SUPP.capex_note || "")}</p>
+      ${SUPP.exposures ? `<div class="q" style="margin-top:16px">What does the capex figure leave out?</div><h3>Not in File 4 capex · order of magnitude</h3><div class="scroll"><table class="data"><thead><tr><th>Item</th><th>Label</th><th class="num">S0, M€</th><th class="num">S1, M€</th><th>Basis</th></tr></thead><tbody>` +
+        SUPP.exposures.map(e => `<tr><td>${esc(e.item)}</td><td><span class="lab-${esc(e.label)}">${esc(e.label)}</span></td><td class="num">${esc(e.s0)}</td><td class="num">${esc(e.s1)}</td><td class="small" style="min-width:320px">${esc(e.basis)}</td></tr>`).join("") +
+        `</tbody></table></div><p class="small" style="margin:8px 0 0">${esc(SUPP.exposures_note || "")}</p>` : ""}</div>` : ""}
+    <div class="card scroll" style="margin-top:16px"><div class="q">What are the year-by-year figures behind the charts?</div><h3>File 4</h3><div id="scenTable"></div></div>`;
   let chart;
   const draw = k => {
     const data = {labels: years, datasets: [0, 1].map(s => ({label: SCEN_STYLE[s].label, data: by(s).map(r => r[k]),
@@ -473,6 +720,19 @@ function drawScen() {
       plugins: {legend: {position: "bottom", labels: {filter: (it, d) => d.datasets[it.datasetIndex].stack === "S0"}},
                 tooltip: {callbacks: {label: c => `${c.dataset.stack} · ${c.dataset.label}: ${fmt(c.raw)}`}}},
       scales: {x: {stacked: true, grid: {display: false}}, y: {stacked: true, grid: {color: "#eee"}}}}});
+  if (SUPP.capex) {
+    const COMP = [["buses", "Buses", "#2c7abf"], ["chargers", "New charging points", "#86bce6"], ["committed", "Committed depot projects", "#414042"]];
+    const cx = s => years.map(y => SUPP.capex.find(r => +r.scenario === s && +r.year === y) || {});
+    new Chart(document.getElementById("capexChart"), {type: "bar",
+      data: {labels: years, datasets: [0, 1].flatMap(s => COMP.map(([k, l, c]) => ({label: l, stack: `S${s}`, data: cx(s).map(r => r[k]),
+        backgroundColor: c, borderColor: "#fff", borderWidth: 1})))},
+      options: {maintainAspectRatio: false,
+        plugins: {legend: {position: "bottom", labels: {filter: (it, d) => d.datasets[it.datasetIndex].stack === "S0"}},
+                  tooltip: {callbacks: {label: c => `${c.dataset.stack} · ${c.dataset.label}: ${fmt(c.raw, 1)} M€`}}},
+        scales: {x: {stacked: true, grid: {display: false}}, y: {stacked: true, grid: {color: "#eee"}, title: {display: true, text: "M€ (2025 prices, excl. VAT)"}}}}});
+    document.getElementById("capexTotals").innerHTML = [0, 1].map(s => `<b>S${s}</b> 2026–35: ` +
+      COMP.map(([k, l]) => `${l.toLowerCase()} ${fmt(cx(s).reduce((a, r) => a + (+r[k] || 0), 0), 0)}`).join(", ") + " M€").join(" · ") + ".";
+  }
   const cols = Object.keys(rows[0]);
   document.getElementById("scenTable").innerHTML = `<table class="data"><thead><tr>${cols.map(c => `<th class="${c === "scenario" || c === "year" ? "" : "num"}">${esc(c)}</th>`).join("")}</tr></thead><tbody>` +
     [...rows].sort((a, b) => a.scenario - b.scenario || a.year - b.year).map(r => `<tr>${cols.map(c => `<td class="${c === "scenario" || c === "year" ? "" : "num"}">${esc(c === "year" || c === "scenario" ? r[c] : fmt(r[c], ["ze_share_pct", "capex_meur"].includes(c) ? 1 : 0))}</td>`).join("")}</tr>`).join("") + "</tbody></table>";
@@ -643,6 +903,50 @@ document.getElementById("rS0").onclick = () => setRoad(0);
 
 /* Notes */
 document.getElementById("notesList").innerHTML = (META.notes || []).map(n => `<li>${esc(n)}</li>`).join("");
+(function overview() {
+  const mad = f1Madrid || {}, s0 = scenRows(0), s1 = scenRows(1);
+  const full = rs => (rs.find(r => +r.ze_share_pct >= 100) || {}).year;
+  const sumB = lines.reduce((a, l) => a + (+l.peak_buses || 0), 0);
+  const peers = (F["File_1.csv"] || []).filter(r => r.city !== "Madrid").map(r => r.city);
+  document.getElementById("ovLede").innerHTML = esc(META.context ||
+    "EMT Madrid retired its last diesel bus in 2022, but most of its fleet runs on compressed natural gas, which is still a fossil fuel. " +
+    "This file answers the datathon's question: how, in what order and at what cost can the fleet reach zero tailpipe emissions, and what can Madrid learn from other European capitals?");
+  const st = k => depots.filter(d => d.readiness_status === k).length;
+  document.getElementById("ovKpis").innerHTML = [
+    [mad.fleet_total != null ? fmt(mad.fleet_total) : "–", "buses at 31 Dec 2025" + (mad.ze_share_pct != null ? `, ${fmt(mad.ze_share_pct, 1)}% zero-emission` : "")],
+    [lines.length ? fmt(lines.length) : "–", `lines on the reference day${META.reference_date ? " (" + META.reference_date + ")" : ""}, ${fmt(sumB)} peak buses`],
+    [depots.length ? `${st("Ready")} / ${st("Upgrade")} / ${st("Critical")}` : "–", `depots Ready / Upgrade / Critical (indicative, ${depots.filter(d => d.connection_evidence === "Estimated").length} of ${depots.length} connections estimated)`],
+    [s1.length ? fmt(s1.reduce((a, r) => a + (+r.capex_meur || 0), 0), 0) + " M€" : "–", "capex 2026–35 to reach 100% by 2030 (S1)"],
+    [s0.length ? (full(s0) ?? "after 2035") : "–", "year the plan-based pace (S0) reaches 100%"],
+  ].map(([v, l]) => `<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join("");
+  const pages = [
+    ["t-road", "Implementation roadmap", "what has to happen each year, the order lines convert in, and the first year purchases, grid or budget bind."],
+    ["t-map", "Network map", "views (i) and (ii) of the brief: every line by charging strategy or electrification year, and each depot's power need against its connection. The year slider at the top right steps through the plan; the stress test changes energy use and the connection hypothesis."],
+    ["t-bench", "European benchmark", `view (iii): Madrid against ${peers.length ? esc(peers.join(", ")) : "peer capitals"} on File 1's harmonised indicators.`],
+    ["t-scen", "Scenarios 2026–2035", "view (iv): S0, the plan-based pace, against S1, 100% zero-emission by 2030, with fleet mix, energy, CO₂ and capex."],
+  ];
+  document.getElementById("ovPages").innerHTML = pages.map(([id, name, what]) =>
+    `<li><button class="linkbtn" data-tab="${id}">${esc(name)}</button>: ${what}</li>`).join("") +
+    `<li>Anything tagged <span class="tag-supp">supplementary</span> is a sensitivity from the notebook; it never changes Files 1–4, which are embedded as submitted.</li>`;
+  document.querySelectorAll("#ovPages [data-tab]").forEach(b => b.onclick = () => select(document.getElementById(b.dataset.tab)));
+})();
+(function register() {
+  const reg = SUPP.assumptions;
+  if (!reg || !reg.length) return;
+  document.getElementById("regCard").hidden = false;
+  let cur = "All";
+  const draw = () => {
+    const n = k => reg.filter(r => r.label === k).length;
+    document.getElementById("regSeg").innerHTML = ["All", "V", "D", "P", "A"].map(k =>
+      `<button data-k="${k}" aria-pressed="${k === cur}">${k === "All" ? `All (${reg.length})` : `${k} (${n(k)})`}</button>`).join("");
+    document.getElementById("regSeg").querySelectorAll("button").forEach(b => b.onclick = () => { cur = b.dataset.k; draw(); });
+    const rows = reg.filter(r => cur === "All" || r.label === cur);
+    document.getElementById("regCount").textContent = `${rows.length} of ${reg.length} entries`;
+    document.getElementById("regTable").innerHTML = `<table class="data reg"><thead><tr><th>Variable</th><th>Value</th><th>Label</th><th>Evidence</th><th>Used in</th><th>Sensitivity</th></tr></thead><tbody>` +
+      rows.map(r => `<tr><td>${esc(r.variable)}</td><td>${esc(r.value)}</td><td><span class="lab-${esc(r.label)}">${esc(r.label)}</span></td><td>${esc(r.evidence)}</td><td>${esc(r.impact)}</td><td>${esc(r.sensitivity)}</td></tr>`).join("") + "</tbody></table>";
+  };
+  draw();
+})();
 
 let saved = null;
 try { saved = localStorage.getItem("bi-tab"); } catch (e) {}
