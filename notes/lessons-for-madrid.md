@@ -26,7 +26,7 @@ Phases: **0** Unlock 2026–27 · **1** Fill ready depots 2027–29 · **2** Har
 
 ## Multi-supplier procurement and battery guarantees · Phases 0–1
 - **Precedent:**
-  - Paris grounded about 232 Bluebus buses after fires, and the maker later left the market ([electrive](https://www.electrive.com/2026/09/09/end-after-700-e-buses-bollore-pulls-the-plug-on-bluebus/)).
+  - Paris grounded 149 Bluebus buses after two fires in April 2022; about 232 stayed out of service until 2024, and the maker later left the market ([electrive](https://www.electrive.com/2026/09/09/end-after-700-e-buses-bollore-pulls-the-plug-on-bluebus/)).
   - London has a 14-year battery-performance service ([Zenobe](https://www.zenobe.com/?p=16910)).
   - Helsinki scores operators on consumption and noise ([HSL](https://www.hsl.fi/en/hsl/electric-buses/environmental-performance-in-figures)).
   - Singapore split 660 e-buses into six contracts across four tenderers in Dec 2025 ([LTA](https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/12/news-releases/more-electric-buses-to-be-deployed-from-end-2026.html); not a File 1 city).
