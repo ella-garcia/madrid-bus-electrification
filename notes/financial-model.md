@@ -344,7 +344,7 @@ Spare capacity is thin in 2027 (6) and 2030 (169), and negative in 2026 (−43, 
 
 ## 8. Feasibility and delay stress test (target 2033)
 
-**Bus purchases.** 273 e-buses/yr is within EMT's all-bus intake but more than twice its e-bus peak: it bought 1,203 buses in 2016-2020 (about 257 a year in 2019-20, almost all gas; 382 in 2018), while its e-bus peak is 116, in 2024. It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
+**Bus purchases.** 273 e-buses/yr (or 230/yr at the likely capacity) is within EMT's all-bus intake of 250-380 buses a year in 2018-20 (382 in 2018, 250 in 2019, 265 in 2020, almost all gas; 1,203 in 2016-2020), but above its e-bus peak of 116, in 2024. It is ~2% of the European e-bus market (11,819 registrations in 2025). No single maker can supply it (Irizar registered 211 e-buses in Europe in 2025), so multi-lot framework tenders are needed.
 
 **Depots and grid.** Charging capacity depends on depot projects finishing on time. Results of shifting project end dates (Python reference model):
 
