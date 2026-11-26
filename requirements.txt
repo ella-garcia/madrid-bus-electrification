@@ -11,3 +11,4 @@ folium
 kaleido
 scikit-learn
 jupyterlab
+tabulate  # scenarios/roadmap_2035_breakdown.py
