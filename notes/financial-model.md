@@ -154,7 +154,7 @@ The 12-year life and the 2024 CNG purchases (not split out by EMT) are assumptio
 | La Elipa: new all-electric depot | 318 | 352.6 | 112.12 | 2026 | 2029 | Official (contract award, 32-month works) |
 | Entrevías: full electrification | 465 | `charge_cost_retrofit_base` | 51.15 | 2027 | 2028 | Proposal. Position count and dates are assumptions |
 | Carabanchel + Sanchinarro: remaining positions | = fleet − H2 − capacity 2025 − other projects (199) | `charge_cost_retrofit_base` | 21.89 | 2028 | 2030 | Proposal (balancing item) |
-| Las Tablas: new depot replacing Fuencarral | 650 | `new_depot_cost` | 229.45 | 2028 | 2031 | Proposal. 650 = City plan; cost at La Elipa rate (assumption) |
+| Las Tablas: new depot replacing Fuencarral | 650 | `new_depot_cost` | 229.45 | 2028 | 2031 | Proposal. 650 = City plan; EMT's March 2026 design award says 620; cost at La Elipa rate (assumption) |
 | Upstream grid reinforcement (contingency) | = Entrevías + remaining (664) | high − base = 93 | 61.75 | 2027 | 2030 | Assumption. Applies if i-DE needs new substations. Not counted in positions |
 | **Total** | **1,773 added** | | **491.2** | | | |
 
@@ -368,6 +368,7 @@ The 2033 target survives each single delay but has no buffer: the realistic risk
 6. The funding plan has no debt repayments and no discounting (no NPV/IRR yet).
 7. Fleet size differs by source: 2,239 (EMT) vs 2,215 (CRTM).
 8. E-bus prices are tender maximums. Final contract prices may be lower.
+9. Las Tablas size: 650 is the City plan's figure ("approximately 650"); the brief (section 4.2) and EMT's design-contract award say 620. The model keeps 650 (rev. 13, D9). Because the balancing retrofit sizes the other depots so positions equal the fleet, the 2030 shortfall always equals Las Tablas's size. At 620: 620 e-buses without a charging position in 2030 (not 650), Las Tablas about €219M at La Elipa's rate (229.45 × 620/650; not €229M), and about 28 % of the fleet's positions (not about 30 %).
 
 ---
 
@@ -398,6 +399,7 @@ The 2033 target survives each single delay but has no buffer: the realistic risk
 | Carabanchel charging station | €6.7M, 118 buses | https://diario.madrid.es/blog/notas-de-prensa/emt-madrid-avanza-en-la-electrificacion-del-centro-de-operaciones-de-carabanchel-un-proyecto-innovador-y-unico-en-europa/ |
 | 520 CNG buses for €151.5M | CNG price and age | https://diario.madrid.es/blog/notas-de-prensa/la-emt-invierte-177-millones-en-la-compra-de-520-autobuses-de-gas-y-50-electricos/ |
 | Las Tablas depot plan | ~650 buses | https://diario.madrid.es/blog/notas-de-prensa/aprobado-el-plan-que-permitira-la-construccion-del-nuevo-centro-de-operaciones-de-emt-madrid-nuevas-dotaciones-y-zonas-verdes-en-las-tablas/ |
+| Las Tablas design-contract award (EMT) | 620 buses (matches brief 4.2) | https://diario.madrid.es/blog/notas-de-prensa/emt-madrid-adjudica-el-proyecto-para-construir-el-nuevo-centro-de-operaciones-de-las-tablas/ |
 | Carta de Servicios 2026 | Bus-km 2025 | https://www.madrid.es/UnidadesDescentralizadas/Calidad/CARTAS%20SERVICIOS/SistemaCartasServicio/66%20CS_Transporte%20en%20Autob%C3%BAs%20Urbano/DEFINITIVA/CS_TransporteUrbano_2026.pdf |
 | Transport Canada grid-integration study | High-case grid cost | https://tc.canada.ca/en/road-transportation/publications/medium-heavy-duty-vehicle-mhdv-grid-integration-study |
 | VDV cost benchmarks (IAA) | Cost ranges | https://www.iaa-transportation.com/en/newsroom/time-to-charge |
