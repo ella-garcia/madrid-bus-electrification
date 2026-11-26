@@ -7845,8 +7845,15 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Run date 2026-11-24 | Python 3.13.18 | pandas 2.2.3 | numpy 2.4.6
-Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
+<pre>Note: you may need to restart the kernel to use updated packages.
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Run date 2026-11-27 | Python 3.13.1 | pandas 2.2.3 | numpy 2.4.6
+Folders: data_raw/, data_derived/, outputs/ under the repo root
 </pre>
 </div>
 </div>
@@ -7972,7 +7979,6 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8053,80 +8059,6 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3b8c7dbe-03ac-4327-a1a6-f545d2364c89');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -8253,13 +8185,13 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
                        <span class="n">ref_date</span><span class="o">=</span><span class="s2">"2026-11-24"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">"route_type 3; lines serving the City of Paris, all km (Paris and inner ring); "</span>
                        <span class="s2">"km inside Paris printed as a sensitivity"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="s2">"Copenhagen"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://labs.rejseplanen.dk/hc/da/articles/24750139021341"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"Movia (agency 221)"</span><span class="p">,</span> <span class="n">ref_date</span><span class="o">=</span><span class="s2">"2026-11-24"</span><span class="p">,</span>
-                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"route_type 3 and 700; lines serving the Copenhagen + Frederiksberg box, km inside the box"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"route_type 3 and 700; lines serving the Copenhagen + Frederiksberg box, km inside the box"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="s2">"London"</span><span class="p">:</span>     <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://tfl.gov.uk/corporate/publications-and-reports/buses-performance-data"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"TfL London Buses"</span><span class="p">,</span>
                        <span class="n">ref_date</span><span class="o">=</span><span class="s2">"2026-11-24"</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s2">"No ready GTFS (brief 4.4): TfL annual km / 365 and route count, in notebook 01 §9"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="s2">"Berlin"</span><span class="p">:</span>     <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://unternehmen.vbb.de/en/digital-services/datasets/"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"BVG"</span><span class="p">,</span> <span class="n">ref_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"Not covered: three peers already meet the brief's minimum"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="s2">"Berlin"</span><span class="p">:</span>     <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://unternehmen.vbb.de/en/digital-services/datasets/"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"BVG"</span><span class="p">,</span> <span class="n">ref_date</span><span class="o">=</span><span class="s2">"2026-11-25"</span><span class="p">,</span>
+                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"VBB feed, agency_id 796 (BVG) and route_type 700 (bus); every BVG bus line incl. night and rail-replacement lines; Wed 25 Nov 2026 (feed starts that day)"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="s2">"Brussels"</span><span class="p">:</span>   <span class="nb">dict</span><span class="p">(</span><span class="n">landing</span><span class="o">=</span><span class="s2">"https://data.belgianmobility.io/en/data.html?agency=stibmivb"</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">"STIB-MIVB"</span><span class="p">,</span> <span class="n">ref_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"Not covered: the feed found is a March 2026 archive, not processed; three peers already meet the minimum"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                       <span class="nb">filter</span><span class="o">=</span><span class="s2">"Not covered: the feed found is a March 2026 archive, not processed; five peers already exceed the minimum"</span><span class="p">,</span> <span class="n">in_file1</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">}</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">CITIES</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
@@ -8274,7 +8206,6 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-aa662bfd-5593-4972-a976-ec2ab9ae8229">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8323,7 +8254,7 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <td>Movia (agency 221)</td>
 <td>2026-11-24</td>
 <td>route_type 3 and 700; lines serving the Copenh...</td>
-<td>False</td>
+<td>True</td>
 </tr>
 <tr>
 <th>London</th>
@@ -8337,9 +8268,9 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <th>Berlin</th>
 <td>https://unternehmen.vbb.de/en/digital-services...</td>
 <td>BVG</td>
-<td>None</td>
-<td>Not covered: three peers already meet the brie...</td>
-<td>False</td>
+<td>2026-11-25</td>
+<td>VBB feed, agency_id 796 (BVG) and route_type 7...</td>
+<td>True</td>
 </tr>
 <tr>
 <th>Brussels</th>
@@ -8351,80 +8282,6 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-aa662bfd-5593-4972-a976-ec2ab9ae8229')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-aa662bfd-5593-4972-a976-ec2ab9ae8229 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-aa662bfd-5593-4972-a976-ec2ab9ae8229');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -8604,7 +8461,6 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8640,42 +8496,42 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 <tr>
 <th>1</th>
 <td>routes</td>
-<td>457</td>
+<td>460</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>trips</td>
-<td>459493</td>
+<td>444330</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>calendar</td>
-<td>9359</td>
+<td>8882</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>calendar_dates</td>
-<td>4261</td>
+<td>4158</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr>
 <th>5</th>
 <td>stops</td>
-<td>8406</td>
-<td>16319</td>
+<td>8413</td>
+<td>16333</td>
 <td>0</td>
 </tr>
 <tr>
 <th>6</th>
 <td>shapes</td>
-<td>494921</td>
+<td>497447</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -8689,90 +8545,16 @@ Folders: data_raw/, data_derived/, outputs/ under /content/datathon (Colab)
 </tbody>
 </table>
 </div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1c33b3de-95ba-4cbd-98e3-ec7a94adf379');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Helsinki: reference day inside the feed validity | feed valid 20261123 to 20270121
+<pre>CHECK PASS | Helsinki: reference day inside the feed validity | feed valid 20261120 to 20270118
 CHECK PASS | Helsinki: no exact duplicate trips
 CHECK PASS | Helsinki: every active bus trip has a shape
 CHECK PASS | Helsinki: feed has no frequencies.txt (trips are individual runs)
-19292 active bus trips | 391 bus routes | route types ['701', '702', '704'] | 2646 Helsinki city stops
+19286 active bus trips | 390 bus routes | route types ['701', '702', '704'] | 2653 Helsinki city stops
 </pre>
 </div>
 </div>
@@ -8854,7 +8636,6 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -8895,85 +8676,11 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 </tr>
 <tr>
 <th>704</th>
-<td>411</td>
-<td>4427.9</td>
+<td>405</td>
+<td>4397.1</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3ba191ae-a993-4d5f-aa9a-a9e86781a45b');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -9043,7 +8750,6 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9100,86 +8806,12 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <tr>
 <th>4</th>
 <td>Whole HSL region</td>
-<td>391</td>
-<td>289833.0</td>
-<td>19292</td>
+<td>390</td>
+<td>289802.2</td>
+<td>19286</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7ee4aefb-3eef-42ba-8dce-cfc068be9ca9');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -9194,7 +8826,6 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-8279b98a-4242-4a75-8733-80c969f75287">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9408,80 +9039,6 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 </tbody>
 </table>
 </div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-8279b98a-4242-4a75-8733-80c969f75287')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-8279b98a-4242-4a75-8733-80c969f75287 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8279b98a-4242-4a75-8733-80c969f75287');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9489,7 +9046,7 @@ CHECK PASS | Helsinki: km inside the city never exceed the trip's total km
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Helsinki: result matches the city_metrics() contract
 CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
-{'city': 'Helsinki', 'reference_date': '2026-11-24', 'n_bus_lines': 391, 'daily_bus_km': 289833.0, 'n_trips': 19292}
+{'city': 'Helsinki', 'reference_date': '2026-11-24', 'n_bus_lines': 390, 'daily_bus_km': 289802.2, 'n_trips': 19286}
 </pre>
 </div>
 </div>
@@ -9541,7 +9098,6 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -9587,9 +9143,9 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 <th>max trips running</th>
 <td>427</td>
 <td>703</td>
-<td>918</td>
+<td>917</td>
 <td>934</td>
-<td>813</td>
+<td>812</td>
 <td>662</td>
 <td>629</td>
 <td>683</td>
@@ -9608,80 +9164,6 @@ CHECK PASS | Helsinki: File 1 row uses the whole HSL area (brief 4.4)
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d79f2b45-f54e-48c8-98a5-1f1fe9cdf6f8');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -9702,7 +9184,14 @@ Peak: 934 buses on the road at 08:08
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Berlin-(not-covered)">Berlin (not covered)<a class="anchor-link" href="#Berlin-(not-covered)">¶</a></h2><p>BVG is one of the six eligible capitals, but File 1 already has three peers (Helsinki, Paris, London), which meets the brief's minimum. Berlin's VBB feed was not processed.</p>
+<h2 id="Berlin">Berlin<a class="anchor-link" href="#Berlin">¶</a></h2><p>VBB feed (all Berlin-Brandenburg operators). The brief's mandatory perimeter for Berlin is <strong>the BVG bus network</strong> (§4.4), so File 1 uses every route with <code>agency_id</code> 796 (Berliner Verkehrsbetriebe) and <code>route_type</code> 700 (bus) that has at least one trip on the reference day, night lines and special services included. BVG tram (900), U-Bahn (400) and ferry (1000) routes are excluded.</p>
+<ul>
+<li><strong>Reference day deviation, Wed 25 Nov 2026.</strong> The feed downloaded on 26 Nov 2026 starts on 25 Nov 2026, so the peers' common day (Tue 24 Nov) is outside it. 25 Nov is a Wednesday working day: no public holiday in Berlin, outside Berlin's school holidays (autumn 19–31 Oct, Christmas from 23 Dec). Its bus timetable matches Tue 1 Dec and Wed 2 Dec within 0.3 % of trips; both are printed as a sensitivity. The snapshot is pinned by date and checksum in the data register.</li>
+<li><strong>Km from shape geometry.</strong> Neither <code>stop_times.txt</code> nor <code>shapes.txt</code> has <code>shape_dist_traveled</code>, so trip length is the haversine length of the trip's shape, the same fallback as <code>trip_km()</code> and the Copenhagen section. <code>shapes.txt</code> (198 MB) is streamed in chunks; <code>stop_times.txt</code> (401 MB) is not read.</li>
+<li><strong>Lines counted by <code>route_short_name</code></strong>, as for Helsinki and Paris. In this feed each BVG line has a single <code>route_id</code>, so both counts agree.</li>
+<li><strong>Rail-replacement buses are kept.</strong> BVG runs some buses under tram or U-Bahn line numbers (for example U6, M8, 12) while those lines are closed for works. They are bus trips in the BVG bus network on the day, so they count; the total without them is printed as a sensitivity.</li>
+<li><strong>No <code>frequencies.txt</code> rows</strong>: every trip is an individual run.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -9714,8 +9203,63 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">berlin</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Berlin: not covered (File 1 has three peers: Helsinki, Paris, London)"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Berlin feed. VBB republishes it regularly, so fetch() pins the snapshot (date + sha256);</span>
+<span class="c1"># the numbers below are reproducible only from that exact file.</span>
+<span class="n">VBB_GTFS</span> <span class="o">=</span> <span class="s2">"https://unternehmen.vbb.de/gtfs"</span>
+<span class="n">ber_zip</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="n">VBB_GTFS</span><span class="p">,</span> <span class="s2">"vbb_gtfs.zip"</span><span class="p">,</span>
+                <span class="s2">"VBB GTFS, all Berlin-Brandenburg operators, downloaded 26 Nov 2026, calendar valid 2026-11-25 to 2027-12-11 — "</span>
+                <span class="s2">"https://unternehmen.vbb.de/gtfs"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: feed file is a GTFS zip"</span><span class="p">,</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">ber_zip</span><span class="p">),</span>
+      <span class="s2">"if FAIL, the URL returned a web page: put the 26 Nov 2026 file in data_raw/vbb_gtfs.zip"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: feed is the 26 Nov 2026 snapshot used for File 1"</span><span class="p">,</span> <span class="n">DATA_REGISTER</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"sha256_12"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"f06fdfa49a89"</span><span class="p">,</span>
+      <span class="sa">f</span><span class="s2">"sha256 starts </span><span class="si">{</span><span class="n">DATA_REGISTER</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'sha256_12'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">BER_REF</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Berlin reference day"</span><span class="p">,</span> <span class="s2">"2026-11-25"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span>
+                 <span class="s2">"The VBB feed downloaded on 26 Nov 2026 starts on 2026-11-25, so the peers' Tue 2026-11-24 is outside it; "</span>
+                 <span class="s2">"2026-11-25 is a Wednesday working day, not a Berlin public holiday, outside Berlin school holidays "</span>
+                 <span class="s2">"(autumn 19-31 Oct, Christmas from 23 Dec 2026); brief 4.4 lets each city use its own reference day"</span><span class="p">,</span>
+                 <span class="s2">"File 1 Berlin row"</span><span class="p">,</span> <span class="s2">"Tue 2026-12-01 and Wed 2026-12-02 printed below"</span><span class="p">)</span>
+<span class="n">CITIES</span><span class="p">[</span><span class="s2">"Berlin"</span><span class="p">][</span><span class="s2">"ref_date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">BER_REF</span>      <span class="c1"># runtime only, same as the other cities</span>
+<span class="n">BER_PERIMETER</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Berlin perimeter"</span><span class="p">,</span> <span class="s2">"agency_id 796 (Berliner Verkehrsbetriebe), route_type 700"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span>
+                       <span class="s2">"Brief 4.4: BVG bus network. VBB agency.txt lists BVG as agency 796; its routes are 700 bus, "</span>
+                       <span class="s2">"900 tram, 400 U-Bahn, 1000 ferry; only 700 is kept"</span><span class="p">,</span> <span class="s2">"File 1 Berlin row"</span><span class="p">)</span>
+<span class="n">BER_REPLACEMENT</span> <span class="o">=</span> <span class="n">assume</span><span class="p">(</span><span class="s2">"Berlin rail-replacement buses"</span><span class="p">,</span> <span class="s2">"included"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span>
+                         <span class="s2">"Brief 4.4 counts every bus line with a trip on the day, special services included; BVG runs these "</span>
+                         <span class="s2">"buses under tram or U-Bahn line numbers (route_type 700, agency 796)"</span><span class="p">,</span> <span class="s2">"File 1 Berlin row"</span><span class="p">,</span>
+                         <span class="s2">"Total without them printed below"</span><span class="p">)</span>
+
+<span class="n">ber_feed</span> <span class="o">=</span> <span class="n">read_gtfs</span><span class="p">(</span><span class="n">ber_zip</span><span class="p">,</span> <span class="n">tables</span><span class="o">=</span><span class="p">(</span><span class="s2">"agency"</span><span class="p">,</span> <span class="s2">"routes"</span><span class="p">,</span> <span class="s2">"trips"</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">,</span> <span class="s2">"calendar_dates"</span><span class="p">))</span>
+<span class="n">_r</span> <span class="o">=</span> <span class="n">ber_feed</span><span class="p">[</span><span class="s2">"routes"</span><span class="p">]</span>
+<span class="n">ber_bus</span> <span class="o">=</span> <span class="n">_r</span><span class="p">[(</span><span class="n">_r</span><span class="o">.</span><span class="n">agency_id</span> <span class="o">==</span> <span class="s2">"796"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">_r</span><span class="o">.</span><span class="n">route_type</span> <span class="o">==</span> <span class="s2">"700"</span><span class="p">)]</span>
+<span class="n">ber_tram_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">_r</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">_r</span><span class="o">.</span><span class="n">agency_id</span> <span class="o">==</span> <span class="s2">"796"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">_r</span><span class="o">.</span><span class="n">route_type</span> <span class="o">==</span> <span class="s2">"900"</span><span class="p">),</span> <span class="s2">"route_short_name"</span><span class="p">])</span>
+<span class="n">BER_ALT</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2026-12-01"</span><span class="p">,</span> <span class="s2">"2026-12-02"</span><span class="p">]</span>                  <span class="c1"># sensitivity days: next regular Tuesday and Wednesday</span>
+<span class="n">ber_days</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">_d</span> <span class="ow">in</span> <span class="p">[</span><span class="n">BER_REF</span><span class="p">]</span> <span class="o">+</span> <span class="n">BER_ALT</span><span class="p">:</span>
+    <span class="n">_s</span> <span class="o">=</span> <span class="n">active_service_ids</span><span class="p">(</span><span class="n">ber_feed</span><span class="p">,</span> <span class="n">_d</span><span class="p">)</span>
+    <span class="n">_t</span> <span class="o">=</span> <span class="n">ber_feed</span><span class="p">[</span><span class="s2">"trips"</span><span class="p">]</span>
+    <span class="n">ber_days</span><span class="p">[</span><span class="n">_d</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">_t</span><span class="p">[</span><span class="n">_t</span><span class="o">.</span><span class="n">service_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">_s</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">_t</span><span class="o">.</span><span class="n">route_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ber_bus</span><span class="o">.</span><span class="n">route_id</span><span class="p">))]</span>
+                    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ber_bus</span><span class="p">[[</span><span class="s2">"route_id"</span><span class="p">,</span> <span class="s2">"route_short_name"</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s2">"route_id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">))</span>
+<span class="n">bt</span> <span class="o">=</span> <span class="n">ber_days</span><span class="p">[</span><span class="n">BER_REF</span><span class="p">]</span>
+
+<span class="n">_cal</span> <span class="o">=</span> <span class="n">ber_feed</span><span class="p">[</span><span class="s2">"calendar"</span><span class="p">]</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: agency 796 is Berliner Verkehrsbetriebe"</span><span class="p">,</span>
+      <span class="n">ber_feed</span><span class="p">[</span><span class="s2">"agency"</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"agency_id"</span><span class="p">)</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">"796"</span><span class="p">,</span> <span class="s2">"agency_name"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Berliner Verkehrsbetriebe"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: reference day inside the feed validity"</span><span class="p">,</span>
+      <span class="n">_cal</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">BER_REF</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"-"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">_cal</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+      <span class="sa">f</span><span class="s2">"feed valid </span><span class="si">{</span><span class="n">_cal</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">_cal</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: reference day is a Tuesday or Wednesday (brief 4.4)"</span><span class="p">,</span>
+      <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">BER_REF</span><span class="p">)</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"Tuesday"</span><span class="p">,</span> <span class="s2">"Wednesday"</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">BER_REF</span><span class="p">)</span><span class="o">.</span><span class="n">day_name</span><span class="p">())</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: no duplicate trip ids"</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">trip_id</span><span class="o">.</span><span class="n">is_unique</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: every active bus trip has a shape"</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()),</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bt</span><span class="p">)</span><span class="si">}</span><span class="s2"> trips without a shape"</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">ber_zip</span><span class="p">)</span> <span class="k">as</span> <span class="n">_z</span><span class="p">:</span>
+    <span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: feed has no frequency-based trips (trips are individual runs)"</span><span class="p">,</span>
+          <span class="s2">"frequencies.txt"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_z</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">_z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"frequencies.txt"</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">_n</span> <span class="o">=</span> <span class="p">{</span><span class="n">d</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ber_days</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: reference-day bus trips within 1 </span><span class="si">% o</span><span class="s2">f Tue 1 Dec and Wed 2 Dec (normal working day)"</span><span class="p">,</span>
+      <span class="nb">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_n</span><span class="p">[</span><span class="n">BER_REF</span><span class="p">]</span> <span class="o">/</span> <span class="n">_n</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">BER_ALT</span><span class="p">),</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">_n</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BVG bus routes in the feed: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ber_bus</span><span class="p">)</span><span class="si">}</span><span class="s2"> | active on </span><span class="si">{</span><span class="n">BER_REF</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bt</span><span class="o">.</span><span class="n">route_id</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> routes, "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bt</span><span class="p">)</span><span class="si">}</span><span class="s2"> trips, </span><span class="si">{</span><span class="n">bt</span><span class="o">.</span><span class="n">service_id</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> service_ids"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9728,7 +9272,339 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Berlin: not covered (File 1 has three peers: Helsinki, Paris, London)
+<pre>CHECK PASS | Berlin: feed file is a GTFS zip | if FAIL, the URL returned a web page: put the 26 Nov 2026 file in data_raw/vbb_gtfs.zip
+CHECK PASS | Berlin: feed is the 26 Nov 2026 snapshot used for File 1 | sha256 starts f06fdfa49a89
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>CHECK PASS | Berlin: agency 796 is Berliner Verkehrsbetriebe
+CHECK PASS | Berlin: reference day inside the feed validity | feed valid 20261125 to 20271211
+CHECK PASS | Berlin: reference day is a Tuesday or Wednesday (brief 4.4) | Wednesday
+CHECK PASS | Berlin: no duplicate trip ids
+CHECK PASS | Berlin: every active bus trip has a shape | 0 of 29207 trips without a shape
+CHECK PASS | Berlin: feed has no frequency-based trips (trips are individual runs)
+CHECK PASS | Berlin: reference-day bus trips within 1 % of Tue 1 Dec and Wed 2 Dec (normal working day) | 2026-11-25: 29207, 2026-12-01: 29288, 2026-12-02: 29284
+BVG bus routes in the feed: 222 | active on 2026-11-25: 215 routes, 29207 trips, 38 service_ids
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ffc96262">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Km per trip = haversine length of its shape (no shape_dist_traveled in this feed; same fallback as trip_km()).</span>
+<span class="c1"># shapes.txt is 198 MB, so it is streamed and only the shapes used by active BVG bus trips are kept.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stream_shape_km</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">shape_ids</span><span class="p">,</span> <span class="n">chunk</span><span class="o">=</span><span class="mi">2_000_000</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"shapes.txt"</span><span class="p">),</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">"shape_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">},</span>
+                              <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">"shape_id"</span><span class="p">,</span> <span class="s2">"shape_pt_lat"</span><span class="p">,</span> <span class="s2">"shape_pt_lon"</span><span class="p">,</span> <span class="s2">"shape_pt_sequence"</span><span class="p">]):</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="n">ch</span><span class="p">[</span><span class="n">ch</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">shape_ids</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+                <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">"shape_id"</span><span class="p">,</span> <span class="s2">"shape_pt_sequence"</span><span class="p">])</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"shape_id"</span><span class="p">)</span>
+    <span class="n">s</span><span class="p">[</span><span class="s2">"seg"</span><span class="p">]</span> <span class="o">=</span> <span class="n">haversine_km</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">shape_pt_lat</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> <span class="n">g</span><span class="o">.</span><span class="n">shape_pt_lon</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">shape_pt_lat</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape_pt_lon</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"shape_id"</span><span class="p">)</span><span class="o">.</span><span class="n">seg</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">duplicated</span><span class="p">([</span><span class="s2">"shape_id"</span><span class="p">,</span> <span class="s2">"shape_pt_sequence"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">ber_shape_km</span><span class="p">,</span> <span class="n">_dups</span> <span class="o">=</span> <span class="n">stream_shape_km</span><span class="p">(</span><span class="n">ber_zip</span><span class="p">,</span> <span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ber_days</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+<span class="k">for</span> <span class="n">_d</span> <span class="ow">in</span> <span class="n">ber_days</span><span class="p">:</span>
+    <span class="n">ber_days</span><span class="p">[</span><span class="n">_d</span><span class="p">]</span> <span class="o">=</span> <span class="n">ber_days</span><span class="p">[</span><span class="n">_d</span><span class="p">]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">km</span><span class="o">=</span><span class="n">ber_days</span><span class="p">[</span><span class="n">_d</span><span class="p">]</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ber_shape_km</span><span class="p">))</span>
+<span class="n">bt</span> <span class="o">=</span> <span class="n">ber_days</span><span class="p">[</span><span class="n">BER_REF</span><span class="p">]</span>
+<span class="n">bt</span><span class="p">[</span><span class="s2">"night"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">route_short_name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"N"</span><span class="p">)</span>
+<span class="n">bt</span><span class="p">[</span><span class="s2">"replacement"</span><span class="p">]</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">route_short_name</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ber_tram_names</span><span class="p">)</span> <span class="o">|</span> <span class="n">bt</span><span class="o">.</span><span class="n">route_short_name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
+
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: every active bus trip has a shape length"</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()),</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bt</span><span class="p">)</span><span class="si">}</span><span class="s2"> trips without a shape length"</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: every trip has positive km"</span><span class="p">,</span> <span class="nb">bool</span><span class="p">((</span><span class="n">bt</span><span class="o">.</span><span class="n">km</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()))</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: no repeated point sequence inside a shape"</span><span class="p">,</span> <span class="n">_dups</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_dups</span><span class="si">}</span><span class="s2"> repeated (shape_id, sequence) pairs"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ber_shape_km</span><span class="p">)</span><span class="si">}</span><span class="s2"> shapes measured | mean trip </span><span class="si">{</span><span class="n">bt</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>CHECK PASS | Berlin: every active bus trip has a shape length | 0 of 29207 trips without a shape length
+CHECK PASS | Berlin: every trip has positive km
+CHECK PASS | Berlin: no repeated point sequence inside a shape | 0 repeated (shape_id, sequence) pairs
+1327 shapes measured | mean trip 9.99 km
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d6ec6d6c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># File 1 takes every BVG bus line on the reference day; the other rows are printed for the report only.</span>
+<span class="n">_opts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"All BVG bus lines, Wed 25 Nov (File 1)"</span><span class="p">:</span>            <span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bt</span><span class="o">.</span><span class="n">index</span><span class="p">)),</span>
+    <span class="s2">"  without rail-replacement buses"</span><span class="p">:</span>                   <span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="o">~</span><span class="n">bt</span><span class="o">.</span><span class="n">replacement</span><span class="p">),</span>
+    <span class="s2">"  without night lines (N...)"</span><span class="p">:</span>                       <span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="o">~</span><span class="n">bt</span><span class="o">.</span><span class="n">night</span><span class="p">),</span>
+    <span class="s2">"All BVG bus lines, Tue 1 Dec"</span><span class="p">:</span>                       <span class="p">(</span><span class="n">ber_days</span><span class="p">[</span><span class="s2">"2026-12-01"</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ber_days</span><span class="p">[</span><span class="s2">"2026-12-01"</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)),</span>
+    <span class="s2">"All BVG bus lines, Wed 2 Dec"</span><span class="p">:</span>                       <span class="p">(</span><span class="n">ber_days</span><span class="p">[</span><span class="s2">"2026-12-02"</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ber_days</span><span class="p">[</span><span class="s2">"2026-12-02"</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)),</span>
+<span class="p">}</span>
+<span class="n">ber_perims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="nb">dict</span><span class="p">(</span><span class="n">perimeter</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_bus_lines</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s2">"route_short_name"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()),</span>
+                                <span class="n">daily_bus_km</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="s2">"km"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">n_trips</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+                           <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_opts</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ber_perims</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Rail-replacement lines on the day:"</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">replacement</span><span class="p">,</span> <span class="s2">"route_short_name"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+<span class="n">ber_lines</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"route_short_name"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">trips</span><span class="o">=</span><span class="p">(</span><span class="s2">"trip_id"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">),</span> <span class="n">km</span><span class="o">=</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">_q1</span><span class="p">,</span> <span class="n">_q3</span> <span class="o">=</span> <span class="n">ber_lines</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+<span class="n">ber_lines</span><span class="p">[</span><span class="s2">"iqr_outlier"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ber_lines</span><span class="o">.</span><span class="n">km</span> <span class="o">&gt;</span> <span class="n">_q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">_q3</span> <span class="o">-</span> <span class="n">_q1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">ber_lines</span><span class="o">.</span><span class="n">iqr_outlier</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> high-km line(s) flagged (kept, real trunk lines); threshold </span><span class="si">{</span><span class="n">_q3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">_q3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_q1</span><span class="p">)</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> km:"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ber_lines</span><span class="p">[</span><span class="n">ber_lines</span><span class="o">.</span><span class="n">iqr_outlier</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Top five lines by km:"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ber_lines</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">berlin</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s2">"Berlin"</span><span class="p">,</span> <span class="n">reference_date</span><span class="o">=</span><span class="n">BER_REF</span><span class="p">,</span>
+              <span class="n">n_bus_lines</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">route_short_name</span><span class="o">.</span><span class="n">nunique</span><span class="p">()),</span>
+              <span class="n">daily_bus_km</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="mi">1</span><span class="p">),</span>
+              <span class="n">n_trips</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bt</span><span class="p">)))</span>
+<span class="n">_avg</span> <span class="o">=</span> <span class="mf">89.7e6</span> <span class="o">/</span> <span class="mi">365</span>                                    <span class="c1"># BVG in Zahlen 2025: 89.7 M Nutzwagenkilometer, all days</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: result matches the city_metrics() contract"</span><span class="p">,</span>
+      <span class="nb">set</span><span class="p">(</span><span class="n">berlin</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">"city"</span><span class="p">,</span> <span class="s2">"reference_date"</span><span class="p">,</span> <span class="s2">"n_bus_lines"</span><span class="p">,</span> <span class="s2">"daily_bus_km"</span><span class="p">,</span> <span class="s2">"n_trips"</span><span class="p">})</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: line count and daily km are positive"</span><span class="p">,</span> <span class="n">berlin</span><span class="p">[</span><span class="s2">"n_bus_lines"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">berlin</span><span class="p">[</span><span class="s2">"daily_bus_km"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Berlin: working-day km between 1.0 and 1.3 x BVG's all-days average (89.7 M km / 365)"</span><span class="p">,</span>
+      <span class="mf">1.0</span> <span class="o">&lt;=</span> <span class="n">berlin</span><span class="p">[</span><span class="s2">"daily_bus_km"</span><span class="p">]</span> <span class="o">/</span> <span class="n">_avg</span> <span class="o">&lt;=</span> <span class="mf">1.3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">berlin</span><span class="p">[</span><span class="s1">'daily_bus_km'</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">_avg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">_avg</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> km"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Lines: </span><span class="si">{</span><span class="n">berlin</span><span class="p">[</span><span class="s1">'n_bus_lines'</span><span class="p">]</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">int</span><span class="p">((</span><span class="o">~</span><span class="n">bt</span><span class="o">.</span><span class="n">night</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">bt</span><span class="o">.</span><span class="n">replacement</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">route_short_name</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> day "</span>
+      <span class="sa">f</span><span class="s2">"+ </span><span class="si">{</span><span class="n">bt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">night</span><span class="p">,</span><span class="w"> </span><span class="s1">'route_short_name'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> night + </span><span class="si">{</span><span class="n">bt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">replacement</span><span class="p">,</span><span class="w"> </span><span class="s1">'route_short_name'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="s2">"rail-replacement (BVG, 31 Dec 2025: 155 day and 68 night lines)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">berlin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>perimeter</th>
+<th>n_bus_lines</th>
+<th>daily_bus_km</th>
+<th>n_trips</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>All BVG bus lines, Wed 25 Nov (File 1)</td>
+<td>215</td>
+<td>291780.3</td>
+<td>29207</td>
+</tr>
+<tr>
+<th>1</th>
+<td>without rail-replacement buses</td>
+<td>205</td>
+<td>278205.3</td>
+<td>26036</td>
+</tr>
+<tr>
+<th>2</th>
+<td>without night lines (N...)</td>
+<td>167</td>
+<td>281893.7</td>
+<td>28367</td>
+</tr>
+<tr>
+<th>3</th>
+<td>All BVG bus lines, Tue 1 Dec</td>
+<td>215</td>
+<td>291542.4</td>
+<td>29288</td>
+</tr>
+<tr>
+<th>4</th>
+<td>All BVG bus lines, Wed 2 Dec</td>
+<td>215</td>
+<td>291889.8</td>
+<td>29284</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Rail-replacement lines on the day: ['12', '21', '27', 'M1', 'M10', 'M17', 'M2', 'M8', 'U2', 'U6']
+1 high-km line(s) flagged (kept, real trunk lines); threshold 5,000 km:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>trips</th>
+<th>km</th>
+<th>iqr_outlier</th>
+</tr>
+<tr>
+<th>route_short_name</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>M11</th>
+<td>244</td>
+<td>5139.6</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Top five lines by km:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>trips</th>
+<th>km</th>
+<th>iqr_outlier</th>
+</tr>
+<tr>
+<th>route_short_name</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>M11</th>
+<td>244</td>
+<td>5139.6</td>
+<td>True</td>
+</tr>
+<tr>
+<th>M29</th>
+<td>358</td>
+<td>4852.7</td>
+<td>False</td>
+</tr>
+<tr>
+<th>X83</th>
+<td>326</td>
+<td>4455.5</td>
+<td>False</td>
+</tr>
+<tr>
+<th>M41</th>
+<td>411</td>
+<td>4130.9</td>
+<td>False</td>
+</tr>
+<tr>
+<th>M45</th>
+<td>292</td>
+<td>4109.8</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>CHECK PASS | Berlin: result matches the city_metrics() contract
+CHECK PASS | Berlin: line count and daily km are positive
+CHECK PASS | Berlin: working-day km between 1.0 and 1.3 x BVG's all-days average (89.7 M km / 365) | 1.19 x 245,753 km
+Lines: 215 = 157 day + 48 night + 10 rail-replacement (BVG, 31 Dec 2025: 155 day and 68 night lines)
+{'city': 'Berlin', 'reference_date': '2026-11-25', 'n_bus_lines': 215, 'daily_bus_km': 291780.3, 'n_trips': 29207}
 </pre>
 </div>
 </div>
@@ -9755,7 +9631,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Paris feed. Rolling 30-day window rebuilt daily, so fetch() pins the snapshot (date + sha256);</span>
@@ -9809,7 +9685,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">paris_shape_km</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">shape_ids</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">chunk</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">):</span>
@@ -9871,7 +9747,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Active bus trips on the reference day. stop_times is not in the table list: it is 644 MB and</span>
@@ -9911,7 +9787,7 @@ Peak: 934 buses on the road at 08:08
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Paris: reference day inside the feed validity | feed valid 20261121 to 20261223
+<pre>CHECK PASS | Paris: reference day inside the feed validity | feed valid 20261120 to 20261222
 CHECK PASS | Paris: every active bus trip has a shape length | 0 of 118258 trips without a shape
 CHECK PASS | Paris: km inside the box never exceed the trip's total km
 118258 active bus trips | 1854 lines | 63 networks in the region
@@ -9936,7 +9812,7 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Supplementary (printed only, never written to File_1): what each candidate perimeter would give.</span>
@@ -9985,7 +9861,6 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10015,106 +9890,32 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <th>0</th>
 <td>Serves Paris, km inside Paris</td>
 <td>286</td>
-<td>212185.0</td>
+<td>212137.8</td>
 <td>38778</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Serves Paris, all km of those lines</td>
 <td>286</td>
-<td>421375.3</td>
+<td>421322.4</td>
 <td>38778</td>
 </tr>
 <tr>
 <th>2</th>
 <td>Rive Droite + Rive Gauche only</td>
 <td>66</td>
-<td>116102.4</td>
+<td>116076.2</td>
 <td>12575</td>
 </tr>
 <tr>
 <th>3</th>
 <td>Whole Ile-de-France region</td>
 <td>1854</td>
-<td>1354504.6</td>
+<td>1354325.5</td>
 <td>118258</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7e8f6c58-da90-4139-b9cb-4ad2fba4c1b7');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -10123,8 +9924,8 @@ CHECK PASS | Paris: km inside the box never exceed the trip's total km
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>CHECK PASS | Paris: result matches the city_metrics() contract
 CHECK PASS | Paris: line count and daily km are positive
-File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 286 lines; sensitivity: km inside the City of Paris only = 212,185.0 km/day
-{'city': 'Paris', 'reference_date': '2026-11-24', 'n_bus_lines': 286, 'daily_bus_km': 421375.3, 'n_trips': 38778}
+File 1 uses: lines serving Paris, all km of those lines = 421,322.4 km/day on 286 lines; sensitivity: km inside the City of Paris only = 212,137.8 km/day
+{'city': 'Paris', 'reference_date': '2026-11-24', 'n_bus_lines': 286, 'daily_bus_km': 421322.4, 'n_trips': 38778}
 </pre>
 </div>
 </div>
@@ -10137,7 +9938,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Brussels-(not-covered)">Brussels (not covered)<a class="anchor-link" href="#Brussels-(not-covered)">¶</a></h2><p>STIB-MIVB is eligible, but the only feed found is a March 2026 archive, which was not processed; File 1 already has three peers (Helsinki, Paris, London), which meets the brief's minimum.</p>
+<h2 id="Brussels-(not-covered)">Brussels (not covered)<a class="anchor-link" href="#Brussels-(not-covered)">¶</a></h2><p>STIB-MIVB is eligible, but the only feed found is a March 2026 archive, which was not processed; File 1 already has five peers (Helsinki, Paris, London, Copenhagen, Berlin), more than the brief's minimum of three.</p>
 </div>
 </div>
 </div>
@@ -10146,11 +9947,11 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">brussels</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Brussels: not covered (March 2026 archive feed not processed; File 1 has three peers)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Brussels: not covered (March 2026 archive feed not processed; File 1 has five peers)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10163,7 +9964,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Brussels: not covered (March 2026 archive feed not processed; File 1 has three peers)
+<pre>Brussels: not covered (March 2026 archive feed not processed; File 1 has five peers)
 </pre>
 </div>
 </div>
@@ -10181,7 +9982,9 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <li><strong>Reference day deviation.</strong> This snapshot's <code>calendar</code> is only valid from <strong>2026-11-20</strong>, so Madrid's reference day (2026-11-17, Tuesday, §2) falls just outside it. Uses the nearest Tuesday inside the window, <strong>2026-11-24</strong>, same logic as the open item on <code>peak_buses</code>'s reference day.</li>
 <li><strong>Bus route types.</strong> Movia uses <code>route_type</code> <strong>3</strong> (local bus) and <strong>700</strong> (S-bus, Copenhagen's high-frequency trunk routes, e.g. 1A, 2A, 5C, 150S–600S). <code>route_type</code> 4 (ferry) is excluded.</li>
 <li>Rejseplanen rebuilds this feed roughly every two weeks, so (like Paris) it is pinned by date and checksum in the data register; the numbers below are reproducible only from that exact file.</li>
-<li><strong>Computed here, not used in File 1</strong>: Copenhagen's row would need a sourced Danish grid factor, which we do not have. The numbers are context for the report.</li>
+<li><strong>In File 1.</strong> Lines and km below feed File 1's Copenhagen row; notebook 01 §9 adds fleet, zero-emission fleet, target, charging model and Denmark's grid factor (Energinet Miljødeklaration 2025).</li>
+<li><strong>Km basis differs from Paris.</strong> Copenhagen counts only the km run <em>inside</em> the box (Movia lines run far into the region), while Paris counts the <em>full length</em> of every line serving the City of Paris (the brief's former-RATP perimeter). Copenhagen's km is therefore the tighter, city-only measure; both alternatives are printed below.</li>
+<li><strong>Fleet proxy.</strong> Movia publishes one fleet for its whole region (1,126 buses), so notebook 01 scales it by this perimeter's share of all Movia bus km on the same day and feed (<code>movia_all_bus_km</code>, computed at the end of this section) — label <strong>P</strong>.</li>
 </ul>
 </div>
 </div>
@@ -10191,7 +9994,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Rejseplanen's national feed. Movia is agency_id 221 inside it; the feed itself has no</span>
@@ -10245,7 +10048,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Copenhagen + Frederiksberg, approximated as a bounding box (brief §4.4 names the two</span>
@@ -10313,7 +10116,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Per-shape length, split into "inside the box" vs "crossing" segments (both-ends-inside rule,</span>
@@ -10365,7 +10168,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/tmp/ipykernel_1119/2867666657.py:11: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+<pre>/var/folders/q1/cv3dnhdx7wdg1fdh6vsh0xzh0000gn/T/ipykernel_49273/2867666657.py:11: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
   both_in = cph_shapes["inbox"] &amp; g["inbox"].shift().fillna(False)
 </pre>
 </div>
@@ -10373,7 +10176,6 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-6812c287-3e60-4f3f-b725-1b8716542995">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10423,80 +10225,6 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 </tbody>
 </table>
 </div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-6812c287-3e60-4f3f-b725-1b8716542995')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-6812c287-3e60-4f3f-b725-1b8716542995 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-6812c287-3e60-4f3f-b725-1b8716542995');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -10508,7 +10236,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Outliers and result.</strong> High-km lines are flagged (1.5×IQR) and kept — they are real trunk routes (5C is Denmark's busiest bus line). Final row matches the <code>city_metrics()</code> contract.</p>
+<p><strong>Outliers and result.</strong> High-km lines are flagged (1.5×IQR) and kept — they are real trunk routes (5C is Denmark's busiest bus line). Final row matches the <code>city_metrics()</code> contract. The last lines compute all Movia bus km on the same day, the denominator of notebook 01's fleet proxy.</p>
 </div>
 </div>
 </div>
@@ -10517,7 +10245,7 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">cph_lines</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"route_short_name"</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">trips</span><span class="o">=</span><span class="p">(</span><span class="s2">"trip_id"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">),</span> <span class="n">km_in</span><span class="o">=</span><span class="p">(</span><span class="s2">"km_in"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">),</span> <span class="n">km_total</span><span class="o">=</span><span class="p">(</span><span class="s2">"km"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -10538,6 +10266,18 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <span class="n">check</span><span class="p">(</span><span class="s2">"Copenhagen: line count and daily km are positive"</span><span class="p">,</span>
       <span class="n">copenhagen</span><span class="p">[</span><span class="s2">"n_bus_lines"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">copenhagen</span><span class="p">[</span><span class="s2">"daily_bus_km"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">copenhagen</span><span class="p">)</span>
+
+<span class="c1"># All Movia bus km on the reference day (every Movia bus trip, whole region, same feed and shape geometry):</span>
+<span class="c1"># denominator of notebook 01's fleet proxy, Movia fleet x (perimeter km / all Movia bus km).</span>
+<span class="n">_all_km</span> <span class="o">=</span> <span class="n">cph_cand</span><span class="o">.</span><span class="n">shape_id</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">shape_km</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Copenhagen: every Movia bus trip on the reference day has a shape"</span><span class="p">,</span> <span class="n">_all_km</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_all_km</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2"> trips without shape"</span><span class="p">)</span>
+<span class="n">movia_all_bus_km</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_all_km</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">check</span><span class="p">(</span><span class="s2">"Copenhagen: perimeter km is a share of all Movia bus km"</span><span class="p">,</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">copenhagen</span><span class="p">[</span><span class="s2">"daily_bus_km"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">movia_all_bus_km</span><span class="p">,</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">copenhagen</span><span class="p">[</span><span class="s1">'daily_bus_km'</span><span class="p">]</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="n">movia_all_bus_km</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> km = </span><span class="si">{</span><span class="n">copenhagen</span><span class="p">[</span><span class="s1">'daily_bus_km'</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">movia_all_bus_km</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"All Movia bus trips on </span><span class="si">{</span><span class="n">CPH_REF</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cph_cand</span><span class="p">)</span><span class="si">}</span><span class="s2"> trips, "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cph_feed</span><span class="p">[</span><span class="s1">'routes'</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'route_id'</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cph_cand</span><span class="o">.</span><span class="n">route_id</span><span class="p">)),</span><span class="w"> </span><span class="s1">'route_short_name'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> lines, "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">movia_all_bus_km</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> km"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10557,7 +10297,6 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-1ab4354b-77d8-4516-abc5-8994f6e961d7">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10607,80 +10346,6 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 </tbody>
 </table>
 </div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-1ab4354b-77d8-4516-abc5-8994f6e961d7')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-1ab4354b-77d8-4516-abc5-8994f6e961d7 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1ab4354b-77d8-4516-abc5-8994f6e961d7');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -10690,6 +10355,9 @@ File 1 uses: lines serving Paris, all km of those lines = 421,375.3 km/day on 28
 CHECK PASS | Copenhagen: result matches the city_metrics() contract
 CHECK PASS | Copenhagen: line count and daily km are positive
 {'city': 'Copenhagen', 'reference_date': '2026-11-24', 'n_bus_lines': 57, 'daily_bus_km': 81334.9, 'n_trips': 7807}
+CHECK PASS | Copenhagen: every Movia bus trip on the reference day has a shape | 0 trips without shape
+CHECK PASS | Copenhagen: perimeter km is a share of all Movia bus km | 81,334.9 of 333,915.1 km = 24.4%
+All Movia bus trips on 2026-11-24: 18623 trips, 359 lines, 333,915.1 km
 </pre>
 </div>
 </div>
@@ -10702,7 +10370,7 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Output">Output<a class="anchor-link" href="#Output">¶</a></h2><p>One row per city; fields not computable from GTFS are left for the main notebook (fleet, targets, charging model, grid factor).</p>
+<h2 id="Output">Output<a class="anchor-link" href="#Output">¶</a></h2><p>One row per city; fields not computable from GTFS are left for the main notebook (fleet, targets, charging model, grid factor). <code>operator_daily_bus_km</code> (Copenhagen only) is all Movia bus km on the same day, used by notebook 01 for the fleet proxy.</p>
 </div>
 </div>
 </div>
@@ -10711,15 +10379,15 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"helsinki"</span><span class="p">,</span> <span class="s2">"berlin"</span><span class="p">,</span> <span class="s2">"paris"</span><span class="p">,</span> <span class="s2">"brussels"</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"helsinki"</span><span class="p">,</span> <span class="s2">"berlin"</span><span class="p">,</span> <span class="s2">"paris"</span><span class="p">,</span> <span class="s2">"brussels"</span><span class="p">,</span> <span class="s2">"copenhagen"</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)]</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="s2">"operator_daily_bus_km"</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">city</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">"Copenhagen"</span><span class="p">:</span> <span class="n">movia_all_bus_km</span><span class="p">})</span>   <span class="c1"># fleet-proxy denominator</span>
 <span class="n">out</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DERIVED</span><span class="p">,</span> <span class="s2">"benchmark_gtfs_intermediate.csv"</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 <span class="n">check</span><span class="p">(</span><span class="s2">"Benchmark intermediate written with at least one GTFS-computed peer"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">city</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Copenhagen is computed above but not written: it is not used in File 1 (no sourced Danish grid factor)."</span><span class="p">)</span>
 <span class="n">show_register</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -10733,7 +10401,6 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-1a71c209-1c44-4927-873d-03f36190f779">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10757,6 +10424,7 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <th>n_bus_lines</th>
 <th>daily_bus_km</th>
 <th>n_trips</th>
+<th>operator_daily_bus_km</th>
 </tr>
 </thead>
 <tbody>
@@ -10764,109 +10432,53 @@ CHECK PASS | Copenhagen: line count and daily km are positive
 <th>0</th>
 <td>Helsinki</td>
 <td>2026-11-24</td>
-<td>391</td>
-<td>289833.0</td>
-<td>19292</td>
+<td>390</td>
+<td>289802.2</td>
+<td>19286</td>
+<td>NaN</td>
 </tr>
 <tr>
 <th>1</th>
+<td>Berlin</td>
+<td>2026-11-25</td>
+<td>215</td>
+<td>291780.3</td>
+<td>29207</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2</th>
 <td>Paris</td>
 <td>2026-11-24</td>
 <td>286</td>
-<td>421375.3</td>
+<td>421322.4</td>
 <td>38778</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Copenhagen</td>
+<td>2026-11-24</td>
+<td>57</td>
+<td>81334.9</td>
+<td>7807</td>
+<td>333915.1</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-1a71c209-1c44-4927-873d-03f36190f779')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-1a71c209-1c44-4927-873d-03f36190f779 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1a71c209-1c44-4927-873d-03f36190f779');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CHECK PASS | Benchmark intermediate written with at least one GTFS-computed peer | Helsinki, Paris
-Copenhagen is computed above but not written: it is not used in File 1 (no sourced Danish grid factor).
+<pre>CHECK PASS | Benchmark intermediate written with at least one GTFS-computed peer | Helsinki, Berlin, Paris, Copenhagen
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div class="colab-df-container" id="df-a87c73a1-557f-4f62-9c5f-4f5782d6140b">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -10899,27 +10511,37 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 <th>0</th>
 <td>hsl_gtfs.zip</td>
 <td>https://infopalvelut.storage.hsldev.com/gtfs/h...</td>
-<td>2026-11-24</td>
-<td>93008836</td>
-<td>32c746525f3b</td>
+<td>2026-11-27</td>
+<td>91096014</td>
+<td>70f93697e54f</td>
 <td>script</td>
 <td>HSL GTFS, whole HSL region, snapshot valid 202...</td>
 </tr>
 <tr>
 <th>1</th>
+<td>vbb_gtfs.zip</td>
+<td>https://unternehmen.vbb.de/gtfs</td>
+<td>2026-11-27</td>
+<td>84067147</td>
+<td>f06fdfa49a89</td>
+<td>script</td>
+<td>VBB GTFS, all Berlin-Brandenburg operators, do...</td>
+</tr>
+<tr>
+<th>2</th>
 <td>idfm_gtfs.zip</td>
 <td>https://eu.ftp.opendatasoft.com/stif/GTFS/IDFM...</td>
-<td>2026-11-24</td>
-<td>128416837</td>
-<td>9d3df2bf82fd</td>
+<td>2026-11-27</td>
+<td>127072175</td>
+<td>4ee32000da2a</td>
 <td>script</td>
 <td>IDFM GTFS, all Ile-de-France operators, rollin...</td>
 </tr>
 <tr>
-<th>2</th>
+<th>3</th>
 <td>rejseplanen_gtfs.zip</td>
 <td>https://www.rejseplanen.info/labs/GTFS.zip</td>
-<td>2026-11-24</td>
+<td>2026-11-27</td>
 <td>53922869</td>
 <td>228b4923e285</td>
 <td>script</td>
@@ -10927,80 +10549,6 @@ Copenhagen is computed above but not written: it is not used in File 1 (no sourc
 </tr>
 </tbody>
 </table>
-</div>
-<div class="colab-df-buttons">
-<div class="colab-df-container">
-<button class="colab-df-convert" onclick="convertToInteractive('df-a87c73a1-557f-4f62-9c5f-4f5782d6140b')" style="display:none;" title="Convert this dataframe to an interactive table.">
-<svg height="24px" viewbox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
-<path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-</svg>
-</button>
-<style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-<script>
-      const buttonEl =
-        document.querySelector('#df-a87c73a1-557f-4f62-9c5f-4f5782d6140b button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a87c73a1-557f-4f62-9c5f-4f5782d6140b');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-</div>
-</div>
 </div>
 </div>
 </div>
