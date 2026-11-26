@@ -1,0 +1,9 @@
+check,result,detail
+100 % zero-emission by 2035,PASS,gas left 0.0
+"fleet stays 2,210 every year",PASS,
+no depot uses more power than its connection,PASS,
+every e-bus has a charging position,PASS,
+no gas bus older than 16,PASS,oldest retired at 16
+gas buses retired oldest first,PASS,
+purchases never above EMT's record (382),PASS,max 315.0
+no e-bus deferred for lack of chargers,PASS,deferred 0.0

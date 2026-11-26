@@ -28,7 +28,9 @@ notebooks/
 data_raw/        # downloads (git-ignored; re-fetched by the notebooks, logged in the data register)
 data_derived/    # intermediates, e.g. benchmark_gtfs_intermediate.csv (git-ignored)
 outputs/         # File_1-4.csv, HTML, PNG captures (tracked)
-requirements.txt # packages for running the notebooks locally
+scenarios/       # supplementary: scripts and results behind the 2035 recommendation (see scenarios/README_2035.md); writes no File_1-4
+notes/           # working notes, e.g. scenario-model-explained.md and roadmap-2035.md
+requirements.txt # packages for running the notebooks and scenarios/ locally
 ```
 
 ## Main notebook sections (dependency order)

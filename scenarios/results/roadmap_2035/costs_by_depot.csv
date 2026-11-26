@@ -1,0 +1,111 @@
+year,depot,group,item,units,eur
+2026,Carabanchel,depot,charger equipment,27,1344000.0
+2026,Carabanchel,depot,charger installation works,0,896000.0
+2026,Carabanchel,depot,charger equipment,43,2838000.0
+2026,Carabanchel,depot,charger installation works,0,1892000.0
+2026,Carabanchel,buses,e-buses replacing gas,70,44060100.0
+2027,Sanchinarro,depot,charger equipment,114,7548000.0
+2027,Sanchinarro,depot,charger installation works,0,5032000.0
+2027,Sanchinarro,depot,grid upgrade: equipment,0,1375000.0
+2027,Sanchinarro,depot,grid upgrade: civil works and engineering,0,1125000.0
+2027,Entrevias,depot,grid upgrade: equipment,0,1375000.0
+2027,Entrevias,depot,grid upgrade: civil works and engineering,0,1125000.0
+2027,La Elipa,depot,charger equipment,106,6996000.0
+2027,La Elipa,depot,charger installation works,0,4664000.0
+2027,La Elipa,depot,new substation: equipment,0,916666.6666666666
+2027,La Elipa,depot,new substation: civil works and engineering,0,749999.9999999999
+2027,La Elipa,depot,building and civil works,0,31440000.0
+2027,Carabanchel,depot,charger equipment,40,2640000.0
+2027,Carabanchel,depot,charger installation works,0,1760000.0
+2027,Carabanchel,buses,e-buses replacing gas,40,25177200.0
+2027,Sanchinarro,buses,e-buses replacing gas,10,6150000.0
+2028,Sanchinarro,depot,grid upgrade: equipment,0,1375000.0
+2028,Sanchinarro,depot,grid upgrade: civil works and engineering,0,1125000.0
+2028,Entrevias,depot,grid upgrade: equipment,0,1375000.0
+2028,Entrevias,depot,grid upgrade: civil works and engineering,0,1125000.0
+2028,La Elipa,depot,charger equipment,106,6996000.0
+2028,La Elipa,depot,charger installation works,0,4664000.0
+2028,La Elipa,depot,new substation: equipment,0,916666.6666666666
+2028,La Elipa,depot,new substation: civil works and engineering,0,749999.9999999999
+2028,La Elipa,depot,building and civil works,0,31440000.0
+2028,Fuencarral,depot,charger equipment,162,10725000.0
+2028,Fuencarral,depot,charger installation works,0,7150000.0
+2028,Fuencarral,depot,new substation: equipment,0,687500.0
+2028,Fuencarral,depot,new substation: civil works and engineering,0,562500.0
+2028,Fuencarral,depot,building and civil works,0,38237500.0
+2028,Sanchinarro,buses,e-buses replacing gas,48,29520000.0
+2029,La Elipa,depot,charger equipment,106,6996000.0
+2029,La Elipa,depot,charger installation works,0,4664000.0
+2029,La Elipa,depot,new substation: equipment,0,916666.6666666666
+2029,La Elipa,depot,new substation: civil works and engineering,0,749999.9999999999
+2029,La Elipa,depot,building and civil works,0,31440000.0
+2029,Fuencarral,depot,charger equipment,162,10725000.0
+2029,Fuencarral,depot,charger installation works,0,7150000.0
+2029,Fuencarral,depot,new substation: equipment,0,687500.0
+2029,Fuencarral,depot,new substation: civil works and engineering,0,562500.0
+2029,Fuencarral,depot,building and civil works,0,38237500.0
+2029,Sanchinarro,depot,charger equipment,120,7920000.0
+2029,Sanchinarro,depot,charger installation works,0,5280000.0
+2029,Entrevias,depot,charger equipment,50,3300000.0
+2029,Entrevias,depot,charger installation works,0,2200000.0
+2029,Sanchinarro,buses,e-buses replacing gas,176,108240000.0
+2029,Entrevias,buses,e-buses replacing gas,50,31120000.0
+2030,Fuencarral,depot,charger equipment,162,10725000.0
+2030,Fuencarral,depot,charger installation works,0,7150000.0
+2030,Fuencarral,depot,new substation: equipment,0,687500.0
+2030,Fuencarral,depot,new substation: civil works and engineering,0,562500.0
+2030,Fuencarral,depot,building and civil works,0,38237500.0
+2030,Carabanchel,buses,e-buses renewing e-buses,14,8812020.0
+2030,Sanchinarro,buses,e-buses renewing e-buses,1,615000.0
+2030,Fuencarral,buses,e-buses renewing e-buses,2,1247760.0
+2030,Sanchinarro,depot,charger equipment,120,7920000.0
+2030,Sanchinarro,depot,charger installation works,0,5280000.0
+2030,Sanchinarro,buses,e-buses replacing gas,120,73800000.0
+2030,La Elipa,buses,e-buses replacing gas,106,65248830.0
+2031,Fuencarral,depot,charger equipment,162,10725000.0
+2031,Fuencarral,depot,charger installation works,0,7150000.0
+2031,Fuencarral,depot,new substation: equipment,0,687500.0
+2031,Fuencarral,depot,new substation: civil works and engineering,0,562500.0
+2031,Fuencarral,depot,building and civil works,0,38237500.0
+2031,Carabanchel,buses,e-buses renewing e-buses,16,10070880.0
+2031,Sanchinarro,buses,e-buses renewing e-buses,1,615000.0
+2031,Fuencarral,buses,e-buses renewing e-buses,2,1247760.0
+2031,Sanchinarro,depot,charger equipment,8,528000.0
+2031,Sanchinarro,depot,charger installation works,0,352000.0
+2031,Entrevias,depot,charger equipment,9,594000.0
+2031,Entrevias,depot,charger installation works,0,396000.0
+2031,Sanchinarro,buses,e-buses replacing gas,8,4920000.0
+2031,La Elipa,buses,e-buses replacing gas,209,128650995.0
+2031,Entrevias,buses,e-buses replacing gas,9,5601600.0
+2032,Carabanchel,buses,e-buses renewing e-buses,26,16365180.0
+2032,Sanchinarro,buses,e-buses renewing e-buses,2,1230000.0
+2032,Entrevias,buses,e-buses renewing e-buses,1,622400.0
+2032,Fuencarral,buses,e-buses renewing e-buses,3,1871640.0
+2032,Entrevias,depot,charger equipment,120,7920000.0
+2032,Entrevias,depot,charger installation works,0,5280000.0
+2032,Entrevias,buses,e-buses replacing gas,120,74688000.0
+2032,Fuencarral,buses,e-buses replacing gas,106,66131280.0
+2033,Carabanchel,buses,e-buses renewing e-buses,47,29583210.0
+2033,Sanchinarro,buses,e-buses renewing e-buses,3,1845000.0
+2033,Entrevias,buses,e-buses renewing e-buses,1,622400.0
+2033,Fuencarral,buses,e-buses renewing e-buses,5,3119400.0
+2033,Entrevias,depot,charger equipment,120,7920000.0
+2033,Entrevias,depot,charger installation works,0,5280000.0
+2033,Entrevias,buses,e-buses replacing gas,120,74688000.0
+2033,Fuencarral,buses,e-buses replacing gas,106,66131280.0
+2034,Carabanchel,buses,e-buses renewing e-buses,42,26436060.0
+2034,Sanchinarro,buses,e-buses renewing e-buses,2,1230000.0
+2034,Entrevias,buses,e-buses renewing e-buses,1,622400.0
+2034,Fuencarral,buses,e-buses renewing e-buses,5,3119400.0
+2034,Entrevias,depot,charger equipment,120,7920000.0
+2034,Entrevias,depot,charger installation works,0,5280000.0
+2034,Entrevias,buses,e-buses replacing gas,120,74688000.0
+2034,Fuencarral,buses,e-buses replacing gas,105,65507400.0
+2035,Carabanchel,buses,e-buses renewing e-buses,75,47207250.0
+2035,Sanchinarro,buses,e-buses renewing e-buses,4,2460000.0
+2035,Entrevias,buses,e-buses renewing e-buses,2,1244800.0
+2035,Fuencarral,buses,e-buses renewing e-buses,9,5614920.0
+2035,Entrevias,depot,charger equipment,23,1518000.0
+2035,Entrevias,depot,charger installation works,0,1012000.0
+2035,Entrevias,buses,e-buses replacing gas,23,14315200.0
+2035,Fuencarral,buses,e-buses replacing gas,202,126023760.0

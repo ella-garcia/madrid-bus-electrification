@@ -1,0 +1,235 @@
+line_code,trips,daily_km,gtfs_vehicle_blocks,route_length_km,max_block_km,mean_block_km,line_label,line_name,peak_buses,peak_hour,peak_buses_evidence,depot_code,depot_record_end,depot_evidence,depot_name,technology,since_year,technology_evidence,bus_type,bus_type_evidence,km_per_bus_day,energy_kwh_bus_day,charging_strategy,block_exceeds_range,line_energy_kwh_day,co2_avoided_t_year
+001,157,1381.15,11,8.797,158.346,125.559,1,Plaza de Cristo Rey - Prosperidad,10,9.0,V,62825,2019-02-19 23:59:59,P,Fuencarral,BEV,2020,V,Standard,A,138.115,179.55,Depot,False,1795.495,537.541
+002,229,1979.276,16,8.634,164.464,123.705,2,Plaza de Manuel Becerra - Avenida Reina Victoria,15,17.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,131.952,171.537,Depot,False,2573.059,770.331
+003,210,1756.965,14,8.366,159.453,125.498,3,Puerta de Toledo - Plaza de San Amaro,13,18.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,BEV,2020,V,Standard,A,135.151,175.696,Depot,False,2284.054,683.808
+004,190,1583.722,11,8.334,216.697,143.975,4,Plaza de Ciudad Lineal - Puerta de Arganda,10,7.0,V,62845,2024-05-19 23:59:59,P,La Elipa,CNG,,A,Standard,A,158.372,205.884,Depot,False,2058.839,616.382
+005,166,1565.878,10,9.433,188.66,156.588,5,Puerta del Sol/sevilla - Estacion de Chamartin,9,8.0,V,62825,2019-01-08 23:59:59,P,Fuencarral,CNG,,A,Standard,A,173.986,226.182,Depot,False,2035.641,609.437
+006,256,2292.608,16,8.956,179.11,143.288,6,Plaza de Tirso de Molina - Orcasitas,14,15.0,V,62835,2026-11-02 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,163.758,212.885,Depot,False,2980.39,892.28
+007,157,1496.535,9,9.528,190.55,166.282,7,Plaza de Alonso Martinez - Manoteras,8,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,187.067,243.187,Depot,False,1945.496,582.449
+008,183,2058.819,13,11.244,202.392,158.371,8,Plaza de Legazpi - Valdebernardo,13,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,158.371,205.882,Depot,False,2676.465,801.289
+009,269,2665.862,20,9.907,178.326,133.293,9,Puerta del Sol/sevilla - Hortaleza,18,8.0,V,62875,2022-01-16 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,148.103,192.534,Depot,False,3465.621,1037.549
+010,252,2282.048,16,9.056,190.139,142.628,10,Plaza de Cibeles - Palomeras,15,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,152.137,197.777,Depot,False,2966.662,888.17
+011,171,1172.965,9,6.858,171.203,130.329,11,Marques de Viana - Barrio Blanco,9,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,130.329,169.428,Depot,False,1524.854,456.516
+012,154,951.181,7,6.177,160.589,135.883,12,Plaza de Cristo Rey - Paseo Marques de Zafra,7,8.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,135.883,176.648,Depot,False,1236.535,370.198
+014,241,2493.346,19,10.356,186.408,131.229,14,Plaza de Conde de Casal - Avenida de Pio XII,18,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,138.519,180.075,Depot,False,3241.35,970.406
+015,134,837.66,7,6.248,162.461,119.666,15,Puerta del Sol/sevilla - la Elipa,7,8.0,V,62845,2019-01-09 23:59:59,P,La Elipa,CNG,,A,Standard,A,119.666,155.565,Depot,False,1088.958,326.016
+016,186,1459.134,10,7.828,172.216,145.913,16,Moncloa - Avenida de Pio XII,10,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,145.913,189.687,Depot,False,1896.874,567.893
+017,205,2144.721,14,10.46,188.28,153.194,17,Plaza Mayor - Colonia Parque de Europa,13,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2023,V,Standard,A,164.979,214.472,Depot,False,2788.137,834.722
+018,150,1464.648,10,9.761,175.698,146.465,18,Plaza Mayor - Villaverde Cruce,9,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,162.739,211.56,Depot,False,1904.042,570.039
+019,429,3267.25,27,7.62,198.12,121.009,19,Plaza de Cataluña - Plaza de Legazpi,29,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,112.664,146.463,Depot,False,4247.425,1271.609
+020,274,2581.74,18,9.428,207.416,143.43,20,Puerta del Sol/sevilla - Pavones,17,8.0,V,62845,2019-01-09 23:59:59,P,La Elipa,CNG,,A,Standard,A,151.867,197.427,Depot,False,3356.262,1004.809
+021,309,2845.32,21,9.208,184.15,135.491,21,Paseo del Pintor Rosales - Barrio el Salvador,20,17.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,142.266,184.946,Depot,False,3698.916,1107.394
+022,180,1448.82,7,8.049,225.372,206.974,22,Plaza de Legazpi - Villaverde Alto,6,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,241.47,313.911,Depot,False,1883.466,563.879
+023,273,2938.125,18,10.762,193.725,163.229,23,Plaza Mayor - Villaverde Cruce,17,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,172.831,224.68,Depot,False,3819.562,1143.514
+024,251,1773.579,14,7.068,183.768,126.684,24,Estacion de Atocha - Estacion el Pozo,13,7.0,V,62865,2025-03-11 23:59:59,P,Entrevias,CNG,,A,Standard,A,136.429,177.358,Depot,False,2305.653,690.274
+025,237,2422.107,17,10.222,204.43,142.477,25,Plaza de España - Casa de Campo,16,8.0,V,62835,2020-07-21 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,151.382,196.796,Depot,False,3148.739,942.68
+026,197,1206.406,9,6.126,165.325,134.045,26,Plaza de Tirso de Molina - Diego de Leon,8,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,150.801,196.041,Depot,False,1568.328,469.531
+027,387,3087.558,24,7.979,191.496,128.648,27,Glorieta de Embajadores - Plaza de Castilla,23,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,134.242,174.514,Depot,False,4013.825,1201.673
+028,352,3083.859,22,8.76,192.731,140.175,28,Puerta de Alcala - Barrio de Canillejas,21,8.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,146.85,190.906,Depot,False,4009.017,1200.233
+029,195,1724.531,10,8.842,194.524,172.453,29,Avenida de Felipe II - Manoteras,9,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,191.615,249.099,Depot,False,2241.89,671.185
+030,272,2436.984,15,8.959,197.109,162.466,30,Avenida de Felipe II - Pavones,14,16.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,174.07,226.291,Depot,False,3168.079,948.47
+031,293,2384.18,16,8.137,195.288,149.011,31,Plaza Mayor - Aluche,15,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2023,V,Standard,A,158.945,206.629,Depot,False,3099.434,927.919
+032,261,2447.883,15,9.38,206.36,163.192,32,Plaza de Tirso de Molina - Pavones,15,16.0,V,62845,2026-02-01 23:59:59,P,La Elipa,CNG,,A,Standard,A,163.192,212.15,Depot,False,3182.248,952.712
+033,60,406.02,2,6.767,203.01,203.01,33,Principe Pio - Casa de Campo,2,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2021,V,Standard,A,203.01,263.913,Depot,False,527.826,158.022
+034,310,3782.31,24,12.201,195.216,157.596,34,Plaza de Cibeles - las Aguilas,23,8.0,V,62835,2019-01-21 23:59:59,P,Carabanchel,CNG,,A,Articulated,P,164.448,304.229,Depot,False,6997.274,2130.941
+035,233,2599.156,17,11.157,189.497,152.892,35,Plaza Mayor - Carabanchel Alto,16,13.0,V,62835,2019-01-21 23:59:59,P,Carabanchel,BEV,2023,V,Standard,A,162.447,211.181,Depot,False,3378.903,1011.588
+036,148,1596.476,8,10.787,215.74,199.56,36,Atocha - Campamento,7,8.0,V,62835,2019-02-26 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,228.068,296.488,Depot,False,2075.419,621.346
+037,184,1350.928,9,7.342,176.208,150.103,37,Glorieta de Cuatro Caminos - Puente de Vallecas,8,10.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,168.866,219.526,Depot,False,1756.206,525.779
+038,224,2255.159,14,10.064,201.29,161.083,38,Plaza de Manuel Becerra - las Rosas,13,8.0,V,62845,2023-05-03 23:59:59,P,La Elipa,CNG,,A,Standard,A,173.474,225.516,Depot,False,2931.707,877.704
+039,246,3026.172,15,12.306,246.12,201.745,39,Plaza de España - Colonia San Ignacio de Loyola,14,8.0,V,62835,2020-08-06 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,216.155,281.002,Depot,False,3934.024,1177.782
+040,180,1453.14,9,8.073,177.606,161.46,40,Tribunal - Alfonso XIII,8,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,181.642,236.135,Depot,False,1889.082,565.56
+041,112,733.123,4,6.546,189.806,183.281,41,Atocha - Colonia Manzanares,4,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2021,V,Standard,A,183.281,238.265,Depot,False,953.06,285.33
+042,217,1243.926,8,5.735,194.973,155.491,42,Plaza de Castilla - Barrio de Peñagrande,7,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,177.704,231.015,Depot,False,1617.104,484.134
+043,173,1384.197,10,7.982,168.095,138.42,43,Avenida de Felipe II - Estrecho,10,8.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,138.42,179.946,Depot,False,1799.456,538.727
+044,212,1440.752,11,6.796,163.104,130.977,44,Plaza del Callao - Marques de Viana,10,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,144.075,187.298,Depot,False,1872.978,560.738
+045,247,2086.27,13,8.447,202.728,160.482,45,Plaza de Legazpi - Avenida Reina Victoria,12,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,173.856,226.013,Depot,False,2712.151,811.973
+046,215,1392.93,11,6.486,148.856,126.63,46,Puerta del Sol/sevilla - Moncloa,11,8.0,V,62835,2022-06-14 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,126.63,164.619,Depot,False,1810.809,542.126
+047,165,1680.902,10,10.19,183.42,168.09,47,Atocha - Carabanchel Alto,9,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,186.767,242.797,Depot,False,2185.173,654.205
+048,165,1639.958,11,9.941,198.82,149.087,48,Plaza de Manuel Becerra - Barrio de Canillejas,10,8.0,V,62845,2019-02-08 23:59:59,P,La Elipa,CNG,,A,Standard,A,163.996,213.195,Depot,False,2131.945,638.269
+049,331,3433.827,22,10.374,217.865,156.083,49,Plaza de Castilla - Pitis,20,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,171.691,223.199,Depot,False,4463.975,1336.44
+050,164,648.784,5,3.956,158.24,129.757,50,Plaza Mayor - Avenida del Manzanares,5,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2021,V,Standard,A,129.757,168.684,Depot,False,843.419,252.506
+051,182,1127.308,8,6.194,173.432,140.914,51,Puerta del Sol/sevilla - Plaza del Peru,8,16.0,V,62825,2022-05-23 23:59:59,P,Fuencarral,BEV,2021,V,Standard,A,140.914,183.188,Depot,False,1465.5,438.747
+052,176,1221.528,9,6.94,180.453,135.725,52,Puerta del Sol/sevilla - Santamarca,8,8.0,V,62875,2021-05-21 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,152.691,198.498,Depot,False,1587.986,475.417
+053,220,1831.718,13,8.326,166.52,140.901,53,Puerta del Sol/sevilla - Arturo Soria,12,11.0,V,62875,2019-01-09 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,152.643,198.436,Depot,False,2381.233,712.902
+054,164,1728.58,12,10.543,189.774,144.048,54,Estacion de Atocha - Congosto,11,7.0,V,62865,2021-08-23 23:59:59,P,Entrevias,CNG,,A,Standard,A,157.144,204.287,Depot,False,2247.154,672.761
+055,174,1689.105,12,9.708,184.242,140.759,55,Atocha - Batan,10,15.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,168.91,219.584,Depot,False,2195.836,657.397
+056,342,2039.517,16,5.964,155.051,127.47,56,Diego de Leon - Numancia,15,8.0,V,62865,2026-03-21 23:59:59,P,Entrevias,CNG,,A,Standard,A,135.968,176.758,Depot,False,2651.372,793.777
+057,170,1290.725,8,7.592,197.405,161.341,57,Estacion de Atocha - Alto del Arenal,8,7.0,V,62865,2021-10-03 23:59:59,P,Entrevias,CNG,,A,Standard,A,161.341,209.743,Depot,False,1677.943,502.348
+058,192,1477.728,8,7.696,215.502,184.716,58,Puente Vallecas - Barrio de Santa Eugenia,7,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,211.104,274.435,Depot,False,1921.046,575.13
+059,143,1268.544,7,8.874,230.724,181.221,59,Estacion de Atocha - Colonia San Cristobal de los Angeles,7,7.0,V,62865,2021-07-23 23:59:59,P,Entrevias,CNG,,A,Standard,A,181.221,235.587,Depot,False,1649.107,493.715
+060,251,2305.807,16,9.178,201.905,144.113,60,Plaza de la Cebada - Orcasitas,15,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,153.72,199.837,Depot,False,2997.549,897.417
+061,258,1605.246,14,6.224,149.388,114.66,61,Moncloa - Narvaez,14,16.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,114.66,149.059,Depot,False,2086.82,624.759
+062,182,1918.007,13,10.538,189.693,147.539,62,Plaza de Cristo Rey - los Puertos,12,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,159.834,207.784,Depot,False,2493.409,746.485
+063,192,2251.016,14,11.727,257.994,160.787,63,Avenida de Felipe II - Barrio de Santa Eugenia,13,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,173.155,225.102,Depot,False,2926.321,876.092
+064,194,1786.449,9,9.208,239.421,198.494,64,Glorieta de Cuatro Caminos - Pitis,8,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,223.306,290.298,Depot,False,2322.384,695.283
+065,168,1673.616,12,9.962,168.524,139.468,65,Plaza de Jacinto Benavente - Colonia Gran Capitan,11,9.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,152.147,197.791,Depot,False,2175.701,651.369
+066,183,1651.899,9,9.026,207.645,183.544,66,Glorieta de Cuatro Caminos - Fuencarral,8,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,206.487,268.434,Depot,False,2147.469,642.917
+067,180,1464.171,9,8.134,211.471,162.686,67,Plaza de Castilla - Barrio de Peñagrande,8,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,183.021,237.928,Depot,False,1903.422,569.853
+068,394,3500.256,24,8.88,187.248,145.844,C1,Circular 1 - ,23,8.0,V,62825,2020-10-21 23:59:59,P,Fuencarral,CNG,,A,Standard,A,152.185,197.841,Depot,False,4550.333,1362.294
+069,363,3306.028,23,9.099,190.601,143.74,C2,Circular 2 - ,22,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,150.274,195.356,Depot,False,4297.836,1286.701
+070,332,3238.243,21,9.75,233.988,154.202,70,Plaza de Castilla - Alsacia,20,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,161.912,210.486,Depot,False,4209.716,1260.319
+071,149,1898.083,11,12.74,229.311,172.553,71,Plaza de Manuel Becerra - Puerta de Arganda,10,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,189.808,246.751,Depot,False,2467.508,738.731
+072,162,1254.154,9,7.734,201.084,139.35,72,Diego de Leon - Hortaleza,8,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,156.769,203.8,Depot,False,1630.4,488.115
+073,163,1412.169,9,8.661,190.542,156.908,73,Diego de Leon - Feria de Madrid,8,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,176.521,229.477,Depot,False,1835.82,549.614
+074,132,1186.075,9,8.982,161.685,131.786,74,Paseo del Pintor Rosales - Parque de las Avenidas,8,8.0,V,62845,2019-02-19 23:59:59,P,La Elipa,CNG,,A,Standard,A,148.259,192.737,Depot,False,1541.898,461.619
+075,165,609.695,5,3.695,140.41,121.939,75,Plaza del Callao - Colonia Manzanares,5,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,121.939,158.521,Depot,False,792.603,237.292
+076,119,828.054,4,6.958,208.725,207.014,76,Plaza Beata Maria Ana de Jesus - Villaverde Alto,4,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2018,V,Standard,A,207.014,269.118,Depot,False,1076.47,322.277
+077,275,2521.603,14,9.17,211.057,180.114,77,Plaza de Ciudad Lineal - Colonia Fin de Semana,13,8.0,V,62875,2024-04-07 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,193.969,252.16,Depot,False,3278.084,981.404
+078,158,1601.802,10,10.136,192.741,160.18,78,Glorieta de Embajadores - Barrio de San Fermin,9,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,177.978,231.371,Depot,False,2082.343,623.419
+079,105,1302.994,5,12.412,273.053,260.599,79,Plaza de Legazpi - Villaverde Alto,5,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,260.599,338.778,Depot,False,1693.892,507.123
+081,125,868.162,5,6.95,187.013,173.632,81,Oporto - Hospital 12 de Octubre,5,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2021,V,Standard,A,173.632,225.722,Depot,False,1128.611,337.887
+082,242,2837.898,19,11.716,257.763,149.363,82,Moncloa - Pitis,18,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,157.661,204.959,Depot,False,3689.267,1104.506
+083,251,3077.446,16,12.274,281.833,192.34,83,Moncloa - Barrio de la Paz,15,8.0,V,62875,2023-10-04 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,205.163,266.712,Depot,False,4000.68,1197.737
+085,238,2810.398,15,11.804,236.07,187.36,85,Estacion de Atocha - Butarque,14,8.0,V,62865,2021-08-08 23:59:59,P,Entrevias,CNG,,A,Standard,A,200.743,260.966,Depot,False,3653.517,1093.803
+086,152,1389.196,9,9.138,201.036,154.355,86,Estacion de Atocha - Villaverde Alto,8,8.0,V,62835,2021-01-10 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,173.65,225.744,Depot,False,1805.955,540.673
+087,171,1203.548,8,7.034,190.58,150.444,87,Plaza de la Republica Dominicana - las Carcavas,8,17.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,BEV,2025,V,Standard,A,150.444,195.577,Depot,False,1564.612,468.419
+088,82,635.008,2,7.744,325.248,317.504,88,Canillejas - Rejas,2,6.0,V,62875,2025-07-21 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,317.504,412.755,Above_range_TBD,True,825.51,247.144
+090,126,958.356,4,7.606,304.24,239.589,E,Plaza del Conde de Casal - Sierra de Guadalupe,4,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,239.589,311.466,Depot,True,1245.863,372.991
+091,255,963.09,9,3.77,180.936,107.01,F,Glorieta de Cuatro Caminos - Ciudad Universitaria,9,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,107.01,139.113,Depot,False,1252.017,374.833
+092,343,1116.171,13,3.237,148.902,85.859,G,Moncloa - Ciudad Universitaria,12,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,BEV,2022,V,Standard,A,93.014,120.919,Depot,False,1451.022,434.412
+093,415,3719.55,16,8.963,376.446,232.472,A,Moncloa - Campus Somosaguas,16,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,232.472,302.213,Depot,True,4835.415,1447.643
+096,201,1565.076,9,7.777,295.526,173.897,H,Aluche - Campus de Somosaguas,8,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,195.634,254.325,Depot,False,2034.599,609.125
+099,194,640.588,5,3.302,191.516,128.118,U,Avenida de Seneca - Paraninfo,4,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,160.147,208.191,Depot,False,832.764,249.316
+100,122,1012.051,5,8.296,215.683,202.41,100,Moratalaz - Valderrivas,5,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,202.41,263.133,Depot,False,1315.666,393.889
+101,118,1064.318,4,9.027,333.565,266.08,101,Canillejas - Aeropuerto - Barajas,4,12.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,BEV,2025,V,Standard,A,266.08,345.903,Depot,True,1383.613,414.231
+102,280,2345.055,17,8.366,225.416,137.944,102,Estacion de Atocha - Estacion el Pozo,17,8.0,V,62865,2021-07-01 23:59:59,P,Entrevias,CNG,,A,Standard,A,137.944,179.328,Depot,False,3048.572,912.692
+103,167,1728.575,10,10.349,196.923,172.858,103,Estacion el Pozo - Ecobulevar,10,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,172.858,224.715,Depot,False,2247.148,672.759
+104,186,1232.194,6,6.621,232.05,205.366,104,Plaza de Ciudad Lineal - Mar de Cristal,6,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,205.366,266.975,Depot,False,1601.852,479.568
+105,137,1558.121,8,11.38,238.667,194.765,105,Plaza de Ciudad Lineal - Barajas,8,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,194.765,253.195,Depot,False,2025.557,606.418
+106,167,1833.008,10,10.976,219.52,183.301,106,Plaza de Manuel Becerra - Vicalvaro,9,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,203.668,264.768,Depot,False,2382.91,713.404
+107,160,1044.56,5,6.528,221.969,208.912,107,Plaza de Castilla - Hortaleza,5,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,208.912,271.586,Depot,False,1357.928,406.541
+108,86,476.139,4,5.536,155.022,119.035,108,Oporto - Cementerio de Carabanchel,4,21.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,119.035,154.745,Depot,False,618.981,185.313
+109,102,505.869,3,4.96,178.542,168.623,109,Plaza de Ciudad Lineal - Castillo de Ucles,3,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,168.623,219.21,Depot,False,657.63,196.883
+110,34,217.804,2,6.451,108.902,108.902,110,Plaza de Manuel Becerra - Cementerio de la Almudena,2,9.0,V,62845,2023-02-08 23:59:59,P,La Elipa,CNG,,A,Standard,A,108.902,141.573,Depot,False,283.145,84.769
+111,168,772.128,6,4.596,165.456,128.688,111,Puente Vallecas - Entrevias,6,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,128.688,167.294,Depot,False,1003.766,300.511
+112,130,1599.065,6,12.3,319.813,266.511,112,Mar de Cristal - Barrio del Aeropuerto,6,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,266.511,346.464,Depot,True,2078.785,622.354
+113,250,1848.17,12,7.392,184.935,154.014,113,Mendez Alvaro - Plaza de Ciudad Lineal,11,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,168.015,218.42,Depot,False,2402.621,719.305
+114,227,3071.116,17,13.519,297.418,180.654,114,Avenida de America - Barrio del Aeropuerto,17,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,180.654,234.85,Depot,False,3992.451,1195.274
+115,295,4351.425,22,14.742,310.108,197.792,115,Avenida de America - Barajas,20,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,217.571,282.843,Depot,True,5656.853,1693.568
+116,151,1953.424,12,12.934,206.944,162.785,116,Glorieta de Embajadores - Villaverde Cruce,11,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,177.584,230.859,Depot,False,2539.451,760.27
+118,224,2267.664,15,10.124,182.223,151.178,118,Glorieta de Embajadores - Avenida de la Peseta,14,16.0,V,62835,2019-01-21 23:59:59,P,Carabanchel,BEV,2024,V,Standard,A,161.976,210.569,Depot,False,2947.963,882.571
+119,131,1039.087,7,7.932,174.515,148.441,119,Atocha - Barrio de Goya,7,15.0,V,62835,2019-01-21 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,148.441,192.973,Depot,False,1350.813,404.411
+120,167,1367.026,9,8.186,196.452,151.892,120,Plaza de Lima - Hortaleza,9,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,151.892,197.459,Depot,False,1777.134,532.044
+121,135,1372.238,8,10.162,193.388,171.53,121,Campamento - Hospital 12 de Octubre,7,7.0,V,62835,2019-02-26 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,196.034,254.844,Depot,False,1783.909,534.073
+122,170,1626.016,9,9.567,219.854,180.668,122,Avenida de America - Feria de Madrid,8,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,203.252,264.228,Depot,False,2113.821,632.843
+123,141,1471.394,8,10.438,229.636,183.924,123,Plaza de Legazpi - Butarque,7,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,210.199,273.259,Depot,False,1912.812,572.664
+124,222,2258.164,13,10.168,223.696,173.705,124,Glorieta de Cuatro Caminos - Lacoma,12,17.0,V,62825,2019-01-21 23:59:59,P,Fuencarral,CNG,,A,Standard,A,188.18,244.634,Depot,False,2935.613,878.874
+125,232,1883.144,9,8.117,275.978,209.238,125,Mar de Cristal - Hospital Ramon y Cajal,9,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,209.238,272.01,Depot,False,2448.087,732.917
+126,173,1214.32,8,7.018,196.49,151.79,126,Nuevos Ministerios - Barrio del Pilar,7,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,173.474,225.517,Depot,False,1578.616,472.612
+127,188,1290.808,7,6.866,205.98,184.401,127,Glorieta de Cuatro Caminos - Ciudad de los Periodistas,6,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,215.135,279.675,Depot,False,1678.05,502.381
+128,237,1384.551,10,5.84,186.864,138.455,128,Glorieta de Cuatro Caminos - Barrio del Pilar,9,17.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,153.839,199.991,Depot,False,1799.916,538.865
+129,147,913.836,5,6.217,211.378,182.767,129,Plaza de Castilla - Manoteras,5,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,182.767,237.597,Depot,False,1187.987,355.664
+130,130,2169.386,9,16.706,300.699,241.043,130,Villaverde Alto - Vicalvaro,9,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,241.043,313.356,Depot,True,2820.202,844.322
+131,144,1512.791,9,10.508,231.187,168.088,131,Campamento - Villaverde Alto,9,8.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,168.088,218.514,Depot,False,1966.628,588.776
+132,239,2782.088,15,11.63,209.349,185.473,132,Moncloa - Hospital la Paz,14,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,198.721,258.337,Depot,False,3616.714,1082.784
+133,291,4285.173,22,14.71,279.841,194.781,133,Plaza del Callao - Mirasierra,21,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,204.056,265.273,Depot,False,5570.725,1667.783
+134,167,1627.982,11,9.748,214.445,147.998,134,Plaza de Castilla|vaguada - Montecarmelo,10,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,162.798,211.638,Depot,False,2116.377,633.608
+135,183,589.503,4,3.22,183.72,147.376,135,Plaza de Castilla - Hospital Ramon y Cajal,4,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,147.376,191.588,Depot,False,766.354,229.434
+136,161,784.337,5,4.872,175.392,156.867,136,Pacifico - Madrid Sur,5,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,156.867,203.928,Depot,False,1019.638,305.263
+137,143,1648.889,9,11.552,231.05,183.21,137,Ciudad Puerta de Hierro - Fuencarral,9,13.0,V,62875,2019-01-21 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,183.21,238.173,Depot,False,2143.556,641.745
+138,231,2709.47,16,11.727,187.632,169.342,138,Plaza de Cristo Rey - Colonia San Ignacio de Loyola,15,8.0,V,62835,2019-12-21 23:59:59,P,Carabanchel,BEV,2023,V,Standard,A,180.631,234.821,Depot,False,3522.311,1054.522
+139,130,1020.37,6,7.849,219.772,170.062,139,Dehesa del Principe - Carabanchel Alto,6,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,170.062,221.08,Depot,False,1326.481,397.126
+140,170,1486.886,9,8.748,192.467,165.21,140,Pavones - Canillejas,9,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,165.21,214.772,Depot,False,1932.952,578.694
+141,158,952.661,6,6.03,168.826,158.777,141,Estacion de Atocha - Buenos Aires,5,6.0,V,62865,2021-05-04 23:59:59,P,Entrevias,CNG,,A,Standard,A,190.532,247.692,Depot,False,1238.459,370.774
+142,164,1782.206,11,10.868,217.36,162.019,142,Pavones - Ensanche de Vallecas,11,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,162.019,210.624,Depot,False,2316.868,693.632
+143,239,2212.794,14,9.258,222.192,158.057,143,Plaza de Manuel Becerra - Villa de Vallecas,14,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,158.057,205.474,Depot,False,2876.632,861.216
+144,192,1189.765,9,6.202,173.642,132.196,144,Pavones - Entrevias,7,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,169.966,220.956,Depot,False,1546.695,463.055
+145,160,2097.6,8,13.11,314.64,262.2,145,Plaza del Conde de Casal - Ensanche de Vallecas,8,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,H2,,V,Standard,A,262.2,340.86,Depot,True,2726.88,816.383
+146,234,2098.644,16,8.974,179.47,131.165,146,Plaza del Callao - los Molinos,15,18.0,V,62875,2019-02-08 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,139.91,181.882,Depot,False,2728.237,816.789
+147,303,3202.881,20,10.57,190.269,160.144,147,Plaza del Callao - Barrio del Pilar,19,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,168.573,219.144,Depot,False,4163.745,1246.556
+148,163,1401.338,9,8.597,171.94,155.704,148,Plaza del Callao - Puente de Vallecas,9,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,155.704,202.415,Depot,False,1821.739,545.399
+149,159,946.055,7,5.949,166.572,135.151,149,Tribunal - Plaza de Castilla,7,16.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,135.151,175.696,Depot,False,1229.872,368.203
+150,222,2853.255,16,12.852,231.345,178.328,150,Puerta del Sol/sevilla - Colonia Virgen del Cortijo,15,8.0,V,62875,2019-01-09 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,190.217,247.282,Depot,False,3709.232,1110.483
+151,153,1013.495,5,6.624,225.233,202.699,151,Canillejas - Barajas,5,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,202.699,263.509,Depot,False,1317.544,394.451
+152,202,887.891,6,4.396,167.029,147.982,152,Avenida de Felipe II - Mendez Alvaro,6,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,147.982,192.376,Depot,False,1154.258,345.566
+153,150,1546.151,9,10.31,206.19,171.795,153,las Rosas - Mar de Cristal,8,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,193.269,251.25,Depot,False,2009.996,601.76
+155,175,1695.318,9,9.686,222.51,188.369,155,Plaza Eliptica - Aluche,9,7.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2021,V,Standard,A,188.369,244.879,Depot,False,2203.913,659.815
+156,160,988.64,7,6.179,185.37,141.234,156,Plaza de Manuel Becerra - Plaza de Legazpi,7,7.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,141.234,183.605,Depot,False,1285.232,384.777
+158,162,1011.816,9,6.248,162.448,112.424,158,Plaza de España - los Carmenes,9,7.0,V,62835,2025-01-14 23:59:59,P,Carabanchel,BEV,2025,V,Standard,A,112.424,146.151,Depot,False,1315.361,393.797
+159,140,1742.395,8,12.442,323.479,217.799,159,Alsacia - el Cañaveral,8,7.0,V,62845,2020-08-02 23:59:59,P,La Elipa,CNG,,A,Standard,A,217.799,283.139,Depot,True,2265.114,678.137
+160,138,1562.408,7,11.298,329.304,223.201,160,Moncloa - Aravaca,7,7.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,223.201,290.161,Depot,True,2031.13,608.087
+161,186,2566.274,13,13.785,330.84,197.406,161,Moncloa - Aravaca Sur,13,8.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,197.406,256.627,Depot,True,3336.156,998.79
+162,179,2575.758,10,14.324,401.086,257.576,162,Moncloa - el Barrial,10,7.0,V,62825,2019-02-04 23:59:59,P,Fuencarral,CNG,,A,Standard,A,257.576,334.849,Depot,True,3348.485,1002.481
+163,66,516.978,2,7.833,259.631,258.489,163,Estacion de Aravaca - el Plantio,2,7.0,V,62825,2026-02-15 23:59:59,P,Fuencarral,CNG,,A,Standard,A,258.489,336.036,Depot,False,672.071,201.207
+164,144,1984.206,6,13.781,496.116,330.701,164,Moncloa - el Pardo,6,7.0,V,62875,2026-08-19 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,330.701,429.911,Above_range_TBD,True,2579.468,772.25
+165,152,2443.591,9,16.081,353.793,271.51,165,Alsacia - Hospital Ramon y Cajal,9,8.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,271.51,352.963,Depot,True,3176.668,951.042
+166,54,998.406,4,18.489,258.846,249.602,166,Barajas - Hospital Ramon y Cajal,4,8.0,V,62875,2023-02-07 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,249.602,324.482,Depot,False,1297.928,388.578
+167,167,1915.192,8,11.47,298.207,239.399,167,Alsacia - Colonia Fin de Semana,7,8.0,V,62875,2021-03-07 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,273.599,355.679,Depot,False,2489.75,745.39
+170,159,2251.797,9,14.165,297.611,250.2,170,Arroyo del Fresno - Sanchinarro,8,7.0,V,62875,2022-12-30 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,281.475,365.917,Depot,False,2927.336,876.396
+171,196,1445.206,7,7.374,258.1,206.458,171,Mar de Cristal - Valdebebas,8,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,180.651,234.846,Depot,False,1878.768,562.472
+172,130,1476.215,8,11.356,249.821,184.527,172,Mar de Cristal - Telefonica,8,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,184.527,239.885,Depot,False,1919.08,574.541
+173,225,1471.629,8,6.539,255.139,183.954,173,Plaza de Castilla - Sanchinarro,7,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,210.233,273.303,Depot,False,1913.118,572.756
+174,189,2571.819,12,13.636,312.551,214.318,174,Plaza de Castilla - Valdebebas,11,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,233.802,303.942,Depot,True,3343.365,1000.948
+175,182,1820.278,7,10.001,320.032,260.04,175,Plaza de Castilla - las Tablas Norte,7,7.0,V,62875,2019-01-09 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,260.04,338.052,Depot,True,2366.361,708.449
+176,262,2254.356,14,8.601,249.578,161.025,176,Plaza de Castilla - las Tablas Sur,14,8.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,161.025,209.333,Depot,False,2930.663,877.392
+177,149,446.829,5,3.008,132.33,89.366,177,Plaza de Castilla - Marques de Viana,5,7.0,V,62875,2019-02-05 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,89.366,116.176,Depot,False,580.878,173.905
+178,170,1306.364,9,7.685,269.078,145.152,178,Plaza de Castilla - Montecarmelo,9,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,145.152,188.697,Depot,False,1698.273,508.435
+179,76,1246.514,4,16.402,328.03,311.629,179,Plaza Castilla - el Pardo,4,7.0,V,62875,2025-04-11 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,311.629,405.117,Above_range_TBD,True,1620.468,485.141
+180,56,323.036,2,5.768,161.518,161.518,180,Plaza de Legazpi - Estacion el Pozo,2,8.0,V,62865,2999-12-31 23:59:59,V,Entrevias,CNG,,A,Standard,A,161.518,209.973,Depot,False,419.947,125.725
+200,162,2904.255,6,17.928,592.788,484.042,200,Avenida de America - Aeropuerto,6,7.0,V,62875,2024-06-17 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,484.042,629.255,Above_range_TBD,True,3775.532,1130.332
+203,136,3191.988,7,23.47,516.351,455.998,203,Estacion de Atocha - Aeropuerto,7,8.0,V,62875,2021-04-20 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,455.998,592.798,Above_range_TBD,True,4149.584,1242.317
+210,195,995.864,8,5.107,153.21,124.483,210,Diego de Leon - la Elipa,8,7.0,V,62845,2023-02-08 23:59:59,P,La Elipa,CNG,,A,Standard,A,124.483,161.828,Depot,False,1294.623,387.589
+215,82,219.801,2,2.681,144.747,109.901,215,Avenida de Felipe II - Parque de Roma,2,9.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,109.901,142.871,Depot,False,285.741,85.546
+247,84,487.494,3,5.804,162.498,162.498,247,Atocha - Colonia San Jose Obrero,3,6.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,BEV,2022,V,Standard,A,162.498,211.247,Depot,False,633.742,189.732
+310,127,663.98,5,5.228,167.28,132.796,310,Pacifico - Estacion el Pozo,5,7.0,V,62865,2019-02-05 23:59:59,P,Entrevias,CNG,,A,Standard,A,132.796,172.635,Depot,False,863.174,258.42
+361,218,1050.651,12,4.82,110.805,87.554,001,Estacion de Atocha - Moncloa,12,17.0,V,62825,2022-03-20 23:59:59,P,Fuencarral,BEV,2020,V,Standard,A,87.554,113.821,Depot,False,1365.846,408.912
+362,130,713.765,10,5.49,87.848,71.376,002,Puerta Toledo - Argüelles,8,10.0,V,62835,2025-06-01 23:59:59,P,Carabanchel,BEV,2020,V,Standard,A,89.221,115.987,Depot,False,927.894,277.796
+363,138,863.949,8,6.26,143.803,107.994,C03,Puerta de Toledo - Argüelles,8,20.0,V,62825,2020-10-18 23:59:59,P,Fuencarral,BEV,2020,V,Standard,A,107.994,140.392,Depot,False,1123.134,336.248
+401,209,2172.371,11,10.399,249.576,197.488,E1,Plaza de Cibeles - la Peseta,11,7.0,V,62835,2021-03-29 23:59:59,P,Carabanchel,BEV,2023,V,Standard,A,197.488,256.735,Depot,False,2824.082,845.484
+402,196,1638.56,6,8.36,300.96,273.093,E2,Avenida de Felipe II - las Rosas,6,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,273.093,355.021,Depot,True,2130.128,637.725
+403,355,3301.485,18,9.296,316.064,183.416,E3,Avenida de Felipe II - Valderrivas,17,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,194.205,252.467,Depot,True,4291.93,1284.933
+404,274,2186.576,10,7.979,303.202,218.658,E4,Avenida de Felipe II - Valdebernardo,10,7.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,218.658,284.255,Depot,True,2842.549,851.012
+405,236,3226.606,14,13.669,355.394,230.472,E5,Manuel Becerra - el Cañaveral,13,8.0,V,62845,2021-10-14 23:59:59,P,La Elipa,CNG,,A,Standard,A,248.2,322.661,Depot,True,4194.588,1255.79
+451,120,311.76,2,2.598,161.076,155.88,T11,Mar de Cristal - Parque Empresarial Cristalia,2,6.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,155.88,202.644,Depot,False,405.288,121.337
+452,102,198.594,1,1.947,198.594,198.594,T23,Puerta de Arganda - Poligono Industrial de Vicalvaro,1,6.0,V,62845,2019-02-28 23:59:59,P,La Elipa,CNG,,A,Standard,A,198.594,258.172,Depot,False,258.172,77.292
+453,118,858.598,4,7.28,327.379,214.65,T32,Plaza de Legazpi - Mercamadrid - C. T. M,4,6.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,214.65,279.044,Depot,True,1116.177,334.165
+454,92,373.842,2,4.063,186.921,186.921,T31,Estacion el Pozo - Sierra de Guadalupe,2,6.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,186.921,242.997,Depot,False,485.995,145.499
+455,143,1062.908,5,7.441,282.758,212.582,T61,Estacion de Cercanias de Fuencarral - las Tablas,5,7.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,212.582,276.356,Depot,False,1381.78,413.682
+456,94,365.707,2,3.891,183.044,182.854,T41,Villaverde Alto - Poligono Industrial la Resina,2,6.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,182.854,237.71,Depot,False,475.419,142.333
+481,240,441.48,4,1.84,172.913,110.37,H1,Sierra de Guadalupe - Hospital Infanta Leonor,4,8.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,110.37,143.481,Depot,False,573.924,171.823
+501,21,286.369,3,13.759,98.869,95.456,N1,Plaza de Cibeles - Sanchinarro,3,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,95.456,124.093,Depot,False,372.28,111.454
+502,21,341.286,3,16.218,114.241,113.762,N2,Plaza de Cibeles - Valdebebas,3,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,113.762,147.891,Depot,False,443.672,132.828
+503,21,257.912,3,12.272,86.097,85.971,N3,Plaza de Cibeles - Feria de Madrid,3,24.0,V,62825,2024-01-03 23:59:59,P,Fuencarral,CNG,,A,Standard,A,85.971,111.762,Depot,False,335.286,100.379
+504,21,358.05,3,17.084,120.302,119.35,N4,Plaza de Cibeles - Barajas,3,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,119.35,155.155,Depot,False,465.465,139.353
+505,21,360.052,4,17.164,102.987,90.013,N5,Plaza de Cibeles - Colonia Fin de Semana,4,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,90.013,117.017,Depot,False,468.068,140.132
+506,21,431.139,4,20.521,123.126,107.785,N6,Plaza de Cibeles - el Cañaveral,4,24.0,V,62865,2023-11-20 23:59:59,P,Entrevias,CNG,,A,Standard,A,107.785,140.12,Depot,False,560.481,167.799
+507,21,294.991,3,14.033,98.529,98.33,N7,Plaza de Cibeles - Valderrivas,3,24.0,V,62865,2022-04-30 23:59:59,P,Entrevias,CNG,,A,Standard,A,98.33,127.829,Depot,False,383.488,114.81
+508,21,281.305,3,13.369,94.146,93.768,N8,Plaza de Cibeles - Pavones,3,24.0,V,62865,2024-01-08 23:59:59,P,Entrevias,CNG,,A,Standard,A,93.768,121.899,Depot,False,365.696,109.483
+509,21,385.245,3,18.267,129.507,128.415,N9,Plaza de Cibeles - Ensanche de Vallecas,3,24.0,V,62865,2023-06-19 23:59:59,P,Entrevias,CNG,,A,Standard,A,128.415,166.94,Depot,False,500.818,149.937
+510,22,171.36,2,7.893,85.68,85.68,N10,Plaza de Cibeles - Palomeras,3,29.0,V,62865,2019-02-05 23:59:59,P,Entrevias,CNG,,A,Standard,A,57.12,74.256,Depot,False,222.768,66.693
+511,21,207.192,3,9.926,70.722,69.064,N11,Plaza de Cibeles - Madrid Sur,4,24.0,V,62865,2019-02-11 23:59:59,P,Entrevias,CNG,,A,Standard,A,51.798,67.337,Depot,False,269.35,80.639
+512,21,288.615,3,13.758,96.623,96.205,N12,Plaza de Cibeles - Butarque,3,24.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,96.205,125.066,Depot,False,375.2,112.329
+513,21,267.384,3,12.721,89.29,89.128,N13,Plaza de Cibeles - Colonia San Cristobal de los Angeles,3,24.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,89.128,115.866,Depot,False,347.599,104.065
+514,21,289.042,3,13.706,97.151,96.347,N14,Plaza de Cibeles - Villaverde Alto,3,24.0,V,62865,2019-02-28 23:59:59,P,Entrevias,CNG,,A,Standard,A,96.347,125.252,Depot,False,375.755,112.495
+515,21,258.936,3,12.324,86.393,86.312,N15,Plaza de Cibeles - Hospital 12 de Octubre,3,24.0,V,62835,2024-10-05 23:59:59,P,Carabanchel,CNG,,A,Standard,A,86.312,112.206,Depot,False,336.617,100.777
+516,21,307.376,3,14.629,102.57,102.459,N16,Plaza de Cibeles - Avenida de la Peseta,3,24.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,102.459,133.196,Depot,False,399.589,119.63
+517,21,261.266,3,12.44,87.099,87.089,N17,Plaza de Cibeles - Carabanchel Alto,3,24.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,87.089,113.215,Depot,False,339.646,101.684
+518,21,280.661,3,13.349,93.782,93.554,N18,Plaza de Cibeles - las Águilas,3,24.0,V,62835,2023-11-29 23:59:59,P,Carabanchel,CNG,,A,Standard,A,93.554,121.62,Depot,False,364.859,109.233
+519,21,294.675,3,13.997,98.71,98.225,N19,Plaza de Cibeles - Colonia San Ignacio de Loyola,3,24.0,V,62835,2019-02-28 23:59:59,P,Carabanchel,CNG,,A,Standard,A,98.225,127.693,Depot,False,383.078,114.687
+520,21,332.598,3,15.888,112.266,110.866,N20,Plaza de Cibeles - Pitis,3,24.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,110.866,144.126,Depot,False,432.377,129.447
+521,21,249.249,3,11.904,84.063,83.083,N21,Plaza de Cibeles - Arroyo del Fresno,3,24.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,83.083,108.008,Depot,False,324.024,97.007
+522,21,228.959,3,10.907,76.451,76.32,N22,Plaza de Cibeles - Barrio de la Paz,3,24.0,V,62825,2024-11-21 23:59:59,P,Fuencarral,CNG,,A,Standard,A,76.32,99.216,Depot,False,297.647,89.11
+523,21,309.632,3,14.743,103.23,103.211,N23,Plaza de Cibeles - Montecarmelo,3,24.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,103.211,134.174,Depot,False,402.522,120.508
+524,21,364.234,3,17.388,122.644,121.411,N24,Plaza de Cibeles - las Tablas,3,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,121.411,157.835,Depot,False,473.504,141.759
+525,21,215.675,3,10.298,72.655,71.892,N25,Plaza de Alonso Martinez - Villa de Vallecas,3,24.0,V,62865,2022-05-29 23:59:59,P,Entrevias,CNG,,A,Standard,A,71.892,93.459,Depot,False,280.378,83.94
+526,21,244.109,3,11.63,81.517,81.37,N26,Plaza de Alonso Martinez - Aluche,3,24.0,V,62835,2019-01-21 23:59:59,P,Carabanchel,CNG,,A,Standard,A,81.37,105.781,Depot,False,317.342,95.007
+527,22,484.418,2,22.019,243.645,242.209,N27,Plaza de Cibeles - Aeropuerto,2,24.0,V,62875,2019-02-28 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,242.209,314.872,Depot,False,629.743,188.535
+528,20,238.77,2,11.939,119.385,119.385,N28,Moncloa - Aravaca,2,24.0,V,62825,2019-02-28 23:59:59,P,Fuencarral,CNG,,A,Standard,A,119.385,155.2,Depot,False,310.401,92.929
+529,20,180.49,2,9.024,90.245,90.245,NC1,Cuatro Caminos - Estacion de Atocha,2,24.0,V,62825,2025-08-03 23:59:59,P,Fuencarral,CNG,,A,Standard,A,90.245,117.319,Depot,False,234.637,70.246
+530,20,187.43,2,9.372,93.715,93.715,NC2,Cuatro Caminos - Estacion de Atocha,2,24.0,V,62825,2025-07-01 23:59:59,P,Fuencarral,CNG,,A,Standard,A,93.715,121.83,Depot,False,243.659,72.947
+531,20,269.32,2,13.466,134.66,134.66,N31,Moncloa - el Pardo,2,24.0,V,62875,2026-08-19 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,134.66,175.058,Depot,False,350.116,104.819
+532,20,387.89,2,19.394,193.945,193.945,N32,Avenida de America - Aeropuerto,2,24.0,V,62875,2026-05-06 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,193.945,252.128,Depot,False,504.257,150.966
+601,142,334.765,7,2.358,61.295,47.824,M1,Puerta del Sol/sevilla - Glorieta de Embajadores,5,13.0,V,62835,2019-02-11 23:59:59,P,Carabanchel,BEV,2008,V,Standard,A,66.953,87.039,Depot,False,435.194,130.29
+603,68,190.978,2,2.808,95.489,95.489,M3,Puerta del Sol/sevilla - Puerta Toledo,2,7.0,V,62835,2025-02-02 23:59:59,P,Carabanchel,BEV,2020,V,Standard,A,95.489,124.136,Depot,False,248.271,74.328
+709,128,853.312,4,6.666,239.994,213.328,SE709,Feria de Madrid - Valdebebas,2,7.0,V,62875,2999-12-31 23:59:59,V,Sanchinarro,CNG,,A,Standard,A,426.656,554.653,Above_range_TBD,False,1109.306,332.108
+718,26,214.513,1,8.25,214.513,214.513,SE718,Puerta de Arganda - Cañada Real,1,7.0,V,62865,2023-04-12 23:59:59,P,Entrevias,CNG,,A,Standard,A,214.513,278.867,Depot,False,278.867,83.488
+730,6,41.208,1,6.868,41.208,41.208,SE730,Plaza Eliptica - Pinar de San Jose,1,,P,62835,2023-04-01 23:59:59,P,Carabanchel,CNG,,A,Standard,A,41.208,53.57,Depot,False,53.57,16.038
+766,6,52.554,1,8.759,52.554,52.554,SE766,Atocha - Poligono Industrial de Vallecas,1,,P,62835,2021-04-01 23:59:59,P,Carabanchel,CNG,,A,Standard,A,52.554,68.32,Depot,False,68.32,20.454
+831,164,2564.703,10,15.65,328.942,256.47,BR1,Valdebebas - Hospital Ramon y Cajal,9,8.0,V,62825,2023-07-11 23:59:59,P,Fuencarral,BEV,2023,V,Standard,A,284.967,370.457,Depot,True,3334.114,998.179
+832,44,513.15,2,11.662,256.575,256.575,SE832,Principe Pio - Hospital Fundacion San Jose,2,7.0,V,62835,2023-06-26 23:59:59,P,Carabanchel,CNG,,A,Standard,A,256.575,333.548,Depot,False,667.095,199.717
+833,28,187.642,1,6.701,187.642,187.642,SE833,Plaza Castilla - las Tablas,1,7.0,V,62875,2024-12-17 23:59:59,P,Sanchinarro,CNG,,A,Standard,A,187.642,243.935,Depot,False,243.935,73.03
+866,222,537.795,4,2.422,145.35,134.449,SE3,Batan - Lucero,4,7.0,V,62835,2025-08-06 23:59:59,P,Carabanchel,CNG,,A,Standard,A,134.449,174.783,Depot,False,699.134,209.309
+869,62,787.836,14,12.798,66.81,56.274,SC1,Cuatro Caminos - Legazpi,15,23.0,V,62825,2025-05-20 23:59:59,P,Fuencarral,CNG,,A,Standard,A,52.522,68.279,Depot,False,1024.187,306.625
+870,62,797.792,14,12.776,66.707,56.985,SC2,Cuatro Caminos - Legazpi,14,23.0,V,62835,2025-03-16 23:59:59,P,Carabanchel,CNG,,A,Standard,A,56.985,74.081,Depot,False,1037.13,310.499
+881,785,2448.26,15,3.114,215.294,163.217,S10,Plaza Castilla - N. Ministerios,15,7.0,V,62825,2026-05-26 23:59:59,P,Fuencarral,CNG,,A,Standard,A,163.217,212.183,Depot,False,3182.738,952.859
+898,92,867.928,3,9.434,301.888,289.309,SE2,Plaza Eliptica - Cuatro Vientos,3,6.0,V,62865,2025-03-02 23:59:59,P,Entrevias,CNG,,A,Standard,A,289.309,376.102,Depot,True,1128.306,337.796
