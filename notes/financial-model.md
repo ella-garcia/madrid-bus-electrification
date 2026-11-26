@@ -79,7 +79,7 @@ flowchart LR
 | Cash flow & financing | Historical baseline | Cash flows, sources/uses of capital, debt, external funders |
 | Gaps & sources | Documentation | What data is missing; every source link |
 
-**Scenario switch:** `Assumptions!B2` (target year). Set it to 2030 (brief scenario S1), 2033 (City/EMT goal) or 2035, and every forecast sheet recalculates.
+**Scenario switch:** `Assumptions!B2` (target year). Set it to 2030 (100 % forced in 2030; not File 4's S1), 2033 (City/EMT goal) or 2035, and every forecast sheet recalculates.
 
 ---
 
@@ -89,7 +89,7 @@ Suggested `snake_case` names make it easy to mirror these in the notebooks (for 
 
 | Variable | Cell | Value | Unit | Type | Source / basis |
 |---|---|---|---|---|---|
-| `target_year` | B2 | 2033 | year | Scenario | 2030 = brief S1; 2033 = City/EMT goal; 2035 = slow case |
+| `target_year` | B2 | 2033 | year | Scenario | 2030 = 100 % forced in 2030 (not File 4's S1); 2033 = City/EMT goal; 2035 = slow case |
 | `fleet_total` | B3 | 2,239 | buses | Official | EMT 2025 accounts: 456 electric + 10 hydrogen + 1,773 CNG. CRTM quotes 2,215. **File 4: 2,210 (D1, section 0)** |
 | `h2_buses` | B4 | 10 | buses | Official | EMT 2025 accounts |
 | `ebuses_2025` | B5 | 456 | buses | Official | EMT 2025 accounts |
@@ -217,9 +217,11 @@ Headline figures:
 
 | Target year | E-buses/yr from 2028 | Charging capacity at target year | E-buses without charging capacity | Young CNG retired early | CNG book value written off (€M) |
 |---|---|---|---|---|---|
-| 2030 (brief S1) | 546 | 1,579 | **650** | 980 | 73.4 |
+| 2030 (100 % forced in 2030) | 546 | 1,579 | **650** | 980 | 73.4 |
 | 2033 (City/EMT goal) | 273 | 2,229 | 0 | 520 | 12.6 |
 | 2035 | 205 | 2,229 | 0 | 0 | 0 |
+
+The 2030 row is a third variant, separate from File 4's S1 and from notebook 04's "2030 target, no limits" run: it forces 100 % in 2030. If the fleet is instead limited by charging positions, 100 % arrives in 2031 and the write-off is €49.3M (notebook 04).
 
 The 2030 scenario fails on infrastructure (Las Tablas and part of the retrofits aren't ready) and strands young CNG buses.
 
