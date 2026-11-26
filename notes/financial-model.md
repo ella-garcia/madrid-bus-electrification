@@ -47,12 +47,30 @@ Notebook 04 §10 runs this model at revision 13 as documented (check: EUR 1,943.
 | Interest in 2035, most realistic case | EUR 38.1M; EUR 49.6M at +1 pt | EUR 36.9M |
 | EU grants at 0 instead of 20 %, most realistic case | Same 100 % year (2038); interest EUR 39.5M | — |
 
+**Third case: the 2035 roadmap (`scenarios/`, 26 Nov 2026).** The 2035 recommendation comes from a separate depot-by-depot model, `scenarios/roadmap_2035.py`, with its results in `scenarios/results/roadmap_2035/` and the depot detail in `notes/roadmap-2035.md`. It uses File 4's conventions, not revision 13's, so its figures are not comparable line by line with the rest of this note.
+
+| | 2035 roadmap (`scenarios/`) | Revision 13 run at target 2035 (reference model, Appendix) |
+|---|---|---|
+| Conventions | File 4: 2,210 buses, constant 2025 EUR | 2,239 buses, +2 %/yr bus prices |
+| 100 % zero-emission | 2035 (49 % in 2030, 80 % in 2033) | 2035 |
+| E-buses bought 2026–35 | 2,012 (1,748 replace gas, 264 renewals) | 2,102 (1,773 replace CNG, 329 renewals) |
+| E-buses added 2026 / 2027 | 70 / 50 (the 120 awarded) | 70 / 65 (2027 draft budget) |
+| Purchases a year | 48 in 2028, then 243–315 (2030–35) | 205 growth a year from 2028; peak 271 with renewals |
+| Capex 2026–35 | EUR 1,726M | EUR 1,966.6M |
+| Peak year | EUR 272M (2029) | EUR 268.0M (2028) |
+| La Elipa | EUR 134M, reopens all-electric in 2030 | EUR 112.1M, finished 2029 |
+| Las Tablas | 650 places, opens 2032 (works 2028–31) | 650 positions, counted from end 2031 |
+| Grid | EUR 10M of upgrades; EUR 61.75M contingency kept outside the total | EUR 62M contingency inside capex |
+
+The two differ on 2027 purchases (50 vs 65); this note keeps 65 for revision 13.
+
 **File 4 and the three dates (notebook 01 §8, round 2, 24 Nov 2026).**
 
 - **D8, no gas purchases.** Neither File 4 scenario buys a gas bus: no gas-bus order for 2026 or later is evidenced, and EMT's 2026 and 2027 budgets buy e-buses only. A worn gas bus keeps running until an e-bus replaces it. S0 and S1 are now identical in 2026.
 - **Effect on File 4.** S0 capex 2026–35 is EUR 1,390.6M (was 1,367.8M) and S0 reaches 94.9 % in 2035 (was 92.4 %): without the 55 gas buses of 2026, older gas buses reach 13 years sooner and are replaced by e-buses from 2030. S1 is EUR 1,471.8M, unchanged. S1 minus S0: EUR 81.2M and 341.7 kt of CO₂ avoided, about EUR 238 per tonne (grid reinforcement excluded, nothing discounted).
 - **Three dates.** 2030 is not achievable (650 e-buses without a charging position). 2033 is the earliest credible year (about 285 e-buses a year from 2028, renewals included, and Las Tablas finished by 2031). If purchases stay at 165–200 a year, 100 % comes in 2037–2040 with gas buses running to about 17 years. On File 4's 13-year renewals, S0 reaches 100 % in 2036, with purchases peaking at 382 a year (2031).
 - **Notebook 04 §10** (this model, revision 13): the most realistic case (230 buses a year, EUR 150M a year of borrowing, one-year slips) gives 2038, inside that range.
+- **Recommendation (26 Nov 2026): 2035.** The team now recommends 100 % by 2035, from the depot-by-depot roadmap above (`notes/roadmap-2035.md`), not 2033. 2033 remains this model's base case and its earliest credible year.
 
 ---
 
@@ -222,13 +240,15 @@ Headline figures:
 | 2033 (City/EMT goal) | 273 | 2,229 | 0 | 520 | 12.6 |
 | 2035 | 205 | 2,229 | 0 | 0 | 0 |
 
+The 2035 row is revision 13 run at target 2035 (capex 2026–35 EUR 1,966.6M in the reference model). It is not the recommended 2035 roadmap (EUR 1,726M under File 4's conventions; section 0).
+
 The 2030 row is a third variant, separate from File 4's S1 and from notebook 04's "2030 target, no limits" run: it forces 100 % in 2030. If the fleet is instead limited by charging positions, 100 % arrives in 2031 and the write-off is €49.3M (notebook 04).
 
 The 2030 scenario fails on infrastructure (Las Tablas and part of the retrofits aren't ready) and strands young CNG buses.
 
 ### 4.4 Discounted view, 2026-40 (revision 13 with a discounted view, not in the workbook)
 
-**Status (26 Nov 2026).** No input or output above changes, so this stays revision 13 and every citation of it holds. The figures come from the model cell of notebook 04 §10, run on its own. They are **not printed in a notebook** (a full run needs the cached `data_raw/`, which isn't in the repo) and **not in the workbook**. The report's C8 uses them. Nobody has checked them independently yet; a teammate re-running the formulas in the watch-outs doc (B9) would be that check.
+**Status (26 Nov 2026).** No input or output above changes, so this stays revision 13 and every citation of it holds. The figures are printed in notebook 04 §10, in the cell labelled "Report Annex C8", and are **not in the workbook**. A full notebook run needs the cached `data_raw/`, which isn't in the repo. The report's C8 uses them. Nobody has checked them independently yet; a teammate re-running the formulas in the watch-outs doc (B9) would be that check.
 
 **Paths compared**
 
@@ -249,7 +269,7 @@ Net present cost = capex − energy and carbon savings − value left in the bus
 **What it shows**
 
 - **Discounting reverses the capex ranking.** Undiscounted, 2037 is the most expensive path; at 3.3% it is the cheapest. At exactly 2% the three paths have the same capex (€1,790.6M): each buys the same 2,102 buses and builds the same depots on the same dates, and a 2% rate cancels the 2% bus price growth (`price_escalation`). The whole undiscounted gap is that price growth.
-- **The rate barely moves the comparison.** The 2033 path's net present cost is €147-150M above 2037 at every rate from 2% to 5% (147.2, 148.5, 150.3), so the €620-635 per tonne of CO₂ holds.
+- **The rate barely moves the comparison.** The 2033 path's net present cost is €147-150M above 2037 at every rate from 2% to 5% (147.2, 148.5, 150.3), so the cost per extra tonne of CO₂ stays at €629-642 (€634 at 3.3 %; see the inputs table below).
 
 **Discount rate.** 3.3% nominal is the base. Because the model grows bus prices at 2%, it is about 1.3% in real terms (1.033 / 1.02 − 1), so the 5% sensitivity is shown beside it.
 
@@ -259,7 +279,17 @@ Net present cost = capex − energy and carbon savings − value left in the bus
 2. **Renewals after 2035 aren't modelled.** Buses bought in 2024-28 reach 12 years (`ebus_life_years`) inside the horizon, in 2036-40. Purchases in 2024-27 are the same on every path, but 2028 differs: 273 on the 2033 path, 230 on the 2037 path, more when aiming for 2030. The 43 extra 2033-path buses would be renewed in 2040 for about €36M (about €831k each at 2040 prices), or about €23M at 3.3%. A bus renewed in 2040 keeps nearly all its value at end 2040, so the net effect is small, but it is not the same on every path and would widen the 2033-2037 gap slightly.
 3. **Terminus chargers (€9.5M) have no year in the model** and are not in the figures above. They are the same on every path, so they raise each total without changing the comparison. Disclose them as one line, not as a dated row.
 
-**Inputs still to document** (needed before section 2 can list them): the carbon price and CO₂ per bus behind the carbon savings and the €620-635 per tonne, the rule for the value left in the buses at end 2040, and how energy savings run in 2036-40.
+**Inputs (notebook 04, C8 cell; not workbook cells)**
+
+| Input | Value | Basis |
+|---|---|---|
+| Discount rate | 3.3 % base; 2 % and 5 % sensitivities | Mean of `eib_rate` (3.0 %) and `green_bond_coupon` (3.6 %) |
+| CO₂ per bus switched from gas | 61.133 t a year | File 4, mid-year; 49.35 t a year on revision 13's 45,513 km per bus |
+| Carbon price | €45/t, on gas from 2028 | ETS2 price-stability trigger |
+| Energy and carbon savings | Each year, the path's e-buses above the 2025 fleet (mid-year average) × km × saving per km | Same inputs as row 27 (B20-B23); 2036-40 follow each path's fleet |
+| Value left in the buses at end 2040 | Purchase price × (1 − age at end 2040 / 12), not below 0 | Straight line over `ebus_life_years` |
+
+**Cost per extra tonne avoided to 2037 (2033 path vs 2037 path):** €634 at 3.3 %, on File 4's CO₂ per bus; €786 if CO₂ is counted on revision 13's bus-km. The 2033 path avoids 234.2 kt more than the 2037 path to 2037.
 
 ### 4.5 Sensitivities outside the base case (26 Nov 2026)
 
