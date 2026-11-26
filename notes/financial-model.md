@@ -261,6 +261,32 @@ Net present cost = capex − energy and carbon savings − value left in the bus
 
 **Inputs still to document** (needed before section 2 can list them): the carbon price and CO₂ per bus behind the carbon savings and the €620-635 per tonne, the rule for the value left in the buses at end 2040, and how energy savings run in 2036-40.
 
+### 4.5 Sensitivities outside the base case (26 Nov 2026)
+
+These are sensitivities, not changes to revision 13. Putting them in the base case would change every figure in section 1 and the report's C9. Figures come from the Python reference model (Appendix), target 2033, 2026-35, and reproduce the base case's €1,943.5M.
+
+**Electricity price.** The model uses `electricity_price` (B22) = €0.15/kWh, i.e. €150/MWh, the same as the C8 port. No input in section 2 is €85/MWh (row 21 of `Assumptions` is `km_per_bus_year`), so the papers doc's "€85/MWh" does not match the model. Range €130-190/MWh:
+
+| Electricity | Energy saving 2035 (€M/yr) | Energy saving 2026-35 (€M) | Interest 2035 (€M) |
+|---|---|---|---|
+| €130/MWh | 16.2 | 93.8 | 49.3 |
+| €150/MWh (base) | 14.1 | 81.6 | 49.3 |
+| €190/MWh | 9.9 | 57.4 | 49.3 |
+
+On energy alone, savings cover about a fifth to a third of the 2035 interest in this run (unlimited borrowing). Any claim that "savings cover the interest" needs other savings (for example maintenance, not modelled) or a lower-borrowing case to hold.
+
+**Mid-life battery replacement.** €44-100k per bus at about 8 years, not escalated, all borrowed (bus capex gets no grants and self-financing is already used up). Buses reaching 8 years in 2026-35, assuming the 329 of 2019-23 were bought evenly, the other 127 of the 2025 fleet in 2024-25, then 70 in 2026 and 65 in 2027: 591, spread 2027-35.
+
+| Battery cost | Extra capex and borrowing 2026-35 (€M) | Interest 2035 (€M) | Extra cumulative interest 2026-35 (€M) |
+|---|---|---|---|
+| none (base) | 0 | 49.3 | 0 |
+| €44k | 26.0 | 50.2 | 4.3 |
+| €100k | 59.1 | 51.3 | 9.7 |
+
+Buses bought from 2028 reach 8 years after 2035, so this run leaves out most of the fleet. Over the 2026-40 view (section 4.4), batteries for 2028-32 purchases would also fall inside the horizon.
+
+**Maintenance savings.** Not in the model (caveat 3 in section 9). A 40 % low case against 54 % can only be shown where the 54 % is applied, which is outside revision 13; this note has no maintenance cost base to apply either rate to.
+
 ---
 
 ## 5. Sheet `Funding plan`
@@ -393,6 +419,8 @@ Spare capacity is thin in 2027 (6) and 2030 (169), and negative in 2026 (−43, 
 | La Elipa +1, Las Tablas +2, retrofits +2 | 540 | 2028-32 | 2033 |
 
 The 2033 target survives each single delay but has no buffer: the realistic risk is a 1-2 year slip to 2034-35 unless grid applications, the Entrevías design and Las Tablas start in 2026-27. Mitigations: CNMC flexible access permits (Aug 2026, type 0 = hourly consumption patterns, suited to overnight charging), smart charging, temporary plug-in chargers, and matching bus delivery dates to depot readiness.
+
+*Side note, plug-in chargers.* Temporary plug-in chargers cost about €26-28k each, but they are 50 kW units, which breaks the brief's fixed charger power. They are a mitigation to mention only: they are not in the model's charging capacity and must not enter File 3 or File 4.
 
 ## 9. Known gaps and caveats
 
