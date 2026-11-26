@@ -4,6 +4,7 @@ Documentation of the financial model built for the IEU Sustainability Datathon (
 
 - **Source workbook:** Claude Sheet "EMT Madrid – Financial Baseline 2023–2027" (https://claude.ai/artifact/Pr5MWpCHY2Naa2MXHhuZRk). It's private until shared with the team.
 - **Snapshot:** workbook revision 13, 23 November 2026.
+- **Discounted view (26 Nov 2026):** section 4.4 adds a 2026-40 discounted comparison of three paths. It is computed outside the workbook and changes no revision 13 figure.
 - **Which values the notebooks use (D9, 24 Nov 2026):** notebook 04 §10 runs this model at revision 13 exactly as documented here; the pitch and the report quote it. File 4 (notebook 01) keeps its own conventions, listed in section 0.
 - **Units:** € millions (€M), excluding VAT, unless a row says otherwise. Bus prices are in € thousands (€k).
 - **Data types used below:**
@@ -225,6 +226,41 @@ The 2030 row is a third variant, separate from File 4's S1 and from notebook 04'
 
 The 2030 scenario fails on infrastructure (Las Tablas and part of the retrofits aren't ready) and strands young CNG buses.
 
+### 4.4 Discounted view, 2026-40 (revision 13 with a discounted view, not in the workbook)
+
+**Status (26 Nov 2026).** No input or output above changes, so this stays revision 13 and every citation of it holds. The figures come from the model cell of notebook 04 §10, run on its own. They are **not printed in a notebook** (a full run needs the cached `data_raw/`, which isn't in the repo) and **not in the workbook**. The report's C8 uses them. Nobody has checked them independently yet; a teammate re-running the formulas in the watch-outs doc (B9) would be that check.
+
+**Paths compared**
+
+- **Aim for 2030 (reaches 2031):** the charging-limited run in the note under section 4.3.
+- **2033:** this note's base case (section 4.2).
+- **2037:** likely capacity, 230 buses and €150M of borrowing a year, no delays (section 0).
+
+**Results (€M, 2026-40)**
+
+| Path | Capex, undiscounted | Capex at 3.3% | Net present cost at 2% | at 3.3% | at 5% |
+|---|---|---|---|---|---|
+| Aim for 2030 (reaches 2031) | 1,923.9 | 1,711.6 | 1,495.7 | 1,454.4 | 1,400.1 |
+| 2033 | 1,943.5 | 1,700.8 | 1,452.2 | 1,408.7 | 1,351.2 |
+| 2037 | 1,998.2 | 1,672.8 | 1,305.0 | 1,260.2 | 1,200.9 |
+
+Net present cost = capex − energy and carbon savings − value left in the buses at end 2040.
+
+**What it shows**
+
+- **Discounting reverses the capex ranking.** Undiscounted, 2037 is the most expensive path; at 3.3% it is the cheapest. At exactly 2% the three paths have the same capex (€1,790.6M): each buys the same 2,102 buses and builds the same depots on the same dates, and a 2% rate cancels the 2% bus price growth (`price_escalation`). The whole undiscounted gap is that price growth.
+- **The rate barely moves the comparison.** The 2033 path's net present cost is €147-150M above 2037 at every rate from 2% to 5% (147.2, 148.5, 150.3), so the €620-635 per tonne of CO₂ holds.
+
+**Discount rate.** 3.3% nominal is the base. Because the model grows bus prices at 2%, it is about 1.3% in real terms (1.033 / 1.02 − 1), so the 5% sensitivity is shown beside it.
+
+**Limitations**
+
+1. **Nominal and real flows are mixed.** Only bus prices grow at 2% (row 23). Depot and grid capex (section 3.2) and the energy saving (row 27) are flat, so they are in today's euros. Discounting them at 3.3% treats them as nominal, which means discounting them at 3.3% real, not 1.3%. Depot flows are identical on every path, so they shift the totals but not the comparison. Energy savings are larger and earlier on faster paths, so the faster paths' net present cost is somewhat overstated relative to 2037. The fix is to grow those flows at 2% too; this hasn't been run.
+2. **Renewals after 2035 aren't modelled.** Buses bought in 2024-28 reach 12 years (`ebus_life_years`) inside the horizon, in 2036-40. Purchases in 2024-27 are the same on every path, but 2028 differs: 273 on the 2033 path, 230 on the 2037 path, more when aiming for 2030. The 43 extra 2033-path buses would be renewed in 2040 for about €36M (about €831k each at 2040 prices), or about €23M at 3.3%. A bus renewed in 2040 keeps nearly all its value at end 2040, so the net effect is small, but it is not the same on every path and would widen the 2033-2037 gap slightly.
+3. **Terminus chargers (€9.5M) have no year in the model** and are not in the figures above. They are the same on every path, so they raise each total without changing the comparison. Disclose them as one line, not as a dated row.
+
+**Inputs still to document** (needed before section 2 can list them): the carbon price and CO₂ per bus behind the carbon savings and the €620-635 per tonne, the rule for the value left in the buses at end 2040, and how energy savings run in 2036-40.
+
 ---
 
 ## 5. Sheet `Funding plan`
@@ -365,7 +401,7 @@ The 2033 target survives each single delay but has no buffer: the realistic risk
 3. Maintenance savings of e-buses aren't modelled (no EMT data).
 4. Buses per depot aren't published. Entrevías' 465 positions and the "remaining" balancing item are assumptions.
 5. Las Tablas cost (€229M) uses La Elipa's cost per position. The upstream grid contingency (€62M) uses a Canadian benchmark.
-6. The funding plan has no debt repayments and no discounting (no NPV/IRR yet).
+6. The funding plan has no debt repayments. Discounting exists only as the 2026-40 view in section 4.4, computed outside the workbook and with the limitations listed there (no IRR).
 7. Fleet size differs by source: 2,239 (EMT) vs 2,215 (CRTM).
 8. E-bus prices are tender maximums. Final contract prices may be lower.
 9. Las Tablas size: 650 is the City plan's figure ("approximately 650"); the brief (section 4.2) and EMT's design-contract award say 620. The model keeps 650 (rev. 13, D9). Because the balancing retrofit sizes the other depots so positions equal the fleet, the 2030 shortfall always equals Las Tablas's size. At 620: 620 e-buses without a charging position in 2030 (not 650), Las Tablas about €219M at La Elipa's rate (229.45 × 620/650; not €229M), and about 28 % of the fleet's positions (not about 30 %).
