@@ -59,7 +59,7 @@ details.fold > summary h3 { flex-basis: 100%; }
 /* Map view */
 .mapview { display: grid; grid-template-columns: minmax(0, 1fr) 380px; height: calc(100vh - 112px); min-height: 560px; }
 #map { height: 100%; background: #e9eef3; }
-.basemap { filter: grayscale(1) contrast(.85) brightness(1.08); }   /* muted base so route colours carry the meaning */
+.basemap { filter: contrast(1.08) brightness(.97); }   /* light-grey base so route colours carry the meaning */
 aside.side { background: #fff; border-left: 1px solid var(--rule); overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
 .seg { display: inline-flex; border: 1px solid var(--blue); border-radius: var(--radius); overflow: hidden; }
 .seg button { font: inherit; font-size: 13px; font-weight: 600; border: 0; background: #fff; color: var(--blue); padding: 6px 12px; cursor: pointer; }
@@ -323,11 +323,21 @@ tabs.forEach((t, i) => {
 const lines = F["File_2.csv"] || [];
 const depots = F["File_3.csv"] || [];
 
-const map = L.map("map", {zoomControl: true, preferCanvas: true}).setView([40.42, -3.69], 11);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 18, className: "basemap",
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+const map = L.map("map", {zoomControl: true, preferCanvas: true, maxZoom: 16}).setView([40.42, -3.69], 11);
+// Base map: Esri's light-grey canvas plus its label layer. Both load when the file is opened by double-click (file://),
+// where the page sends no referrer: openstreetmap.org's tile server then answers "403 Access blocked" and CARTO asks for an API key.
+const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/", ESRI_OPT = {maxZoom: 16, className: "basemap", referrerPolicy: "no-referrer"};
+const baseLayer = L.tileLayer(ESRI + "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {...ESRI_OPT,
+  attribution: 'Base map &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+const labelLayer = L.tileLayer(ESRI + "World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", ESRI_OPT).addTo(map);
+let tileErrors = 0, tileLoads = 0;                    // no connection or tiles blocked: drop the base map, keep routes and depots
+baseLayer.on("tileload", () => tileLoads++);
+baseLayer.on("tileerror", () => {
+  if (++tileErrors >= 4 && !tileLoads && map.hasLayer(baseLayer)) {
+    map.removeLayer(baseLayer); map.removeLayer(labelLayer);
+    map.attributionControl.addAttribution("Base map unavailable (no connection); routes and depots are drawn from the embedded data");
+  }
+});
 
 let colourBy = "strategy", focusDepot = null;
 
